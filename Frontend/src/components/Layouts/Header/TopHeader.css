@@ -1,0 +1,52 @@
+.top-header {
+    background-color: #000; 
+    height:50px;
+    display: flex;
+    align-items: center;
+    font-family: outfit;
+}
+
+.phone-number, .email {
+    margin-right: 20px;
+    font-size: 16px;
+    color: #fff !important;
+   
+   
+}
+
+.icon-spacing {
+    margin-right: 8px; 
+}
+
+.follow-us {
+    margin-right: 15px;
+    font-size: 16px;
+    color: #fff;
+    font-family: outfit;
+}
+
+.social-icon {
+    margin-left: 15px;
+    color: #fff;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.social-icon:hover {
+    color: #ffffff; 
+}
+
+.phone-number a,
+.email a {
+    text-decoration: none;
+    color: #fff;
+}
+@media (max-width: 768px) {
+    .top-header{
+        display:none !important;
+    }
+    
+    
+}
+
+

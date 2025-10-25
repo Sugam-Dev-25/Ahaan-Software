@@ -1,0 +1,99 @@
+.second-banner-req-call{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: radial-gradient(circle at center, #CD912A, #000000, #000000);
+    max-height: 200px;
+    margin: 20px auto;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    padding: 20px;
+    overflow: hidden;
+  }
+  .second-banner-call {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      gap: 10px;
+      justify-content: center,
+  }
+  
+  .second-banner-call-details{
+      display: flex;
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center; 
+      text-align: center; 
+      height: 100%;
+      font-family: outfit;
+  }
+  .second-banner-call-details h3{
+      font-size: 18px;
+  }
+  .second-banner-call-details p{
+      display: inline-block;
+      
+      font-size: 14px;
+      font-weight: 400;
+      cursor: pointer;
+      margin:0;
+  }
+  .second-banner-calling-icon{
+      font-size: 35px;
+      color: #fff;
+  }
+
+  .second-banner-label{
+    font-size: 32px;
+    margin: 10px 0;
+    letter-spacing: 2px;
+    font-family: outfit;
+  }
+.second-banner-contact-button{
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #CD912A;
+    font-weight:600;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+    text-decoration: none;
+    font-family: outfit;
+}
+
+
+  @media (max-width:768px) {
+      .second-banner-call{
+          flex-direction: column;
+      }
+      .second-banner-calling-icon{
+          font-size: 25px;
+      }  
+      .second-banner-label{
+        font-size: 18px;
+       
+      }
+      .second-banner-call{
+        
+        transform: translate(-20%, 23%);
+          }
+      
+  }
+  @media (max-width:500px){
+    .second-banner-label{
+        font-size: 16px;
+       
+      }
+      .second-banner-contact-button{
+        padding: 5px 12px;
+        font-size: 12px;
+
+      }
+      
+      
+  }

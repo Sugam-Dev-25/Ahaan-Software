@@ -1,0 +1,177 @@
+.our-tab-tech-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  
+  }
+  
+
+  .tabs-col-tech{
+    /* height: 280px; */
+    display: flex;
+    flex-direction: column;
+  }
+  .nav-item-tab{
+    flex: 0 1 auto;
+  }
+.tech-tab-content{
+  flex: 1 !important; 
+  padding: 0px !important;
+  min-height: 50px !important; 
+  /* height: auto; */
+  box-shadow: none ;
+}
+  
+  
+.tech-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+  
+  .tech-name {
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.3s ease;
+    
+  }
+  
+  .tech-name:hover {
+    text-decoration: underline;
+    color: #7E61BF !important;
+    cursor: pointer;
+  }
+
+  .nav-item-tab{
+    background-color: #eeeeee;
+    margin-bottom: 20px;
+    height: 70px;
+    border-radius: 5px;
+    line-height: 50px;
+    letter-spacing: 3px;
+  }
+  .nav-link-tab{
+    color: #000 !important;
+    font-weight: 500 !important;
+    font-family: outfit !important;
+  }
+  .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color:#C7892B !important;
+    background-color: #000 !important;
+    height: 70px;
+    line-height: 50px;
+    letter-spacing: 3px;
+}
+  
+  /* Make the layout responsive */
+  @media (max-width: 1024px) {
+    .tech-icon {
+      flex: 1 0 10%; /* 3 items per row on medium screens (e.g., tablets) */
+    }
+  
+    .our-tab-tech-icons {
+      gap: 10px; /* Decrease gap to 30px on medium screens */
+    }
+    .tabs-col-tech{
+      height: 450px;
+    }
+
+
+  }
+  @media (max-width: 768px) {
+    .our-tab-tech-icons {
+      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); 
+      gap: 10px;
+    }
+  
+    .tech-icon {
+      font-size: 12px; /* Smaller font size for labels */
+    }
+  
+    .tech-icon svg {
+      width: 50px; /* Smaller icon size */
+      height: 50px;
+    }
+    .tech-name{
+      font-size: 12px;
+    }
+
+    
+
+  }
+  
+  @media (max-width: 480px) {
+    .our-tab-tech-icons {
+      grid-template-columns: repeat(auto-fill, minmax(40px, 2fr)); /* Adjust even further for very small screens */
+    }
+  
+    .tech-icon {
+      font-size: 10px; /* Even smaller font size */
+    }
+  
+    .tech-icon svg {
+      width: 40px; /* Smaller icon size */
+      height: 40px;
+    }
+    .tech-name{
+      font-size: 10px;
+    }
+  }
+
+  p.text-muted.mx-auto.mt-3.section1-content.section1-content-p-tab{
+    margin-top: 100px !important;
+    text-align: center;
+  }
+
+/* Mobile view adjustments */
+@media (max-width: 576px) {
+  .tab-mobile-row {
+    flex-direction: row !important;
+  }
+
+  .mobile-tab-nav {
+    width: 15%;
+    max-width: 15%;
+    
+  }
+
+  .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    height: 45px;
+  }
+  .nav-item-tab{
+    height: 45px;
+    line-height: 30px !important;
+  }
+
+  .tab-content-mobile {
+    width: 85%;
+    max-width: 85%;
+    padding-left: 00px;
+  }
+
+  .nav-link-tab {
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    font-size: 14px;
+  }
+
+  .nav-icon {
+    font-size: 18px;
+    margin-right: 5px;
+  }
+
+  .tech-tab-content {
+    font-size: 14px;
+  }
+  .tabs-col-tech{
+    height: 300px;
+  }
+}
+
+  

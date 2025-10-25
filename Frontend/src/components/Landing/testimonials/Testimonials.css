@@ -1,0 +1,130 @@
+.testimonial-section {
+  background-color: #f9f9f9;
+  padding: 50px 20px;
+  font-family: "Outfit", serif;
+  height: auto;
+  min-height: 500px; /* Ensures consistent appearance on all screens */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel {
+  position: relative;
+  max-width: 100%;
+  width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.testimonial-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 30px 40px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  min-height: 380px; /* Keeps height steady but allows small expansion if needed */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.carousel-navigation {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.prev-button,
+.next-button {
+  background-color: #000;
+  color: #C7892B;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.prev-button:hover,
+.next-button:hover {
+  background-color: #333;
+}
+
+p.text-secondary.fst-italic {
+  font-style: normal !important;
+  color: #000 !important;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.testi-text {
+  display: block;
+  margin: 0 auto;
+  width: 75%;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .carousel {
+    width: 90%;
+  }
+
+  .testimonial-card {
+    padding: 25px;
+    min-height: 400px;
+  }
+
+  .testi-text {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    padding: 20px;
+    min-height: 450px;
+  }
+
+  .testi-text {
+    width: 95%;
+  }
+
+  .prev-button,
+  .next-button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-section {
+    padding: 30px 10px;
+  }
+
+  .testimonial-card {
+    padding: 20px;
+    min-height: 520px;
+  }
+
+  .testi-text {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .prev-button,
+  .next-button {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+}
