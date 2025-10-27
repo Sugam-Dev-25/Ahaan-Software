@@ -36,7 +36,7 @@ const Banner = () => {
           </div>
           <div className="col-md-6 team-discus-mobile">
             <img
-              src="https://ahaanmedia.com/asc/All/group2.png"
+              src="https://ahaanmedia.com/asc/All/group1.png"
               alt="Team Discussion"
               className="img-fluid rounded"
             />

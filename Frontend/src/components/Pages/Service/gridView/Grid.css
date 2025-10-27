@@ -1,5 +1,6 @@
 .service-grid-card {
-  box-shadow: rgba(0, 0, 0, 0.079) 0px 10px 20px, rgba(0, 0, 0, 0.123) 0px 6px 6px !important;
+    box-shadow: rgba(80, 80, 80, 0.079) 0px 10px 20px, rgba(97, 97, 97, 0.123) 0px 4px 4px !important;
+
 }
 .card img {
   object-fit: cover;

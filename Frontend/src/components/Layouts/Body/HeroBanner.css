@@ -1,0 +1,191 @@
+.hero-scene {
+  position: relative;
+  height: 90vh;
+  overflow: hidden;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero-scene.fade {
+  opacity: 0;
+}
+
+/* 🌅 THEMES */
+.hero-scene.morning {
+  background: linear-gradient(to bottom, #ffda79, #87ceeb);
+}
+.hero-scene.noon {
+  background: linear-gradient(to bottom, #56ccf2, #2f80ed);
+}
+.hero-scene.evening {
+  background: linear-gradient(to bottom, #ff9966, #ff5e62);
+}
+.hero-scene.night {
+  background: linear-gradient(to bottom, #000000, #000000);
+}
+
+/* ✨ Stars (visible at night) */
+/* ✨ Stars for night */
+.hero-scene.night::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(white 1px, transparent 1px),
+              radial-gradient(white 1px, transparent 1px),
+              radial-gradient(white 1px, transparent 1px);
+  background-size: 150px 150px, 200px 200px, 250px 250px; /* bigger pattern */
+  background-position: 0 0, 50px 100px, 100px 50px;       /* scattered layers */
+  opacity: 0.15;
+  animation: twinkle 6s infinite ease-in-out alternate;
+  z-index: 1;
+  pointer-events: none;
+  filter: blur(0.3px);
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+
+
+.hero-scene.night::after {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: -10%;
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, white, transparent);
+  opacity: 0;
+  animation: shootingStar 6s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes shootingStar {
+  0%, 80% {
+    opacity: 0;
+    transform: translateX(0) translateY(0);
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(120vw) translateY(40px);
+  }
+}
+
+
+/* ☀️🌙 Sun & Moon */
+.sun,
+.moon {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  animation: float 5s ease-in-out infinite alternate;
+  z-index: 5;
+}
+.glow {
+  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.8))
+          drop-shadow(0 0 80px rgba(255, 255, 255, 0.5));
+}
+.moon.glow {
+  filter: drop-shadow(0 0 60px rgba(255, 255, 200, 0.8))
+          drop-shadow(0 0 120px rgba(255, 255, 255, 0.4));
+}
+@keyframes float {
+  from {
+    transform: translate(-50%, -10px);
+  }
+  to {
+    transform: translate(-50%, 10px);
+  }
+}
+
+/* ☁️ Clouds */
+.cloud {
+  position: absolute;
+  top: 25%;
+  width: 400px;
+  opacity: 0.9;
+  animation: moveClouds 20s linear infinite;
+  z-index: 4;
+  filter: blur(1px);
+}
+.cloud1 {
+  left: -20%;
+  animation-delay: 0s;
+}
+.cloud2 {
+  left: 50%;
+  animation-delay: 0s;
+}
+.cloud3 {
+  left: 80%;
+  animation-delay: 0s;
+}
+@keyframes moveClouds {
+  0% {
+    transform: translateX(-200px) translateY(0);
+  }
+  50% {
+    transform: translateX(60vw) translateY(10px);
+  }
+  100% {
+    transform: translateX(120vw) translateY(0);
+  }
+}
+
+/* ✨ TEXT */
+.hero-content {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  animation: fadeIn 2s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+}
+.title span {
+  color: #ffe600;
+}
+.subtitle {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+.btn-main {
+  margin-top: 25px;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-main:hover {
+  background: #ffe600;
+  transform: scale(1.05);
+}

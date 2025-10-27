@@ -3,7 +3,7 @@
   height: 300px;
   position: relative;
   min-width: 300px;
-  box-shadow: 0 4px 10px #C7892B;
+  box-shadow: rgba(80, 80, 80, 0.079) 0px 10px 20px, rgba(97, 97, 97, 0.123) 0px 4px 4px !important;
   transition: transform 0.3s ease;
   border-radius: 10px;
 }

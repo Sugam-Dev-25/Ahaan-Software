@@ -8,10 +8,12 @@ import OurProcess from "../../Layouts/Body/OurProcess";
 import SecondBanner from "../../Layouts/Body/SecondBanner";
 import ImageCarousel from "../../Layouts/Body/ImageCarousel";
 import TestimonialCarousel from "../../Landing/testimonials/Testimonials";
+import HeroBanner from "../../Layouts/Body/HeroBanner";
 const Home = () => {
   return (
     <div>
       <FirstBanner />
+      {/* <HeroBanner/> */}
       <OurProcess />
       <FirstSection />
       <ThirdSection /> 

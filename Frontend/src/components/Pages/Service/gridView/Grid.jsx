@@ -30,7 +30,7 @@ const cardData = [
     image: "https://ahaanmedia.com/asc/Service/card4.png",
     title: "E-commerce Development",
     description:
-      "Boost sales and elevate customer satisfaction with our expert e-commerce web development solutions. We craft secure, high-performing stores with robust strategies to expand your customer base and drive measurable results.",
+      "Boost sales and elevate customer satisfaction with our expert e-commerce web development solutions. We craft secure, high-performing stores with robust strategies to expand your customer base and drive measurable results that strengthen your online presence, increase brand visibility, and ensure consistent business growth worldwide.",
     features: ["Shopify", "Magento", "WooCommerce", "BigCommerce"],
   },
   {
