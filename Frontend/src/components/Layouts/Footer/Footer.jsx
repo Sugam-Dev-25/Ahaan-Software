@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaAngleDown } from "react-icons/fa";
+import TextField from "@mui/material/TextField";
+import emailjs from "@emailjs/browser";
+import { useForm } from "react-hook-form";
+
 import {
   FaMapMarkerAlt,
   FaPhoneAlt,
@@ -17,6 +21,15 @@ const Footer = () => {
   const [isContactUsOpen, setIsContactUsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    setError,
+    clearErrors,
+  } = useForm();
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 700);
@@ -25,6 +38,22 @@ const Footer = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const onSubmit = (data) => {
+    const serviceID = "service_d4lc4tg";
+    const templateID = "template_k2044k9";
+    const publicKey = "P1psK0y5kXFayHDDA";
+
+    emailjs
+      .sendForm(serviceID, templateID, form.current, publicKey)
+      .then((response) => {
+        toast.success("Message sent successfully!");
+        reset();
+      })
+      .catch((error) => {
+        toast.error("Failed to send message. Try again!");
+      });
+  };
 
   return (
     <footer
@@ -39,6 +68,7 @@ const Footer = () => {
       }}
     >
       <div className="container">
+
         <div className="row">
           {/* Logo & Newsletter */}
           <div className="col-md-4">
@@ -53,13 +83,25 @@ const Footer = () => {
                 offers.
               </p>
             </div>
-            <div className="newsletter">
-              <input
+            <div className="">
+              <TextField
+                label="Email ID"
                 type="email"
-                placeholder="Email Address"
-                className="form-control"
+                variant="outlined"
+                fullWidth
+                margin="normal"
+                className="custom-input"
+                error={!!errors.email}
+                helperText={errors.email?.message}
+                {...register("email", {
+                  required: "Email is required",
+                })}
               />
-              <button className="btn btn-primary">Submit</button>
+              <div className="d-flex justify-content-start flex-col">
+                <button className="newsletter-button">
+                  <span>Submit</span>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -85,7 +127,7 @@ const Footer = () => {
               </h5>
               <FaAngleDown
                 className={`accordion-icon ${isQuickLinksOpen ? "open" : ""}`}
-                style={{ marginLeft: "auto" }}
+                style={{ marginLeft: "auto", color: "#fff" }}
               />
             </button>
             <ul
@@ -139,7 +181,7 @@ const Footer = () => {
               </h5>
               <FaAngleDown
                 className={`accordion-icon ${isContactUsOpen ? "open" : ""}`}
-                style={{ marginLeft: "auto" }}
+                style={{ marginLeft: "auto", color: "#fff" }}
               />
             </button>
 
@@ -152,52 +194,64 @@ const Footer = () => {
                 CONTACT US
               </h5>
 
-              <p className="contact-info">
-                <FaMapMarkerAlt className="footer-icon" /> Bengal Eco
-                Intelligent Park, EM Block, Sector V, Kolkata-700 091
-              </p>
-              <p className="contact-info">
-                <FaPhoneAlt className="footer-icon" />
-                <span className="phone-list">
-                  <a
-                    href="https://wa.me/13214210740"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    +1 321-421-0740
-                  </a>
-                  <span>/</span>
-                  <a
-                    href="https://wa.me/919830371143"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    +91 983-037-1143
-                  </a>
-                  <span>/</span>
-                  <a
-                    href="https://wa.me/6590745876"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    +65 9074 5876
-                  </a>
-                </span>
-              </p>
+              <ul className="contact-info list-unstyled">
+                <li>
+                  <FaMapMarkerAlt className="footer-icon" />{" "}
+                  <p className="add">
+                    Bengal Eco Intelligent Park, EM Block, Sector V, Kolkata-700
+                    091
+                  </p>
+                </li>
+              </ul>
+              <ul className="contact-info list-unstyled">
+                <li className="d-flex align-items-center flex-nowrap">
+                  <FaPhoneAlt className="me-2 flex-shrink-0 footer-icon" />
+                  <span className="d-flex flex-wrap gap-1">
+                    <a
+                      href="https://wa.me/13214210740"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-decoration-none"
+                    >
+                      +1 321-421-0740
+                    </a>
+                    <span>/</span>
+                    <a
+                      href="https://wa.me/919830371143"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-decoration-none"
+                    >
+                      +91 983-037-1143
+                    </a>
+                    <span>/</span>
+                    <a
+                      href="https://wa.me/6590745876"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-decoration-none"
+                    >
+                      +65 9074 5876
+                    </a>
+                  </span>
+                </li>
+              </ul>
 
-              <p className="contact-info">
-                <FaEnvelope className="footer-icon" />
-                <a href="mailto:support@ahaansoftware.com">
-                  support@ahaansoftware.com
-                </a>
-              </p>
+              <ul className="contact-info list-unstyled">
+                <li>
+                  <FaEnvelope className="footer-icon" />
+                  <a href="mailto:support@ahaansoftware.com">
+                    support@ahaansoftware.com
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
 
         {/* Footer Bottom */}
         <div className="footer-bottom mt-4 pt-3 border-top">
-          <p className="footer-bottom-text mb-2 text-center">
+          <p className="footer-bottom-text mb-2 text-center" style={{color:"#fff"}}>
             {isMobile
               ? "© 2025 Ahaan Software Consulting"
               : "© 2025 Ahaan Software, All rights reserved."}

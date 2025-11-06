@@ -1,66 +1,142 @@
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { BsForward } from "react-icons/bs";
-import { Container } from "react-bootstrap";
+import React from "react";
 import "./OurProcess.css";
-
-const sdlcSteps = [
-  { id: 1, title: "Requirements", color: "#6D28D9" },
-  { id: 2, title: "Planning", color: "#F59E0B" },
-  { id: 3, title: "Design", color: "#9333EA" },
-  { id: 4, title: "Development", color: "#22C55E" },
-  { id: 5, title: "Testing", color: "#EF4444" },
-  { id: 6, title: "Deployment", color: "#3B82F6" },
-  { id: 7, title: "Maintenance", color: "#EAB308" },
-];
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const OurProcess = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % sdlcSteps.length);
-    }, 1000); // Change every second
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <Container>
-      <div className="container mt-5">
-        <label className="section1-client-label">Our Process</label>
-      </div>
-      <div className="sdlc-container">
-        {sdlcSteps.map((step, index) => (
-          <div key={step.id} className="sdlc-step-wrapper">
-            <motion.div
-              className={`sdlc-step ${index === activeIndex ? "animate" : ""}`}
-              style={{ borderColor: step.color }}
-            >
-              <div className="step-number">{index + 1}</div>
-              <span className="step-titles">{step.title}</span>
-            </motion.div>
-
-            {index < sdlcSteps.length - 1 && (
-              <svg class="arrow-svg">
-                <polygon
-                  class="arrow"
-                  points="15,8 20,15 15,22 30,22 35,15 30,8"
-                  fill="#000"
-                />
-              </svg>
-            )}
+    <div id="process-main-container">
+      <section className="process-section-wrapper mt-5 mb-5">
+        <div className="container process-container">
+          <div className="process-header-wrapper">
+            <div className="mt-5 section-header-tech">
+              <h6 className="subtitle">
+                Discovery & Strategy <span className="divider"></span>
+              </h6>
+              <span className="title">Our Process</span>
+            </div>
+            <p className="image-carousel-content">
+              Driven to be future-ready, and push beyond the building blocks of
+              technology, digital, and marketing, Ahaan Software Consulting
+              proudly participated in The Asia Business Show 2024 in
+              Singapore—the powerhouse of innovation and enterprise!
+            </p>
           </div>
-        ))}
-      </div>
-      <p className="text-muted mx-auto mt-3 section1-content section1-content-p">
-        Create a future-forward tech foundation that can power your business
-        operations, workflows and experiences! Our tech-driven services could be
-        a digital breakthrough to those who are seeking success in today’s
-        competitive landscape. Boost your business benchmarks by redefining
-        processes, modernizing technologies, and transforming experiences.
-      </p>
-    </Container>
+
+          <div className="process-steps-wrapper position-relative">
+            <div className="process-vertical-line"></div>
+
+            {/* Step 1 */}
+            <div className="process-step-section process-step-1">
+              <div className="process-step-row">
+                <div className="process-step-left">
+                  <div className="process-step-box">
+                    <div className="process-step-content">
+                      <h3 className="process-step-title">
+                        Discovery & Planning
+                      </h3>
+                      <p className="process-step-description">
+                        Define goals, scope, audience, and create a wireframe.
+                      </p>
+                      <DotLottieReact
+                        src="https://lottie.host/64a49f21-199b-4158-8c34-fd6c5a287421/xoyIeVuViq.lottie"
+                        loop
+                        autoplay
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="process-step-number-col">
+                  <div className="process-step-number">1</div>
+                </div>
+                <div className="process-step-right"></div>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="process-step-section process-step-2">
+              <div className="process-step-row process-step-right-aligned">
+                <div className="process-step-left"></div>
+                <div className="process-step-number-col">
+                  <div className="process-step-number">2</div>
+                </div>
+                <div className="process-step-right">
+                  <div className="process-step-box">
+                    <div className="process-step-content">
+                      <h3 className="process-step-title">
+                        Design & Prototyping
+                      </h3>
+                      <p className="process-step-description">
+                        Craft visual aesthetics, UI/UX, and create interactive
+                        mockups.
+                      </p>
+                      <DotLottieReact
+                        src="https://lottie.host/fe70d42e-cf7e-4778-8ce1-34bd7a60673c/AvDMR5gzPH.lottie"
+                        loop
+                        autoplay
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="process-step-section process-step-3">
+              <div className="process-step-row">
+                <div className="process-step-left">
+                  <div className="process-step-box">
+                    <div className="process-step-content">
+                      <h3 className="process-step-title">
+                        Development & Testing
+                      </h3>
+                      <p className="process-step-description">
+                        Full-stack coding, functionality integration, and
+                        rigorous QA.
+                      </p>
+                      <DotLottieReact
+                        src="https://lottie.host/a0d33893-d46c-40b3-adea-6680d8cd49fc/39wUFQN1eh.lottie"
+                        loop
+                        autoplay
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="process-step-number-col">
+                  <div className="process-step-number">3</div>
+                </div>
+                <div className="process-step-right"></div>
+              </div>
+            </div>
+
+            {/* Step 4 */}
+            <div className="process-step-section process-step-4">
+              <div className="process-step-row process-step-right-aligned">
+                <div className="process-step-left"></div>
+                <div className="process-step-number-col">
+                  <div className="process-step-number">4</div>
+                </div>
+                <div className="process-step-right">
+                  <div className="process-step-box">
+                    <div className="process-step-content">
+                      <h3 className="process-step-title">Launch & Growth</h3>
+                      <p className="process-step-description">
+                        Deploy to live servers, SEO setup, and post-launch
+                        monitoring.
+                      </p>
+                      <DotLottieReact
+                        src="https://lottie.host/9e768f90-9eb5-41cd-b0e5-855a995ccc42/9sfugS313k.lottie"
+                        loop
+                        autoplay
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 };
 
