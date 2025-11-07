@@ -88,7 +88,7 @@ const PortfolioBanner = () => {
               In today’s competitive business, the demand for efficient and cost-effective IT
               solutions has never been more critical.
             </p>
-            <a href="/" className="btn btn-primary explore-btn">Explore More</a>
+            {/* <a href="/" className="btn btn-primary explore-btn">Explore More</a> */}
           </div>
 
           {/* Right Image + Bubble */}

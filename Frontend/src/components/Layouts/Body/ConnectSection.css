@@ -1,68 +1,98 @@
+/* ============ Section Styling ============ */
 .connect-section {
   background: #181818;
   color: #fff;
+  font-family: "Outfit", sans-serif;
+  padding-top: 100px !important;
+  padding-bottom: 100px !important;
 }
 
-.subtitle {
-  font-size: 1.2rem;
+
+/* ============ Left Side ============ */
+.connect-left .connect-subtitle {
+  font-size: 1.1rem;
   font-weight: 500;
   color: #b0b3ff;
 }
 
-.title {
-  font-size: 3rem;
-  font-weight: 700;
+.whychooseus-label {
+
+  font-weight: 800;
   color: #fff;
+
 }
 
-.form-group {
+/* ============ Form ============ */
+.connect-form {
+  background: transparent;
+}
+
+.connect-input-group {
   margin-bottom: 1.5rem;
 }
 
-.form-group label {
-  color: #fff;
-  font-weight: 500;
+.connect-input,
+.connect-select {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid #fff !important;
+  border-radius: 0 !important;
+  color: #fff !important;
+  padding: 10px 0 !important;
+  font-size: 1rem !important;
 }
 
-.form-group .form-control,
-.form-group .form-select {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #fff;
-  border-radius: 0;
-  color: #fff;
-  padding-left: 0;
+.connect-input:focus,
+.connect-select:focus {
+  border-bottom: 1px solid #ffbf00 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  color: #fff !important;
 }
 
-.form-group .form-control:focus,
-.form-group .form-select:focus {
-  box-shadow: none;
-  border-bottom: 1px solid #ffbf00;
-  color: #fff;
-  background: transparent;
+/* White Placeholder */
+.connect-input::placeholder,
+.connect-select option {
+  color: #fff !important;
+  opacity: 0.8;
 }
 
+/* Error Text */
 .error-text {
   color: #ffbf00;
   font-size: 0.85rem;
+  margin-top: 5px;
+  display: block;
 }
 
+/* Button */
 .connect-submit-btn {
-  max-width: 30%;
-  background-color: #c59402 !important;
+  background-color: #c5940200 !important;
   border: 1px solid #c59402 !important;
-  color: #000000 !important;
-  padding: 10px 25px !important;
-  border-radius: 50px !important;
-  transition: 0.3s;
+  color: #c59402 !important;
+  padding: 10px 30px !important;
+  border-radius: 10px !important;
+  font-weight: 600;
+  transition: 0.3s ease;
+  width: 30% !important;
 }
 
 .connect-submit-btn:hover {
   background-color: #ffbf00 !important;
   border-color: #ffbf00 !important;
-  color: #000000 !important;
+  color: #000 !important;
+}
+/* Fix select dropdown background */
+.connect-select {
+  background-color: #00000000 !important;
+  color: #fff !important;
+  border: none !important;
+  border-bottom: 1px solid #fff !important;
+  border-radius: 0 !important;
+  padding: 10px 0 !important;
 }
 
-.illustration img {
-  filter: brightness(0) invert(1);
+.connect-select option {
+  background-color: #181818 !important;
+  color: #fff !important;
 }

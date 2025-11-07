@@ -7,6 +7,7 @@ import ThirdSection from "../../Layouts/Body/ThirdSection";
 import CarouselComponent from './CarouselComponent'
 import CounterSection from './CounterSection'
 import AnimatedTabsSection from './AnimatedTabsSection'
+import ImageCarousel from '../../Layouts/Body/ImageCarousel'
 const Portfolios = () => {
   return (
     <>
@@ -15,7 +16,8 @@ const Portfolios = () => {
     <CounterSection/>
     <ServicesSection/>
     <ThirdSection/>
-    <CarouselComponent/>
+    <ImageCarousel />
+    {/* <CarouselComponent/> */}
     
     </>
   )

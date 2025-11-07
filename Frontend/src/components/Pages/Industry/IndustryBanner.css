@@ -118,7 +118,7 @@
 .industry-section {
   max-width: 1300px;
   margin: 50px auto;
-  padding: 20px;
+  padding-bottom: 10px;
 }
 .industry-heading {
   font-weight: 700;
@@ -177,4 +177,9 @@
   .wave { height: 70px; background-size: 700px 70px; }
   .industry-heading { font-size: 20px; line-height: 30px; }
   .industry-text { font-size: 13px; }
+  .industry-section {
+  max-width: 1300px;
+  margin: 50px auto;
+  padding-bottom: 0px;
+}
 }

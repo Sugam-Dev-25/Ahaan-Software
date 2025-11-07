@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import "./Grid.css";
 
@@ -108,10 +109,10 @@ const cardData = [
       "Social Media Analytics",
     ],
     icons: [
-      "https://cdn-icons-png.flaticon.com/64/1384/1384063.png",
-      "https://cdn-icons-png.flaticon.com/64/174/174857.png",
-      "https://cdn-icons-png.flaticon.com/64/1384/1384060.png",
-      "https://cdn-icons-png.flaticon.com/64/281/281764.png",
+      "https://ahaanmedia.com/asc/technology/Instagram.png",
+      "https://ahaanmedia.com/asc/technology/Linkedin.png",
+      "https://ahaanmedia.com/asc/technology/Youtube.png",
+      "https://ahaanmedia.com/asc/technology/Google.png",
     ],
     color: "#0984e3",
   },
@@ -127,8 +128,8 @@ const cardData = [
       "Google Analytics",
     ],
     icons: [
-      "https://cdn-icons-png.flaticon.com/64/732/732200.png",
-      "https://cdn-icons-png.flaticon.com/64/281/281764.png",
+      "https://ahaanmedia.com/asc/technology/Google.png",
+      "https://ahaanmedia.com/asc/technology/Gmail.png",
     ],
     color: "#f9a825",
   },
@@ -202,12 +203,12 @@ const Grid = () => {
                   ))}
                 </div>
 
-                <p className="service-description text-secondary">
-                  {service.description}
-                </p>
+                <p className="service-description ">{service.description}</p>
 
                 <div className="button-icon-row">
                   <Button
+                    as={Link}
+                    to="/portfolio"
                     variant="outline-light"
                     className="explore-btn"
                     style={{

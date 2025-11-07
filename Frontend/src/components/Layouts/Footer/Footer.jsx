@@ -64,11 +64,10 @@ const Footer = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center center",
-        padding: "50px 0 20px 0",
+        padding: "150px 0 20px 0",
       }}
     >
       <div className="container">
-
         <div className="row">
           {/* Logo & Newsletter */}
           <div className="col-md-4">
@@ -90,13 +89,14 @@ const Footer = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                className="custom-input"
+                className="custom-input dark-form-input"
                 error={!!errors.email}
                 helperText={errors.email?.message}
                 {...register("email", {
                   required: "Email is required",
                 })}
               />
+
               <div className="d-flex justify-content-start flex-col">
                 <button className="newsletter-button">
                   <span>Submit</span>
@@ -251,7 +251,10 @@ const Footer = () => {
 
         {/* Footer Bottom */}
         <div className="footer-bottom mt-4 pt-3 border-top">
-          <p className="footer-bottom-text mb-2 text-center" style={{color:"#fff"}}>
+          <p
+            className="footer-bottom-text mb-2 text-center"
+            style={{ color: "#fff" }}
+          >
             {isMobile
               ? "© 2025 Ahaan Software Consulting"
               : "© 2025 Ahaan Software, All rights reserved."}

@@ -6,7 +6,7 @@
   overflow: hidden;
   padding-bottom: 0 !important;
 }
-
+ 
 /* Subtitle */
 .subtitle {
   font-size: 16px;
@@ -14,7 +14,7 @@
   font-weight: 600;
   letter-spacing: 1px;
 }
-
+ 
 .subtitle .divider {
   display: inline-block;
   width: 30px;
@@ -23,28 +23,28 @@
   margin-left: 8px;
   vertical-align: middle;
 }
-
+ 
 /* Title */
 .whychooseus-label {
-  font-size: 42px;
+ 
   font-weight: 700;
   color: #fff;
 }
-
+ 
 /* Paragraph */
 .image-carousel-content {
-
+ 
   text-align: left;
   font-size: 16px;
   line-height: 1.6;
   margin-top: 10px;
 }
-
+ 
 /* ========== SWIPER ========== */
 .case-swiper {
   padding-top: 20px;
 }
-
+ 
 .case-card {
   background: #fff;
   border-radius: 18px;
@@ -53,28 +53,28 @@
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   cursor: pointer;
 }
-
+ 
 .case-card img {
   width: 100%;
   height: auto;
   object-fit: cover;
   transition: transform 0.4s ease;
 }
-
+ 
 .case-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
 }
-
+ 
 .case-card:hover img {
   transform: scale(1.05);
 }
-
+ 
 .case-swiper .swiper-wrapper {
   transition-timing-function: linear !important;
   will-change: transform;
 }
-
+ 
 /* Zigzag effect */
 .case-swiper .swiper-slide:nth-child(even) .case-card {
   margin-top: 40px;
@@ -82,13 +82,13 @@
 .case-swiper .swiper-slide:nth-child(odd) .case-card {
   margin-top: 0;
 }
-
+ 
 /* ========== BUTTON ========== */
 .view-all-btn {
   text-align: right;
   margin-top: 30px;
 }
-
+ 
 .view-all-btn a {
   color: #cfa74a;
   border: 2px solid #cfa74a;
@@ -99,12 +99,12 @@
   transition: all 0.3s ease;
   display: inline-block;
 }
-
+ 
 .view-all-btn a:hover {
   background: #cfa74a;
   color: #000;
 }
-
+ 
 .wave-section {
   position: relative;
   width: 100%;
@@ -113,7 +113,7 @@
   margin-top: -1px;
   background: transparent;
 }
-
+ 
 /* 🔹 White-colored animated wave */
 .wave {
   position: absolute;
@@ -126,7 +126,7 @@
   background-size: 1000px 100px;
   filter: brightness(0) invert(1); /* 🔥 makes wave white */
 }
-
+ 
 .wave.wave1 {
   animation: wave 30s linear infinite;
   z-index: 3;
@@ -147,7 +147,7 @@
   z-index: 2;
   opacity: 0.3;
 }
-
+ 
 /* 🔹 Animation */
 @keyframes wave {
   0% {
@@ -157,7 +157,7 @@
     background-position-x: 1000px;
   }
 }
-
+ 
 @keyframes wave2 {
   0% {
     background-position-x: 0;
@@ -166,22 +166,23 @@
     background-position-x: -1000px;
   }
 }
-
+ 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 992px) {
   .case-swiper .swiper-slide .case-card {
     margin-top: 0;
   }
 }
-
+ 
 @media (max-width: 767px) {
-  .whychooseus-label {
-    font-size: 30px;
-  }
+ 
   .image-carousel-content {
     font-size: 14px;
   }
   .case-card img {
     height: auto;
+    width: auto;
   }
 }
+ 
+ 

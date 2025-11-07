@@ -1,4 +1,3 @@
-/* Footer Section */
 .footer-main {
   position: relative;
   background-image: url("https://ahaanmedia.com/asc/layouts/Footer-Banner.png");
@@ -9,7 +8,7 @@
   z-index: 1;
   overflow: hidden;
 }
-
+ 
 /* 🔹 Animated black overlay */
 .footer-main::before {
   content: "";
@@ -18,11 +17,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 1);
   z-index: -1;
-  animation: smoothBlack 6s ease-in-out infinite alternate;
+  /* animation: smoothBlack 6s ease-in-out infinite alternate; */
 }
-
+ 
 /* 🔹 Smooth opacity + darkness animation */
 @keyframes smoothBlack {
   0% {
@@ -35,13 +34,13 @@
     background: rgba(0, 0, 0, 0.9);
   }
 }
-
-
+ 
+ 
 .footer-logo {
   width: 150px !important;
   margin-bottom: 10px;
 }
-
+ 
 /* Newsletter Text */
 .newsletter-text {
   font-size: 18px;
@@ -50,13 +49,13 @@
   color: #fff;
   text-align: left;
 }
-
+ 
 /* Newsletter Form */
 .newsletter {
   display: flex;
   gap: 10px;
 }
-
+ 
 .newsletter-button {
   font-weight: 600;
   padding: 10px 25px;
@@ -72,7 +71,7 @@
   cursor: pointer;
   transition: all 0.3s;
 }
-
+ 
 .newsletter-button::before {
   content: "";
   position: absolute;
@@ -80,26 +79,27 @@
   left: 0;
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #c07f1e 0%, #ffcc70 100%);
+  background: linear-gradient(90deg, #a1947b 0%, #7e8391 100%);
   border-radius: 50px;
   transition: width 0.5s;
   z-index: 1;
+ 
 }
-
+ 
 .newsletter-button span {
   position: relative;
   z-index: 2;
   transition: color 0.5s;
 }
-
+ 
 .newsletter-button:hover::before {
   width: 100%;
 }
-
+ 
 .newsletter-button:hover span {
-  color: #000;
+  color: #ffffff;
 }
-
+ 
 /* Footer Headings */
 .footer-heading {
   font-weight: bold;
@@ -107,18 +107,18 @@
   font-family: outfit;
   color: #cc9331;
 }
-
+ 
 /* Footer Links */
 .footer-links {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
+ 
 .footer-links li {
   margin-bottom: 8px;
 }
-
+ 
 .footer-links a,
 .contact-info a {
   color: #ffffff;
@@ -132,12 +132,12 @@
   font-family: outfit;
   color: #ffffff;
 }
-
-
+ 
+ 
 .custom-input-email{
   border: none !important;
 }
-
+ 
 /* Contact Info */
  .contact-info {
   margin-bottom: 8px;
@@ -147,7 +147,7 @@
   font-family: outfit;
   color: #444;
 }
-
+ 
 .contact-info .footer-icon {
   margin-right: 8px;
   color: #cc9331;
@@ -164,7 +164,7 @@
   font-size: 25px;
   border-radius: 50px;
 }
-
+ 
 /* Footer Bottom */
 .footer-bottom {
   border-top: 1px solid #ccc;
@@ -175,11 +175,11 @@
   align-items: center;
   flex-wrap: wrap;
 }
-
+ 
 .footer-bottom p {
   margin: 0;
 }
-
+ 
 .footer-bottom-text {
   font-family: outfit;
   color: #000;
@@ -187,7 +187,7 @@
   text-align: center;
   flex: 1;
 }
-
+ 
 /* Social Icons */
 .footer-social-icons a {
   margin: 0 8px;
@@ -196,24 +196,24 @@
   text-decoration: none;
   transition: color 0.3s ease;
 }
-
+ 
 .footer-social-icons a:hover {
   color: #cc9331;
 }
-
+ 
 /* Responsive Quick Links Container */
 .quicklink-responsive {
   display: flex;
   justify-content: center;
   /* flex-direction: column; */
 }
-
+ 
 /* Show on Desktop Only */
 .quick-link-for-desktop,
 .contact-us-heading-for-desktop {
   display: block;
 }
-
+ 
 /* Accordion Buttons (Mobile) */
 .accordion-button,
 .accordion-button-quick-link {
@@ -225,16 +225,16 @@
   align-items: center;
   width: 100%;
 }
-
+ 
 .accordion-icon {
   margin-left: auto;
   transition: transform 0.3s ease;
 }
-
+ 
 .accordion-icon.open {
   transform: rotate(180deg);
 }
-
+ 
 /* Hidden Content (Mobile Accordion) */
 .footer-links,
 .accordion-content {
@@ -242,12 +242,12 @@
   padding-left: 20px;
   padding-top: 10px;
 }
-
+ 
 .footer-links.open,
 .accordion-content.open {
   display: block;
 }
-
+ 
 /* Mobile Sidebar (if used) */
 .mobile-sidebar {
   position: fixed;
@@ -261,42 +261,42 @@
   z-index: 1000;
   padding: 20px;
 }
-
+ 
 .mobile-sidebar.open {
   right: 0;
 }
-
+ 
 .nav-links {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-
+ 
 .nav-links a {
   text-decoration: none;
   color: #333;
   font-size: 20px;
   font-weight: bold;
-} 
-
+}
+ 
 .social-links {
   display: flex;
   gap: 20px;
   justify-content: center;
   margin-top: auto;
 }
-
+ 
 .social-links a {
   text-decoration: none;
   color: #333;
   font-size: 20px;
 }
-
+ 
 hr {
   margin: 20px 0;
   border: 0.5px solid #ccc;
 }
-
+ 
 /* Sidebar toggle button */
 .asc-header-toggle {
   background: none;
@@ -304,13 +304,13 @@ hr {
   cursor: pointer;
   z-index: 2000;
 }
-
+ 
 @media (min-width: 768px) {
   .quick-link-for-desktop,
   .contact-us-heading-for-desktop {
     display: block;
   }
-
+ 
   .newsletter-button {
     width: auto;
   }
@@ -321,84 +321,101 @@ hr {
     font-size: 15px;
   }
 }
-
+ 
 @media (max-width: 767px) {
   .accordion-button-quick-link {
     font-size: 16px;
   }
-
+ 
   .quick-link-for-desktop,
   .contact-us-heading-for-desktop {
     display: none;
   }
-
+ 
   .quicklink-responsive {
     margin-top: 30px;
     flex-direction: column;
   }
-
+ 
   .newsletter {
     flex-direction: column;
     align-items: center;
   }
-
+ 
   .newsletter-button {
     width: auto;
   }
-
+ 
   .footer-bottom p {
     font-size: 12px;
   }
-
+ 
   .footer-logo-input {
     text-align: center;
   }
 }
-
+ 
 .phone-list {
   display: flex;
   flex-wrap: wrap;
   gap: 1px;
   align-items: center;
 }
-
+ 
 .phone-list a {
   white-space: nowrap;
 }
-
+ 
 .phone-list span {
   margin: 0 3px;
 }
 
+/* 🔸 Shared styles (unchanged for both forms) */
 .css-113d811-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
   color: #e49f33 !important;
 }
-/* 👇 Change border color of fieldset on focus */
+
 .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
   border-color: #e49f33 !important;
   border-width: 2px;
 }
 
-/* 👇 Optional: Change input background when focused */
-
 .MuiOutlinedInput-root {
-  border-radius: 12px; /* For padding inside the container */
-  
+  border-radius: 12px;
 }
 
-/* Most important: target the border outline itself */
 .MuiOutlinedInput-notchedOutline {
   border-radius: 12px !important;
-  border-color:#e49f33 !important;
-  color: #e49f33 !important;
+  border-color: #e49f33 !important;
 }
+
 .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
   border-color: #e49f33 !important;
 }
+
 .custom-input .MuiInputLabel-root {
   font-size: 14px;
   color: #686868;
-  font-family: outfit;
+  font-family: "Outfit", sans-serif;
 }
+
+/* 🎨 Dark background version ONLY */
+.dark-form-input input {
+  color: #fff !important; /* White text */
+}
+
+.dark-form-input .MuiInputLabel-root {
+  color: #e49f33 !important; /* Gold label */
+}
+
+.dark-form-input .MuiOutlinedInput-notchedOutline {
+  border-color: #e49f33 !important;
+}
+
+.dark-form-input .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #e49f33 !important;
+}
+
+
 
 

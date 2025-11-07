@@ -93,7 +93,7 @@
 .explore-btn {
   min-width: 140px;               /* keeps button size stable */
   height: 42px;
-  padding: 0 25px !important;
+  padding: 7px 25px !important;
   border-radius: 30px;
   font-weight: 600;
   transition: all 0.3s ease;
@@ -113,7 +113,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 20px 120px;
-  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1);
   z-index: 1;
   transition: transform 0.4s ease;
   animation: waveRadius 5s ease-in-out infinite;
@@ -170,11 +170,11 @@
 /* =============== Responsive Fixes =============== */
 @media (max-width: 768px) {
   .service-title.animated-heading {
-    font-size: 1.8rem !important;
+    font-size: 1.5rem !important;
   }
   .tech-stack,
   .service-description {
-    font-size: 14px;
+    font-size: 13px !important;
   }
   .button-icon-row {
     flex-direction: column;
@@ -182,5 +182,11 @@
   }
   .service-icons {
     justify-content: center;
+  }
+  .service-icons{
+    font-size: 15px !important;
+  }
+  .service-image-box {
+    margin: 20px;
   }
 }

@@ -1,3 +1,30 @@
+/* Default navbar look */
+.header-main {
+  background-color: transparent !important;
+  transition: background-color 0.6s ease-in-out, box-shadow 0.6s ease-in-out;
+  position: sticky; /* keeps it fixed on scroll */
+  top: 0;
+  z-index: 1000;
+}
+
+/* When scrolled down */
+.header-main.scrolled {
+  background-color: #000 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Optional: make text/logo white when navbar is black */
+.header-main.scrolled .nav-link,
+.header-main.scrolled .navbar-brand,
+.header-main.scrolled .get-quote-btn {
+  color: #fff !important;
+  transition: color 0.4s ease-in-out;
+}
+
+
+
+
+
 .asc-logo {
   height: 45px;
   margin:0 !important;

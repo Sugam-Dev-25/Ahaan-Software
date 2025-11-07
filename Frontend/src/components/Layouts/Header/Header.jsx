@@ -10,6 +10,20 @@ import MenuToggle from "./MenuToggle";
 const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+useEffect(() => {
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
   const toggleRef = useRef(null);
 
   useEffect(() => {
@@ -26,7 +40,12 @@ const Header = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-white py-4">
+    <nav
+  className={`navbar navbar-expand-lg py-4 sticky-top header-main ${
+    scrolled ? "scrolled" : ""
+  }`}
+>
+
       <div className="container">
         <a className=" d-flex align-items-center" href="/">
           <img

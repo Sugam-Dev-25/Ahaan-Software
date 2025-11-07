@@ -10,12 +10,8 @@
 .carousel-header {
   text-align: center;
   margin-bottom: 30px;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  padding: 20px 15px;
+  padding: 0 15px;
+  position: relative;
   z-index: 5;
 }
 
@@ -34,11 +30,11 @@
   font-family: "Outfit", sans-serif;
   margin-top: 30px;
   margin-bottom: 30px;
+  padding: 0 15px; /* Added padding to avoid text touching sides */
 }
 
-/* Swiper styling */
 .carousel-track {
-  margin-top: 150px !important;
+  margin-top: 20px; /* Adjusted to avoid overlap */
   width: 100%;
   padding-bottom: 40px;
 }
@@ -46,6 +42,7 @@
 .carousel-slide {
   border-radius: 10px;
   overflow: hidden;
+  width: 100%;
 }
 
 .carousel-img {
@@ -79,19 +76,33 @@
   .carousel-title {
     font-size: 28px;
   }
+  .carousel-subtitle {
+    font-size: 0.95rem;
+    padding: 0 10px; /* Reduced padding for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-header {
+    padding: 0 10px;
+  }
+  .carousel-title {
+    font-size: 1.8rem;
+  }
+  .carousel-subtitle {
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 576px) {
-  .carousel-slide {
-    margin-top: 70px;
-  }
-  .carousel-img {
-    height: auto;
-  }
   .carousel-title {
     font-size: 1.5rem;
   }
   .carousel-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    padding: 0 5px; /* Reduced padding further for mobile */
+  }
+  .carousel-img {
+    height: auto; /* Makes image height responsive */
   }
 }
