@@ -15,7 +15,6 @@
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   margin-top: -200px;
 }
-
 /* ===========================
    CANVAS (STARS + NETWORK)
    =========================== */
@@ -28,16 +27,13 @@
   height: 100%;
   pointer-events: none;
 }
-
 .stars {
   z-index: 0;
 }
-
 .network {
   z-index: 4;
   top: 80px;
 }
-
 /* ===========================
    EARTH WRAPPER
    =========================== */
@@ -54,7 +50,6 @@
   z-index: 2;
   pointer-events: none;
 }
-
 /* ===========================
    MAIN GLOBE
    =========================== */
@@ -80,7 +75,6 @@
   z-index: 2;
   opacity: 0.98;
 }
-
 /* ===========================
    TOP LIGHT REFLECTION
    =========================== */
@@ -104,7 +98,6 @@
   opacity: 0.85;
   pointer-events: none;
 }
-
 /* ===========================
    REFLECTION ARC (WATER LIGHT)
    =========================== */
@@ -129,7 +122,6 @@
   opacity: 0.7;
   pointer-events: none;
 }
-
 /* ===========================
    DARK BOTTOM SHADOW
    =========================== */
@@ -154,7 +146,6 @@
   opacity: 0.95;
   pointer-events: none;
 }
-
 /* ===========================
    GLOW AURA
    =========================== */
@@ -177,7 +168,6 @@
   z-index: 1;
   animation: glowPulse 10s ease-in-out infinite alternate;
 }
-
 @keyframes glowPulse {
   0% {
     opacity: 0.65;
@@ -188,11 +178,42 @@
     filter: blur(150px);
   }
 }
-
 /* ===========================
    RESPONSIVE STYLING
    =========================== */
 
+
+
+
+   @media (min-width: 1025px) and (max-width: 1500px) {
+  .earth-wrapper {
+    top: 50px;
+  }
+  .earth {
+    width: 1200px;
+    height: 1200px;
+    box-shadow:
+      inset 0 -100px 160px rgba(0, 0, 0, 0.9),
+      inset 0 65px 120px rgba(255, 255, 255, 0.15),
+      0 0 180px 45px rgba(80, 150, 255, 0.3),
+      0 0 280px 35px rgba(100, 180, 255, 0.15);
+  }
+  .earth-top-light {
+    width: 700px;
+    height: 520px;
+    filter: blur(80px);
+  }
+  .earth-reflection-arc {
+    width: 520px;
+    height: 160px;
+    top: 16%;
+  }
+  .earth-glow {
+    width: 1300px;
+    height: 850px;
+    bottom: -250px;
+  }
+}
 /* Tablets (max-width: 1024px) */
 @media (max-width: 1024px) {
   .earth-wrapper {
@@ -219,20 +240,17 @@
     bottom: -350px;
   }
 }
-
 /* Mobiles (max-width: 768px) */
 @media (max-width: 768px) {
   .hero-banner {
     height: 100vh;
     margin-top: -150px;
   }
-
   .earth-wrapper {
     width: 1000px;
     height: 1000px;
     bottom: -300px;
   }
-
   .earth {
     width: 1000px;
     height: 1000px;
@@ -242,61 +260,83 @@
       0 0 150px 60px rgba(80, 150, 255, 0.3),
       0 0 250px 40px rgba(100, 180, 255, 0.15);
   }
-
   .earth-top-light {
     width: 400px;
     height: 300px;
     filter: blur(60px);
   }
-
   .earth-reflection-arc {
     width: 280px;
     height: 100px;
   }
-
   .earth-glow {
     width: 800px;
     height: 600px;
     bottom: -250px;
   }
 }
-
+/* Specific adjustment for 481px to 768px range */
+@media (max-width: 768px) and (min-width: 481px) {
+  .earth-wrapper {
+    width: 850px;
+    height: 900px;
+    top: 140px;
+  }
+  .earth {
+    width: 850px;
+    height: 900px;
+    box-shadow:
+      inset 0 -70px 110px rgba(0, 0, 0, 0.9),
+      inset 0 45px 90px rgba(255, 255, 255, 0.15),
+      0 0 130px 55px rgba(80, 150, 255, 0.3),
+      0 0 220px 35px rgba(100, 180, 255, 0.15);
+  }
+  .earth-top-light {
+    width: 370px;
+    height: 280px;
+    filter: blur(55px);
+  }
+  .earth-reflection-arc {
+    width: 260px;
+    height: 95px;
+    top: 16%;
+  }
+  .earth-glow {
+    width: 780px;
+    height: 580px;
+    bottom: -230px;
+  }
+}
 /* Small Mobiles (max-width: 480px) */
 @media (max-width: 480px) {
   .hero-banner {
     height: 100vh;
     margin-top: -120px;
   }
-
   .earth-wrapper {
     width: 700px;
     height: 700px;
     bottom: -200px;
   }
-
   .earth {
     width: 700px;
     height: 700px;
   }
-
   .earth-top-light {
     width: 320px;
     height: 240px;
   }
-
   .earth-reflection-arc {
     width: 220px;
     height: 80px;
     top: 20%;
   }
-
   .earth-glow {
     width: 600px;
     height: 400px;
     bottom: -200px;
   }
 }
-
 /* Extra Small (foldables etc) */
 @media (max-width: 360px) {
   .earth-wrapper {
@@ -304,12 +344,10 @@
     height: 600px;
     bottom: -180px;
   }
-
   .earth-top-light {
     width: 260px;
     height: 200px;
   }
-
   .earth-glow {
     width: 500px;
     height: 350px;
@@ -317,70 +355,42 @@
   }
 }
 
-
-
-
-/* * {
-  margin: 0;
-  padding: 0;
-}
-section {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-section .wave {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background: url(https://1.bp.blogspot.com/-xQUc-TovqDk/XdxogmMqIRI/AAAAAAAACvI/AizpnE509UMGBcTiLJ58BC6iViPYGYQfQCLcBGAsYHQ/s1600/wave.png);
-  background-size: 1000px 100px
-}
-section .wave.wave1 {
-  animation: wave 30s linear infinite;
-  z-index: 1000;
-  opacity: 1;
-  animation-delay: 0s;
-  bottom: 0;
-}
-section .wave.wave2 {
-  animation: wave2 15s linear infinite;
-  z-index: 999;
-  opacity: 0.5;
-  animation-delay: -5s;
-  bottom: 10px;
-}
-section .wave.wave3 {
-  animation: wave 30s linear infinite;
-  z-index: 998;
-  opacity: 0.2;
-  animation-delay: -2s;
-  bottom: 15px;
-}
-section .wave.wave4 {
-  animation: wave2 5s linear infinite;
-  z-index: 997;
-  opacity: 0.7;
-  animation-delay: -5s;
-  bottom: 20px;
-}
-@keyframes wave{
-  0%{
-    background-position-x: 0px; 
+/* Landscape mode for devices with limited height (e.g., mobile landscape) */
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero-banner {
+    height: 100vh;
+    margin-top: -120px;
   }
-  100%{
-    background-position-x: 1000px; 
+  .network {
+    top: 40px;
+  }
+  .earth-wrapper {
+    width: 700px;
+    height: 700px;
+    top: 120px;
+  }
+  .earth {
+    width: 700px;
+    height: 700px;
+    box-shadow:
+      inset 0 -50px 80px rgba(0, 0, 0, 0.9),
+      inset 0 30px 60px rgba(255, 255, 255, 0.15),
+      0 0 100px 30px rgba(80, 150, 255, 0.3),
+      0 0 150px 20px rgba(100, 180, 255, 0.15);
+  }
+  .earth-top-light {
+    width: 350px;
+    height: 260px;
+    filter: blur(40px);
+  }
+  .earth-reflection-arc {
+    width: 200px;
+    height: 70px;
+    top: 20%;
+  }
+  .earth-glow {
+    width: 900px;
+    height: 650px;
+    bottom: -150px;
   }
 }
-@keyframes wave2{
-  0%{
-    background-position-x: 0px; 
-  }
-  100%{
-    background-position-x: -1000px; 
-  }
-} */
- 

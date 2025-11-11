@@ -1,3 +1,4 @@
+/* Footer Section */
 .footer-main {
   position: relative;
   background-image: url("https://ahaanmedia.com/asc/layouts/Footer-Banner.png");
@@ -17,9 +18,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 1);
+  background: rgba(0, 0, 0, 0.9);
   z-index: -1;
-  /* animation: smoothBlack 6s ease-in-out infinite alternate; */
+  animation: smoothBlack 6s ease-in-out infinite alternate;
 }
  
 /* 🔹 Smooth opacity + darkness animation */
@@ -151,7 +152,7 @@
 .contact-info .footer-icon {
   margin-right: 8px;
   color: #cc9331;
-  background-color: #000;
+ background: rgba(255, 255, 255, 0.1);
   padding: 7px;
   font-size: 25px;
   border-radius: 50px;
@@ -159,7 +160,7 @@
 .quick-icon {
   margin-right: 8px;
   color: #cc9331;
-  background-color: #000;
+  background: rgba(255, 255, 255, 0.1);
   padding: 7px;
   font-size: 25px;
   border-radius: 50px;
@@ -189,17 +190,88 @@
 }
  
 /* Social Icons */
-.footer-social-icons a {
-  margin: 0 8px;
-  color: #ffffff;
-  font-size: 18px;
-  text-decoration: none;
-  transition: color 0.3s ease;
+.footer-social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+ 
 }
  
-.footer-social-icons a:hover {
-  color: #cc9331;
+/* Base icon style */
+.footer-social-icons .icon {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e09c0a;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  font-size: 20px;
+  transition: all 0.35s ease;
+  text-decoration: none;
 }
+ 
+/* Tooltip base */
+.footer-social-icons .icon .tooltip {
+  position: absolute;
+  bottom: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 10px;
+  font-size: 12px;
+  color: #ffffff;
+  border-radius: 20px;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+ 
+/* Tooltip arrow */
+.footer-social-icons .icon .tooltip::before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+  left: 50%;
+  bottom: -4px;
+  transform: translateX(-50%) rotate(45deg);
+}
+ 
+/* Hover effect */
+.footer-social-icons .icon:hover {
+  transform: translateY(-5px);
+  color: #ffffff;
+}
+ 
+/* Show tooltip */
+.footer-social-icons .icon:hover .tooltip {
+  opacity: 1;
+  bottom: 60px;
+}
+ 
+/* =============================== */
+/*  Gradient per platform (icon + tooltip) */
+/* =============================== */
+ 
+.footer-social-icons .icon.facebook:hover,
+.footer-social-icons .icon.facebook:hover .tooltip {
+  background: linear-gradient(45deg, #1877F2, #4A8DF8);
+}
+ 
+.footer-social-icons .icon.instagram:hover,
+.footer-social-icons .icon.instagram:hover .tooltip {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+ 
+.footer-social-icons .icon.linkedin:hover,
+.footer-social-icons .icon.linkedin:hover .tooltip {
+  background: linear-gradient(45deg, #0077B5, #00A0DC);
+}
+ 
  
 /* Responsive Quick Links Container */
 .quicklink-responsive {
@@ -369,53 +441,38 @@ hr {
 .phone-list span {
   margin: 0 3px;
 }
-
-/* 🔸 Shared styles (unchanged for both forms) */
+ 
 .css-113d811-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
   color: #e49f33 !important;
 }
-
+/* 👇 Change border color of fieldset on focus */
 .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
   border-color: #e49f33 !important;
   border-width: 2px;
 }
-
+ 
+/* 👇 Optional: Change input background when focused */
+ 
 .MuiOutlinedInput-root {
-  border-radius: 12px;
+  border-radius: 12px; /* For padding inside the container */
+ 
 }
-
+ 
+/* Most important: target the border outline itself */
 .MuiOutlinedInput-notchedOutline {
   border-radius: 12px !important;
-  border-color: #e49f33 !important;
+  border-color:#e49f33 !important;
+  color: #e49f33 !important;
 }
-
 .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
   border-color: #e49f33 !important;
 }
-
 .custom-input .MuiInputLabel-root {
   font-size: 14px;
   color: #686868;
-  font-family: "Outfit", sans-serif;
+  font-family: outfit;
 }
-
-/* 🎨 Dark background version ONLY */
-.dark-form-input input {
-  color: #fff !important; /* White text */
-}
-
-.dark-form-input .MuiInputLabel-root {
-  color: #e49f33 !important; /* Gold label */
-}
-
-.dark-form-input .MuiOutlinedInput-notchedOutline {
-  border-color: #e49f33 !important;
-}
-
-.dark-form-input .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
-  border-color: #e49f33 !important;
-}
-
-
-
-
+ 
+ 
+ 
+ 

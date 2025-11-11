@@ -51,13 +51,14 @@ const Ecommerce = () => {
       </h2>
       {gridcontent.map((feature, index) => (
         <Row className="mb-4" key={index}>
-          <Col md={6} className={index % 2 === 1 ? 'order-md-2' : ''}>
-            <img src={feature.imgSrc} alt={feature.title} className="img-fluid" />
-          </Col>
-          <Col md={6} className={index % 2 === 1 ? 'order-md-1' : ''}>
-            <h2 className="grids-heading">{feature.title}</h2>
-            <p className="grids-content">{feature.description}</p>
-          </Col>
+<Col xs={12} md={6} className={index % 2 === 1 ? 'order-md-2 order-1' : 'order-md-1 order-1'}>
+  <img src={feature.imgSrc} alt={feature.title} className="img-fluid mb-3" />
+</Col>
+<Col xs={12} md={6} className={index % 2 === 1 ? 'order-md-1 order-2' : 'order-md-2 order-2'}>
+  <h2 className="grids-heading">{feature.title}</h2>
+  <p className="grids-content">{feature.description}</p>
+</Col>
+
         </Row>
       ))}
     </div>

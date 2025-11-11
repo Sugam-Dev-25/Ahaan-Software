@@ -78,8 +78,8 @@ useEffect(() => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/industry" className="nav-link">
-                Industry
+              <NavLink to="/solutions" className="nav-link">
+                Solutions
               </NavLink>
             </li>
             <li>

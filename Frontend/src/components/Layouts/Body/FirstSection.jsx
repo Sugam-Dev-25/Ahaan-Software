@@ -24,7 +24,7 @@ const FirstSection = () => {
         IT consulting and software solutions can transform and accelerate your
         business.
       </p>
-      <Row className="mt-4">
+      <div className="mt-4 d-flex flex-wrap">
         {clients.map((client, index) => (
           <Col xs={4} sm={4} md={2} key={index} className="text-center">
             <div className="first-client-col">
@@ -36,7 +36,7 @@ const FirstSection = () => {
             </div>
           </Col>
         ))}
-      </Row>
+      </div>
    
     </Container>
   );

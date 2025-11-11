@@ -89,7 +89,7 @@
 /* ===========================
    TECH ICONS
    =========================== */
-.tech-icons {
+.banner-tech-icons {
   display: flex;
   justify-content: center;
   gap: 22px;
@@ -100,12 +100,12 @@
   flex-wrap: wrap;
 }
 
-.tech-icons.visible {
+.banner-tech-icons.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.tech-icon {
+.banner-tech-icon {
   font-size: 2.1rem;
   color: rgba(255, 255, 255, 0.7);
   transition: all 0.3s ease;
@@ -114,9 +114,14 @@
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
   margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  min-height: 60px;
 }
 
-.tech-icon:hover {
+.banner-tech-icon:hover {
   color: #fff;
   transform: translateY(-4px) scale(1.1);
   background: rgba(255, 255, 255, 0.15);
@@ -136,9 +141,11 @@
     font-size: 1.2rem;
     margin-bottom: 30px;
   }
-  .tech-icon {
+  .banner-tech-icon {
     font-size: 1.8rem;
     padding: 16px;
+    min-width: 55px;
+    min-height: 55px;
   }
 }
 
@@ -163,14 +170,50 @@
     padding: 10px 24px;
   }
 
-  .tech-icons {
+  .banner-tech-icons {
     gap: 15px;
   }
 
-  .tech-icon {
-    font-size: 1rem;
+  .banner-tech-icon {
+    font-size: 1.6rem;
     padding: 12px;
-    background: none;
+    min-width: 50px;
+    min-height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Specific adjustment for 481px to 768px range */
+@media (max-width: 768px) and (min-width: 481px) {
+  .content {
+    top: 50%;
+    width: 95%;
+  }
+
+  .animated-heading {
+    font-size: 2.4rem;
+  }
+
+  .animated-subtitle {
+    font-size: 1.05rem;
+    margin-bottom: 22px;
+  }
+
+  .banner-btn {
+    font-size: 0.95rem;
+    padding: 9px 22px;
+  }
+
+  .banner-tech-icons {
+    gap: 14px;
+    margin: 30px 0;
+  }
+
+  .banner-tech-icon {
+    font-size: 1.4rem;
+    padding: 11px;
+    min-width: 48px;
+    min-height: 48px;
   }
 }
 
@@ -197,14 +240,16 @@
     padding: 8px 20px;
   }
 
-  .tech-icons {
+  .banner-tech-icons {
     gap: 12px;
     margin-top: 20px;
   }
 
-  .tech-icon {
+  .banner-tech-icon {
     font-size: 1.3rem;
     padding: 10px;
+    min-width: 45px;
+    min-height: 45px;
   }
 }
 
@@ -219,8 +264,49 @@
   .banner-btn {
     font-size: 0.85rem;
   }
-  .tech-icon {
+  .banner-tech-icon {
     font-size: 1.1rem;
     padding: 8px;
+    min-width: 40px;
+    min-height: 40px;
+  }
+}
+
+/* Landscape mode for devices with limited height (e.g., mobile landscape) */
+@media (orientation: landscape) and (max-height: 500px) {
+  .content {
+    top: 70%;
+    width: 100%;
+    padding: 0 5px;
+  }
+
+  .animated-heading {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+  }
+
+  .animated-subtitle {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .banner-btn {
+    font-size: 0.8rem;
+    padding: 7px 18px;
+    margin-top: 5px;
+  }
+
+  .banner-tech-icons {
+    gap: 12px;
+    margin: 20px 0;
+    justify-content: center;
+  }
+
+  .banner-tech-icon {
+    font-size: 1.2rem;
+    padding: 8px;
+    min-width: 42px;
+    min-height: 42px;
+    background: rgba(255, 255, 255, 0.1);
   }
 }

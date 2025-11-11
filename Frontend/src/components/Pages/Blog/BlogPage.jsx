@@ -66,7 +66,7 @@ const BlogPage = () => {
       fetchedBlogs.forEach((blog) => {
         counts[blog.id] = {
           "thumbs up": blog.reactions?.["thumbs up"] || 0,
-          "love": blog.reactions?.["love"] || 0,
+          love: blog.reactions?.["love"] || 0,
         };
 
         const localReaction = localStorage.getItem(`reacted_${blog.id}`);
@@ -174,14 +174,29 @@ const BlogPage = () => {
                   />
                 )}
                 <Card.Body>
-                  <Card.Title className="blog-page-title">{blog.title}</Card.Title>
-                  <p className="blog-date">{formatDateTime(blog.created_at)}</p>
-
-                  <Card.Text className="blog-content">
+                  <Card.Title className="blog-page-title">
+                    {blog.title}
+                  </Card.Title>
+                                    <Card.Text className="blog-content">
                     {trimToWords(blog.content)}
                   </Card.Text>
-
-                  <p className="blog-author">By {blog.author || "Unknown"}</p>
+                  <div className="blog-author-section d-flex align-items-center mb-2">
+                    {blog.author_image && (
+                      <img
+                        src={blog.author_image}
+                        alt={blog.author}
+                        className="author-inline-img me-2"
+                      />
+                    )}
+                    <div>
+                      <p className="blog-author mb-0">
+                        By {blog.author || "Unknown"}
+                      </p>
+                      <p className="blog-date mb-2 text-muted small">
+                        {formatDateTime(blog.created_at)}
+                      </p>
+                    </div>
+                  </div>
 
                   {/* Reactions */}
                   <div
@@ -299,7 +314,10 @@ const BlogPage = () => {
                 key={i + 1}
                 className={`page-item ${currentPage === i + 1 ? "active" : ""}`}
               >
-                <button className="page-link" onClick={() => setCurrentPage(i + 1)}>
+                <button
+                  className="page-link"
+                  onClick={() => setCurrentPage(i + 1)}
+                >
                   {i + 1}
                 </button>
               </li>
@@ -312,7 +330,9 @@ const BlogPage = () => {
             >
               <button
                 className="page-link"
-                onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+                onClick={() =>
+                  setCurrentPage((p) => Math.min(p + 1, totalPages))
+                }
               >
                 Next
               </button>

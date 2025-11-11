@@ -124,9 +124,9 @@ const BannerContent = () => {
       </p>
 
       {/* Tech Icons */}
-      <div className={`tech-icons ${showIcons ? "visible" : ""}`}>
+      <div className={`banner-tech-icons ${showIcons ? "visible" : ""}`}>
         {currentIcons.map(({ Icon, label }, i) => (
-          <div key={i} className="tech-icon" title={label}>
+          <div key={i} className="banner-tech-icon" title={label}>
             <Icon />
           </div>
         ))}
@@ -134,8 +134,8 @@ const BannerContent = () => {
 
       {/* CTA Button */}
       <Link to="/contact" className="banner-btn">
-  Get Started →
-</Link>
+        Get Started →
+      </Link>
     </div>
   );
 };

@@ -282,6 +282,33 @@
   box-shadow: none;
 }
 
+.blog-author-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.author-inline-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  padding: 6px;
+  background-color: #000;
+}
+
+.blog-author {
+  font-weight: 600;
+  color: #222;
+}
+
+.blog-date {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+
 /* === RESPONSIVE STYLING === */
 
 /* 🟡 Tablet (max-width: 992px) */

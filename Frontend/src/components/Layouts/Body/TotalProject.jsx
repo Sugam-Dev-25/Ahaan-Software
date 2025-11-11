@@ -32,7 +32,7 @@ const stats = [
  
 const TotalProject = () => {
   return (
-    <section className="process-section">
+    <section className="process-section container">
       <div className="process-row">
         {stats.map((stat, index) => (
           <div key={index} className={`we-do-col-div ${stat.colorClass}`}>

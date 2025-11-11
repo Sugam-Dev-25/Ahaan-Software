@@ -166,8 +166,8 @@
   
   .laptop-center {
     position: absolute;
-    top: 35%;
-    left: 42%;
+    top: 52%;
+    left: 52%;
     width: 200px;
     height: auto;
     transform: translate(-50%, -50%) rotateX(20deg) rotateZ(10deg);
@@ -321,6 +321,14 @@
 
 
 @media (max-width: 1024px) {
+        .laptop-center {
+    position: absolute;
+    top: 27% !important;
+    left: 52% !important;
+    width: 180px !important;
+  
+  }
+  
   .multi-cube-wrapper {
     height: 90vh;
     top: -20px;
@@ -453,6 +461,15 @@
 
 
 @media (max-width: 768px) {
+
+      .laptop-center {
+    position: absolute;
+    top: 25% !important;
+    left: 52% !important;
+    width: 120px !important;
+  
+  }
+  
   .multi-cube-wrapper {
     max-height: 20;
     top: 0;
@@ -593,6 +610,13 @@
 
 
 @media (max-width: 480px) {
+
+    .laptop-center {
+    position: absolute;
+    top: 27%;
+    left: 52%;
+  
+  }
   .cube {
     width: 40px;
     height: 40px;

@@ -25,14 +25,14 @@ const IndustryBanner = () => {
 
         {/* Text */}
         <Container className="industry-banner-content">
-          <h1 className="industry-banner-heading" data-text="Our Industry">Our Industry</h1>
+          <h1 className="industry-banner-heading" data-text="Our Industry">Our Solutions</h1>
         </Container>
       </section>
 
       {/* BELOW BANNER SECTION */}
       <div className="container industry-section text-center section-header-tech">
         <h6 className="subtitle">
-          Industry Service <span className="divider"></span>
+          Solutions Service <span className="divider"></span>
         </h6>
         <h3 className="fw-bold industry-heading">
           Enterprise Software Development Services

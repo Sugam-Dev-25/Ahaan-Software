@@ -1,78 +1,98 @@
-.image-container {
+/* --- 1. Core Container: Layout and Alignment --- */
+
+.bussiness-testimonial-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.layout-minimal-container {
+  display: flex;
+  /* Use flexbox to arrange the columns side by side */
+  gap: 10px;
+  align-items: flex-start;
+  /* Align items to the top of each column */
   position: relative;
+  min-height: 200px;
+  justify-content: center;
+}
+
+/* --- 2. Columns for Image Placement --- */
+.image-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* --- 3. Image Card Styling --- */
+.side-image-card {
+  max-width: 130px;
+  height: 150px;
   overflow: hidden;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.image-container:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
-}
-
-.gallery-image {
+.side-image-card img {
   width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
+  height: 100%;
   object-fit: cover;
 }
 
-/* Subtitle with animated divider */
-.section-header-tech .subtitle {
-  font-size: 20px;
-  color: #000000;
-  text-transform: capitalize;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-  text-align: left !important;
+/* --- Adjust positioning of columns (set specific positions for each column) --- */
+.first-column {
+  position: relative;
+  bottom: -100px;
 }
 
-.section-header-tech .divider {
-  display: inline-block;
-  width: 0;
-  height: 3px;
-  background: #ffbf00;
-  margin-left: 10px;
-  vertical-align: middle;
-  animation: expandLine 1.5s ease-in-out infinite alternate;
+.second-column {
+  position: relative;
+  top: 20px;
 }
 
-@keyframes expandLine {
-  0% {
-    width: 0;
-    opacity: 0.5;
-  }
-  100% {
-    width: 50px;
-    opacity: 1;
-  }
+.third-column {
+  position: relative;
+  top: 100px;
+  /* Adjusted position */
 }
 
+.fourth-column {
+  position: relative;
+  top: 30px;
+  /* Adjusted position */
+}
 
+.final-column {
+  position: relative;
+  top: 80px;
+  /* Adjusted position */
+}
 
-.gallery-heading {
-  font-size: 2.8rem !important;
-  font-weight: 900;
-  font-family: "Outfit";
-  background: linear-gradient(
-    90deg,
-    #2a2a2a,
-    #c78a2b,
-    #2a2a2a,
-    #c78a2b
-  );
-  background-size: 300%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  animation: gradientFlow 4s linear infinite;
-  text-transform: capitalise;
-  letter-spacing: 1px;
+/* --- Central Content Styling --- */
+.central-content {
+  position: relative;
+  top: -20px;
   text-align: center;
+  max-width: 60%;
 }
+
+.central-content-title {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #000000, #cfa74a, #000000);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientFlow 4s ease-in-out infinite;
+  font-family: "Outfit", sans-serif;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  text-shadow: 0 0 8px rgba(207, 167, 74, 0.3);
+  text-align: left !important; /* ✅ force left alignment */
+  display: block;
+}
+
 @keyframes gradientFlow {
   0% {
     background-position: 0% 50%;
@@ -85,102 +105,207 @@
   }
 }
 
+.central-content-description {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #666;
+}
 
-.modal-backdrop {
-  position: fixed;
+.central-content-cta-button {
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: none;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(161, 147, 147, 0.8),
+    /* black shadow */ 0 0 8px rgba(255, 215, 0, 0.6),
+    /* golden glow */ 0 0 2px rgba(92, 92, 158, 0.5); /* blue highlight */
+}
+
+/* before: gradient fills left → right */
+.central-content-cta-button::before {
+  content: "";
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.65);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(2px);
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    rgb(221, 194, 40) 0%,
+    rgb(95, 58, 10) 50%,
+    rgb(29, 63, 68) 100%
+  );
+
+  transition: width 0.6s ease;
+  z-index: 1;
 }
 
-
-.modal-pop {
+/* make sure text sits above the gradient */
+.central-content-cta-button span {
   position: relative;
-  background: #fff;
-  border-radius: 16px;
-  max-width: 90vw;
-  max-height: 90vh;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
-  z-index: 1050;
-  animation: fadeIn 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index: 2;
+  color: #b17f15;
+  transition: color 0.6s ease;
 }
 
-.modal-pop img {
-  max-width: 100%;
-  max-height: 80vh;
-  border-radius: 12px;
-  object-fit: contain;
-}
-.image-carousel-content{
-  text-align: left !important;
-  font-size: 16px;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 600;
-  margin-bottom: 30px;
+/* on hover: gradient expands to full width */
+.central-content-cta-button:hover::before {
+  width: 100%;
 }
 
-
-.modal-close {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  background-color: rgba(0, 0, 0, 0.6);
+/* optional: text color change and scale */
+.central-content-cta-button:hover span {
   color: #fff;
-  font-size: 22px;
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1100;
-  transition: background 0.2s ease;
 }
 
-.modal-close:hover {
-  background-color: rgba(0, 0, 0, 0.85);
-}
-
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
+@media (max-width: 1023px) and (min-width: 992px) {
+  .fourth-column {
+    display: none;
   }
-  to {
+
+  .final-column {
+    top: 40px;
+  }
+
+  .central-content {
+    top: 0px;
+    max-width: 40%;
+  }
+
+  .layout-minimal-container {
+    min-height: 150px;
+  }
+  .third-column {
     opacity: 1;
-    transform: scale(1);
+  }
+  .second-column {
+    opacity: 0.9;
+  }
+  .first-column {
+    opacity: 0.8;
   }
 }
 
-@media (max-width: 450px) {
-  .gallery-heading {
-    padding: 0;
-    font-size: 20px !important;
-    margin-top: 25px;
+@media (max-width: 991px) and (min-width: 501px) {
+  .first-column {
+    display: none;
   }
 
-  .modal-pop {
-    padding: 8px;
+  .second-column {
+    display: none;
   }
 
-  .modal-close {
-    top: 6px;
-    right: 8px;
-    font-size: 18px;
-    width: 28px;
-    height: 28px;
+  .layout-minimal-container {
+    gap: 8px;
   }
+
+  .image-column {
+    gap: 5px;
+  }
+
+  .final-column {
+    top: 20px;
+  }
+
+  .third-column-tablet {
+    position: relative;
+    top: 170px;
+    /* Adjusted position */
+  }
+
+  .central-content {
+    top: 40px;
+  }
+
+  .layout-minimal-container {
+    min-height: 150px;
+  }
+
+  .central-content-description {
+    font-size: 16px;
+  }
+  .third-column {
+    opacity: 1;
+  }
+  .fourth-column {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 992px) {
+  .third-column-tablet {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .first-column {
+    display: none;
+  }
+
+  .second-column {
+    display: none;
+  }
+
+  .fourth-column {
+    display: none;
+  }
+
+  .third-column-tablet {
+    display: none;
+  }
+
+  .central-content {
+    max-width: 80%;
+    top: 20px;
+  }
+
+  .central-content-description {
+    font-size: 14px;
+  }
+
+  .central-content-title {
+    font-size: 24px;
+  }
+
+  .layout-minimal-container {
+    min-height: 250px;
+  }
+
+  .layout-minimal-container {
+    gap: 6px;
+  }
+
+  .third-column {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 501px) {
+  .third-column-mobile {
+    display: none;
+  }
+
+  .final-column-mobile {
+    display: none;
+  }
+}
+
+.final-column-mobile {
+  position: relative;
+  top: 70px;
+  /* Adjusted position */
+}
+
+.third-column-mobile {
+  position: relative;
+  top: 50px;
+  /* Adjusted position */
 }

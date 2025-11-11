@@ -16,10 +16,10 @@ import {
 import "./ContactUs.css";
 import WorldMap from "./WorldMap";
 import ContactBanner from "./ContactBanner";
-
+ 
 const ContactUs = () => {
   const form = useRef();
-
+ 
   const {
     register,
     handleSubmit,
@@ -28,12 +28,12 @@ const ContactUs = () => {
     setError,
     clearErrors,
   } = useForm();
-
+ 
   const onSubmit = (data) => {
     const serviceID = "service_d4lc4tg";
     const templateID = "template_k2044k9";
     const publicKey = "P1psK0y5kXFayHDDA";
-
+ 
     emailjs
       .sendForm(serviceID, templateID, form.current, publicKey)
       .then((response) => {
@@ -44,7 +44,7 @@ const ContactUs = () => {
         toast.error("Failed to send message. Try again!");
       });
   };
-
+ 
   const handlePhoneInput = (e) => {
     const value = e.target.value;
     if (/[^0-9]/.test(value)) {
@@ -56,7 +56,7 @@ const ContactUs = () => {
       clearErrors("phone");
     }
   };
-
+ 
   const handleKeyPress = (e) => {
     if (!/[0-9]/.test(e.key)) {
       e.preventDefault();
@@ -68,21 +68,21 @@ const ContactUs = () => {
       clearErrors("phone");
     }
   };
-
+ 
   return (
     <>
       <ContactBanner />
       <Container className="contact-section">
-        <Row className="justify-content-center">
-          <Col md={10} lg={11}>
+        <div className="justify-content-center shadow-lg rounded-3">
+          <Col >
             <Row className="contact-box">
               {/* Left Side */}
               <Col md={4} className="contact-information">
                 <h5 className="contact-text">LET'S TALK</h5>
-                <h2 className="contact-heading">
+                <h2 className="contact-heading whychooseus-label">
                   Speak With Expert Engineers.
                 </h2>
-
+ 
                 <div className="contact-item">
                   <FaHome className="contact-icon" />
                   <div>
@@ -90,7 +90,7 @@ const ContactUs = () => {
                     <p>support@ahaansoftware.com</p>
                   </div>
                 </div>
-
+ 
                 <div className="contact-item">
                   <FaPhoneVolume className="contact-icon" />
                   <div>
@@ -127,7 +127,7 @@ const ContactUs = () => {
                     </p>
                   </div>
                 </div>
-
+ 
                 <div className="contact-item">
                   <FaMapMarkerAlt className="contact-icon" />
                   <div>
@@ -138,13 +138,14 @@ const ContactUs = () => {
                     </p>
                   </div>
                 </div>
-
+ 
                 {/* Social Media Icons */}
                 <div className="contact-social">
                   <a
                     href="https://www.linkedin.com/company/ahaansoftware"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="contact-social-icons linkedin"
                   >
                     <FaLinkedinIn />
                   </a>
@@ -152,6 +153,7 @@ const ContactUs = () => {
                     href="https://www.facebook.com/ahaansoftware"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="contact-social-icons facebook"
                   >
                     <FaFacebookF />
                   </a>
@@ -159,17 +161,19 @@ const ContactUs = () => {
                     href="https://www.instagram.com/ahaansoftware"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="contact-social-icons instagram"
                   >
                     <FaInstagram />
                   </a>
+ 
                 </div>
               </Col>
-
+ 
               {/* Right Side - Form */}
               <Col md={8} className="contact-form">
-                <h6>GET IN TOUCH</h6>
-                <h2>Fill The Form Below</h2>
-
+                <h5 className="contact-text"> GET IN TOUCH</h5>
+                <h2 className="title">Fill The Form Below</h2>
+ 
                 <form ref={form} onSubmit={handleSubmit(onSubmit)}>
                   <Row>
                     <Col md={6}>
@@ -200,7 +204,7 @@ const ContactUs = () => {
                       />
                     </Col>
                   </Row>
-
+ 
                   <Row>
                     <Col md={6}>
                       <TextField
@@ -238,7 +242,7 @@ const ContactUs = () => {
                       />
                     </Col>
                   </Row>
-
+ 
                   <TextField
                     label="Drop Your Message"
                     variant="outlined"
@@ -253,23 +257,25 @@ const ContactUs = () => {
                       required: "Message is required",
                     })}
                   />
-
-                  <Button type="submit" className="submit-btn mt-3">
-                    Submit Now
-                  </Button>
+ 
+                  <button type="submit" className="newsletter-button contact-us-submit-btn mt-3">
+                    <span>Submit Now</span>
+                  </button>
                 </form>
               </Col>
             </Row>
           </Col>
-        </Row>
+        </div>
       </Container>
-
+ 
       {/* Toast Notification Container */}
       <ToastContainer position="top-right" autoClose={3000} />
-
+ 
       <WorldMap />
     </>
   );
 };
-
+ 
 export default ContactUs;
+ 
+ 

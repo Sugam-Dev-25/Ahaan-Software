@@ -1,0 +1,328 @@
+.hero-section {
+  position: relative;
+  height: 100vh;
+  background: #fff;
+  overflow: hidden;
+  margin-top: -120px;
+
+}
+
+/* Animated gradient background */
+.gradient-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 50%, #ffe8a2 0%, #fffac3 25%, #fffde4 70%);
+  z-index: 0;
+  opacity: 0.6;
+  
+}
+
+@keyframes waveMove {
+  0% {
+    transform: translate(-20%, -10%) scale(1);
+  }
+  100% {
+    transform: translate(10%, 10%) scale(1.1);
+  }
+}
+
+/* Badge */
+.badge-top {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Heading */
+.hero-heading {
+  font-size: 3.5rem;
+  font-weight: 900;
+  max-width: 800px;
+  line-height: 1.3;
+  position: relative;
+  z-index: 2;
+}
+
+.typing-text {
+  color: #000000;
+}
+
+
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.hero-subtitle {
+  max-width: 600px;
+  margin: 1rem auto;
+  color: #555;
+  z-index: 2;
+  position: relative;
+}
+
+/* New: Title info container for icon and mini subtitle */
+.title-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+.title-icon {
+  font-size: 1.5rem;
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.mini-subtitle {
+  font-size: 1.1rem;
+  color: #000000;
+  font-weight: 500;
+  margin: 0;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* @keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+} */
+
+
+
+.email-box {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 50px;
+  padding: 5px;
+  width: 420px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+/* Email Input */
+.email-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 12px 18px;
+  border-radius: 50px;
+  font-size: 16px;
+  color: #333;
+  background: transparent;
+}
+
+.email-input::placeholder {
+  color: #999;
+}
+
+/* Button */
+.email-btn {
+  background: linear-gradient(90deg, #000000, #000000);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.9;
+}
+
+.email-btn:hover {
+  background: linear-gradient(90deg, #ffff33, #ffdd00);
+  transform: scale(1.05);
+}
+
+/* Optional gradient background for the whole section */
+
+
+
+.rating {
+  color: #555;
+  margin-top: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Floating Images - scattered + animated */
+.floating-img {
+  position: absolute;
+  width: 150px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  transition: transform 0.6s ease;
+}
+
+.floating-img:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+/* Adjusted scattered positions */
+.banner-img1 {
+  top: 20%;
+  left: 15%;
+  transform: rotate(-8deg);
+  animation: float1 6s ease-in-out infinite;
+}
+
+.banner-img2 {
+  top: 20%;
+  right: 15%;
+  transform: rotate(6deg);
+  animation: float2 7s ease-in-out infinite;
+}
+
+.banner-img3 {
+  bottom: 8%;
+  left: 15%;
+  transform: rotate(10deg);
+  animation: float3 5.5s ease-in-out infinite;
+}
+
+.banner-img4 {
+  bottom: 8%;
+  right: 15%;
+  transform: rotate(-10deg);
+  animation: float4 6.5s ease-in-out infinite;
+}
+
+.banner-img5 {
+  top: 50%;
+  left: 4%;
+  transform: rotate(5deg);
+  animation: float5 7s ease-in-out infinite;
+}
+
+.banner-img6 {
+  top: 50%;
+  right: 4%;
+  transform: rotate(-6deg);
+  animation: float6 5.8s ease-in-out infinite;
+}
+
+/* Floating animations */
+@keyframes float1 {
+  0%, 100% {
+    transform: translateY(0) rotate(-8deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(-8deg);
+  }
+}
+
+@keyframes float2 {
+  0%, 100% {
+    transform: translateY(0) rotate(6deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(6deg);
+  }
+}
+
+@keyframes float3 {
+  0%, 100% {
+    transform: translateY(0) rotate(10deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(10deg);
+  }
+}
+
+@keyframes float4 {
+  0%, 100% {
+    transform: translateY(0) rotate(-10deg);
+  }
+  50% {
+    transform: translateY(15px) rotate(-10deg);
+  }
+}
+
+@keyframes float5 {
+  0%, 100% {
+    transform: translateY(0) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(5deg);
+  }
+}
+
+@keyframes float6 {
+  0%, 100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(-6deg);
+  }
+}
+
+/* Updated Bubbles - now bob gently in place like images, with better distribution */
+.bubble {
+  position: absolute;
+  background: radial-gradient(circle, rgb(246, 190, 22) 10%, rgb(251, 204, 32) 70%);
+  border-radius: 50%;
+  animation: bubbleBob linear infinite;
+  z-index: 0;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+
+@keyframes bubbleBob {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-10px) scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Stars */
+.star {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+  animation: starTwinkle 2s infinite ease-in-out;
+  z-index: 0;
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+}

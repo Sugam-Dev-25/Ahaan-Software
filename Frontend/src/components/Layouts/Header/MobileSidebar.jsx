@@ -90,12 +90,12 @@ const MobileSidebar = ({ isOpen, setSidebarOpen, toggleButtonRef }) => {
             Services
           </NavLink>
           <NavLink
-            to="/industry"
+            to="/solutions"
             className={({ isActive }) => (isActive ? "active" : "")}
             onClick={() => setSidebarOpen(false)}
           >
             <PiFactoryFill style={{ marginRight: "8px", fontSize: "22px" }} />{" "}
-            Industry
+            Solutions
           </NavLink>
            <NavLink
             to="/blog"

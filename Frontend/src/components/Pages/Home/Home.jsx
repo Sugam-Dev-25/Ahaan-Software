@@ -13,10 +13,12 @@ import WhoWeAreSection from "../../Layouts/Body/WhoWeAreSection";
 import ServicesSection from "../Portfolio/ServicesSection";
 import CaseStudyCarousel from "../../Layouts/Body/CaseStudyCarousel";
 import ConnectSection from "../../Layouts/Body/ConnectSection";
+import HeroSection from "../../Layouts/Body/HeroSection";
 const Home = () => {
   return (
     <div>
       {/* <FirstBanner /> */}
+      {/* <HeroSection/> */}
       <HeroBanner />
       <WhoWeAreSection />
       <ServicesSection />
@@ -25,7 +27,7 @@ const Home = () => {
       <FirstSection />
       <WhyChooseUs />
       <OurProcess />
-      <ConnectSection/>
+      <ConnectSection />
       <ImageCarousel />
       <CaseStudyCarousel />
       <TestimonialCarousel />

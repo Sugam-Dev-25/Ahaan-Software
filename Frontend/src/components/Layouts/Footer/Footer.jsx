@@ -4,7 +4,7 @@ import { FaAngleDown } from "react-icons/fa";
 import TextField from "@mui/material/TextField";
 import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
-
+ 
 import {
   FaMapMarkerAlt,
   FaPhoneAlt,
@@ -15,12 +15,12 @@ import {
 } from "react-icons/fa";
 import { FaFileAlt, FaTruck, FaGavel } from "react-icons/fa";
 import "./Footer.css";
-
+ 
 const Footer = () => {
   const [isQuickLinksOpen, setIsQuickLinksOpen] = useState(false);
   const [isContactUsOpen, setIsContactUsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-
+ 
   const {
     register,
     handleSubmit,
@@ -29,7 +29,7 @@ const Footer = () => {
     setError,
     clearErrors,
   } = useForm();
-
+ 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 700);
@@ -38,12 +38,12 @@ const Footer = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
+ 
   const onSubmit = (data) => {
     const serviceID = "service_d4lc4tg";
     const templateID = "template_k2044k9";
     const publicKey = "P1psK0y5kXFayHDDA";
-
+ 
     emailjs
       .sendForm(serviceID, templateID, form.current, publicKey)
       .then((response) => {
@@ -54,7 +54,7 @@ const Footer = () => {
         toast.error("Failed to send message. Try again!");
       });
   };
-
+ 
   return (
     <footer
       className="footer-main"
@@ -68,6 +68,7 @@ const Footer = () => {
       }}
     >
       <div className="container">
+ 
         <div className="row">
           {/* Logo & Newsletter */}
           <div className="col-md-4">
@@ -89,14 +90,13 @@ const Footer = () => {
                 variant="outlined"
                 fullWidth
                 margin="normal"
-                className="custom-input dark-form-input"
+                className="custom-input"
                 error={!!errors.email}
                 helperText={errors.email?.message}
                 {...register("email", {
                   required: "Email is required",
                 })}
               />
-
               <div className="d-flex justify-content-start flex-col">
                 <button className="newsletter-button">
                   <span>Submit</span>
@@ -104,7 +104,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-
+ 
           {/* Quick Links */}
           <div className="col-md-4 quicklink-responsive">
             <button
@@ -131,9 +131,8 @@ const Footer = () => {
               />
             </button>
             <ul
-              className={`footer-links ${
-                isQuickLinksOpen ? "open" : ""
-              } d-md-block`}
+              className={`footer-links ${isQuickLinksOpen ? "open" : ""
+                } d-md-block`}
             >
               <li className="quick-link-for-desktop">
                 <h5 className="footer-heading">QUICK LINKS</h5>
@@ -158,7 +157,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-
+ 
           {/* Contact Us */}
           <div className="col-md-4">
             <button
@@ -184,16 +183,15 @@ const Footer = () => {
                 style={{ marginLeft: "auto", color: "#fff" }}
               />
             </button>
-
+ 
             <div
-              className={`accordion-content ${
-                isContactUsOpen ? "open" : ""
-              } d-md-block`}
+              className={`accordion-content ${isContactUsOpen ? "open" : ""
+                } d-md-block`}
             >
               <h5 className="contact-us-heading-for-desktop footer-heading">
                 CONTACT US
               </h5>
-
+ 
               <ul className="contact-info list-unstyled">
                 <li>
                   <FaMapMarkerAlt className="footer-icon" />{" "}
@@ -236,7 +234,7 @@ const Footer = () => {
                   </span>
                 </li>
               </ul>
-
+ 
               <ul className="contact-info list-unstyled">
                 <li>
                   <FaEnvelope className="footer-icon" />
@@ -248,13 +246,10 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
+ 
         {/* Footer Bottom */}
         <div className="footer-bottom mt-4 pt-3 border-top">
-          <p
-            className="footer-bottom-text mb-2 text-center"
-            style={{ color: "#fff" }}
-          >
+          <p className="footer-bottom-text mb-2 text-center" style={{ color: "#fff" }}>
             {isMobile
               ? "© 2025 Ahaan Software Consulting"
               : "© 2025 Ahaan Software, All rights reserved."}
@@ -264,28 +259,39 @@ const Footer = () => {
               href="https://www.facebook.com/ahaansoftwareconsulting"
               target="_blank"
               rel="noopener noreferrer"
+              className="icon facebook"
             >
+              <span className="tooltip">Facebook</span>
               <FaFacebookF />
             </a>
+ 
             <a
               href="https://www.instagram.com/ahaansoftware/"
               target="_blank"
               rel="noopener noreferrer"
+              className="icon instagram"
             >
+              <span className="tooltip">Instagram</span>
               <FaInstagram />
             </a>
+ 
             <a
               href="https://www.linkedin.com/company/ahaansoftware"
               target="_blank"
               rel="noopener noreferrer"
+              className="icon linkedin"
             >
+              <span className="tooltip">LinkedIn</span>
               <FaLinkedinIn />
             </a>
           </div>
+ 
         </div>
       </div>
     </footer>
   );
 };
-
+ 
 export default Footer;
+ 
+ 
