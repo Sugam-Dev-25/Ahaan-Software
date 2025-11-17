@@ -95,7 +95,9 @@ const Footer = () => {
                 helperText={errors.email?.message}
                 {...register("email", {
                   required: "Email is required",
+                  
                 })}
+                sx={{"& .MuiInputBase-input": { color: "white" },}}
               />
               <div className="d-flex justify-content-start flex-col">
                 <button className="newsletter-button">
@@ -211,7 +213,7 @@ const Footer = () => {
                       rel="noopener noreferrer"
                       className="text-decoration-none"
                     >
-                      +1 321-421-0740
+                      +1-321-421-0740
                     </a>
                     <span>/</span>
                     <a
@@ -220,7 +222,7 @@ const Footer = () => {
                       rel="noopener noreferrer"
                       className="text-decoration-none"
                     >
-                      +91 983-037-1143
+                      +91-983-037-1143
                     </a>
                     <span>/</span>
                     <a
@@ -229,7 +231,7 @@ const Footer = () => {
                       rel="noopener noreferrer"
                       className="text-decoration-none"
                     >
-                      +65 9074 5876
+                      +65-9074-5876
                     </a>
                   </span>
                 </li>
@@ -249,7 +251,7 @@ const Footer = () => {
  
         {/* Footer Bottom */}
         <div className="footer-bottom mt-4 pt-3 border-top">
-          <p className="footer-bottom-text mb-2 text-center" style={{ color: "#fff" }}>
+          <p className="footer-bottom-text mb-2 text-center" style={{ color: "#a3a3a3ff" }}>
             {isMobile
               ? "© 2025 Ahaan Software Consulting"
               : "© 2025 Ahaan Software, All rights reserved."}

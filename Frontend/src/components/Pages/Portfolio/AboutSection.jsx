@@ -59,10 +59,10 @@ const AboutSection = () => {
             <div className="about-bottom d-flex align-items-center flex-wrap gap-3">
               {/* <a href="/about" className="btn btn-primary about-btn">More About Us</a> */}
               <div className="about-contact d-flex align-items-center">
-                <img src="https://ahaanmedia.com/asc/All/support-person.png" alt="Support" />
+                <img src="https://ahaanmedia.com/asc/All/blog-dp.png" alt="Support" />
                 <div>
                   <small>Call to ask any question</small><br />
-                  <a href="tel:+13214210740" className="phone">+1 321-421-0740</a>
+                  <a href="tel:+91-983-037-1143" className="phone">+91-983-037-1143</a>
                 </div>
               </div>
             </div>

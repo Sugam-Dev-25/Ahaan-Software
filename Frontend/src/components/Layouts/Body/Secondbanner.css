@@ -154,3 +154,10 @@
   margin:0px;
  }
 }
+@media (max-width:768px){
+  .second-banner-phone-numbers p{
+    font-size: 11px;
+    flex-direction: row;
+    padding:2px 6px;
+  }
+}

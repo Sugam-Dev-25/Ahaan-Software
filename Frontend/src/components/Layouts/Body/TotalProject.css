@@ -1,9 +1,7 @@
 .process-section {
   padding: 60px 20px;
   font-family: "Outfit", sans-serif;
-  
 }
- 
 .process-row {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -11,8 +9,7 @@
   margin: 0 auto;
   max-width: 1200px;
 }
- 
-@media (min-width: 768px) {
+@media (min-width: 576px) {
   .process-row {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -151,7 +148,6 @@
   background: linear-gradient(135deg, #f39c12, #e67e22);
 }
  
-/* --- Floating Icon --- */
 .total-icons {
   position: absolute;
   top: -35px;
@@ -184,7 +180,6 @@
   background: linear-gradient(135deg, #f39c12, #e67e22);
 }
  
-/* --- Text Content --- */
 .step-title {
   font-size: 1.4rem;
   font-weight: 700;
@@ -195,3 +190,4 @@
   font-size: 2.8rem;
   font-weight: 800;
 }
+ 

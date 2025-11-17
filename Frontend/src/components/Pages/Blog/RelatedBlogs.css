@@ -1,0 +1,87 @@
+.related-sidebar {
+  background-color: #b3b3b329;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  font-family: "Outfit", sans-serif;
+  color: #fff;
+  min-height: 700px;
+  
+}
+
+.sidebar-heading {
+  color: #000000;
+  font-size: 22px;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 10px;
+}
+
+/* Scroll container (manual scroll, no scrollbar visible) */
+.related-scroll-container {
+  max-height: 640px;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.related-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.recent-post-item {
+  display: block;
+  color: #fff;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.recent-post-item:hover {
+  transform: translateY(-2px);
+  color: #d4a701;
+}
+
+.recent-post-img {
+  width: 100px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.recent-post-title {
+  font-size: 0.86rem;
+  font-weight: 300;
+  margin: 0;
+  color: #000000;
+}
+
+.recent-post-meta {
+  font-size: 10px;
+  color: #050505;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.meta-icon {
+  color: #d9a300;
+  font-size: 16px;
+  background-color: #000;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .related-sidebar {
+    margin-top: 30px;
+  }
+}
+@media (max-width: 576px) {
+  .related-sidebar {
+    padding: 20px 15px;
+    min-height: auto;
+  }
+
+  .related-scroll-container {
+    max-height: none;
+  }
+}

@@ -1,9 +1,12 @@
 .section-header-tech {
-  text-align: left !important; /* ✅ Ensures heading, divider & paragraph are left aligned */
+  text-align: left !important;
+  position: relative;
 }
 
 /* Subtitle with animated divider */
 .section-header-tech .subtitle {
+  display: inline-flex;
+  align-items: center;
   font-size: 20px;
   color: #000000;
   text-transform: capitalize;
@@ -12,26 +15,27 @@
 }
 
 .section-header-tech .divider {
-  display: inline-block;
-  width: 0;
+  width: 50px;
   height: 3px;
   background: #ffbf00;
   margin-left: 10px;
-  vertical-align: middle;
   animation: expandLine 1.5s ease-in-out infinite alternate;
+  flex-shrink: 0; /* Prevent shrinking or affecting text */
 }
 
 @keyframes expandLine {
   0% {
-    width: 0;
+    transform: scaleX(0);
     opacity: 0.5;
   }
   100% {
-    width: 50px;
+    transform: scaleX(1);
     opacity: 1;
   }
 }
- 
+
+
+
 /* Main heading (Our Technology Use) */
 .title {
   font-weight: 700;
@@ -46,78 +50,90 @@
   margin-bottom: 20px;
   text-transform: capitalize;
   text-shadow: 0 0 8px rgba(207, 167, 74, 0.3);
-  text-align: left !important; /* ✅ force left alignment */
+  text-align: left !important;
+  /* ✅ force left alignment */
   display: block;
 }
-
-
+ 
+ 
 @keyframes gradientFlow {
   0% {
     background-position: 0% 50%;
   }
+ 
   50% {
     background-position: 100% 50%;
   }
+ 
   100% {
     background-position: 0% 50%;
   }
 }
-
+ 
 p.text-muted.section1-content.section1-content-p-tab {
   font-family: 'Outfit', sans-serif;
-  text-align: left !important; /* ✅ Paragraph also left aligned */
+  text-align: left !important;
+  /* ✅ Paragraph also left aligned */
 }
-
+ 
 .our-tab-tech-icons {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: 20px;
   justify-items: center;
 }
-
+ 
 .tabs-col-tech {
   display: flex;
   flex-direction: column;
 }
-
+ 
 .nav-item-tab {
   background-color: #eeeeee;
   margin-bottom: 20px;
-  height: 70px;
+ 
   border-radius: 5px;
   line-height: 50px;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
+  z-index: 99;
+ 
 }
-
+ 
 .nav-link-tab {
   color: #000 !important;
   font-weight: 500 !important;
   font-family: 'Outfit', sans-serif !important;
+ 
+  display: flex !important;
+height: 70px;
+  align-items: center !important;
+  justify-content: start !important;
 }
-
+ 
 .nav-pills .nav-link.active,
-.nav-pills .show > .nav-link {
+.nav-pills .show>.nav-link {
   color: #c7892b !important;
   background-color: #000 !important;
   height: 70px;
   line-height: 50px;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
+  width: 100%;
 }
-
+ 
 .tech-tab-content {
   flex: 1 !important;
   padding: 0px !important;
   min-height: 50px !important;
   box-shadow: none;
 }
-
+ 
 .tech-icon {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-
+ 
 .tech-name {
   font-size: 14px;
   margin-top: 10px;
@@ -126,109 +142,131 @@ p.text-muted.section1-content.section1-content-p-tab {
   color: #333;
   transition: all 0.3s ease;
 }
-
+ 
 .tech-name:hover {
   text-decoration: underline;
   color: #7e61bf !important;
   cursor: pointer;
 }
-
+ 
+.nav-icon {
+  margin-right: 5px;
+}
+ 
 /* Responsive Design */
 @media (max-width: 1024px) {
   .our-tab-tech-icons {
     gap: 10px;
   }
+ 
   .tabs-col-tech {
     height: 450px;
   }
 }
-
+ 
 @media (max-width: 768px) {
   .our-tab-tech-icons {
     grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
     gap: 10px;
   }
-
+ 
+  .nav-item-tab {
+    font-size: 12px;
+ 
+  }
+ 
   .tech-name {
     font-size: 12px;
   }
-
+ 
   .tech-icon svg {
     width: 50px;
     height: 50px;
   }
 }
-
+ 
 @media (max-width: 480px) {
   .our-tab-tech-icons {
     grid-template-columns: repeat(auto-fill, minmax(40px, 2fr));
   }
-
+ 
   .tech-icon svg {
     width: 40px;
     height: 40px;
   }
-
+ 
   .tech-name {
     font-size: 10px;
   }
-
+ 
   .section1-client-label {
     font-size: 32px !important;
   }
 }
-
+ 
 /* Mobile view adjustments */
-@media (max-width: 576px) {
+@media (max-width: 575px) {
   .tab-mobile-row {
     flex-direction: row !important;
   }
-
+ 
   .mobile-tab-nav {
     width: 15%;
     max-width: 15%;
   }
-
+ 
   .nav-pills .nav-link.active,
-  .nav-pills .show > .nav-link {
+  .nav-pills .show>.nav-link {
     height: 45px;
   }
-
+ 
   .nav-item-tab {
-    height: 45px;
+ 
     line-height: 30px !important;
   }
-
+ 
   .tab-content-mobile {
     width: 85%;
     max-width: 85%;
     padding-left: 0px;
   }
-
+ 
   .nav-link-tab {
     display: flex;
     align-items: center;
     padding: 5px 15px;
     font-size: 14px;
+    height: 45px;
   }
-
+ 
   .nav-icon {
     font-size: 18px;
-    margin-right: 5px;
+    margin-right: 0px;
   }
-
+ 
   .tech-tab-content {
     font-size: 14px;
   }
-
+ 
   .tabs-col-tech {
     height: 300px;
   }
 }
+ 
 @media (max-width: 390px) {
   .section-header-tech {
-  text-align: left !important; /* ✅ Ensures heading, divider & paragraph are left aligned */
-}
+    text-align: left !important;
+    /* ✅ Ensures heading, divider & paragraph are left aligned */
   }
-
-
+}
+ 
+@media (max-width: 768px) and (min-width: 576px) {
+  .nav-link-tab {
+    height: 50px;
+  }
+  .nav-pills .nav-link.active,
+  .nav-pills .show>.nav-link {
+    height: 50px;
+  }
+}
+ 

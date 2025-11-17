@@ -1,0 +1,26 @@
+.follow-us-box {
+  background-color: #b3b3b329;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  padding: 25px 20px;
+  margin-top: 25px;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #deaa0f;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-icon:hover {
+  background-color: #d4a701;
+  color: #000;
+  transform: translateY(-3px);
+}

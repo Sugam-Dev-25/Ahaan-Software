@@ -1,7 +1,17 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API = axios.create({
-  baseURL: 'http://localhost:3000/api', // update if your backend is hosted elsewhere
-});
+const BASE_URL = "http://localhost:5000/api";
+
+const API = axios.create({ baseURL: BASE_URL });
+
+export const createForm = async (data) => {
+  try {
+    const response = await API.post("/form", data);
+    return response.data;
+  } catch (error) {
+    console.error("❌ Error submitting form:", error);
+    throw error;
+  }
+};
 
 export default API;

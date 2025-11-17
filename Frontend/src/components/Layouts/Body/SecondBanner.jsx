@@ -28,20 +28,46 @@ const CallToAction = () => {
         <div className="second-banner-call-details">
           <h3 className="whychooseus-label">Ready to Innovate Your Business?</h3>
           <div className="second-banner-phone-numbers">
-            <p target="_blank" onClick={() => window.open( "https://wa.me/13214210740", "_blank")}>
-               +13214210740
+ 
+            <p target="_blank" onClick={() => window.open("https://wa.me/13214210740", "_blank")}>
+              <div style={{ lineHeight: "1.2" }}>
+                <div style={{  color: "#CD912A", cursor: "pointer", fontSize: isMobile ? "14px" : "20px", fontWeight: "bold",  textTransform: "uppercase" }}>USA</div>
+                <div
+                  style={{ cursor: "pointer", marginTop: "10px" }}
+                  onClick={() => window.open("https://wa.me/13214210740", "_blank")}
+                >
+                  +1-321-421-0740
+                </div>
+              </div>
             </p>
-            <p onClick={() => window.open( "https://wa.me/919830371143", "_blank")}>
-               +919830371143
+            <p >
+              <div style={{ lineHeight: "1.2",  }}>
+                <div style={{  color: "#CD912A", cursor: "pointer", fontSize: isMobile ? "14px" : "20px", fontWeight: "bold",  textTransform: "uppercase" }}>India</div>
+                <div
+                  style={{  cursor: "pointer", marginTop: "10px" }}
+                  onClick={() => window.open("https://wa.me/919830371143", "_blank")}
+                >
+                  +91-983-037-1143
+                </div>
+              </div>
+ 
             </p>
-            <p onClick={() => window.open( "https://wa.me/6590745876", "_blank")}>
-               +6590745876
+            <p onClick={() => window.open("https://wa.me/6590745876", "_blank")}>
+              <div style={{ lineHeight: "1.2",  }}>
+                <div style={{ color: "#CD912A", cursor: "pointer", fontSize: isMobile ? "14px" : "20px", fontWeight: "bold", textTransform: "uppercase" }}>Singapore</div>
+                <div
+                  style={{  cursor: "pointer", marginTop: "10px" }}
+                  onClick={() => window.open("https://wa.me/6590745876", "_blank")}
+                >
+                  +65-9074-5876
+                </div>
+              </div>
             </p>
           </div>
         </div>
  
         <a className=" newsletter-button" href="/contact">
-        <span>  {isOnlyMObile ? "Contact" : "Contact Now"} </span>
+          <span>  {isOnlyMObile ? "Contact" : "Contact Now"} </span>
         </a>
       </div>
     </div>

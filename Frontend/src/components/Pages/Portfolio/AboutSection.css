@@ -155,11 +155,13 @@
 }
 
 .about-contact img {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
   margin-right: 12px;
+  padding: 5px;
+  background-color: black;
 }
 
 .about-contact small {

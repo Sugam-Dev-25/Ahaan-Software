@@ -185,7 +185,7 @@ const BlogPage = () => {
                       <img
                         src={blog.author_image}
                         alt={blog.author}
-                        className="author-inline-img me-2"
+                        className="author-inline-img "
                       />
                     )}
                     <div>

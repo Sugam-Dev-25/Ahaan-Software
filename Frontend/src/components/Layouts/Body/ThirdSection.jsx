@@ -9,18 +9,18 @@ import {
 } from "react-icons/fa";
 import { Nav, Tab, Row, Col, Container } from "react-bootstrap";
 import "./ThirdSection.css";
-
+ 
 import Frontend from "./templates/Frontend";
 import UIUX from "./templates/Uiux";
 import Backend from "./templates/Backend";
 import CMS from "./templates/Cms";
 import DevOps from "./templates/Devops";
 import Testing from "./templates/Testing";
-
+ 
 const TabBar = () => {
   const [activeKey, setActiveKey] = useState("uiux");
   const tabs = ["uiux", "frontend", "backend", "cms", "devops", "testing"];
-
+ 
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveKey((prevKey) => {
@@ -31,17 +31,17 @@ const TabBar = () => {
     }, 1000000);
     return () => clearInterval(interval);
   }, []);
-
-  return ( 
+ 
+  return (
     <Container>
-      <div className="mt-5 section-header-tech">
+      <div className="container mt-5 section-header-tech">
         {/* 👇 Divider above heading */}
         <h6 className="subtitle">
           Technology Use <span className="divider"></span>
         </h6>
-
+ 
         <label className="title">Our Technology Use</label>
-
+ 
         <p className="image-carousel-content">
           The success of our services depends on a perfectly laid-out process
           from the beginning to the end. And, we put YOU at the centre of
@@ -50,10 +50,10 @@ const TabBar = () => {
           collaboration.
         </p>
       </div>
-
+ 
       <Tab.Container activeKey={activeKey} onSelect={(k) => setActiveKey(k)}>
         <Row className="our-tech-tab flex-column flex-sm-row flex-xs-row tab-mobile-row">
-          <Col xs={4} sm={3} className="tabs-col-tech p-0 mobile-tab-nav">
+          <Col xs={4} sm={3} className="tabs-col-tech  mobile-tab-nav">
             <Nav
               variant="pills"
               className="flex-column tech-col-navbar justify-content-start"
@@ -96,7 +96,7 @@ const TabBar = () => {
               </Nav.Item>
             </Nav>
           </Col>
-
+ 
           <Col xs={8} sm={9} className="tabs-col-tech tab-content-mobile">
             <Tab.Content className="tech-tab-content">
               <Tab.Pane eventKey="frontend">
@@ -125,5 +125,7 @@ const TabBar = () => {
     </Container>
   );
 };
-
+ 
 export default TabBar;
+ 
+ 

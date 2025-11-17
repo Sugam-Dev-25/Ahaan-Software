@@ -51,7 +51,7 @@ const CaseStudyCarousel = () => {
               accelerate your business.
             </p>
           </Col>
-        </Row>
+        </Row> 
 
         {/* 🔹 Swiper Carousel */}
         <Swiper

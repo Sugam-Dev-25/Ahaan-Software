@@ -55,6 +55,18 @@ const teamMembers = [
     "position": "Frontend Developer",
     "description": "Sugam is a frontend web application developer skilled in React.js, HTML, CSS, JavaScript, Bootstrap, Tailwind CSS, MUI, and EJS. He also works with WordPress and WooCommerce, creating responsive, user-friendly websites and web apps with clean code, modern design, and seamless functionality across all devices.",
     "image": "https://ahaanmedia.com/asc/teams/Sugam.png"
+  },
+   {
+    "name": "Tania",
+    "position": "Content Writer",
+    "description": "Tania is a creative Content Writer specializing in crafting engaging, SEO-friendly content for websites, blogs, and social media. She combines storytelling with strategy to deliver impactful messages that connect with audiences. With strong research skills and a passion for words, Tania creates clear, persuasive, and audience-focused content that drives results.",
+    "image": "https://ahaanmedia.com/asc/teams/Tania.png"
+  },
+   {
+    "name": "Ali",
+    "position": "Data Analyst",
+    "description": "Ali is a skilled Data Analyst with expertise in data visualization, statistical analysis, and business intelligence tools. He transforms raw data into actionable insights, helping businesses make informed decisions. With strong analytical thinking and attention to detail, Ali ensures data accuracy, efficiency, and meaningful reporting for better organizational performance.",
+    "image": "https://ahaanmedia.com/asc/teams/Ali.png"
   }
 ];
 const MeetOurTeam = () => {

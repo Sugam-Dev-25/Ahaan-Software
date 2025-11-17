@@ -21,6 +21,7 @@ import Preloader from "./components/Preloader/Preloader";
 import BlogDetails from "./components/Pages/Blog/BlogDetails";
 import CustomCursor from "./components/Custom Curser/CustomCursor";
 import WindowPopup from "./components/WindowsPopup/WindowPopup";
+import SearchResults from "./components/Pages/Blog/SearchResults";
 
 // Lazy load contact page
 const ContactUs = React.lazy(() => import("./components/Pages/Contact/ContactUs"));
@@ -34,7 +35,7 @@ const AppContent = () => {
   useEffect(() => {
     setShowPopup(true);
   }, []);
-
+ 
   return (
     <>
       {/* {showPopup && <WindowPopup onClose={() => setShowPopup(false)} />} */}
@@ -61,6 +62,7 @@ const AppContent = () => {
           
           {/* ✅ Slug based blog details page */}
           <Route path="/blog/:slug" element={<BlogDetails />} />
+          <Route path="/search" element={<SearchResults />} />
         </Routes>
       </Suspense>
 

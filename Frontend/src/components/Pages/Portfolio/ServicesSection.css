@@ -1,7 +1,7 @@
 /* ---------- Global Section ---------- */
 .portfolio-services-section {
   background: #fff;
-  
+ 
 }
  
 .section-header {
@@ -212,15 +212,22 @@
   }
 }
  
+@media (max-width: 768px) and (min-width: 576px) {
+  .services-grid {
+   
+    column-gap: 10px
+  }
+}
+ 
 /* 1 per row for mobile */
-@media (max-width: 768px) {
+@media (max-width: 575px) {
   .services-grid {
     grid-template-columns: 1fr;
     gap: 30px
   }
 }
  
-
+ 
 /* Subtitle divider animation */
 .section-header .subtitle {
   font-size: 20px;
@@ -228,9 +235,9 @@
   text-transform: capitalize;
   letter-spacing: 1px;
   margin-bottom: 10px;
-  
+ 
 }
-
+ 
 .section-header .divider {
   display: inline-block;
   width: 0;
@@ -240,7 +247,7 @@
   vertical-align: middle;
   animation: expandLine 1.5s ease-in-out infinite alternate;
 }
-
+ 
 @keyframes expandLine {
   0% {
     width: 0;
@@ -251,3 +258,5 @@
     opacity: 1;
   }
 }
+ 
+ 
