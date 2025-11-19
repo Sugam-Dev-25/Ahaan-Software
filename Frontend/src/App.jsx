@@ -35,6 +35,7 @@ const AppContent = () => {
   useEffect(() => {
     setShowPopup(true);
   }, []);
+
  
   return (
     <>
@@ -82,6 +83,14 @@ function App() {
     }, 2500);
     return () => clearTimeout(timeout);
   }, []);
+  useEffect(() => {
+  fetch("http://localhost:5000/api/visitor/count")
+    .then(res => res.json())
+    .then(data => {
+      console.log("Visitor Count:", data.visitors);
+    })
+    .catch(err => console.error(err));
+}, []);
 
   return (
     <Router>

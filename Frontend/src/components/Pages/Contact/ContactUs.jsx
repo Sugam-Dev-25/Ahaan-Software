@@ -16,6 +16,7 @@ import {
 import "./ContactUs.css";
 import WorldMap from "./WorldMap";
 import ContactBanner from "./ContactBanner";
+import { createContact } from "../../../Api/api";
  
 const ContactUs = () => {
   const form = useRef();
@@ -29,21 +30,25 @@ const ContactUs = () => {
     clearErrors,
   } = useForm();
  
-  const onSubmit = (data) => {
+const onSubmit = async (data) => {
+  try {
+    // SAVE TO BACKEND (MongoDB)
+    await createContact(data);
+
+    // SENDEMAILJS
     const serviceID = "service_d4lc4tg";
     const templateID = "template_k2044k9";
     const publicKey = "P1psK0y5kXFayHDDA";
- 
-    emailjs
-      .sendForm(serviceID, templateID, form.current, publicKey)
-      .then((response) => {
-        toast.success("Message sent successfully!");
-        reset();
-      })
-      .catch((error) => {
-        toast.error("Failed to send message. Try again!");
-      });
-  };
+
+    await emailjs.sendForm(serviceID, templateID, form.current, publicKey);
+
+    toast.success("Message sent & saved successfully!");
+    reset();
+  } catch (error) {
+    console.log(error);
+    toast.error("Failed! Try again.");
+  }
+};
  
   const handlePhoneInput = (e) => {
     const value = e.target.value;
@@ -278,4 +283,4 @@ const ContactUs = () => {
  
 export default ContactUs;
  
- 
+  

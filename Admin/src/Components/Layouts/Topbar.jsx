@@ -1,48 +1,163 @@
-import React from "react";
-import { FaSearch, FaBell, FaEnvelope } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import { FaBell, FaRegCalendarAlt } from "react-icons/fa";
+
+// WEATHER ICONS
+import {
+  WiDaySunny,
+  WiNightClear,
+  WiCloudy,
+  WiRainMix,
+  WiStormShowers,
+  WiSnow,
+  WiDayHaze,
+} from "react-icons/wi";
 
 export default function Topbar() {
-  return (
-    <div className="d-flex justify-content-between align-items-center px-4 py-2 bg-white shadow-sm">
+  const [currentTime, setCurrentTime] = useState("");
+  const [currentDate, setCurrentDate] = useState("");
+  const [weather, setWeather] = useState(null);
 
-      {/* Search */}
-      <div className="d-flex align-items-center"
-           style={{ width: "300px", border: "1px solid #ddd", borderRadius: "5px" }}>
-        <input
-          className="form-control border-0"
-          placeholder="Search for..."
-          style={{ boxShadow: "none" }}
-        />
-        <button className="btn btn-primary">
-          <FaSearch />
-        </button>
+  // 🔵 WEATHER FETCH
+  useEffect(() => {
+    const fetchWeather = async () => {
+      try {
+        const res = await fetch(
+          "https://api.openweathermap.org/data/2.5/weather?q=Kolkata&appid=082f135195d80501379a461dbad34d4c&units=metric"
+        );
+        const data = await res.json();
+
+        const hour = new Date().getHours();
+
+        setWeather({
+          temp: data.main?.temp,
+          desc: data.weather[0]?.main,
+          title: data.weather[0]?.description,
+          hour: hour,
+        });
+      } catch (error) {
+        console.log("Weather Error:", error);
+      }
+    };
+
+    fetchWeather();
+    const interval = setInterval(fetchWeather, 600000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // 🔵 SELECT WEATHER ICON
+  const getWeatherIcon = () => {
+    if (!weather) return null;
+
+    const isNight = weather.hour >= 18 || weather.hour < 6;
+
+    switch (weather.desc) {
+      case "Clear":
+        return isNight ? (
+          <WiNightClear size={35} color="#ffcc00" />
+        ) : (
+          <WiDaySunny size={35} color="#ffaa00" />
+        );
+
+      case "Clouds":
+        return <WiCloudy size={35} color="#6b7280" />;
+
+      case "Rain":
+        return <WiRainMix size={35} color="#3b82f6" />;
+
+      case "Thunderstorm":
+        return <WiStormShowers size={35} color="#facc15" />;
+
+      case "Snow":
+        return <WiSnow size={35} color="#93c5fd" />;
+
+      case "Haze":
+      case "Mist":
+      case "Fog":
+        return <WiDayHaze size={35} color="#191c24ff" />;
+
+      default:
+        return <WiCloudy size={35} color="#6b7280" />;
+    }
+  };
+
+  // 🔵 DATE + TIME
+  useEffect(() => {
+    const updateDateTime = () => {
+      const date = new Date();
+
+      const options = { month: "long", day: "numeric" };
+      const formattedDate = date.toLocaleDateString("en-US", options);
+
+      const weekday = date.toLocaleDateString("en-US", { weekday: "long" });
+
+      const time = date.toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+
+      setCurrentDate(`${formattedDate}, ${weekday}`);
+      setCurrentTime(time);
+    };
+
+    updateDateTime();
+    const timer = setInterval(updateDateTime, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="d-flex justify-content-between align-items-center px-4 py-3">
+      {/* LEFT: DATE + TIME + WEATHER */}
+      <div className="d-flex align-items-center gap-4">
+        {/* Weather */}
+        {weather && (
+          <div className="d-flex align-items-center gap-2">
+            {getWeatherIcon()}
+            <div className="d-flex flex-column">
+              <span className="fw-bold">{weather.temp}°C</span>
+              <small className="text-muted">{weather.title}</small>
+            </div>
+          </div>
+        )}
+
+        {/* Date + Time */}
+        <div className="d-flex align-items-center gap-3">
+          <FaRegCalendarAlt size={22} className="text-dark" />
+          <div className="d-flex flex-column">
+            <span className="fw-bold" style={{ fontSize: "18px" }}>
+              {currentDate}
+            </span>
+            <span className="text-muted" style={{ marginTop: "-4px" }}>
+              {currentTime}
+            </span>
+          </div>
+        </div>
       </div>
 
-      {/* Right Icons */}
-      <div className="d-flex align-items-center gap-3">
-        
+      {/* RIGHT: NOTIFICATION + USER */}
+      <div className="d-flex align-items-center gap-4">
+        {/* Notification */}
         <div className="position-relative">
-          <FaBell size={20} />
-          <span className="badge bg-danger position-absolute top-0 start-100 translate-middle">
+          <FaBell size={22} className="text-dark" />
+          <span
+            className="badge bg-danger position-absolute top-0 start-100 translate-middle"
+            style={{ fontSize: "10px" }}
+          >
             3
           </span>
         </div>
 
-        <div className="position-relative">
-          <FaEnvelope size={20} />
-          <span className="badge bg-warning text-dark position-absolute top-0 start-100 translate-middle">
-            7
-          </span>
-        </div>
-
+        {/* User */}
         <div className="d-flex align-items-center">
-          <span className="me-2 fw-bold">Douglas McGee</span>
           <img
-            src="https://i.pravatar.cc/40"
+            src="https://ahaanmedia.com/asc/All/blog-dp.png"
             alt="user"
-            className="rounded-circle"
-            width="40"
+            className="rounded-circle me-2 p-1 bg-black"
+            width="35"
           />
+          <span className="me-3 fw-bold">Ahaan Software</span>
         </div>
       </div>
     </div>

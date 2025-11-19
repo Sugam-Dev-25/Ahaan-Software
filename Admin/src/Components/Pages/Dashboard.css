@@ -1,0 +1,49 @@
+.dash-card {
+  height: 120px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.container-fluid {
+  background: none !important;
+}
+
+.pink-card {
+  background: linear-gradient(to right, #ff4b8d, #ff7bc2);
+}
+
+.purple-card {
+  background: linear-gradient(to right, #48a43e, #88c572);
+}
+
+.blue-card {
+  background: linear-gradient(to right, #4a90e2, #6ec6ff);
+}
+
+.orange-card {
+  background: linear-gradient(to right, #ff914d, #ffbe3d);
+}
+
+.mini-card {
+  border-radius: 20px;
+}
+
+.yellow-card {
+  background: linear-gradient(to right, #f8b400, #ffd464);
+}
+
+.card {
+  border: none;
+  border-radius: 20px;
+}
+.dashboard-heading {
+  font-family: outfit;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.dashboard-count {
+  font-family: outfit;
+  font-weight: 800;
+  text-transform: uppercase;
+}

@@ -14,4 +14,7 @@ export const createForm = async (data) => {
   }
 };
 
+export const createContact = async (data) => {
+  return API.post("/contact/add", data);
+};
 export default API;

@@ -1,0 +1,66 @@
+/* Calendar Card Styling */
+.fc {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.06);
+}
+
+/* Header Title */
+.fc .fc-toolbar-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Month / Week / Day buttons */
+.fc .fc-button {
+  background: #2d3748;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:not(:disabled):active {
+  background: #1a1f29;
+}
+
+.fc .fc-button:hover {
+  background: #1f2937;
+}
+
+/* Today button */
+.fc .fc-today-button {
+  background: #e5e7eb !important;
+  color: #111827 !important;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+/* Calendar table styling */
+.fc table {
+  border: none;
+}
+
+.fc-daygrid-day-number {
+  color: #206EF8;
+  font-weight: 600;
+}
+
+/* Highlight today's date */
+.fc .fc-daygrid-day.fc-day-today {
+  background: rgba(255, 221, 87, 0.4) !important;
+  border-radius: 6px;
+}
+
+/* Event design */
+.fc-event {
+  background: #4f46e5 !important;
+  border: none !important;
+  padding: 4px 6px !important;
+  border-radius: 6px !important;
+  font-size: 13px;
+}

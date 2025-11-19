@@ -1,26 +1,113 @@
 import React, { useState } from "react";
-import {
-  FaTachometerAlt,
-  FaBars,
-  FaBlog,
-  FaLayerGroup,
-  FaUsers,
-  FaEnvelope,
-  FaPalette,
-  FaCode
-} from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+import { FaBars } from "react-icons/fa";
 import { RxDashboard } from "react-icons/rx";
 import { RiBloggerLine } from "react-icons/ri";
 import { TiDocumentAdd } from "react-icons/ti";
 import { MdManageSearch } from "react-icons/md";
+import { GrConnect, GrContactInfo } from "react-icons/gr";
+import { MdOutlineDesignServices } from "react-icons/md";
+import { FaCodeCompare } from "react-icons/fa6";
+import { TiUserAdd } from "react-icons/ti";
+import { FaUsersGear, FaUsers } from "react-icons/fa6";
+import { IoMdLogOut } from "react-icons/io";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
 
+  const gradient = {
+    background: "linear-gradient(90deg, #ffbe31, #ff9d00)",
+    color: "#000",
+    fontWeight: "600",
+  };
+
+  const menuStyle = {
+    padding: "10px 15px",
+    borderRadius: "5px",
+    transition: "all 0.3s ease",
+    display: "flex",
+    alignItems: "center",
+  };
+
+  const menuItems = [
+    { label: "Dashboard", icon: <RxDashboard className="me-2" />, path: "/" },
+
+    { section: "Blog" },
+    {
+      label: "All Blogs",
+      icon: <RiBloggerLine className="me-2" />,
+      path: "/all-blogs",
+    },
+    {
+      label: "Add Blogs",
+      icon: <TiDocumentAdd className="me-2" />,
+      path: "/add-blogs",
+    },
+    {
+      label: "Manage Blogs",
+      icon: <MdManageSearch className="me-2" />,
+      path: "/manage-blogs",
+    },
+
+    { section: "Connect" },
+    {
+      label: "Connect Form",
+      icon: <GrConnect className="me-2" />,
+      path: "/connect-form",
+    },
+    {
+      label: "Contact Us Form",
+      icon: <GrContactInfo className="me-2" />,
+      path: "/contact-form",
+    },
+
+    { section: "Portfolio" },
+    {
+      label: "UI/UX",
+      icon: <MdOutlineDesignServices className="me-2" />,
+      path: "/portfolio/uiux",
+    },
+    {
+      label: "Web Development",
+      icon: <FaCodeCompare className="me-2" />,
+      path: "/portfolio/web-dev",
+    },
+
+    { section: "Teams" },
+    {
+      label: "Add Teams",
+      icon: <TiUserAdd className="me-2" />,
+      path: "/teams/add",
+    },
+    {
+      label: "View Teams",
+      icon: <FaUsers className="me-2" />,
+      path: "/teams/view",
+    },
+    {
+      label: "Manage Teams",
+      icon: <FaUsersGear className="me-2" />,
+      path: "/teams/manage",
+    },
+  ];
+
   return (
     <>
-      {/* Mobile Toggle Button */}
-      <div className="d-md-none bg-dark text-white p-2" style={{backgroundColor:"#000"}}>
+      {/* Scrollbar Hide CSS */}
+      <style>
+        {`
+          .hide-scrollbar {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+          .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
+        `}
+      </style>
+
+      {/* Mobile Toggle */}
+      <div className="d-md-none bg-dark text-white p-2">
         <button
           className="btn btn-outline-light"
           onClick={() => setOpen(!open)}
@@ -29,19 +116,22 @@ const Sidebar = () => {
         </button>
       </div>
 
+      {/* Sidebar */}
       <div
-        className={` text-white d-flex flex-column sidebar-transition ${
+        className={`text-white d-flex flex-column sidebar-transition ${
           open ? "d-block" : "d-none"
         } d-md-flex`}
         style={{
           width: "100%",
           maxWidth: "240px",
-          minHeight: "100vh",
+          height: "100vh",
           position: "fixed",
           top: 0,
           left: 0,
           zIndex: 1000,
-          backgroundColor:"#161616ff"
+          backgroundColor: "#161616ff",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         {/* Logo */}
@@ -50,103 +140,93 @@ const Sidebar = () => {
             src="https://ahaanmedia.com/asc/layouts/asc.png"
             alt="ASC Logo"
             className="img-fluid"
-            style={{ maxWidth: "170px" }}
+            style={{ maxWidth: "150px" }}
           />
         </div>
 
-        {/* Sidebar Menu */}
-        <ul className="nav flex-column mt-2 px-2">
+        {/* Scrollable Area */}
+        <div
+          className="hide-scrollbar"
+          style={{
+            flexGrow: 1,
+            overflowY: "auto",
+            paddingRight: "5px",
+          }}
+        >
+          <ul className="nav flex-column mt-2 px-2">
+            {menuItems.map((item, i) =>
+              item.section ? (
+                <React.Fragment key={i}>
+                  <hr className="bg-light" />
+                  <div
+                    className="text-uppercase small mt-2 px-2"
+                    style={{
+                      color: "#ffbe31ff",
+                      fontWeight: "700",
+                      letterSpacing: "2px",
+                      lineHeight: "40px",
+                    }}
+                  >
+                    {item.section}
+                  </div>
+                </React.Fragment>
+              ) : (
+                <li key={i} className="nav-item mb-1">
+                  <NavLink
+                    to={item.path}
+                    className="nav-link"
+                    style={({ isActive }) => ({
+                      ...menuStyle,
+                      ...(isActive ? gradient : {}),
+                      color: isActive ? "#000" : "#fff",
+                    })}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = gradient.background;
+                      e.currentTarget.style.color = "#000";
+                    }}
+                    onMouseLeave={(e) => {
+                      if (window.location.pathname === item.path) {
+                        e.currentTarget.style.background = gradient.background;
+                        e.currentTarget.style.color = "#000";
+                      } else {
+                        e.currentTarget.style.background = "transparent";
+                        e.currentTarget.style.color = "#fff";
+                      }
+                    }}
+                  >
+                    {item.icon}
+                    {item.label}
+                  </NavLink>
+                </li>
+              )
+            )}
+          </ul>
+        </div>
 
-          {/* Dashboard */}
-          <li className="nav-item mb-1">
-            <a className="nav-link text-white" href="#">
-              <RxDashboard className="me-2" /> Dashboard
-            </a>
-          </li>
-
-          <hr className="bg-light" />
-
-          {/* Blog */}
-          <div className="text-uppercase small mt-2 px-2" style={ {color:"#ffbe31ff", textTransform:"uppercase", fontWeight:"700", letterSpacing:"2px"}}>Blog</div>
-
-          <li className="nav-item">
-            <a className="nav-link text-white" href="#">
-              <RiBloggerLine className="me-2" /> All Blogs
-            </a>
-          </li>
-
-          <li className="nav-item">
-            <a className="nav-link text-white" href="#">
-              <TiDocumentAdd className="me-2" /> Add Blogs
-            </a>
-          </li>
-
-          <li className="nav-item mb-1">
-            <a className="nav-link text-white" href="#">
-              <MdManageSearch className="me-2" /> Manage Blogs
-            </a>
-          </li>
-
-          <hr className="bg-light" />
-
-          {/* Connect */}
-          <div className="text-uppercase small mt-2 px-2" style={ {color:"#ffbe31ff", textTransform:"uppercase", fontWeight:"700", letterSpacing:"2px"}}>Connect</div>
-
-          <li className="nav-item">
-            <a className="nav-link text-white" href="#">
-              <FaEnvelope className="me-2" /> Connect Form
-            </a>
-          </li>
-
-          <li className="nav-item mb-1">
-            <a className="nav-link text-white" href="#">
-              <FaEnvelope className="me-2" /> Contact Us Form
-            </a>
-          </li>
-
-          <hr className="bg-light" />
-
-          {/* Portfolio */}
-          <div className="text-uppercase small mt-2 px-2" style={ {color:"#ffbe31ff", textTransform:"uppercase", fontWeight:"700", letterSpacing:"2px"}}>Portfolio</div>
-
-          <li className="nav-item">
-            <a className="nav-link text-white" href="#">
-              <FaPalette className="me-2" /> UI/UX
-            </a>
-          </li>
-
-          <li className="nav-item mb-1">
-            <a className="nav-link text-white" href="#">
-              <FaCode className="me-2" /> Web Development
-            </a>
-          </li>
-
-          <hr className="bg-light" />
-
-          {/* Teams */}
-          <div className="text-uppercase small mt-2 px-2" style={ {color:"#ffbe31ff", textTransform:"uppercase", fontWeight:"700", letterSpacing:"2px"}}>Teams</div>
-
-          <li className="nav-item">
-            <a className="nav-link text-white" href="#">
-              <FaUsers className="me-2" /> Add Teams
-            </a>
-          </li>
-          
-          <li className="nav-item">
-            <a className="nav-link text-white" href="#">
-              <FaUsers className="me-2" /> All Teams
-            </a>
-          </li>
-
-          <li className="nav-item mb-1">
-            <a className="nav-link text-white" href="#">
-              <FaUsers className="me-2" /> Manage Teams
-            </a>
-          </li>
-        </ul>
+        {/* Bottom Logout */}
+        <div
+          style={{
+            padding: "15px",
+            borderTop: "1px solid #333",
+            background: "#161616ff",
+          }}
+        >
+          <button
+            className="btn w-100 text-light"
+            style={{
+              background: "#ff3131ff",
+              fontWeight: "600",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+            }}
+          >
+            <IoMdLogOut /> Logout
+          </button>
+        </div>
       </div>
 
-      {/* Spacer for Desktop */}
       <div className="d-none d-md-block" style={{ width: "240px" }}></div>
     </>
   );

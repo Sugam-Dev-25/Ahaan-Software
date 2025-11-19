@@ -18,6 +18,8 @@ connectDB();
 
 // Routes
 app.use("/api/form", require("./routes/formRoutes"));
+app.use("/api/contact", require("./routes/contactRoutes"));
+app.use("/api/visitor", require("./routes/visitorRoutes"));
 
 // Base Route
 app.get("/", (req, res) => {
