@@ -1,90 +1,111 @@
-const User = require('../models/User');
-const bcrypt = require('bcrypt');
-const MAX_AGE_MS = 3 * 24 * 60 * 60 * 1000;
+const User = require("../models/User");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+const MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 
 // REGISTER
 exports.registerUser = async (req, res) => {
-    try {
-        const { name, email, password, designation } = req.body;
-        const profilePicture = req.file ? req.file.filename : null; // multer sets file
+  try {
+    const { name, email, password } = req.body;
 
-        const exists = await User.findOne({ email });
-        if (exists) return res.status(400).json({ message: 'User already exists' });
-
-        const user = await User.create({ name, email, password, designation, profilePicture });
-
-        const token = user.generateJWT();
-
-        res.cookie('authToken', token, {
-            httpOnly: true,
-            maxAge: MAX_AGE_MS,
-            sameSite: 'Strict'
-        });
-
-        res.status(201).json({
-            message: 'User registered successfully',
-            user: {
-                id: user._id,
-                name: user.name,
-                email: user.email,
-                designation: user.designation,
-                profilePicture: profilePicture ? `/uploads/${profilePicture}` : null
-            }
-        });
-
-    } catch (error) {
-        console.error("Register Error:", error);
-        res.status(500).json({ message: 'Server Error' });
+    let picturePath = "";
+    if (req.file) {
+      picturePath = `/uploads/${req.file.filename}`;
     }
+
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      return res.status(400).json({ message: "Email already exists" });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = await User.create({
+      name,
+      email,
+      password: hashedPassword,
+      profilePicture: picturePath
+    });
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+
+    res.cookie("authToken", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      maxAge: MAX_AGE_MS
+    });
+
+    res.status(201).json({
+      message: "Registered successfully",
+      user
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
+
 
 // LOGIN
 exports.loginUser = async (req, res) => {
-    try {
-        const { email, password } = req.body;
-        const user = await User.findOne({ email });
-        if (!user) return res.status(400).json({ message: 'Invalid email or password' });
+  try {
+    const { email, password } = req.body;
 
-        const match = await bcrypt.compare(password, user.password);
-        if (!match) return res.status(400).json({ message: 'Invalid email or password' });
+    const user = await User.findOne({ email });
+    if (!user) return res.status(400).json({ message: "User not found" });
 
-        const token = user.generateJWT();
-        res.cookie('authToken', token, {
-            httpOnly: true,
-            maxAge: MAX_AGE_MS,
-            sameSite: 'Strict'
-        });
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch)
+      return res.status(400).json({ message: "Invalid credentials" });
 
-        res.status(200).json({
-            message: 'Login successful',
-            user: {
-                id: user._id,
-                name: user.name,
-                designation: user.designation,
-                profilePicture: user.profilePicture ? `/uploads/${user.profilePicture}` : null
-            }
-        });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
-    } catch (error) {
-        console.error("Login Error:", error);
-        res.status(500).json({ message: 'Server Error' });
-    }
-};
-
-// PROFILE
-exports.getProfile = async (req, res) => {
-    res.json({
-        message: 'User profile fetched',
-        user: req.user
+    res.cookie("authToken", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+      maxAge: MAX_AGE_MS
     });
+
+    res.json({ message: "Login successful", user });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
+
+
+// GET PROFILE
+exports.getProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      profilePicture: user.profilePicture
+        ? `${req.protocol}://${req.get("host")}${user.profilePicture}`
+        : null
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 
 // LOGOUT
-exports.logoutUser = (req, res) => {
-    res.clearCookie('authToken', {
-        httpOnly: true,
-        sameSite: 'Strict'
+exports.logoutUser = async (req, res) => {
+  try {
+    res.clearCookie("authToken", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none"
     });
 
-    res.status(200).json({ message: 'Logged out successfully' });
+    res.json({ message: "Logged out successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
