@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../app/hook";
+import { logoutUser } from "../features/user/userSlice";   // <-- ADD THIS
 import { FaBars } from "react-icons/fa";
 import { RxDashboard } from "react-icons/rx";
 import { RiBloggerLine } from "react-icons/ri";
@@ -9,11 +11,26 @@ import { GrConnect, GrContactInfo } from "react-icons/gr";
 import { MdOutlineDesignServices } from "react-icons/md";
 import { FaCodeCompare } from "react-icons/fa6";
 import { TiUserAdd } from "react-icons/ti";
-import { FaUsersGear, FaUsers } from "react-icons/fa6";
+import { FaUsers } from "react-icons/fa6";
 import { IoMdLogOut } from "react-icons/io";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  // 🔥 LOGOUT FUNCTION
+  const handleLogout = async () => {
+    try {
+      const res = await dispatch(logoutUser());
+
+      if (res?.meta?.requestStatus === "fulfilled") {
+        navigate("/login");        // redirect to login page
+      }
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  };
 
   const gradient = {
     background: "linear-gradient(90deg, #ffbe31, #ff9d00)",
@@ -33,62 +50,21 @@ const Sidebar = () => {
     { label: "Dashboard", icon: <RxDashboard className="me-2" />, path: "/" },
 
     { section: "Blog" },
-    {
-      label: "All Blogs",
-      icon: <RiBloggerLine className="me-2" />,
-      path: "/all-blogs",
-    },
-    {
-      label: "Add Blogs",
-      icon: <TiDocumentAdd className="me-2" />,
-      path: "/add-blogs",
-    },
-    {
-      label: "Manage Blogs",
-      icon: <MdManageSearch className="me-2" />,
-      path: "/manage-blogs",
-    },
+    { label: "All Blogs", icon: <RiBloggerLine className="me-2" />, path: "/all-blogs" },
+    { label: "Add Blogs", icon: <TiDocumentAdd className="me-2" />, path: "/add-blogs" },
+    { label: "Manage Blogs", icon: <MdManageSearch className="me-2" />, path: "/manage-blogs" },
 
     { section: "Connect" },
-    {
-      label: "Connect Form",
-      icon: <GrConnect className="me-2" />,
-      path: "/connect-form",
-    },
-    {
-      label: "Contact Us Form",
-      icon: <GrContactInfo className="me-2" />,
-      path: "/contact-form",
-    },
+    { label: "Connect Form", icon: <GrConnect className="me-2" />, path: "/connect-form" },
+    { label: "Contact Us Form", icon: <GrContactInfo className="me-2" />, path: "/contact-form" },
 
     { section: "Portfolio" },
-    {
-      label: "UI/UX",
-      icon: <MdOutlineDesignServices className="me-2" />,
-      path: "/portfolio/uiux",
-    },
-    {
-      label: "Web Development",
-      icon: <FaCodeCompare className="me-2" />,
-      path: "/portfolio/web-dev",
-    },
+    { label: "UI/UX", icon: <MdOutlineDesignServices className="me-2" />, path: "/portfolio/uiux" },
+    { label: "Web Development", icon: <FaCodeCompare className="me-2" />, path: "/portfolio/web-dev" },
 
     { section: "Teams" },
-    {
-      label: "Add Teams",
-      icon: <TiUserAdd className="me-2" />,
-      path: "/teams/add",
-    },
-    {
-      label: "View Teams",
-      icon: <FaUsers className="me-2" />,
-      path: "/teams/view",
-    },
-    {
-      label: "Manage Teams",
-      icon: <FaUsersGear className="me-2" />,
-      path: "/teams/manage",
-    },
+    { label: "Add Teams", icon: <TiUserAdd className="me-2" />, path: "/add-team" },
+    { label: "View Teams", icon: <FaUsers className="me-2" />, path: "/view-team" },
   ];
 
   return (
@@ -108,10 +84,7 @@ const Sidebar = () => {
 
       {/* Mobile Toggle */}
       <div className="d-md-none bg-dark text-white p-2">
-        <button
-          className="btn btn-outline-light"
-          onClick={() => setOpen(!open)}
-        >
+        <button className="btn btn-outline-light" onClick={() => setOpen(!open)}>
           <FaBars size={20} />
         </button>
       </div>
@@ -147,11 +120,7 @@ const Sidebar = () => {
         {/* Scrollable Area */}
         <div
           className="hide-scrollbar"
-          style={{
-            flexGrow: 1,
-            overflowY: "auto",
-            paddingRight: "5px",
-          }}
+          style={{ flexGrow: 1, overflowY: "auto", paddingRight: "5px" }}
         >
           <ul className="nav flex-column mt-2 px-2">
             {menuItems.map((item, i) =>
@@ -213,6 +182,7 @@ const Sidebar = () => {
         >
           <button
             className="btn w-100 text-light"
+            onClick={handleLogout}
             style={{
               background: "#ff3131ff",
               fontWeight: "600",

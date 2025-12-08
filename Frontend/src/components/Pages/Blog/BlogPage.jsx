@@ -53,7 +53,7 @@ const BlogPage = () => {
   const [reactionCounts, setReactionCounts] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const blogsPerPage = 6;
+  const blogsPerPage = 9;
 
   const fetchAndUpdateBlogs = async () => {
     try {

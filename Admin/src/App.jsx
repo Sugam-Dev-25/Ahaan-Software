@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "apexcharts/dist/apexcharts.css";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Topbar from "./Components/Layouts/Topbar";
 import Sidebar from "./Components/Layouts/Sidebar";
@@ -12,70 +13,89 @@ import EditBlog from "./Components/Pages/EditBlog";
 import ViewBlog from "./Components/Pages/ViewBlog";
 import ConnectForm from "./Components/Pages/ConnectForm";
 import ContactForm from "./Components/Pages/ContactForm";
+import AdminChatPage from "./Components/Chat/AdminChatPage";
+import AddTeam from "./Components/Pages/AddTeam";
+import EditTeam from "./Components/Pages/EditTeam";
+import ViewTeams from "./Components/Pages/ViewTeams";
+import LoginView from "./Components/features/user/login/LoginView";
+import RegisterView from "./Components/features/user/register/RegisterView";
+import ProtectedRoute from "./Components/features/ProtectedRoute";
 
+// import LoginView from "./features/User/login/LoginView";
+// import RegisterView from "./features/User/register/RegisterView";
 
-// import UIUX from "./Components/Pages/Portfolio/UIUX";
-// import WebDevelopment from "./Components/Pages/Portfolio/WebDevelopment";
-
-// import AddTeams from "./Components/Pages/Teams/AddTeams";
-// import ViewTeams from "./Components/Pages/Teams/ViewTeams";
-// import ManageTeams from "./Components/Pages/Teams/ManageTeams";
-
+// import ProtectedRoute from "./Components/Auth/ProtectedRoute";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="d-flex">
+      <Routes>
         
-        {/* Sidebar */}
-        <Sidebar />
+        {/* ===================== PUBLIC ROUTES ===================== */}
+        <Route path="/login" element={<LoginView />} />
+        <Route path="/register" element={<RegisterView />} />
 
-        {/* Page Content */}
-        <div className="flex-grow-1" style={{ minHeight: "100vh", background: "#f8f9fc" }}>
-          
-          {/* Topbar */}
-          <Topbar />
-
-          {/* Routed Pages */}
-          <div className="container-fluid mt-4">
-
-            <Routes>
-
-              {/* MAIN */}
-              <Route path="/" element={<Dashboard />} />
-
-              {/* BLOGS */}
-              <Route path="/all-blogs" element={<BlogList />} />
-              <Route path="/add-blogs" element={<BlogForm />} />
-              <Route path="/manage-blogs" element={<BlogTable />} />
-              <Route path="/edit-blog/:id" element={<EditBlog />} />
-              <Route path="/view-blog/:id" element={<ViewBlog />} />
-
-              {/* CONNECT */}
-              <Route path="/connect-form" element={<ConnectForm />} />
-              <Route path="/contact-form" element={<ContactForm />} />
-
-              {/* PORTFOLIO */}
-              {/* <Route path="/portfolio/uiux" element={<UIUX />} />
-              <Route path="/portfolio/web-development" element={<WebDevelopment />} /> */}
-
-              {/* TEAMS */}
-              {/* <Route path="/teams/add" element={<AddTeams />} />
-              <Route path="/teams/view" element={<ViewTeams />} />
-              <Route path="/teams/manage" element={<ManageTeams />} /> */}
-
-              {/* 404 NOT FOUND */}
-              <Route path="*" element={<h2>404 - Page Not Found</h2>} />
-
-            </Routes>
-
-          </div>
-        </div>
-      </div>
+        {/* ===================== PROTECTED ROUTES ===================== */}
+        <Route
+          path="/*"
+          element={
+            <ProtectedRoute>
+              <LayoutWrapper />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
     </BrowserRouter>
   );
 }
 
+/* 
+  LayoutWrapper = Sidebar + Topbar + All protected pages
+*/
+const LayoutWrapper = () => {
+  return (
+    <div className="d-flex">
+      {/* Sidebar */}
+      <Sidebar />
+
+      <div
+        className="flex-grow-1"
+        style={{ minHeight: "100vh", background: "#f8f9fc" }}
+      >
+        {/* Topbar */}
+        <Topbar />
+
+        <div className="container-fluid mt-4">
+          <Routes>
+            {/* MAIN */}
+            <Route path="/" element={<Dashboard />} />
+
+            {/* BLOGS */}
+            <Route path="/all-blogs" element={<BlogList />} />
+            <Route path="/add-blogs" element={<BlogForm />} />
+            <Route path="/manage-blogs" element={<BlogTable />} />
+            <Route path="/edit-blog/:id" element={<EditBlog />} />
+            <Route path="/view-blog/:id" element={<ViewBlog />} />
+
+            {/* CONNECT */}
+            <Route path="/connect-form" element={<ConnectForm />} />
+            <Route path="/contact-form" element={<ContactForm />} />
+
+            {/* CHAT */}
+            <Route path="/chat" element={<AdminChatPage />} />
+
+            {/* TEAMS */}
+            <Route path="/add-team" element={<AddTeam />} />
+            <Route path="/edit-team/:id" element={<EditTeam />} />
+            <Route path="/view-team" element={<ViewTeams />} />
+
+            {/* 404 */}
+            <Route path="*" element={<h2>404 - Page Not Found</h2>} />
+          </Routes>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default App;
-
-

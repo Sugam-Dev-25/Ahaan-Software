@@ -1,13 +1,67 @@
-
-.webdev-image {
-  width: 90%;
-  height: auto;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+.webdev-columns {
+  display: flex;
+  gap: 20px; /* gap between columns */
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #ffffff;
+  flex-wrap: nowrap; /* prevent wrapping */
 }
 
-.webdev-image:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+/* Swiper container */
+.webdev-gallery-swiper {
+  width: 550px;  /* keep your fixed width */
+  height: 810px; /* keep fixed height */
+  overflow: hidden;
+}
+
+/* Slides gap */
+.webdev-slide {
+  margin-bottom: 15px;
+}
+
+/* Images */
+.webdev-gallery-image {
+  width: 100%;
+  height: 400px;
+  border-radius: 2px;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Offset columns */
+.offset-swiper .swiper-wrapper {
+  transform: translateY(-25%);
+}
+
+/* Tablet: show only first 3 columns */
+@media (max-width: 992px) {
+  .webdev-gallery-swiper:nth-child(4) {
+    display: none;
+  }
+  .webdev-slide {
+  margin-bottom: 5px;
+}
+.webdev-columns {
+  gap: 10px; /* reduce gap between columns */
+}
+}
+/* Mobile: show only first 2 columns */
+@media (max-width: 768px) {
+  .webdev-gallery-swiper:nth-child(3),
+  .webdev-gallery-swiper:nth-child(4) {
+    display: none;
+  }
+    .webdev-slide {
+  margin-bottom: 5px;
+}
+.webdev-columns {
+  gap: 10px; /* reduce gap between columns */
+}
+.webdev-gallery-swiper{
+  height:510px;
+}
+.webdev-gallery-image {
+  height: 250px;  
+}
 }

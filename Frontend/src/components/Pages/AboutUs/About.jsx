@@ -4,6 +4,7 @@ import Team from "./Team";
 import HorizontalTimeline from '../Portfolio/HorizontalTimeline';
 import AboutSection from '../Portfolio/AboutSection';
 import "bootstrap/dist/css/bootstrap.min.css";
+import MeetOurTeam from "./MeetOurTeam";
 
 function About() {
   return (
@@ -11,7 +12,8 @@ function About() {
       <Banner />
       <HorizontalTimeline/>
       <AboutSection/>
-      <Team />
+      {/* <Team/> */}
+      <MeetOurTeam />
 
     </>
   );

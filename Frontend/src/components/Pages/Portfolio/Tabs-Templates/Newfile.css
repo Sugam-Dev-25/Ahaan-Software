@@ -1,0 +1,250 @@
+.agency-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ padding: 20px;
+ color: gray;
+}
+
+
+/* Base Card Styling */
+.agency-card {
+    max-width: 320px;
+    height: 320px;
+    /* Square dimensions */
+    background: #fff;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(0.1, 0.1, 0.1, 0.1);
+    box-sizing: border-box;
+}
+
+
+
+/* Image box styles (Used for the image/white section) */
+.agency-image-box {
+    position: absolute;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.agency-image-box img {
+    width: 100%;
+    object-fit: contain;
+
+}
+
+/* The 'shape' elements are the main background color blocks */
+.agency-shape {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+/* ------------------- CARD 1: YELLOW ------------------- */
+
+.agency-color-1 {
+    --main-color: #F5B942;
+    --text-color: #000;
+}
+
+.agency-color-2 {
+    --main-color: #8028C9;
+    --text-color: #fff;
+}
+
+.agency-color-3 {
+    --main-color: #2384E0;
+    --text-color: #fff;
+}
+
+.agency-color-4 {
+    --main-color: #FF5733;
+    --text-color: #fff;
+}
+
+.agency-color-5 {
+    --main-color: #1BB55C;
+    --text-color: #fff;
+}
+
+.agency-color-6 {
+    --main-color: #FF1493;
+    --text-color: #fff;
+}
+
+.agency-color-7 {
+    --main-color: #009688;
+    --text-color: #fff;
+}
+
+.agency-color-8 {
+    --main-color: #FF9800;
+    --text-color: #000;
+}
+
+.agency-color-9 {
+    --main-color: #673AB7;
+    --text-color: #fff;
+}
+
+/* Shape 1: Curved background fill */
+.agency-shape-yellow {
+    height: 100%;
+    background: var(--main-color);
+    /* Uses a custom path to create the curve from bottom-left to top-right */
+    clip-path: polygon(0 25%, 100% 75%, 100% 100%, 0% 100%);
+    /* Corner rounding at the top-right of the yellow block */
+}
+
+/* Image Box 1: Rounded top-right image */
+.agency-color-1 .agency-image-box, 
+.agency-color-4 .agency-image-box,
+ .agency-color-7  .agency-image-box {
+    bottom: 30px;
+    right: 30px;
+    width: 230px;
+    max-height: 240px;
+    background: #fff;
+    border-radius: 6px;
+    border: 8px solid var(--main-color)
+}
+
+/* Join Text 1 */
+.join-text-yellow {
+    bottom: 80px;
+    right: 20px;
+    color: var(--text-color);
+}
+
+/* Shape 2: Full background fill */
+.agency-shape-purple {
+    height: 100%;
+    background: var(--main-color);
+    clip-path: polygon(0 15%, 100% 65%, 100% 100%, 0% 100%);
+}
+
+/* Image Box 2: Large Circle in the middle */
+.agency-color-2 .agency-image-box, 
+.agency-color-5 .agency-image-box,
+ .agency-color-8  .agency-image-box {
+    bottom: 30px;
+    right: 40px;
+    border-radius: 50%;
+    width: 230px;
+    height: 230px;
+    background: rgba(255, 255, 255, 0.4);
+    /* Inner shadow background */
+    z-index: 5;
+    border: 8px solid var(--main-color);
+}
+
+.agency-purple .agency-image-box img {
+    border-radius: 50%;
+}
+
+/* Join Text 2 */
+.join-text-purple {
+    top: 170px;
+    left: 20px;
+    color: #fff;
+}
+
+/* ------------------- CARD 3: BLUE ------------------- */
+
+/* Shape 3: Bottom-right fill */
+.agency-shape-blue {
+    height: 100%;
+    background: var(--main-color);
+    /* This shape starts from the bottom right and goes up diagonally */
+    clip-path: polygon(0 70%, 0 100%, 100% 100%, 100% 30%);
+
+}
+
+/* Image Box 3: Large Rounded Rectangle at the top */
+.agency-color-3 .agency-image-box, 
+.agency-color-6 .agency-image-box,
+.agency-color-9 .agency-image-box {
+
+    left: 30px;
+    bottom: 30px;
+    width: 230px;
+    max-height: 240px;
+    background: #fff;
+    /* Image box becomes the white area */
+    border-radius: 10px;
+    border: 8px solid var(--main-color);
+    z-index: 5;
+}
+
+/* .agency-blue .agency-image-box img {
+  border-radius: 5px;
+} */
+
+/* Join Text 3 */
+.join-text-blue {
+    bottom: 80px;
+    left: 20px;
+    color: var(--text-color);
+}
+
+/* ---------------- ICONS ----------------- */
+
+.agency-icons {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+/* Left column for first 2 cards */
+.agency-icons.left {
+    bottom: 10px;
+    left: 10px;
+    flex-direction: column;
+}
+
+/* Right column for third card */
+.agency-icons.right {
+    bottom: 10px;
+    right: 10px;
+    flex-direction: column;
+}
+
+/* Icon wrapper */
+.agency-icons .newfile-icon-wrapper {
+
+    height: 20px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+
+/* Logo in top-right corner */
+.agency-logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px;
+    /* adjust size as needed */
+    height: 25px;
+    z-index: 20;
+    border-radius: 50%;
+}
+
+.agency-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+}

@@ -20,9 +20,9 @@ const AppDevelopment = () => {
       </div>
 
       {/* Image Grid */}
-      <div className="row gx-4 gy-4">
+      <div className="row">
         {imageLinks.map((item, index) => (
-          <div key={index} className="col-6 col-md-3 p-2 text-center">
+          <div key={index} className="col-6 col-md-2 p-2 text-center">
             <img
               src={item.url}
               alt={`App Design ${index + 1}`}

@@ -1,15 +1,314 @@
-
-
-.smm-image {
-  width: 80%;
-  height: auto;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+/* ------------------- FLEXBOX GRID CONTAINER ------------------- */
+.agency-grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: gray;
+max-width:1140px;
+    margin: 0 auto;
+    /* DESKTOP/LARGE SCREEN SETTINGS (3 COLUMNS, 20px GAP) */
+    /* Negative margin = Half the desired 20px gap (10px) */
 }
 
-.smm-image:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+/* ------------------- CARD WRAPPER ------------------- */
+.agency-card-wrapper {
+    /* Padding = Half the desired 20px gap (10px) */
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 20px; /* Vertical gap between rows */
+    display: flex;
+    justify-content: center;
+    /* 3-column view: 100% / 3 = 33.333% */
+    width: 33.333%;
+    flex-grow: 0;
+    flex-shrink: 0;
 }
 
+/* ------------------- RESPONSIVENESS ------------------- */
+
+/* Mobile/Medium Screens: 2 cards per row, 10px GAP (max-width: 991px) */
+@media (max-width: 991px) {
+    .agency-grid-container {
+        /* Change negative margin for 10px gap: Half is 5px */
+        margin-left: -5px;
+        margin-right: -5px;
+    }
+
+    .agency-card-wrapper {
+        /* Change padding for 10px gap: Half is 5px */
+        padding-left: 5px;
+        padding-right: 5px;
+
+        /* 2-column view: 100% / 2 = 50% */
+        width: 50%;
+    }
+}
+
+/* Extra small screens: 1 card per row (max-width: 575px) */
+
+
+/* ------------------- BASE CARD STYLING ------------------- */
+.agency-card {
+    width: 100%;
+    max-width: 350px;
+    max-height: 320px;
+    aspect-ratio: 1 / 1;
+    background: #fff;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(0.1, 0.1, 0.1, 0.1);
+    box-sizing: border-box;
+}
+
+/* --- The rest of your existing CSS below this point is assumed to be correct --- */
+/* Image box styles (Used for the image/white section) */
+.agency-image-box {
+    position: absolute;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.agency-image-box img {
+    width: 100%;
+    object-fit: contain;
+
+}
+
+/* The 'shape' elements are the main background color blocks */
+.agency-shape {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+/* ------------------- COLOR VARS ------------------- */
+
+.agency-color-1 {
+    --main-color: #F5B942;
+    --text-color: #000;
+}
+
+.agency-color-2 {
+    --main-color: #8028C9;
+    --text-color: #fff;
+}
+
+.agency-color-3 {
+    --main-color: #2384E0;
+    --text-color: #fff;
+}
+
+.agency-color-4 {
+    --main-color: #FF5733;
+    --text-color: #fff;
+}
+
+.agency-color-5 {
+    --main-color: #1BB55C;
+    --text-color: #fff;
+}
+
+.agency-color-6 {
+    --main-color: #FF1493;
+    --text-color: #fff;
+}
+
+.agency-color-7 {
+    --main-color: #009688;
+    --text-color: #fff;
+}
+
+.agency-color-8 {
+    --main-color: #FF9800;
+    --text-color: #000;
+}
+
+.agency-color-9 {
+    --main-color: #673AB7;
+    --text-color: #fff;
+}
+
+/* ------------------- SHAPE 1: YELLOW ------------------- */
+
+/* Shape 1: Curved background fill */
+.agency-shape-yellow {
+    height: 100%;
+    background: var(--main-color);
+    /* Uses a custom path to create the curve from bottom-left to top-right */
+    clip-path: polygon(0 25%, 100% 75%, 100% 100%, 0% 100%);
+}
+
+/* Image Box 1: Rounded top-right image */
+.agency-color-1 .agency-image-box,
+.agency-color-4 .agency-image-box,
+.agency-color-7 .agency-image-box {
+    bottom: 30px;
+    right: 30px;
+    width: calc(100% - 60px);
+    /* Adjusted for responsiveness */
+    max-width: 230px;
+    /* Max size constraint */
+    max-height: 240px;
+    aspect-ratio: 1;
+    /* Keep square or near-square aspect ratio */
+    background: #fff;
+    border-radius: 6px;
+    border: 8px solid var(--main-color)
+}
+
+/* ------------------- SHAPE 2: PURPLE ------------------- */
+
+/* Shape 2: Full background fill */
+.agency-shape-purple {
+    height: 100%;
+    background: var(--main-color);
+    clip-path: polygon(0 15%, 100% 65%, 100% 100%, 0% 100%);
+}
+
+/* Image Box 2: Large Circle in the middle */
+.agency-color-2 .agency-image-box,
+.agency-color-5 .agency-image-box,
+.agency-color-8 .agency-image-box {
+    bottom: 30px;
+    right: 40px;
+    border-radius: 50%;
+    width: calc(100% - 70px);
+    /* Adjusted for responsiveness */
+    max-width: 230px;
+    /* Max size constraint */
+    height: auto;
+    aspect-ratio: 1;
+    /* Keep it a perfect circle */
+    background: rgba(255, 255, 255, 0.4);
+    /* Inner shadow background */
+    z-index: 5;
+    border: 8px solid var(--main-color);
+}
+
+.agency-color-2 .agency-image-box img,
+.agency-color-5 .agency-image-box img,
+.agency-color-8 .agency-image-box img {
+    border-radius: 50%;
+}
+
+/* ------------------- SHAPE 3: BLUE ------------------- */
+
+/* Shape 3: Bottom-right fill */
+.agency-shape-blue {
+    height: 100%;
+    background: var(--main-color);
+    /* This shape starts from the bottom right and goes up diagonally */
+    clip-path: polygon(0 70%, 0 100%, 100% 100%, 100% 30%);
+
+}
+
+/* Image Box 3: Large Rounded Rectangle at the top */
+.agency-color-3 .agency-image-box,
+.agency-color-6 .agency-image-box,
+.agency-color-9 .agency-image-box {
+
+    left: 30px;
+    bottom: 30px;
+    width: calc(100% - 60px);
+    max-width: 230px;
+    max-height: 240px;
+    aspect-ratio: 1;
+    background: #fff;
+    border-radius: 10px;
+    border: 8px solid var(--main-color);
+    z-index: 5;
+}
+
+/* ---------------- ICONS ----------------- */
+
+.agency-icons {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+/* Left column for first 2 cards */
+.agency-icons.left {
+    bottom: 10px;
+    left: 10px;
+    flex-direction: column;
+}
+
+/* Right column for third card */
+.agency-icons.right {
+    bottom: 10px;
+    right: 10px;
+    flex-direction: column;
+}
+
+/* Icon wrapper */
+.agency-icons .newfile-icon-wrapper {
+
+    height: 20px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+
+/* Logo in top-right corner */
+.agency-logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 25px;
+    /* adjust size as needed */
+    height: 25px;
+    z-index: 20;
+    border-radius: 50%;
+}
+
+.agency-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+@media (max-width: 575px) {
+    .agency-icons .newfile-icon-wrapper{
+        height: 12px;
+        font-size: 12px;
+    }
+    .agency-icons{
+      gap: 5px;
+    }
+    .agency-color-3 .agency-image-box,
+.agency-color-6 .agency-image-box,
+.agency-color-9 .agency-image-box {
+  border: 4px solid var(--main-color);
+}
+.agency-color-1 .agency-image-box,
+.agency-color-4 .agency-image-box,
+.agency-color-7 .agency-image-box {
+  border: 4px solid var(--main-color);
+}
+.agency-color-2 .agency-image-box,
+.agency-color-5 .agency-image-box,
+.agency-color-8 .agency-image-box {
+  border: 4px solid var(--main-color);
+}
+.agency-logo{
+    width: 20px;
+    height: 20px;
+        top: 5px;
+    right: 5px;
+}
+}

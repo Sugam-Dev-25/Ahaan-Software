@@ -12,10 +12,28 @@ import {
   WiDayHaze,
 } from "react-icons/wi";
 
+import { profileAPI } from "../Api/api"; // ⭐ IMPORT PROFILE API
+
 export default function Topbar() {
   const [currentTime, setCurrentTime] = useState("");
   const [currentDate, setCurrentDate] = useState("");
   const [weather, setWeather] = useState(null);
+
+  // ⭐ USER STATE
+  const [user, setUser] = useState(null);
+
+  // 🔵 FETCH USER PROFILE
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const res = await profileAPI();
+        setUser(res.data.user);
+      } catch (err) {
+        console.log("Profile Error:", err);
+      }
+    };
+    fetchProfile();
+  }, []);
 
   // 🔵 WEATHER FETCH
   useEffect(() => {
@@ -81,7 +99,7 @@ export default function Topbar() {
     }
   };
 
-  // 🔵 DATE + TIME
+  // 🔵 DATE + TIME HANDLER
   useEffect(() => {
     const updateDateTime = () => {
       const date = new Date();
@@ -109,8 +127,10 @@ export default function Topbar() {
 
   return (
     <div className="d-flex justify-content-between align-items-center px-4 py-3">
+      
       {/* LEFT: DATE + TIME + WEATHER */}
       <div className="d-flex align-items-center gap-4">
+
         {/* Weather */}
         {weather && (
           <div className="d-flex align-items-center gap-2">
@@ -138,6 +158,7 @@ export default function Topbar() {
 
       {/* RIGHT: NOTIFICATION + USER */}
       <div className="d-flex align-items-center gap-4">
+
         {/* Notification */}
         <div className="position-relative">
           <FaBell size={22} className="text-dark" />
@@ -149,15 +170,25 @@ export default function Topbar() {
           </span>
         </div>
 
-        {/* User */}
+        {/* USER PROFILE */}
         <div className="d-flex align-items-center">
+
           <img
-            src="https://ahaanmedia.com/asc/All/blog-dp.png"
+            src={
+              user?.profilePicture
+                ? `http://localhost:5000/uploads/${user.profilePicture}`
+                : "https://ahaanmedia.com/asc/All/blog-dp.png"
+            }
             alt="user"
-            className="rounded-circle me-2 p-1 bg-black"
-            width="35"
+            className="rounded-circle me-2  shadow-lg "
+            width="50"
+            height="50"
           />
-          <span className="me-3 fw-bold">Ahaan Software</span>
+
+          <span className="me-3 fw-bold" style={{ fontSize: "16px" }}>
+            {user?.name || "Loading..."}
+          </span>
+
         </div>
       </div>
     </div>
