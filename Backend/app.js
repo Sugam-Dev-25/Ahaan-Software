@@ -14,7 +14,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
-  "https://admin.ahaanmedia.com/"
+  "https://admin.ahaanmedia.com"
 ];
 
 app.use(

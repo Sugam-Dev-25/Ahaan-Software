@@ -130,7 +130,7 @@ export default function Topbar() {
       
       {/* LEFT: DATE + TIME + WEATHER */}
       <div className="d-flex align-items-center gap-4">
-
+ 
         {/* Weather */}
         {weather && (
           <div className="d-flex align-items-center gap-2">
@@ -176,7 +176,7 @@ export default function Topbar() {
           <img
             src={
               user?.profilePicture
-                ? `http://localhost:5000/uploads/${user.profilePicture}`
+                ? `https://ahaan-software-1.onrender.com/uploads/${user.profilePicture}`
                 : "https://ahaanmedia.com/asc/All/blog-dp.png"
             }
             alt="user"
