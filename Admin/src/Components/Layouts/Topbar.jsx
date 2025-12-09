@@ -174,16 +174,17 @@ export default function Topbar() {
         <div className="d-flex align-items-center">
 
           <img
-            src={
-              user?.profilePicture
-                ? `https://ahaan-software-1.onrender.com${user.profilePicture}`
-                : "https://ahaanmedia.com/asc/All/blog-dp.png"
-            }
-            alt="user"
-            className="rounded-circle me-2  shadow-lg "
-            width="50"
-            height="50"
-          />
+  src={
+    user?.profilePicture
+      ? user.profilePicture
+      : "https://ahaanmedia.com/asc/All/blog-dp.png"
+  }
+  alt="user"
+  className="rounded-circle me-2 shadow-lg"
+  width="50"
+  height="50"
+/>
+
 
           <span className="me-3 fw-bold" style={{ fontSize: "16px" }}>
             {user?.name || "Loading..."}

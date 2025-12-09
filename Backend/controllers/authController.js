@@ -5,23 +5,27 @@ const bcrypt = require("bcrypt");
 // JWT TOKEN GENERATOR
 User.prototype.generateJWT = function () {
   return jwt.sign(
-    { id: this._id, designation: this.designation },
+    {
+      id: this._id,
+      designation: this.designation,
+    },
     process.env.JWT_SECRET,
     { expiresIn: "7d" }
   );
 };
 
-const MAX_AGE_MS = 3 * 24 * 60 * 60 * 1000;
-
 // REGISTER
 exports.registerUser = async (req, res) => {
   try {
     const { name, email, password, designation } = req.body;
-    const profilePicture = req.file ? req.file.filename : null;
+
+    // ⭐ Cloudinary → file.path gives full image URL
+    const profilePicture = req.file ? req.file.path : null;
 
     const exists = await User.findOne({ email });
     if (exists) return res.status(400).json({ message: "User already exists" });
 
+    // Create user
     const user = await User.create({
       name,
       email,
@@ -40,7 +44,7 @@ exports.registerUser = async (req, res) => {
         name: user.name,
         email: user.email,
         designation: user.designation,
-        profilePicture: profilePicture ? `/uploads/${profilePicture}` : null,
+        profilePicture, // already full URL
       },
     });
   } catch (error) {
@@ -53,11 +57,14 @@ exports.registerUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
+
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ message: "Invalid email or password" });
+    if (!user)
+      return res.status(400).json({ message: "Invalid email or password" });
 
     const match = await bcrypt.compare(password, user.password);
-    if (!match) return res.status(400).json({ message: "Invalid email or password" });
+    if (!match)
+      return res.status(400).json({ message: "Invalid email or password" });
 
     const token = user.generateJWT();
 
@@ -68,9 +75,7 @@ exports.loginUser = async (req, res) => {
         id: user._id,
         name: user.name,
         designation: user.designation,
-        profilePicture: user.profilePicture
-          ? `/uploads/${user.profilePicture}`
-          : null,
+        profilePicture: user.profilePicture, // FULL URL
       },
     });
   } catch (error) {
