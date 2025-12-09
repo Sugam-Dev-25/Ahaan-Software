@@ -4,29 +4,42 @@ const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const connectDB = require("./config/db");
 const path = require("path");
-const http = require("http");
 
+// Load ENV
 dotenv.config();
 
 const app = express();
 
-// CORS Setup
-app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://your-frontend-url.onrender.com"
-  ],
-  credentials: true
-}));
+// Allowed CORS Origins
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "http://127.0.0.1:5173",
+  "http://127.0.0.1:5174"
+];
 
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS Blocked: Not allowed"));
+      }
+    },
+    credentials: true,
+  })
+);
+
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// Uploads folder
+// Serve Uploads Folder
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// Connect to MongoDB Atlas
+// Connect MongoDB Atlas
 connectDB();
 
 // Routes
@@ -37,19 +50,26 @@ app.use("/api/chat", require("./routes/chatRoutes"));
 app.use("/api/team", require("./routes/teamRoutes"));
 app.use("/api/auth", require("./routes/authRoutes"));
 
-// Create server for socket.io
-const server = http.createServer(app);
-const io = require("socket.io")(server, {
-  cors: { origin: "*" }
+// SOCKET.IO Setup
+const http = require("http").createServer(app);
+const io = require("socket.io")(http, {
+  cors: {
+    origin: allowedOrigins,
+    credentials: true,
+  },
 });
 
+// Chat Socket
 const chatSocket = require("./socket/chatSocket");
 chatSocket(io);
 
+// Default Route
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-// Start Server
+// Server Start
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+http.listen(PORT, () =>
+  console.log(`🚀 Server running on port ${PORT}`)
+);

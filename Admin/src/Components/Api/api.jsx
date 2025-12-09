@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://ahaan-software.onrender.com/api";
+const BASE_URL = "http://localhost:5000/api";
 
 // =================================================
 // AXIOS INSTANCE
@@ -10,7 +10,7 @@ const API = axios.create({
   withCredentials: true, // important for cookie-based auth
 });
 
-// =================================================
+// ================================================= 
 // AUTO ATTACH TOKEN
 // =================================================
 API.interceptors.request.use((config) => {
@@ -32,6 +32,7 @@ export const profileAPI = () => API.get("/auth/profile");
 
 export const logoutAPI = () => API.post("/auth/logout");
 
+
 // =================================================
 // CONTACT + FORM APIs
 // =================================================
@@ -49,6 +50,7 @@ export const getContact = () => API.get("/contact/all");
 
 export const getContactCount = () => API.get("/contact/count");
 
+
 // =================================================
 // CHAT SYSTEM APIs
 // =================================================
@@ -62,6 +64,7 @@ export const getMessages = (conversationId) =>
 
 // 👉 admin → user message পাঠাবে
 export const sendMessage = (data) => API.post("/chat/messages", data);
+
 
 // =================================================
 // TEAM APIs
@@ -84,7 +87,9 @@ export const deleteTeam = (id) => API.delete(`/team/delete/${id}`);
 
 export const getSingleTeam = (id) => API.get(`/team/${id}`);
 
+
 // =================================================
 // EXPORT DEFAULT
 // =================================================
 export default API;
+
