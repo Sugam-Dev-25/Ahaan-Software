@@ -4,7 +4,7 @@ export default function AdminTotalVisitors() {
   const [count, setCount] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/visitor/total")
+    fetch("https://ahaan-software-1.onrender.com/api/visitor/total")
       .then(res => res.json())
       .then(data => {
         setCount(data.totalVisitors);

@@ -19,7 +19,7 @@ const Dashboard = () => {
   // FETCH COUNTS
   useEffect(() => {
     // FORM COUNT
-    fetch("http://localhost:5000/api/form/count")
+    fetch("https://ahaan-software-1.onrender.com/api/form/count")
       .then((res) => res.json())
       .then((data) => setConnectCount(data.total))
       .catch((err) => console.error("Connect Error:", err));
@@ -31,7 +31,7 @@ const Dashboard = () => {
       .catch((err) => console.error("Blog Error:", err));
 
     // CONTACT COUNT
-    fetch("http://localhost:5000/api/contact/count")
+    fetch("https://ahaan-software-1.onrender.com/api/contact/count")
       .then((res) => res.json())
       .then((data) => setContactCount(data.total))
       .catch((err) => console.error("Contact Error:", err));

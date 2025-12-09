@@ -86,7 +86,7 @@ function App() {
     return () => clearTimeout(timeout);
   }, []);
   useEffect(() => {
-  fetch("http://localhost:5000/api/visitor/count")
+  fetch("https://ahaan-software-1.onrender.com/api/visitor/count")
     .then(res => res.json())
     .then(data => {
       console.log("Visitor Count:", data.visitors);
