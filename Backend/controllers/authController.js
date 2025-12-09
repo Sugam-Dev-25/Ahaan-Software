@@ -1,12 +1,23 @@
+const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+
+// JWT TOKEN GENERATOR
+User.prototype.generateJWT = function () {
+  return jwt.sign(
+    { id: this._id, designation: this.designation },
+    process.env.JWT_SECRET,
+    { expiresIn: "7d" }
+  );
+};
+
 const MAX_AGE_MS = 3 * 24 * 60 * 60 * 1000;
 
 // REGISTER
 exports.registerUser = async (req, res) => {
   try {
     const { name, email, password, designation } = req.body;
-    const profilePicture = req.file ? req.file.filename : null; // multer sets file
+    const profilePicture = req.file ? req.file.filename : null;
 
     const exists = await User.findOne({ email });
     if (exists) return res.status(400).json({ message: "User already exists" });
@@ -21,15 +32,9 @@ exports.registerUser = async (req, res) => {
 
     const token = user.generateJWT();
 
-    res.cookie("authToken", token, {
-      httpOnly: true,
-      maxAge: MAX_AGE_MS,
-      sameSite: "None",
-      secure: true,
-    });
-
     res.status(201).json({
       message: "User registered successfully",
+      token,
       user: {
         id: user._id,
         name: user.name,
@@ -49,23 +54,16 @@ exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
-    if (!user)
-      return res.status(400).json({ message: "Invalid email or password" });
+    if (!user) return res.status(400).json({ message: "Invalid email or password" });
 
     const match = await bcrypt.compare(password, user.password);
-    if (!match)
-      return res.status(400).json({ message: "Invalid email or password" });
+    if (!match) return res.status(400).json({ message: "Invalid email or password" });
 
     const token = user.generateJWT();
-    res.cookie("authToken", token, {
-      httpOnly: true,
-      maxAge: MAX_AGE_MS,
-      sameSite: "None",
-      secure: true,
-    });
 
     res.status(200).json({
       message: "Login successful",
+      token,
       user: {
         id: user._id,
         name: user.name,
@@ -91,11 +89,5 @@ exports.getProfile = async (req, res) => {
 
 // LOGOUT
 exports.logoutUser = (req, res) => {
-  res.clearCookie("authToken", {
-    httpOnly: true,
-    sameSite: "None",
-    secure: true,
-  });
-
   res.status(200).json({ message: "Logged out successfully" });
 };

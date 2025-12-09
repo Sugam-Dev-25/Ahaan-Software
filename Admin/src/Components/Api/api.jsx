@@ -2,17 +2,11 @@ import axios from "axios";
 
 const BASE_URL = "https://ahaan-software-1.onrender.com/api";
 
-// =================================================
-// AXIOS INSTANCE
-// =================================================
 const API = axios.create({
   baseURL: BASE_URL,
-  withCredentials: true, // important for cookie-based auth
+  withCredentials: false, // ✅ Cookie cross-domain নয়, token header ব্যবহার
 });
 
-// ================================================= 
-// AUTO ATTACH TOKEN
-// =================================================
 API.interceptors.request.use((config) => {
   const user = JSON.parse(localStorage.getItem("user"));
   if (user?.token) {

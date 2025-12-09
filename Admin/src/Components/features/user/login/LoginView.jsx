@@ -21,6 +21,7 @@ const LoginView = () => {
   const onSubmit = async (data) => {
     const res = await dispatch(loginUser(data));
     if (res?.meta?.requestStatus === "fulfilled") {
+      localStorage.setItem("user", JSON.stringify(res.payload));
       navigate("/");
     }
   };

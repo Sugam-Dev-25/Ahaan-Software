@@ -176,7 +176,7 @@ export default function Topbar() {
           <img
             src={
               user?.profilePicture
-                ? `https://ahaan-software-1.onrender.com/uploads/${user.profilePicture}`
+                ? `https://ahaan-software-1.onrender.com${user.profilePicture}`
                 : "https://ahaanmedia.com/asc/All/blog-dp.png"
             }
             alt="user"

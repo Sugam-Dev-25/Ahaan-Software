@@ -32,6 +32,7 @@ const RegisterView = () => {
     const res = await dispatch(registerUser(fd));
 
     if (res.meta.requestStatus === "fulfilled") {
+      localStorage.setItem("user", JSON.stringify(res.payload));
       navigate("/");
     }
   };
