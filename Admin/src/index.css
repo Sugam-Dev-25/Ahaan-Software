@@ -7,3 +7,11 @@ input.form-control.styled-input {
 textarea.form-control.styled-input{
   color: #000;
 }
+.admin-search-box{
+  border: none !important;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  height: 45px;
+  border-radius: 50px !important;
+  border: 1px solid #fbeba2 !important;
+  background-color: #fefcf2 !important;
+}

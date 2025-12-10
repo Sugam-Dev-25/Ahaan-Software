@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { getForms } from "../Api/api";
+import { SearchContext } from "../../searchContext";
 import "./ConnectForm.css";
 
 const ConnectForm = () => {
   const [forms, setForms] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // 🔥 GET GLOBAL SEARCH TEXT
+  const { query } = useContext(SearchContext);
 
   const fetchData = async () => {
     try {
@@ -22,6 +26,19 @@ const ConnectForm = () => {
   }, []);
 
   if (loading) return <h3 className="loading-text">Loading...</h3>;
+
+  // 🔥 FILTER BASED ON TOPBAR SEARCH
+  const filtered = forms.filter((item) => {
+    const q = query.toLowerCase();
+
+    return (
+      item.name.toLowerCase().includes(q) ||
+      item.email.toLowerCase().includes(q) ||
+      item.service.toLowerCase().includes(q) ||
+      item.budget.toLowerCase().includes(q) ||
+      item.projectDetails.toLowerCase().includes(q)
+    );
+  });
 
   return (
     <div className="container mt-1 mb-1">
@@ -41,7 +58,7 @@ const ConnectForm = () => {
           </thead>
 
           <tbody>
-            {forms.map((item, index) => (
+            {filtered.map((item, index) => (
               <tr key={item._id}>
                 <td>{index + 1}</td>
                 <td>{item.name}</td>

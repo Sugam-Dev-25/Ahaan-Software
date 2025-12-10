@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { getContact } from "../Api/api";
+import { SearchContext } from "../../searchContext";
 import "./ConnectForm.css"; // SAME CSS USE koro
 
 const ContactForm = () => {
   const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // 🔥 GET GLOBAL SEARCH TEXT
+  const { query } = useContext(SearchContext);
 
   const fetchData = async () => {
     try {
@@ -22,6 +26,19 @@ const ContactForm = () => {
   }, []);
 
   if (loading) return <h3 className="loading-text">Loading...</h3>;
+
+  // 🔥 SEARCH FILTER EXACTLY LIKE CONNECT FORM
+  const filtered = contacts.filter((item) => {
+    const q = query.toLowerCase();
+
+    return (
+      item.name.toLowerCase().includes(q) ||
+      item.email.toLowerCase().includes(q) ||
+      item.phone.toLowerCase().includes(q) ||
+      item.website.toLowerCase().includes(q) ||
+      item.message.toLowerCase().includes(q)
+    );
+  });
 
   return (
     <div className="container mt-1 mb-1">
@@ -41,7 +58,7 @@ const ContactForm = () => {
           </thead>
 
           <tbody>
-            {contacts.map((item, index) => (
+            {filtered.map((item, index) => (
               <tr key={item._id}>
                 <td>{index + 1}</td>
                 <td>{item.name}</td>
@@ -55,6 +72,7 @@ const ContactForm = () => {
               </tr>
             ))}
           </tbody>
+
         </table>
 
       </div>

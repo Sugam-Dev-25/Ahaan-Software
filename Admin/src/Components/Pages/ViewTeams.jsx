@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { getAllTeams, deleteTeam, updateTeam } from "../Api/api";
 import { FiTrash2, FiEdit, FiEye, FiEyeOff } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { SearchContext } from "../../searchContext"; // 👉 ADD THIS
 import "./Teams.css";
 
 const ViewTeams = () => {
   const [teams, setTeams] = useState([]);
 
+  // 🔥 GLOBAL SEARCH TEXT
+  const { query } = useContext(SearchContext);
+
   const loadTeams = async () => {
     const res = await getAllTeams();
-    console.log("API Response:", res.data);
 
-    // Ensure frontend keeps same order received from MongoDB
     const dataWithDefault = res.data.map((t) => ({
       ...t,
       isHidden: t.isHidden ?? false,
@@ -49,7 +51,6 @@ const ViewTeams = () => {
     );
   };
 
-  // Short description helper
   const getShortDesc = (text) => {
     const words = text.split(" ");
     if (words.length <= 10) return text;
@@ -60,16 +61,28 @@ const ViewTeams = () => {
     loadTeams();
   }, []);
 
+  // 🔥 FILTER BASED ON GLOBAL SEARCH
+  const filtered = teams.filter((t) => {
+    const q = query.toLowerCase();
+
+    return (
+      t.name.toLowerCase().includes(q) ||
+      t.position.toLowerCase().includes(q) ||
+      t.description.toLowerCase().includes(q)
+    );
+  });
+
   return (
     <div className="container py-3">
       <h2 className="text-center mb-4 fw-bold">Our Team</h2>
 
       <div className="row g-4">
-        {teams.length === 0 && (
+
+        {filtered.length === 0 && (
           <p className="text-center text-danger">No team members found</p>
         )}
 
-        {teams.map((t) => (
+        {filtered.map((t) => (
           <div className="col-md-4 col-lg-3" key={t._id}>
             <div className={`team-card shadow ${t.isHidden ? "opacity-50" : ""}`}>
               
@@ -81,12 +94,10 @@ const ViewTeams = () => {
                 <h5 className="team-name">{t.name}</h5>
                 <p className="team-position">{t.position}</p>
 
-                {/* Show description */}
                 <p className="team-desc">
                   {t.showFull ? t.description : getShortDesc(t.description)}
                 </p>
 
-                {/* Show More / Less */}
                 {t.description.split(" ").length > 20 && (
                   <button
                     className="btn btn-link p-0"
@@ -96,9 +107,8 @@ const ViewTeams = () => {
                   </button>
                 )}
 
-                {/* Buttons */}
                 <div className="d-flex justify-content-center gap-2 mt-3">
-                  
+
                   <Link
                     to={`/edit-team/${t._id}`}
                     className="btn btn-sm btn-success"
@@ -112,13 +122,6 @@ const ViewTeams = () => {
                   >
                     <FiTrash2 />
                   </button>
-
-                  {/* <button
-                    className="btn btn-sm btn-dark"
-                    onClick={() => toggleVisibility(t)}
-                  >
-                    {t.isHidden ? <FiEye /> : <FiEyeOff />}
-                  </button> */}
 
                 </div>
 

@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { FaBell, FaRegCalendarAlt } from "react-icons/fa";
-
-// WEATHER ICONS
+import React, { useEffect, useState, useContext } from "react";
+import { FaBell, FaRegCalendarAlt, FaSearch } from "react-icons/fa";
 import {
   WiDaySunny,
   WiNightClear,
@@ -12,17 +10,39 @@ import {
   WiDayHaze,
 } from "react-icons/wi";
 
-import { profileAPI } from "../Api/api"; // ⭐ IMPORT PROFILE API
+import { profileAPI } from "../Api/api";
+import { SearchContext } from "../../searchContext";
 
 export default function Topbar() {
   const [currentTime, setCurrentTime] = useState("");
   const [currentDate, setCurrentDate] = useState("");
   const [weather, setWeather] = useState(null);
-
-  // ⭐ USER STATE
   const [user, setUser] = useState(null);
 
-  // 🔵 FETCH USER PROFILE
+  const { query, setQuery } = useContext(SearchContext);
+  const [filtered, setFiltered] = useState([]);
+
+  const searchData = [
+    { id: 1, name: "Dashboard", route: "/" },
+    { id: 2, name: "All Blogs", route: "/all-blogs" },
+    { id: 3, name: "Add Blog", route: "/add-blogs" },
+    { id: 4, name: "Manage Blogs", route: "/manage-blogs" },
+    { id: 5, name: "Connect Form", route: "/connect-form" },
+    { id: 6, name: "Contact Form", route: "/contact-form" },
+    { id: 7, name: "Teams", route: "/view-team" },
+    { id: 8, name: "Chat", route: "/chat" },
+  ];
+
+  useEffect(() => {
+    if (query.trim() === "") return setFiltered([]);
+
+    setFiltered(
+      searchData.filter((item) =>
+        item.name.toLowerCase().includes(query.toLowerCase())
+      )
+    );
+  }, [query]);
+
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -35,7 +55,6 @@ export default function Topbar() {
     fetchProfile();
   }, []);
 
-  // 🔵 WEATHER FETCH
   useEffect(() => {
     const fetchWeather = async () => {
       try {
@@ -43,14 +62,13 @@ export default function Topbar() {
           "https://api.openweathermap.org/data/2.5/weather?q=Kolkata&appid=082f135195d80501379a461dbad34d4c&units=metric"
         );
         const data = await res.json();
-
         const hour = new Date().getHours();
 
         setWeather({
           temp: data.main?.temp,
           desc: data.weather[0]?.main,
           title: data.weather[0]?.description,
-          hour: hour,
+          hour,
         });
       } catch (error) {
         console.log("Weather Error:", error);
@@ -58,15 +76,12 @@ export default function Topbar() {
     };
 
     fetchWeather();
-    const interval = setInterval(fetchWeather, 600000);
-
-    return () => clearInterval(interval);
+    const timer = setInterval(fetchWeather, 600000);
+    return () => clearInterval(timer);
   }, []);
 
-  // 🔵 SELECT WEATHER ICON
   const getWeatherIcon = () => {
     if (!weather) return null;
-
     const isNight = weather.hour >= 18 || weather.hour < 6;
 
     switch (weather.desc) {
@@ -76,36 +91,30 @@ export default function Topbar() {
         ) : (
           <WiDaySunny size={35} color="#ffaa00" />
         );
-
       case "Clouds":
         return <WiCloudy size={35} color="#6b7280" />;
-
       case "Rain":
         return <WiRainMix size={35} color="#3b82f6" />;
-
       case "Thunderstorm":
         return <WiStormShowers size={35} color="#facc15" />;
-
       case "Snow":
         return <WiSnow size={35} color="#93c5fd" />;
-
       case "Haze":
       case "Mist":
       case "Fog":
-        return <WiDayHaze size={35} color="#191c24ff" />;
-
+        return <WiDayHaze size={35} color="#191c24" />;
       default:
         return <WiCloudy size={35} color="#6b7280" />;
     }
   };
 
-  // 🔵 DATE + TIME HANDLER
   useEffect(() => {
     const updateDateTime = () => {
       const date = new Date();
-
-      const options = { month: "long", day: "numeric" };
-      const formattedDate = date.toLocaleDateString("en-US", options);
+      const formattedDate = date.toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+      });
 
       const weekday = date.toLocaleDateString("en-US", { weekday: "long" });
 
@@ -121,77 +130,110 @@ export default function Topbar() {
 
     updateDateTime();
     const timer = setInterval(updateDateTime, 1000);
-
     return () => clearInterval(timer);
   }, []);
 
   return (
     <div className="d-flex justify-content-between align-items-center px-4 py-3">
-      
-      {/* LEFT: DATE + TIME + WEATHER */}
+
+      {/* LEFT SIDE */}
       <div className="d-flex align-items-center gap-4">
- 
-        {/* Weather */}
         {weather && (
           <div className="d-flex align-items-center gap-2">
             {getWeatherIcon()}
-            <div className="d-flex flex-column">
+            <div>
               <span className="fw-bold">{weather.temp}°C</span>
+              <br />
               <small className="text-muted">{weather.title}</small>
             </div>
           </div>
         )}
 
-        {/* Date + Time */}
-        <div className="d-flex align-items-center gap-3">
-          <FaRegCalendarAlt size={22} className="text-dark" />
-          <div className="d-flex flex-column">
-            <span className="fw-bold" style={{ fontSize: "18px" }}>
-              {currentDate}
-            </span>
-            <span className="text-muted" style={{ marginTop: "-4px" }}>
-              {currentTime}
-            </span>
+        <div className="d-flex align-items-center gap-3 me-4">
+          <FaRegCalendarAlt size={22} />
+          <div>
+            <span className="fw-bold">{currentDate}</span>
+            <br />
+            <small className="text-muted">{currentTime}</small>
           </div>
         </div>
       </div>
 
-      {/* RIGHT: NOTIFICATION + USER */}
-      <div className="d-flex align-items-center gap-4">
+      {/* RIGHT SIDE */}
+      {/* RIGHT SIDE */}
+<div className="d-flex align-items-center gap-4 flex-grow-1">
 
-        {/* Notification */}
-        <div className="position-relative">
-          <FaBell size={22} className="text-dark" />
-          <span
-            className="badge bg-danger position-absolute top-0 start-100 translate-middle"
-            style={{ fontSize: "10px" }}
+  {/* SEARCH → FULL WIDTH */}
+  <div className="position-relative flex-grow-1 w-80" >
+    <div className="d-flex align-items-center px-3 py-1 w-100 admin-search-box">
+      <FaSearch className="me-2 text-muted" />
+
+      <input
+        type="text"
+        placeholder="Search by title..."
+        className=" w-100" 
+        value={query}
+        style={{ outline: "none", border: "none", background: "transparent" }}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+    </div>
+
+    {/* {filtered.length > 0 && (
+      <ul
+        className="position-absolute bg-white  rounded mt-1 p-0 w-100"
+        style={{
+          listStyle: "none",
+          maxHeight: "180px",
+          overflowY: "auto",
+          zIndex: 999,
+        }}
+      >
+        {filtered.map((item) => (
+          <li
+            key={item.id}
+            className="px-3 py-2 border-bottom"
+            style={{ cursor: "pointer" }}
           >
-            3
-          </span>
-        </div>
+            {item.name}
+          </li>
+        ))}
+      </ul>
+    )} */}
+  </div>
 
-        {/* USER PROFILE */}
-        <div className="d-flex align-items-center">
+  {/* NOTIFICATION */}
+  <div className="position-relative">
+    <FaBell size={22} />
+    <span className="badge bg-danger position-absolute top-0 start-100 translate-middle">
+      3
+    </span>
+  </div>
 
-          <img
-  src={
-    user?.profilePicture
-      ? user.profilePicture
-      : "https://ahaanmedia.com/asc/All/blog-dp.png"
-  }
-  alt="user"
-  className="rounded-circle me-2 shadow-lg"
-  width="50"
-  height="50"
-/>
+  {/* USER */}
+  <div className="d-flex align-items-center">
+    <img
+      src={
+        user?.profilePicture
+          ? user.profilePicture
+          : "https://ahaanmedia.com/asc/All/blog-dp.png"
+      }
+      width="50"
+      height="50"
+      className="rounded-circle me-2 shadow-lg"
+      alt="user"
+    />
 
+    <div>
+      <span className="fw-bold">{user?.name || "Loading..."}</span>
+      <br />
+      <small className="text-success">
+        {user?.designation || "Designation"}
+      </small>
+    </div>
+  </div>
 
-          <span className="me-3 fw-bold" style={{ fontSize: "16px" }}>
-            {user?.name || "Loading..."}
-          </span>
+</div>
 
-        </div>
-      </div>
     </div>
   );
 }

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Table, Button, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { FiEdit, FiTrash2, FiEye } from "react-icons/fi"; // Added Eye icon
+import { FiEdit, FiTrash2, FiEye } from "react-icons/fi";
+import { SearchContext } from "../../searchContext"; // 👉 Add this!
 import "./BlogTable.css";
 
 const BlogTable = () => {
@@ -10,6 +11,9 @@ const BlogTable = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedBlogId, setSelectedBlogId] = useState(null);
   const navigate = useNavigate();
+
+  // 🔥 Global TOPBAR Search
+  const { query } = useContext(SearchContext);
 
   useEffect(() => {
     fetchBlogs();
@@ -24,13 +28,8 @@ const BlogTable = () => {
     }
   };
 
-  const handleEdit = (id) => {
-    navigate(`/edit-blog/${id}`);
-  };
-
-  const handleView = (id) => {
-    navigate(`/view-blog/${id}`);
-  };
+  const handleEdit = (id) => navigate(`/edit-blog/${id}`);
+  const handleView = (id) => navigate(`/view-blog/${id}`);
 
   const handleDeleteConfirm = (id) => {
     setSelectedBlogId(id);
@@ -51,26 +50,27 @@ const BlogTable = () => {
         setBlogs((prev) => prev.filter((blog) => blog.id !== selectedBlogId));
         alert("✅ Blog deleted successfully!");
       } else {
-        alert("❌ Failed to delete blog: " + res.data.message);
+        alert("❌ Failed: " + res.data.message);
       }
 
       setShowModal(false);
     } catch (err) {
-      console.error("❌ Delete failed:", err);
-      alert("❌ Server error. Could not delete blog.");
+      console.error("Delete failed:", err);
+      alert("❌ Server error.");
     }
   };
+
+  // 🔥 FILTER BLOGS BASED ON TOPBAR SEARCH (title, author)
+  const filtered = blogs.filter((blog) =>
+    blog.title.toLowerCase().includes(query.toLowerCase()) ||
+    blog.author?.toLowerCase().includes(query.toLowerCase())
+  );
 
   return (
     <div className="container mt-1 mb-1">
       <div className="table-container">
 
-        <Table
-          striped
-          hover
-          responsive
-          className="table align-middle text-center"
-        >
+        <Table striped hover responsive className="table align-middle text-center">
           <thead>
             <tr>
               <th>Id</th>
@@ -83,10 +83,12 @@ const BlogTable = () => {
               <th>Actions</th>
             </tr>
           </thead>
+
           <tbody>
-            {blogs.map((blog, index) => (
+            {filtered.map((blog, index) => (
               <tr key={blog.id}>
                 <td>{index + 1}</td>
+
                 <td>
                   <img
                     src={
@@ -98,17 +100,22 @@ const BlogTable = () => {
                     className="blog-thumb"
                   />
                 </td>
+
                 <td>{blog.title}</td>
+
                 <td>
                   <span className="badge-author">
                     {blog.author || "Unknown"}
                   </span>
                 </td>
+
                 <td className="timestamp">
                   {new Date(blog.created_at).toLocaleString()}
                 </td>
+
                 <td>{blog.reactions?.["thumbs up"] || 0}</td>
                 <td>{blog.reactions?.love || 0}</td>
+
                 <td className="action-buttons d-flex gap-2 justify-content-center">
                   <Button
                     variant="warning"
@@ -117,6 +124,7 @@ const BlogTable = () => {
                   >
                     <FiEye />
                   </Button>
+
                   <Button
                     variant="success"
                     className="icon-btn"
@@ -124,6 +132,7 @@ const BlogTable = () => {
                   >
                     <FiEdit />
                   </Button>
+
                   <Button
                     variant="danger"
                     className="icon-btn"
@@ -138,26 +147,24 @@ const BlogTable = () => {
         </Table>
       </div>
 
-      {/* Confirm Delete Modal */}
+      {/* DELETE MODAL */}
       <Modal show={showModal} onHide={() => setShowModal(false)} centered>
         <Modal.Header closeButton>
           <Modal.Title>Delete Blog Post</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>
-            This action will permanently remove the selected blog post from your
-            site. Once deleted, it cannot be recovered.
+            This will permanently remove the blog post.  
+            <strong>Once deleted, it cannot be recovered.</strong>
           </p>
-          <p className="text mb-0 ">
-            Are you absolutely sure you want to proceed?
-          </p>
+          <p>Are you sure?</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="success" onClick={() => setShowModal(false)}>
             Cancel
           </Button>
           <Button variant="danger" onClick={confirmDelete}>
-            Yes, Delete Permanently
+            Yes, Delete
           </Button>
         </Modal.Footer>
       </Modal>

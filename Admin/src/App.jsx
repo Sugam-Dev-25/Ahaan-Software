@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "apexcharts/dist/apexcharts.css";
-
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Topbar from "./Components/Layouts/Topbar";
 import Sidebar from "./Components/Layouts/Sidebar";
@@ -21,13 +21,13 @@ import LoginView from "./Components/features/user/login/LoginView";
 import RegisterView from "./Components/features/user/register/RegisterView";
 import ProtectedRoute from "./Components/features/ProtectedRoute";
 
-// import LoginView from "./features/User/login/LoginView";
-// import RegisterView from "./features/User/register/RegisterView";
+import { SearchContext } from "./searchContext";
 
-// import ProtectedRoute from "./Components/Auth/ProtectedRoute";
 
 function App() {
+   const [query, setQuery] = useState("");
   return (
+    <SearchContext.Provider value={{ query, setQuery }}>
     <BrowserRouter>
       <Routes>
         
@@ -46,6 +46,7 @@ function App() {
         />
       </Routes>
     </BrowserRouter>
+    </SearchContext.Provider>
   );
 }
 
