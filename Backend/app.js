@@ -16,7 +16,7 @@ const allowedOrigins = [
   "http://localhost:5174",
   "https://admin.ahaanmedia.com",
   "https://stagging.ahaanmedia.com",
-  "http://ahaansoftware.com"
+  "https://ahaansoftware.com"
 ];
 
 app.use(
