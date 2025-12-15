@@ -65,3 +65,17 @@
   height: 250px;  
 }
 }
+.portfolio-view-all-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #e4ad07;
+  color: #000000;
+  font-weight: 600;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.portfolio-view-all-btn:hover {
+  background: #f3be20;
+}

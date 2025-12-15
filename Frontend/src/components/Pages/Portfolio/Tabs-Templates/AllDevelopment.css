@@ -1,0 +1,38 @@
+.all-dev-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+.all-dev-grid a {
+  text-decoration: none;
+}
+.all-dev-card {
+  display: block;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: 0.3s;
+}
+
+.all-dev-card img {
+  width: 100%;
+  height: 240px;              /* 🔥 slight height increase */
+  object-fit: cover;
+  object-position: top center; /* ✅ crop from top */
+}
+
+
+.all-dev-card:hover {
+  transform: translateY(-6px);
+}
+.all-dev-title {
+  padding: 12px 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #222;
+  text-align: center;
+  background: #ffffff;
+
+}
+
+

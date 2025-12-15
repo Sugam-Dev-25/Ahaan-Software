@@ -1,12 +1,13 @@
 import axios from "axios";
 
+// const BASE_URL = "http://localhost:5000/api";
 const BASE_URL = "https://ahaan-software-1.onrender.com/api";
 
 const API = axios.create({
   baseURL: BASE_URL,
-  withCredentials: false, // ✅ Cookie cross-domain নয়, token header ব্যবহার
+  withCredentials: false, 
 });
-
+ 
 API.interceptors.request.use((config) => {
   const user = JSON.parse(localStorage.getItem("user"));
   if (user?.token) {
@@ -80,6 +81,61 @@ export const updateTeam = (id, data) => API.put(`/team/update/${id}`, data);
 export const deleteTeam = (id) => API.delete(`/team/delete/${id}`);
 
 export const getSingleTeam = (id) => API.get(`/team/${id}`);
+
+
+// ========================================
+// DESIGN APIs (using API, NOT AdminAPI)
+// ========================================
+
+// ADD
+export const addDesignAPI = (formData) =>
+  API.post("/designs/add", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+
+// GET ALL
+export const getAllDesignsAPI = () => API.get("/designs");
+
+// GET SINGLE
+export const getDesignByIdAPI = (id) => API.get(`/designs/${id}`);
+
+// UPDATE
+export const updateDesignAPI = (id, formData) =>
+  API.put(`/designs/edit/${id}`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+
+// DELETE
+export const deleteDesignAPI = (id) => API.delete(`/designs/delete/${id}`);
+
+
+
+// =================================================
+// DEVELOPMENT APIs 
+// =================================================
+
+// ADD DEVELOPMENT
+export const addDevelopmentAPI = (formData) =>
+  API.post("/developments/add", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+
+// GET ALL DEVELOPMENT
+export const getAllDevelopmentsAPI = () => API.get("/developments/all");
+
+// GET SINGLE DEVELOPMENT
+export const getDevelopmentByIdAPI = (id) => API.get(`/developments/${id}`);
+
+// UPDATE DEVELOPMENT
+export const updateDevelopmentAPI = (id, formData) =>
+  API.put(`/developments/edit/${id}`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+
+// DELETE DEVELOPMENT
+export const deleteDevelopmentAPI = (id) =>
+  API.delete(`/developments/delete/${id}`);
+
 
 
 // =================================================

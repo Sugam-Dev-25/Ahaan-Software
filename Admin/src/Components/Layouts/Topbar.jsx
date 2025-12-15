@@ -135,7 +135,6 @@ export default function Topbar() {
 
   return (
     <div className="d-flex justify-content-between align-items-center px-4 py-3">
-
       {/* LEFT SIDE */}
       <div className="d-flex align-items-center gap-4">
         {weather && (
@@ -160,25 +159,27 @@ export default function Topbar() {
       </div>
 
       {/* RIGHT SIDE */}
-      {/* RIGHT SIDE */}
-<div className="d-flex align-items-center gap-4 flex-grow-1">
+      <div className="d-flex align-items-center gap-4 flex-grow-1">
+        {/* SEARCH → FULL WIDTH */}
+        <div className="position-relative flex-grow-1 w-80">
+          <div className="d-flex align-items-center px-3 py-1 w-100 admin-search-box">
+            <FaSearch className="me-2 text-muted" />
 
-  {/* SEARCH → FULL WIDTH */}
-  <div className="position-relative flex-grow-1 w-80" >
-    <div className="d-flex align-items-center px-3 py-1 w-100 admin-search-box">
-      <FaSearch className="me-2 text-muted" />
+            <input
+              type="text"
+              placeholder="Search by title..."
+              className=" w-100"
+              value={query}
+              style={{
+                outline: "none",
+                border: "none",
+                background: "transparent",
+              }}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+          </div>
 
-      <input
-        type="text"
-        placeholder="Search by title..."
-        className=" w-100" 
-        value={query}
-        style={{ outline: "none", border: "none", background: "transparent" }}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-    </div>
-
-    {/* {filtered.length > 0 && (
+          {/* {filtered.length > 0 && (
       <ul
         className="position-absolute bg-white  rounded mt-1 p-0 w-100"
         style={{
@@ -199,41 +200,39 @@ export default function Topbar() {
         ))}
       </ul>
     )} */}
-  </div>
+        </div>
 
-  {/* NOTIFICATION */}
-  <div className="position-relative">
-    <FaBell size={22} />
-    <span className="badge bg-danger position-absolute top-0 start-100 translate-middle">
-      3
-    </span>
-  </div>
+        {/* NOTIFICATION */}
+        <div className="position-relative">
+          <FaBell size={22} />
+          <span className="badge bg-warning position-absolute top-0 start-100 translate-middle text-dark">
+            3
+          </span>
+        </div>
 
-  {/* USER */}
-  <div className="d-flex align-items-center">
-    <img
-      src={
-        user?.profilePicture
-          ? user.profilePicture
-          : "https://ahaanmedia.com/asc/All/blog-dp.png"
-      }
-      width="50"
-      height="50"
-      className="rounded-circle me-2 shadow-lg"
-      alt="user"
-    />
+        {/* USER */}
+        <div className="d-flex align-items-center">
+          <img
+            src={
+              user?.profilePicture
+                ? user.profilePicture
+                : "https://ahaanmedia.com/asc/All/blog-dp.png"
+            }
+            width="50"
+            height="50"
+            className="rounded-circle me-2 shadow-lg"
+            alt="user"
+          />
 
-    <div>
-      <span className="fw-bold">{user?.name || "Loading..."}</span>
-      <br />
-      <small className="text-success">
-        {user?.designation || "Designation"}
-      </small>
-    </div>
-  </div>
-
-</div>
-
+          <div>
+            <span className="fw-bold">{user?.name || "Loading..."}</span>
+            <br />
+            <small className="text-success">
+              {user?.designation || "Designation"}
+            </small>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

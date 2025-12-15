@@ -22,30 +22,34 @@ import RegisterView from "./Components/features/user/register/RegisterView";
 import ProtectedRoute from "./Components/features/ProtectedRoute";
 
 import { SearchContext } from "./searchContext";
-
+import AddDesign from "./Components/Pages/AddDesign";
+import ManageDesigns from "./Components/Pages/ManageDesigns";
+import EditDesign from "./Components/Pages/EditDesign";
+import AddDevelopment from "./Components/Pages/AddDevelopment";
+import ManageDevelopments from "./Components/Pages/ManageDevelopments";
+import EditDevelopment from "./Components/Pages/EditDevelopment";
 
 function App() {
-   const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("");
   return (
     <SearchContext.Provider value={{ query, setQuery }}>
-    <BrowserRouter>
-      <Routes>
-        
-        {/* ===================== PUBLIC ROUTES ===================== */}
-        <Route path="/login" element={<LoginView />} />
-        <Route path="/register" element={<RegisterView />} />
+      <BrowserRouter>
+        <Routes>
+          {/* ===================== PUBLIC ROUTES ===================== */}
+          <Route path="/login" element={<LoginView />} />
+          <Route path="/register" element={<RegisterView />} />
 
-        {/* ===================== PROTECTED ROUTES ===================== */}
-        <Route
-          path="/*"
-          element={
-            <ProtectedRoute>
-              <LayoutWrapper />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </BrowserRouter>
+          {/* ===================== PROTECTED ROUTES ===================== */}
+          <Route
+            path="/*"
+            element={
+              <ProtectedRoute>
+                <LayoutWrapper />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </SearchContext.Provider>
   );
 }
@@ -89,6 +93,18 @@ const LayoutWrapper = () => {
             <Route path="/add-team" element={<AddTeam />} />
             <Route path="/edit-team/:id" element={<EditTeam />} />
             <Route path="/view-team" element={<ViewTeams />} />
+
+            {/* DESIGNS */}
+
+            <Route path="/add-design" element={<AddDesign />} />
+            <Route path="/manage-design" element={<ManageDesigns />} />
+            <Route path="/edit-design/:id" element={<EditDesign />} />
+
+            {/* DEVELOPMENT */}
+
+            <Route path="/add-development" element={<AddDevelopment />} />
+            <Route path="/manage-development" element={<ManageDevelopments />} />
+            <Route path="/edit-development/:id" element={<EditDevelopment />} />
 
             {/* 404 */}
             <Route path="*" element={<h2>404 - Page Not Found</h2>} />

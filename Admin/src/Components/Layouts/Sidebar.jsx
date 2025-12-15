@@ -58,9 +58,13 @@ const Sidebar = () => {
     { label: "Connect Form", icon: <GrConnect className="me-2" />, path: "/connect-form" },
     { label: "Contact Us Form", icon: <GrContactInfo className="me-2" />, path: "/contact-form" },
 
-    { section: "Portfolio" },
-    { label: "UI/UX", icon: <MdOutlineDesignServices className="me-2" />, path: "/portfolio/uiux" },
-    { label: "Web Development", icon: <FaCodeCompare className="me-2" />, path: "/portfolio/web-dev" },
+    { section: "Designfolio" },
+    { label: "Add Design", icon: <MdOutlineDesignServices className="me-2" />, path: "/add-design" },
+    { label: "Manage Design", icon: <FaCodeCompare className="me-2" />, path: "/manage-design" },
+
+    { section: "Devfolio" },
+    { label: "Add Development", icon: <MdOutlineDesignServices className="me-2" />, path: "/add-development" },
+    { label: "Manage Development", icon: <FaCodeCompare className="me-2" />, path: "/manage-development" },
 
     { section: "Teams" },
     { label: "Add Teams", icon: <TiUserAdd className="me-2" />, path: "/add-team" },

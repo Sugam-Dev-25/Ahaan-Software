@@ -23,6 +23,8 @@ import CustomCursor from "./components/Custom Curser/CustomCursor";
 import WindowPopup from "./components/WindowsPopup/WindowPopup";
 import SearchResults from "./components/Pages/Blog/SearchResults";
 import ChatWidget from "./components/Chat/ChatWidget";
+import AllDevelopment from "./components/Pages/Portfolio/Tabs-Templates/AllDevelopment";
+import AllUiUxDesign from "./components/Pages/Portfolio/Tabs-Templates/AllUiUxDesign";
 
 // Lazy load contact page
 const ContactUs = React.lazy(() => import("./components/Pages/Contact/ContactUs"));
@@ -61,7 +63,8 @@ const AppContent = () => {
           <Route path="/web-design-development-company" element={<Landing />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/portfolio" element={<Portfolios />} />
-
+          <Route path="all-development" element={<AllDevelopment />} />
+          <Route path="/all-design" element={<AllUiUxDesign />} />
           
           {/* ✅ Slug based blog details page */}
           <Route path="/blog/:slug" element={<BlogDetails />} />

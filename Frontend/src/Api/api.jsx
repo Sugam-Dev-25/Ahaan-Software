@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "https://ahaan-software-1.onrender.com/api";
+// const BASE_URL = "https://ahaan-software-1.onrender.com/api";
+const BASE_URL = "http://localhost:5000/api";
 
 const API = axios.create({ baseURL: BASE_URL });
 
@@ -41,5 +42,28 @@ export const getTeams = async () => {
   }
 };
 
+// ➤ Get all web development projects
+export const getAllDevelopmentsAPI = async () => {
+  try {
+    const response = await API.get("/developments/all");
+    return response;
+  } catch (error) {
+    console.error("❌ Error fetching developments:", error);
+    throw error;
+  }
+};
 
-export default API;
+// ➤ Get all UI/UX designs
+export const getAllUiUxDesignsAPI = async () => {
+  try {
+    const response = await API.get("/designs");
+    return response.data;
+  } catch (error) {
+    console.error("❌ Error fetching UI/UX designs:", error);
+    return [];
+  }
+};
+
+
+
+export default API; 

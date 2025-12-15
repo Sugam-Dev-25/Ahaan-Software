@@ -4,37 +4,32 @@
   background-color: #ffffff;
 }
 
-.uiux-gallery-container h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  font-family: 'Outfit', sans-serif;
-  color: #222;
-}
-
 /* Image Wrapper */
 .uiux-image-wrapper {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
+  background: #fff;
 }
 
-/* Image */
+/* Image (🔥 SAME BEHAVIOUR AS OLD STATIC VERSION) */
 .uiux-image {
   width: 100%;
-  height: auto;
-  object-fit: cover;
+  height: auto;              /* ✅ natural height */
+  object-fit: contain;       /* ✅ no crop, exact ratio */
   border-radius: 10px;
+  display: block;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Bottom Overlay (only bottom 20%) */
+/* Bottom Overlay */
 .uiux-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 20%; /* only bottom 20% */
+  height: 20%;
   background: linear-gradient(
     to top,
     rgba(255, 255, 255, 0.6),
@@ -45,75 +40,59 @@
   justify-content: center;
   border-radius: 0 0 10px 10px;
   transition: all 0.4s ease;
-  opacity: 0; /* hidden by default */
+  opacity: 0;
 }
 
-/* Title inside overlay */
+/* Title */
 .uiux-title {
-  color: #000000;
+  color: #000;
   font-weight: 600;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 1rem;
-  transform: translateY(20%);
-  opacity: 1;
   margin-bottom: 10px;
+  transform: translateY(20%);
   transition: all 0.4s ease;
 }
 
-/* Hover Effect */
+/* Hover */
 .uiux-image-wrapper:hover .uiux-overlay {
   opacity: 0.9;
-  height: 25%; 
+  height: 25%;
   background-color: #dfa53a;
 }
 
 .uiux-image-wrapper:hover .uiux-title {
   transform: translateY(0);
-  opacity: 1;
 }
 
-
-
-/* View All Section */
+/* View All */
 .uiux-viewall-btn {
-  font-family: 'Outfit', sans-serif;
- 
-  
+  font-family: "Outfit", sans-serif;
   font-weight: 600;
-  color: #007bff;
+  color: #d3b017;
+  background: transparent;
+  border: none;
   transition: color 0.3s ease;
 }
 
 .uiux-viewall-btn:hover {
-  color: #0056b3;
+  color: #b89410;
 }
 
 .uiux-viewall-hr {
-  border-top: 1px solid ;
+  border-top: 1px solid #df9b1c;
   opacity: 0.7;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .uiux-image {
-    height: 180px;
+    height: auto;
   }
 }
 
 @media (max-width: 576px) {
   .uiux-image {
-    height: 160px;
-  }
-
-  .uiux-gallery-container h2 {
-    font-size: 1.5rem;
+    height: auto;
   }
 }
-
-.uiux-viewall-btn{
-  color: #d3b017;
-}
-.uiux-viewall-hr{
-  border-color: #df9b1c;
-}
-

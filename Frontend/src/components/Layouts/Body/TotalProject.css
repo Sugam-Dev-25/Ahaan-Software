@@ -62,11 +62,11 @@
 }
  
 .process-step-3-color .webe-inner-div {
-  background: linear-gradient(135deg, #00c6ff, #0072ff, #0057b8);
+  background: linear-gradient(135deg, #00c6ff, #1f83fc, #0057b8);
 }
  
 .process-step-4-color .webe-inner-div {
-  background: linear-gradient(135deg, #f39c12, #e67e22);
+  background: linear-gradient(135deg, #fdb746, #ba6012);
 }
  
 /* --- Stacked Layer Effect (::before, ::after) --- */
@@ -145,7 +145,7 @@
  
 .process-step-4-color::before,
 .process-step-4-color::after {
-  background: linear-gradient(135deg, #f39c12, #e67e22);
+  background: linear-gradient(135deg, #f39c12, #b25606);
 }
  
 .total-icons {
@@ -177,7 +177,7 @@
 }
  
 .process-step-4-color .total-icons {
-  background: linear-gradient(135deg, #f39c12, #e67e22);
+  background: linear-gradient(135deg, #f6b650, #bf5f0b);
 }
  
 .step-title {
@@ -191,3 +191,53 @@
   font-weight: 800;
 }
  
+
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.process-step-1-color .webe-inner-div {
+   background: linear-gradient(135deg, #62f55d, #00b7ff, #ff9100);
+  background-size: 300% 300%;
+  animation: gradientMove 6s ease infinite;
+}
+
+.process-step-2-color .webe-inner-div {
+  background: linear-gradient(135deg, #6a82fb, #fc5c7d);
+  background-size: 300% 300%;
+  animation: gradientMove 6s ease infinite;
+}
+
+.process-step-3-color .webe-inner-div {
+  background: linear-gradient(135deg, #00c6ff, #1f83fc, #0057b8);
+  background-size: 300% 300%;
+  animation: gradientMove 6s ease infinite;
+}
+
+.process-step-4-color .webe-inner-div {
+  background: linear-gradient(135deg, #fdb746, #ba6012);
+  background-size: 300% 300%;
+  animation: gradientMove 6s ease infinite;
+}
+
+
+.process-step-1-color::before,
+.process-step-1-color::after,
+.process-step-2-color::before,
+.process-step-2-color::after,
+.process-step-3-color::before,
+.process-step-3-color::after,
+.process-step-4-color::before,
+.process-step-4-color::after {
+  background-size: 300% 300%;
+  animation: gradientMove 8s ease infinite;
+}
