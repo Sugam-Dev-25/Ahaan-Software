@@ -29,12 +29,16 @@ const RegisterView = () => {
       fd.append("profilePicture", file);
     }
 
-    const res = await dispatch(registerUser(fd));
+const res = await dispatch(registerUser(fd));
 
-    if (res.meta.requestStatus === "fulfilled") {
-      localStorage.setItem("user", JSON.stringify(res.payload));
-      navigate("/");
-    }
+if (res.meta.requestStatus === "fulfilled") {
+  navigate("/login", {
+    state: {
+      message: "Registration successful. Please wait for Super Admin approval.",
+    },
+  });
+}
+
   };
 
   return (
@@ -113,7 +117,6 @@ const RegisterView = () => {
                 <option value="web_developer">Web Developer</option>
                 <option value="designer">Designer</option>
                 <option value="project_manager">Project Manager</option>
-                <option value="ceo">CEO</option>
               </select>
               {errors.designation && (
                 <p className="text-danger mb-2">{errors.designation.message}</p>

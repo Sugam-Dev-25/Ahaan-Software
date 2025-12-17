@@ -136,6 +136,18 @@ export const updateDevelopmentAPI = (id, formData) =>
 export const deleteDevelopmentAPI = (id) =>
   API.delete(`/developments/delete/${id}`);
 
+// =================================================
+// ADMIN USER STATUS MANAGEMENT APIs
+// =================================================
+
+
+export const getUsersByStatusAPI = (status) =>
+  API.get(`/admin/users?status=${status}`);
+
+export const updateUserStatusAPI = (id, status) =>
+  API.put(`/admin/user-status/${id}`, { status });
+
+
 
 
 // =================================================

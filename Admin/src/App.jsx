@@ -28,9 +28,24 @@ import EditDesign from "./Components/Pages/EditDesign";
 import AddDevelopment from "./Components/Pages/AddDevelopment";
 import ManageDevelopments from "./Components/Pages/ManageDevelopments";
 import EditDevelopment from "./Components/Pages/EditDevelopment";
+import PendingUsers from "./Components/SuperAdmin/PendingUsers";
+import ApprovedUsers from "./Components/SuperAdmin/ApprovedUsers";
+import RejectedUsers from "./Components/SuperAdmin/RejectedUsers";
+
+
+import { useEffect } from "react";
+import { useAppDispatch } from "./Components/app/hook";
+import { setUserFromStorage } from "./Components/features/user/userSlice";
+
 
 function App() {
   const [query, setQuery] = useState("");
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setUserFromStorage());
+  }, []);
+
   return (
     <SearchContext.Provider value={{ query, setQuery }}>
       <BrowserRouter>
@@ -103,8 +118,16 @@ const LayoutWrapper = () => {
             {/* DEVELOPMENT */}
 
             <Route path="/add-development" element={<AddDevelopment />} />
-            <Route path="/manage-development" element={<ManageDevelopments />} />
+            <Route
+              path="/manage-development"
+              element={<ManageDevelopments />}
+            />
             <Route path="/edit-development/:id" element={<EditDevelopment />} />
+
+            {/* SUPER ADMIN */}
+            <Route path="/super-admin/pending" element={<PendingUsers />} />
+            <Route path="/super-admin/approved" element={<ApprovedUsers />} />
+            <Route path="/super-admin/rejected" element={<RejectedUsers />} />
 
             {/* 404 */}
             <Route path="*" element={<h2>404 - Page Not Found</h2>} />
@@ -116,3 +139,4 @@ const LayoutWrapper = () => {
 };
 
 export default App;
+ 

@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 
-// JWT TOKEN GENERATOR
+// JWT TOKEN GENERATOR (UNCHANGED)
 User.prototype.generateJWT = function () {
   return jwt.sign(
     {
@@ -14,7 +14,9 @@ User.prototype.generateJWT = function () {
   );
 };
 
-// REGISTER
+// =======================
+// REGISTER (UNCHANGED)
+// =======================
 exports.registerUser = async (req, res) => {
   try {
     const { name, email, password, designation } = req.body;
@@ -23,15 +25,16 @@ exports.registerUser = async (req, res) => {
     const profilePicture = req.file ? req.file.path : null;
 
     const exists = await User.findOne({ email });
-    if (exists) return res.status(400).json({ message: "User already exists" });
+    if (exists)
+      return res.status(400).json({ message: "User already exists" });
 
-    // Create user
     const user = await User.create({
       name,
       email,
       password,
       designation,
       profilePicture,
+      // status will be "pending" by default
     });
 
     const token = user.generateJWT();
@@ -44,7 +47,8 @@ exports.registerUser = async (req, res) => {
         name: user.name,
         email: user.email,
         designation: user.designation,
-        profilePicture, // already full URL
+        profilePicture,
+        status: user.status,
       },
     });
   } catch (error) {
@@ -53,7 +57,9 @@ exports.registerUser = async (req, res) => {
   }
 };
 
-// LOGIN
+// =======================
+// LOGIN (UPDATED)
+// =======================
 exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -61,6 +67,19 @@ exports.loginUser = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user)
       return res.status(400).json({ message: "Invalid email or password" });
+
+    // 🔒 STATUS CHECK (VERY IMPORTANT)
+    if (user.status === "pending") {
+      return res.status(403).json({
+        message: "Account pending Super Admin approval",
+      });
+    }
+
+    if (user.status === "rejected") {
+      return res.status(403).json({
+        message: "Your request was rejected by Super Admin",
+      });
+    }
 
     const match = await bcrypt.compare(password, user.password);
     if (!match)
@@ -75,7 +94,8 @@ exports.loginUser = async (req, res) => {
         id: user._id,
         name: user.name,
         designation: user.designation,
-        profilePicture: user.profilePicture, // FULL URL
+        profilePicture: user.profilePicture,
+        status: user.status,
       },
     });
   } catch (error) {
@@ -84,7 +104,9 @@ exports.loginUser = async (req, res) => {
   }
 };
 
-// PROFILE
+// =======================
+// PROFILE (UNCHANGED)
+// =======================
 exports.getProfile = async (req, res) => {
   res.json({
     message: "User profile fetched",
@@ -92,7 +114,9 @@ exports.getProfile = async (req, res) => {
   });
 };
 
-// LOGOUT
+// =======================
+// LOGOUT (UNCHANGED)
+// =======================
 exports.logoutUser = (req, res) => {
   res.status(200).json({ message: "Logged out successfully" });
 };

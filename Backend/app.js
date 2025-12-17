@@ -52,6 +52,7 @@ app.use("/api/visitor", require("./routes/visitorRoutes"));
 app.use("/api/chat", require("./routes/chatRoutes"));
 app.use("/api/team", require("./routes/teamRoutes"));
 app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/admin", require("./routes/adminRoutes"));
 app.use("/api/designs", require("./routes/designRoutes"));
 app.use("/api/developments", require("./routes/developmentRoutes"));
 
