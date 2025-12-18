@@ -4,7 +4,7 @@ import { FaAngleDown } from "react-icons/fa";
 import TextField from "@mui/material/TextField";
 import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
- 
+import { BsCheckLg } from "react-icons/bs";
 import {
   FaMapMarkerAlt,
   FaPhoneAlt,
@@ -15,12 +15,15 @@ import {
 } from "react-icons/fa";
 import { FaFileAlt, FaTruck, FaGavel } from "react-icons/fa";
 import "./Footer.css";
- 
+import shape1 from "../../../assets/privacy/3dicons1.png";
+import shape2 from "../../../assets/privacy/3dicons3.png";
+
 const Footer = () => {
   const [isQuickLinksOpen, setIsQuickLinksOpen] = useState(false);
   const [isContactUsOpen, setIsContactUsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
- 
+  const [isPagesOpen, setIsPagesOpen] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -29,7 +32,7 @@ const Footer = () => {
     setError,
     clearErrors,
   } = useForm();
- 
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 700);
@@ -38,12 +41,12 @@ const Footer = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
- 
+
   const onSubmit = (data) => {
     const serviceID = "service_d4lc4tg";
     const templateID = "template_k2044k9";
     const publicKey = "P1psK0y5kXFayHDDA";
- 
+
     emailjs
       .sendForm(serviceID, templateID, form.current, publicKey)
       .then((response) => {
@@ -54,7 +57,7 @@ const Footer = () => {
         toast.error("Failed to send message. Try again!");
       });
   };
- 
+
   return (
     <footer
       className="footer-main"
@@ -67,16 +70,29 @@ const Footer = () => {
         padding: "150px 0 20px 0",
       }}
     >
+{/* Decorative floating shapes */}
+<img
+  src={shape2}
+  alt="shape-1"
+  className="footer-shape shape-one"
+/>
+
+<img
+  src={shape1}
+  alt="shape-2"
+  className="footer-shape shape-two"
+/>
+
+
       <div className="container">
- 
         <div className="row">
           {/* Logo & Newsletter */}
-          <div className="col-md-4">
+          <div className="col-md-3">
             <div className="footer-logo-input">
               <img
                 src="https://ahaanmedia.com/asc/layouts/asc.png"
                 alt="Ahaan Logo"
-                className="footer-logo"
+                className="footer-logos"
               />
               <p className="newsletter-text">
                 Subscribe to our newsletter to find out about all our latest
@@ -95,9 +111,8 @@ const Footer = () => {
                 helperText={errors.email?.message}
                 {...register("email", {
                   required: "Email is required",
-                  
                 })}
-                sx={{"& .MuiInputBase-input": { color: "white" },}}
+                sx={{ "& .MuiInputBase-input": { color: "white" } }}
               />
               <div className="d-flex justify-content-start flex-col">
                 <button className="newsletter-button">
@@ -106,9 +121,9 @@ const Footer = () => {
               </div>
             </div>
           </div>
- 
-          {/* Quick Links */}
-          <div className="col-md-4 quicklink-responsive">
+
+                    {/* Quick Links */}
+          <div className="col-md-3 quicklink-responsive">
             <button
               className="accordion-button-quick-link d-md-none"
               onClick={() => setIsQuickLinksOpen(!isQuickLinksOpen)}
@@ -133,11 +148,12 @@ const Footer = () => {
               />
             </button>
             <ul
-              className={`footer-links ${isQuickLinksOpen ? "open" : ""
-                } d-md-block`}
+              className={`footer-links ${
+                isQuickLinksOpen ? "open" : ""
+              } d-md-block`}
             >
               <li className="quick-link-for-desktop">
-                <h5 className="footer-heading">QUICK LINKS</h5>
+                <h5 className="footer-heading">Quick Links</h5>
               </li>
               <li>
                 <a href="../../../assets/privacy/Privacy Policy.docx" download>
@@ -159,9 +175,67 @@ const Footer = () => {
               </li>
             </ul>
           </div>
- 
+
+          {/* Pages */}
+          <div className="col-md-3 quicklink-responsive">
+            {/* Mobile Accordion Button */}
+            <button
+              className="accordion-button-quick-link d-md-none"
+              onClick={() => setIsPagesOpen(!isPagesOpen)}
+              aria-expanded={isPagesOpen ? "true" : "false"}
+              style={{
+                display: "flex",
+                justifyContent: "flex-start",
+                alignItems: "center",
+                width: "100%",
+                padding: "10px",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              <h5 className="footer-heading m-0">PAGES</h5>
+              <FaAngleDown
+                className={`accordion-icon ${isPagesOpen ? "open" : ""}`}
+                style={{ marginLeft: "auto", color: "#fff" }}
+              />
+            </button>
+
+            {/* Pages List */}
+            <ul
+              className={`footer-links ${isPagesOpen ? "open" : ""} d-md-block`}
+            >
+              <li className="quick-link-for-desktop">
+                <h5 className="footer-heading">Pages</h5>
+              </li>
+
+              <li>
+                <a href="/">
+                  <BsCheckLg className="quick-icon" /> Home
+                </a>
+              </li>
+              <li>
+                <a href="/portfolio">
+                  <BsCheckLg className="quick-icon" />{" "}
+                  Portfolio
+                </a>
+              </li>
+              <li>
+                <a href="/services">
+                  <BsCheckLg className="quick-icon" /> Services
+                </a>
+              </li>
+              <li>
+                <a href="/contact">
+                  <BsCheckLg className="quick-icon" /> Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+
           {/* Contact Us */}
-          <div className="col-md-4">
+          <div className="col-md-3">
             <button
               className="accordion-button d-md-none"
               onClick={() => setIsContactUsOpen(!isContactUsOpen)}
@@ -185,28 +259,30 @@ const Footer = () => {
                 style={{ marginLeft: "auto", color: "#fff" }}
               />
             </button>
- 
+
             <div
-              className={`accordion-content ${isContactUsOpen ? "open" : ""
-                } d-md-block`}
+              className={`accordion-content ${
+                isContactUsOpen ? "open" : ""
+              } d-md-block`}
             >
               <h5 className="contact-us-heading-for-desktop footer-heading">
-                CONTACT US
+                Contact Us
               </h5>
- 
+
               <ul className="contact-info list-unstyled">
-                <li>
-                  <FaMapMarkerAlt className="footer-icon" />{" "}
-                  <p className="add">
+                <li className="d-flex align-items-center flex-nowrap">
+                  <FaMapMarkerAlt className="me-2 flex-shrink-0 footer-icon" />
+                  <span className="add">
                     Bengal Eco Intelligent Park, EM Block, Sector V, Kolkata-700
                     091
-                  </p>
+                  </span>
                 </li>
               </ul>
+
               <ul className="contact-info list-unstyled">
                 <li className="d-flex align-items-center flex-nowrap">
                   <FaPhoneAlt className="me-2 flex-shrink-0 footer-icon" />
-                  <span className="d-flex flex-wrap gap-1">
+                  <span className="d-flex flex-wrap gap-1 add">
                     <a
                       href="https://wa.me/13214210740"
                       target="_blank"
@@ -236,7 +312,7 @@ const Footer = () => {
                   </span>
                 </li>
               </ul>
- 
+
               <ul className="contact-info list-unstyled">
                 <li>
                   <FaEnvelope className="footer-icon" />
@@ -248,10 +324,13 @@ const Footer = () => {
             </div>
           </div>
         </div>
- 
+
         {/* Footer Bottom */}
-        <div className="footer-bottom mt-4 pt-3 border-top">
-          <p className="footer-bottom-text mb-2 text-center" style={{ color: "#a3a3a3ff" }}>
+        <div className="footer-bottom mt-4 pt-3">
+          <p
+            className="footer-bottom-text mb-2 text-left"
+            style={{ color: "#a3a3a3ff" }}
+          >
             {isMobile
               ? "© 2025 Ahaan Software Consulting"
               : "© 2025 Ahaan Software, All rights reserved."}
@@ -266,7 +345,7 @@ const Footer = () => {
               <span className="tooltip">Facebook</span>
               <FaFacebookF />
             </a>
- 
+
             <a
               href="https://www.instagram.com/ahaansoftware/"
               target="_blank"
@@ -276,7 +355,7 @@ const Footer = () => {
               <span className="tooltip">Instagram</span>
               <FaInstagram />
             </a>
- 
+
             <a
               href="https://www.linkedin.com/company/ahaansoftware"
               target="_blank"
@@ -287,13 +366,10 @@ const Footer = () => {
               <FaLinkedinIn />
             </a>
           </div>
- 
         </div>
       </div>
     </footer>
   );
 };
- 
+
 export default Footer;
- 
- 

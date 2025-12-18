@@ -8,6 +8,7 @@ import CarouselComponent from './CarouselComponent'
 import CounterSection from './CounterSection'
 import AnimatedTabsSection from './AnimatedTabsSection'
 import ImageCarousel from '../../Layouts/Body/ImageCarousel'
+import SecondBanner from '../../Layouts/Body/SecondBanner'
 const Portfolios = () => {
   return (
     <>
@@ -18,6 +19,7 @@ const Portfolios = () => {
     <ThirdSection/>
     <ImageCarousel />
     {/* <CarouselComponent/> */}
+    <SecondBanner/>
     
     </>
   )

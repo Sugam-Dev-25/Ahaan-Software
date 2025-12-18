@@ -17,7 +17,7 @@ const userSchema = new Schema(
 
     designation: {
       type: String,
-      enum: ['web_developer', 'designer', 'project_manager', 'ceo'],
+      enum: ['web_developer', 'designer', 'project_manager', 'manager', 'ceo'],
       required: true,
     },
 

@@ -15,7 +15,6 @@ import { FaUsers } from "react-icons/fa6";
 import { IoMdLogOut } from "react-icons/io";
 import { FaUserClock, FaUserCheck, FaUserTimes } from "react-icons/fa";
 
-
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
@@ -176,8 +175,6 @@ const Sidebar = () => {
           style={{ flexGrow: 1, overflowY: "auto" }}
         >
           <ul className="nav flex-column mt-2 px-2">
-            
-
             {/* 🔹 EXISTING MENU */}
             {menuItems.map((item, i) =>
               item.section ? (
@@ -214,7 +211,7 @@ const Sidebar = () => {
             )}
 
             {/* 🔥 SUPER ADMIN MENU */}
-            {user?.user?.designation === "ceo" && (
+            {["ceo", "manager"].includes(user?.user?.designation) && (
               <>
                 <hr className="bg-light" />
                 <div
