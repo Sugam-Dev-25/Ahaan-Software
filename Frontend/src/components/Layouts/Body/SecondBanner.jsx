@@ -40,7 +40,7 @@ const CallToAction = () => {
                 </div>
               </div>
             </p>
-            <p >
+            <p > 
               <div style={{ lineHeight: "1.2",  }}>
                 <div style={{  color: "#CD912A", cursor: "pointer", fontSize: isMobile ? "14px" : "20px", fontWeight: "bold",  textTransform: "uppercase" }}>India</div>
                 <div

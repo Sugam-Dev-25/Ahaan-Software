@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getAllDevelopmentsAPI } from "../../../../Api/api";
 import "./AllDevelopment.css";
 import AllDevelopmentBanner from "./AllDevelopmentBanner";
+import SecondBanner from "../../../Layouts/Body/SecondBanner";
 
 const AllDevelopment = () => {
   const [items, setItems] = useState([]);
@@ -41,6 +42,7 @@ const AllDevelopment = () => {
         ))}
       </div>
     </div>
+    <SecondBanner />
     </>
   );
 };

@@ -1,142 +1,79 @@
-/* --- New CSS for Tilted Layout --- */
-.appdev-gallery{
-    display: flex;
-  flex-direction:column;
-  margin: 0% auto;
-}
-/* 1. Define the 3D viewing space (Perspective) */
-.appdev-tilted-container {
-  /* Perspective is crucial for a realistic 3D effect */
-  perspective: 1000px; 
-  /* Hides the content that spills out of the container on the Y-axis */
-  overflow-y: hidden; 
-  /* Adjust height/padding as needed */
-  padding-bottom: 50px; 
+/* ===== SECTION ===== */
+.appdev-section {
+  padding: 80px 0;
+  background: #ffffff;
 }
 
-/* 2. Create the single, scrollable row and apply the TILT */
-.appdev-tilted-row {
-  display: flex;
-  flex-direction: row;
-  margin: 0% auto;
-  /* Prevents items from wrapping */
-  white-space: nowrap; 
-  /* Allows horizontal scrolling for the single row */
-  overflow-x: auto; 
-  /* Adjusts the origin of the 3D transformation for better appearance */
-  transform-origin: center; 
-  
-  /* --- The core TILT transformation (30-degree angle) --- */
-  transform: rotateY(130deg);
-  
-  /* Adds a slight shadow to enhance the "on the table" look */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); 
-  /* Spacing between the tilted row and the top of its container */
-  padding-top: 50px; 
+/* ===== HEADING ===== */
+.appdev-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #a37c2c;
+  margin-bottom: 10px;
 }
 
-/* Hides the scrollbar for the tilted row (optional, for a cleaner look) */
-.appdev-tilted-row::-webkit-scrollbar {
-  display: none;
-}
-.appdev-tilted-row {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+.appdev-subtitle {
+  font-size: 16px;
+  color: #6b7280;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
-/* 3. Style the individual item containers (must be inline-block or flex item) */
-.appdev-tilted-item {
-  /* Essential for single-row layout, defines item width */
-  flex-shrink: 0; 
-  /* Adjust the size of each item in the single row */
-  width: 200px; 
-  /* Spacing between images */
-  margin: 0 15px; 
-  /* Aligns images in the center of the viewport when scrolling */
+/* ===== GALLERY LAYOUT ===== */
+.appdev-gallery {
   display: flex;
   justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
-/* --- Existing Appdev Image Styles (with size adjustments) --- */
-.appdev-image {
-  /* Set a fixed size for consistency in the single-row view */
-  width: 200px !important; 
-  /* Keeps aspect ratio */
-  height: auto; 
-  border-radius: 12px;
-  padding: 6px;
-  /* Adds a lift to the image when hovered */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
-  /* Add a subtle shadow to make the images pop out from the surface */
-   
+/* ===== CARD ===== */
+.appdev-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 16px;
+  width: 220px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  transition: all 0.35s ease;
+  cursor: pointer;
 }
 
-.appdev-image:hover {
-  /* Elevates the image slightly on hover to simulate picking it up */
-  
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+/* Hover effect */
+.appdev-card:hover {
+  transform: translateY(-12px) scale(1.04);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
 }
 
-/* Optional: Adjust heading for better visual balance with the new layout */
-.portfolio-title {
-  /* Example: color or font-size adjustments */
-}/* --- New CSS for Tilted Layout --- */
-
-/* 1. Define the 3D viewing space (Perspective) */
-.appdev-tilted-container {
-  /* Perspective is crucial for a realistic 3D effect */
-  perspective: 1000px;
-  /* Hides the horizontal overflow so the scrollbar doesn't appear */
-  overflow-x: hidden;
-  /* Hides the vertical overflow created by the tilt */
-  overflow-y: hidden;
-  /* Add padding to account for the tilted items extending down */
- 
-  /* Centers the tilted row visually */
-  display: flex;
-  justify-content: center;
-}
-
-/* 2. Create the single row and apply the TILT */
-.appdev-tilted-row {
-  display: flex;
-  flex-direction: row;
-  /* Use gap for spacing between images */
-  gap: 20px;
-  /* Ensures items stay on one line */
-  flex-wrap: nowrap;
-  /* Removes the box-shadow as requested */
-  
-  /* Adjusts the origin of the 3D transformation */
-  transform-origin: center;
-  
-  /* --- The core TILT transformation (30-degree angle) --- */
-  transform: rotateX(50deg);
-  
-  /* Spacing between the tilted row and the top of its container */
-  padding-top: 50px;
-}
-
-/* 3. Style the individual item containers */
-.appdev-tilted-item {
-  /* Essential for single-row layout, defines item width */
-  flex-shrink: 0;
-  /* Adjust the size of each item in the single row */
-
-  display: flex;
-  justify-content: center;
-  align-items: flex-end; /* Ensures items sit on the same line visually */
-}
-
-/* --- Appdev Image Styles (only box-shadow here) --- */
-.appdev-image {
+/* Image */
+.appdev-card img {
   width: 100%;
   height: auto;
-  border-radius: 12px;
-  padding: 6px;
-  /* Adds a lift to the image when hovered */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* Apply the box-shadow only to the image itself as requested */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); 
+  border-radius: 14px;
+  display: block;
 }
 
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+  .appdev-title {
+    font-size: 34px;
+  }
+
+  .appdev-card {
+    width: 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .appdev-section {
+    padding: 60px 0;
+  }
+
+  .appdev-title {
+    font-size: 28px;
+  }
+
+  .appdev-card {
+    width: 100%;
+    max-width: 300px;
+  }
+}

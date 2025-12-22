@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getAllUiUxDesignsAPI } from "../../../../Api/api";
 import "./AllUiUxDesign.css";
-import AllDevelopmentBanner from "./AllDevelopmentBanner";
 import AllDesignBanner from "./AllDesignBanner";
+import SecondBanner from "../../../Layouts/Body/SecondBanner";
 
 const AllUiUxDesign = () => {
   const [designs, setDesigns] = useState([]);
@@ -47,6 +47,7 @@ const AllUiUxDesign = () => {
         ))}
       </div>
     </div>
+    <SecondBanner />
     </>
     
   );

@@ -1,37 +1,37 @@
-import React from 'react';
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./AppDevelopment.css";
 
 const AppDevelopment = () => {
   const imageLinks = [
-    { url: "https://ahaanmedia.com/asc/AppDevelopment/1.jpg"},
-    { url: "https://ahaanmedia.com/asc/AppDevelopment/2.jpg"},
-    { url: "https://ahaanmedia.com/asc/AppDevelopment/3.jpg"},
-    { url: "https://ahaanmedia.com/asc/AppDevelopment/4.jpg"},
-    { url: "https://ahaanmedia.com/asc/AppDevelopment/5.jpg"},
+    "https://ahaanmedia.com/asc/AppDevelopment/1.jpg",
+    "https://ahaanmedia.com/asc/AppDevelopment/2.jpg",
+    "https://ahaanmedia.com/asc/AppDevelopment/3.jpg",
+    "https://ahaanmedia.com/asc/AppDevelopment/4.jpg",
+    "https://ahaanmedia.com/asc/AppDevelopment/5.jpg",
   ];
 
   return (
-    <div className="appdev-gallery container py-1">
-      {/* Heading Section */}
-      <div className="text-center mb-5">
-        <h2 className="fw-bold  portfolio-title">App Development Designs</h2>
-        <p className="text-muted">Clean and modern designs for mobile and web applications</p>
-      </div>
+    <section className="appdev-section">
+      <div className="container">
+        {/* Heading */}
+        <div className="text-center mb-5">
+          <h2 className="appdev-title">App Development Designs</h2>
+          <p className="appdev-subtitle">
+            Clean and modern designs for mobile and web applications
+          </p>
+        </div>
 
-      {/* Image Grid */}
-      <div className="row">
-        {imageLinks.map((item, index) => (
-          <div key={index} className="col-6 col-md-2 p-2 text-center">
-            <img
-              src={item.url}
-              alt={`App Design ${index + 1}`}
-              className="appdev-image"
-            />
-          </div>
-        ))}
+        {/* Gallery */}
+        <div className="appdev-gallery">
+          {imageLinks.map((img, index) => (
+            <div className="appdev-card" key={index}>
+              <img src={img} alt={`App Design ${index + 1}`} />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
