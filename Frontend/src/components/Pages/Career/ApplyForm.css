@@ -186,7 +186,8 @@
 }
 
 .refresh-captcha:hover {
-  background: #1d4ed8;
+  background: #ebc325;
+  color: #000;
 }
 
 /* =========================
@@ -249,6 +250,10 @@
 
   .refresh-captcha {
     width: 100%;
+  }
+  .captcha-box {
+    width: 60% !important;
+    
   }
 
 }
