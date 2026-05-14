@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa";
 import { FaFileAlt, FaTruck, FaGavel } from "react-icons/fa";
 import "./Footer.css";
+import PayglocalButton from "../../PayGlocal/PayglocalButton";
 
 const Footer = () => {
   const [isQuickLinksOpen, setIsQuickLinksOpen] = useState(false);
@@ -335,7 +336,9 @@ const Footer = () => {
                   </a>
                 </li>
               </ul>
+              <PayglocalButton/>
             </div>
+            
           </div>
 
           {/* Footer Bottom */}

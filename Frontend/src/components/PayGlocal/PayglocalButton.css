@@ -1,0 +1,17 @@
+.pay-btn-wrapper {
+  width: 250px; 
+  margin-top: 20px; 
+}
+
+.pay-btn-wrapper iframe,
+.pay-btn-wrapper button,
+.pay-btn-wrapper div {
+  width: 100% !important;
+  transform: scale(0.9);
+  transform-origin: top center;
+  border-radius: 50px;
+
+}
+/* .PayGlocal-button-bc1d25fe {
+    background-color: ;
+} */

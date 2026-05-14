@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from "react";
 
 // 1. KEEP THESE AS STANDARD IMPORTS (Above the fold)
 import HeroBanner from "../../Layouts/Body/HeroBanner";
-const WhoWeAreSection =lazy(()=>import("../../Layouts/Body/WhoWeAreSection")) 
+const WhoWeAreSection =lazy(()=>import("../../Layouts/Body/WhoWeAreSection")); 
 const ServicesSection = lazy(() => import("../Portfolio/ServicesSection"));
 const ThirdSection = lazy(() => import("../../Layouts/Body/ThirdSection"));
 const TotalProject = lazy(() => import("../../Layouts/Body/TotalProject"));
