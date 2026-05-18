@@ -8,6 +8,7 @@ import BlogBanner from "./BlogBanner";
 import RelatedBlogs from "./RelatedBlogs";
 import FollowUs from "./FollowUs";
 import BlogSearch from "./BlogSearch";
+import BlogDetailsBanner from "./BlogDetailsBanner";
 
 const reactions = [
   { emoji: "👍", label: "thumbs up" },
@@ -123,7 +124,7 @@ const BlogDetails = () => {
 
   return (
     <>
-      <BlogBanner />
+      <BlogDetailsBanner />
 
       <div className="container py-5 blog-details-container">
       

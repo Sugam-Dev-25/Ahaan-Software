@@ -2,7 +2,7 @@ import "./AboutBanner.css";
 
 const Banner = () => {
   const bannerStyle = {
-    backgroundImage: `url(https://ahaanmedia.com/ahaanwebsite/Banner/About-Banner-New.webp)`,
+    backgroundImage: `url(https://ahaanmedia.com/ahaanwebsite/Banner/About-Us.webp)`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",

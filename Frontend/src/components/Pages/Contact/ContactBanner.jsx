@@ -4,7 +4,7 @@ import "./ContactBanner.css";
 const ContactBanner = () => {
 
   const bannerStyle = {
-    backgroundImage: `url(https://ahaanmedia.com/ahaanwebsite/Banner/contactus-Banner.webp)`,
+    backgroundImage: `url(https://ahaanmedia.com/ahaanwebsite/Banner/Contact.webp)`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",

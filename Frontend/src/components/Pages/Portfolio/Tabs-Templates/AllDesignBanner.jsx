@@ -3,7 +3,7 @@ import "./AllDesignBanner.css";
 
 const AllDesignBanner = () => {
   const bannerStyle = {
-    backgroundImage: `url(https://ahaanmedia.com/ahaanwebsite/Banner/contactus-Banner.webp)`,
+    backgroundImage: `url(https://ahaanmedia.com/ahaanwebsite/Banner/Design.webp)`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",

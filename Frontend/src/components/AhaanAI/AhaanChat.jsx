@@ -75,7 +75,7 @@ const AhaanChat = () => {
         )
       }
     >
-      Let’s Chat
+      Ask Ahaan AI
     </button>
   </div>
 </div>

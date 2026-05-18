@@ -5,6 +5,7 @@ import { TfiSharethis } from "react-icons/tfi";
 import { FaFacebookF, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import BlogBanner from "./BlogBanner";
 import "./BlogPage.css";
+import BlogSearchBanner from "./BlogSearchBanner";
 
 const reactions = [
   { emoji: "👍", label: "thumbs up" },
@@ -116,7 +117,7 @@ const SearchResults = () => {
 
   return (
     <>
-      <BlogBanner />
+      <BlogSearchBanner />
       <div className="container mt-5">
         <h2 className="blog-heading text-center">
           Search Results for "{query}"

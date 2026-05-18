@@ -2,7 +2,7 @@ import "./ServiceBanner.css";
 
 const ServiceBanner = () => {
   const bannerStyle = {
-    backgroundImage: `url("https://ahaanmedia.com/ahaanwebsite/Banner/Service-Banner.webp")`,
+    backgroundImage: `url("https://ahaanmedia.com/ahaanwebsite/Banner/Service.webp")`,
   };
 
   return (
