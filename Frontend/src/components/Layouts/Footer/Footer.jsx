@@ -348,8 +348,8 @@ const Footer = () => {
               style={{ color: "#a3a3a3ff" }}
             >
               {isMobile
-                ? "© 2025 Ahaan Software Consulting"
-                : "© 2025 Ahaan Software, All rights reserved."}
+                ? "© 2026 Ahaan Software Consulting"
+                : "© 2026 Ahaan Software, All rights reserved."}
             </p>
 
             <div className="footer-social-icons text-center">
