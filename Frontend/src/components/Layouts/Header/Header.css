@@ -45,7 +45,7 @@ nav.navbar.navbar-expand-lg.bg-white.py-4 {
   padding: 10px;
   font-size: 17px;
   color: #c5c5c5;
-  font-weight: 500;
+  /* font-weight: 500; */
   gap: 2rem;
   font-family: outfit;
 }
@@ -308,10 +308,12 @@ hr {
     padding: 10px;
     border-radius: 50%;
     border: 1px solid #c78a2b;
+   
   }
     .phone-icon {
     font-size: 24px;
   }
+  
 }
 
 @media (max-width: 769px) {
@@ -322,7 +324,7 @@ hr {
   }
     .phone-link {
     background: rgba(199, 138, 43, 0.1);
-    padding: 6px;
+    padding: 5px;
     border-radius: 50%;
     border: 1px solid #c78a2b;
   }
@@ -337,5 +339,26 @@ hr {
 @media (max-width: 450px) {
   .phone-contact-wrapper {
     margin-right: 5px;
+  }
+}
+
+@media (min-width: 768px) and (max-width:991px){
+  .asc-logo{
+    height:40px;
+  }
+  
+      .phone-icon {
+        font-size: 22px;
+        width:20px;
+        height:20px;
+       
+    }
+    .get-quote-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .asc-tablet-container{
+    padding: 10px 0px;
   }
 }

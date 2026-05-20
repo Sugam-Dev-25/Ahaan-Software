@@ -59,7 +59,7 @@ const Header = () => {
         scrolled ? "scrolled" : ""
       }`}
     >
-      <div className="container">
+      <div className="container asc-tablet-container">
         <a className=" d-flex align-items-center" href="/">
           <img
             src="https://ahaanmedia.com/ahaanwebsite/layouts/asc.webp"
@@ -104,7 +104,7 @@ const Header = () => {
           </ul>
         </div>
 
-        <div className="header-right-actions d-flex align-items-center gap-2">
+        <div className="header-right-actions d-flex align-items-center gap-3">
           {/* Phone Number Section */}
           <div className="phone-contact-wrapper">
             <a href="tel:+1-740-748-4441" className="phone-link">
