@@ -1,70 +1,53 @@
 import React, { useRef, useState, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import "./Testimonials.css";
- 
+
 const Testimonials = () => {
+  const [testimonials, setTestimonials] = useState([]);
   const [index, setIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(3);
- 
-  const testimonials = [
-    {
-      name: "Sam Jais",
-      review:
-        "I had a very wonderful exprince with ahaan software they created our clothing brand website heliclothing( mens lcasual wear) Really apriciated their work",
-      rating: 5,
-      color: "#f7a500",
-      image: "https://ahaanmedia.com/ahaanwebsite/testimonial/1.webp",
-    },
-    {
-      name: "Samuel Watson",
-      review:
-        "Good designing & development company. Recently, they have designed my website and currently doing marketing for Solar Installation services. Work quality is excellent and they met my expectations. Thanks to your entire team. 👍",
-      rating: 5,
-      color: "#4CAF50",
-      image: "https://ahaanmedia.com/ahaanwebsite/testimonial/3.webp",
-    },
-    {
-      name: "Rosanna Feyerabend",
-      review:
-        "Disciplined job and are ethically trustworthy. The team of this company are always available for inquiries and questions, and they provide support, key insight, ideas and direction when possible. I think they have a good team, well organized and efficient with their time. Nice experience with this company that designed my business website.",
-      rating: 5,
-      color: "#f44336",
-      image: "https://ahaanmedia.com/ahaanwebsite/testimonial/2.webp",
-    },
-    {
-      name: "Aman Jaiswal",
-      review:
-        "We partnered with this company for both social media branding and website development, and the results have been fantastic. Our business conversions increased by 50% thanks to their effective strategies and high-quality work. The team is knowledgeable, creative, and results-driven. Highly recommended for any business looking to grow!",
-      rating: 5,
-      color: "#2196F3",
-      image: "https://ahaanmedia.com/ahaanwebsite/testimonial/7.webp",
-    },
-    {
-      name: "Dennis Johnson",
-      review:
-        "These guys did a wonderful job and very quickly, the page was so nice, I already hired them to redo the whole site. will use again and again",
-      rating: 5,
-      color: "#f7a500",
-      image: "https://ahaanmedia.com/ahaanwebsite/testimonial/6.webp",
-    },
-    {
-      name: "Valynn Johnson",
-      review:
-        "All I can say is WOW. This company did exactly what they said they would do and went over the top with ideas to better my Website. THANK YOU!!",
-      rating: 5,
-      color: "#4CAF50",
-      image: "https://ahaanmedia.com/ahaanwebsite/testimonial/5.webp",
-    },
-    {
-      name: "Dr. Kunal Dey",
-      review:
-        "It was a great experience to work with Vishal, he did the job beyond my expectations, highly recommend. Easy to communicate with and on time , I would actually say before time. Will hire him again!",
-      rating: 5,
-      color: "#f44336",
-      image: "https://ahaanmedia.com/ahaanwebsite/testimonial/4.webp",
-    },
-  ];
- 
+
+  // Fetch testimonials from API
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const response = await fetch(
+          "https://ahaan-admin.ahaanmedia.com/wp-json/wp/v2/testimonial"
+        );
+
+        const data = await response.json();
+
+        const formattedData = await Promise.all(
+          data.map(async (item) => {
+            let imageUrl = "";
+
+            if (item.acf?.client_image) {
+              const mediaRes = await fetch(
+                `https://ahaan-admin.ahaanmedia.com/wp-json/wp/v2/media/${item.acf.client_image}`
+              );
+
+              const mediaData = await mediaRes.json();
+              imageUrl = mediaData.source_url;
+            }
+
+            return {
+              name: item.acf?.client_name || "",
+              review: item.acf?.client_review || "",
+              rating: Number(item.acf?.rating) || 5,
+              color: item.acf?.color || "#2196F3",
+              image: imageUrl,
+            };
+          })
+        );
+        setTestimonials(formattedData);
+      } catch (error) {
+        console.error("Error fetching testimonials:", error);
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
+
   // Set visible cards based on screen width
   useEffect(() => {
     const updateVisibleCards = () => {
@@ -73,28 +56,39 @@ const Testimonials = () => {
       else if (width >= 768) setVisibleCards(2);
       else setVisibleCards(1);
     };
- 
+
     updateVisibleCards();
     window.addEventListener("resize", updateVisibleCards);
     return () => window.removeEventListener("resize", updateVisibleCards);
   }, []);
- 
+
   // Scroll left/right
+  // const scroll = (dir) => {
+  //   const maxIndex = testimonials.length - visibleCards;
+  //   let newIndex = dir === "left" ? index - 1 : index + 1;
+  //   if (newIndex < 0) newIndex = 0;
+  //   if (newIndex > maxIndex) newIndex = maxIndex;
+  //   setIndex(newIndex);
+  // };
+
   const scroll = (dir) => {
-    const maxIndex = testimonials.length - visibleCards;
+    const maxIndex = Math.max(0, testimonials.length - visibleCards);
+
     let newIndex = dir === "left" ? index - 1 : index + 1;
+
     if (newIndex < 0) newIndex = 0;
     if (newIndex > maxIndex) newIndex = maxIndex;
+
     setIndex(newIndex);
   };
- 
+
   return (
     <div className="container section-header-tech">
       <h6 className="subtitle">
-          Testimonials <span className="divider"></span>
-        </h6>
-        <h2 className="text-center mb-4 title">What Our Clients Say</h2>
-         <p className="image-carousel-content"  >
+        Testimonials <span className="divider"></span>
+      </h6>
+      <h2 className="text-center mb-4 title">What Our Clients Say</h2>
+      <p className="image-carousel-content"  >
         Driven to be future-ready, and push beyond the building blocks of
         technology, digital, and marketing, Ahaan Software Consulting proudly
         participated in The Asia Business Show 2024 in Singapore—the powerhouse
@@ -108,7 +102,7 @@ const Testimonials = () => {
           >
             <FaChevronLeft />
           </button>
- 
+
           <div
             className="testimonial-track"
             style={{
@@ -155,11 +149,10 @@ const Testimonials = () => {
               </div>
             ))}
           </div>
- 
+
           <button
-            className={`testimonial-arrow-btn right ${
-              index >= testimonials.length - visibleCards ? "disabled" : ""
-            }`}
+            className={`testimonial-arrow-btn right ${index >= testimonials.length - visibleCards ? "disabled" : ""
+              }`}
             onClick={() => scroll("right")}
           >
             <FaChevronRight />
@@ -169,7 +162,6 @@ const Testimonials = () => {
     </div>
   );
 };
- 
+
 export default Testimonials;
- 
- 
+
