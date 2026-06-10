@@ -4,14 +4,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+ 
 }
 
 .layout-minimal-container {
   display: flex;
-  /* Use flexbox to arrange the columns side by side */
   gap: 10px;
   align-items: flex-start;
-  /* Align items to the top of each column */
   position: relative;
   min-height: 200px;
   justify-content: center;
@@ -30,7 +29,10 @@
   height: 150px;
   overflow: hidden;
   border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow:
+  0 10px 20px rgba(0, 0, 0, 0.15),
+  0 20px 40px rgba(0, 0, 0, 0.25),
+  0 30px 60px rgba(0, 0, 0, 0.15);
 }
 
 .side-image-card img {
@@ -111,59 +113,6 @@
   color: #666;
 }
 
-.central-content-cta-button {
-  font-weight: 500;
-  padding: 10px 20px;
-  border-radius: 50px;
-  background: none;
-  border: none;
-  color: #fff;
-  text-decoration: none;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 5px rgba(161, 147, 147, 0.8),
-    /* black shadow */ 0 0 8px rgba(255, 215, 0, 0.6),
-    /* golden glow */ 0 0 2px rgba(92, 92, 158, 0.5); /* blue highlight */
-}
-
-/* before: gradient fills left → right */
-.central-content-cta-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(
-    90deg,
-    rgb(221, 194, 40) 0%,
-    rgb(95, 58, 10) 50%,
-    rgb(29, 63, 68) 100%
-  );
-
-  transition: width 0.6s ease;
-  z-index: 1;
-}
-
-/* make sure text sits above the gradient */
-.central-content-cta-button span {
-  position: relative;
-  z-index: 2;
-  color: #b17f15;
-  transition: color 0.6s ease;
-}
-
-/* on hover: gradient expands to full width */
-.central-content-cta-button:hover::before {
-  width: 100%;
-}
-
-/* optional: text color change and scale */
-.central-content-cta-button:hover span {
-  color: #fff;
-}
 
 @media (max-width: 1023px) and (min-width: 992px) {
   .fourth-column {
