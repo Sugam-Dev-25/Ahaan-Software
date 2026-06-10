@@ -9,12 +9,10 @@
   font-weight: 900 !important;
   text-transform: capitalize;
   letter-spacing: 2px;
-  background: linear-gradient(
-    90deg,
-    var(--main-color),
-    #1d1d1d 40%,
-    var(--main-color)
-  );
+  background: linear-gradient(90deg,
+      var(--main-color),
+      #1d1d1d 40%,
+      var(--main-color));
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -25,6 +23,7 @@
   0% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }
@@ -42,7 +41,7 @@
   justify-content: center;
   margin-right: 10px;
   transition: all 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 0.2px solid #363535;
   flex-shrink: 0;
   padding: 0 !important;
 }
@@ -51,6 +50,7 @@
   transform: scale(1.15);
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  filter: grayscale(100%);
 }
 
 .service-tech-icon {
@@ -71,10 +71,12 @@
   font-size: 15px;
   margin-bottom: 15px;
 }
+
 .tech-stack .dot {
   color: #888;
   margin: 0 6px;
 }
+
 .service-description {
   color: #666;
   font-size: 15px;
@@ -90,14 +92,17 @@
   flex-wrap: wrap;
   gap: 15px;
 }
+
 .explore-btn {
-  min-width: 140px;               /* keeps button size stable */
+  min-width: 140px;
+  /* keeps button size stable */
   height: 42px;
   padding: 7px 25px !important;
   border-radius: 30px;
   font-weight: 600;
   transition: all 0.3s ease;
 }
+
 .explore-btn:hover {
   background: var(--main-color) !important;
 }
@@ -109,6 +114,7 @@
   flex-wrap: wrap;
   gap: 10px;
 }
+
 .service-image-box {
   position: relative;
   overflow: hidden;
@@ -138,18 +144,23 @@
   0% {
     border-radius: 20px 120px;
   }
+
   20% {
     border-radius: 35px 105px;
   }
+
   40% {
     border-radius: 50px 90px;
   }
+
   60% {
     border-radius: 65px 75px;
   }
+
   80% {
     border-radius: 40px 100px;
   }
+
   100% {
     border-radius: 20px 120px;
   }
@@ -161,6 +172,7 @@
 .service-image-box {
   transition: transform 0.3s ease;
 }
+
 .service-image-box:hover {
   transform: scale(1.03);
 }
@@ -172,20 +184,25 @@
   .service-title.animated-heading {
     font-size: 1.5rem !important;
   }
+
   .tech-stack,
   .service-description {
     font-size: 13px !important;
   }
+
   .button-icon-row {
     flex-direction: column;
     align-items: center;
   }
+
   .service-icons {
     justify-content: center;
   }
-  .service-icons{
+
+  .service-icons {
     font-size: 15px !important;
   }
+
   .service-image-box {
     margin: 20px;
   }

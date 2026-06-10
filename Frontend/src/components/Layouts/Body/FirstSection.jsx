@@ -9,6 +9,9 @@ const clients = [
   { src: "https://ahaanmedia.com/ahaanwebsite/client/4.webp", alt: "Helli" },
   { src: "https://ahaanmedia.com/ahaanwebsite/client/5.webp", alt: "Jazzyln Nolen" },
   { src: "https://ahaanmedia.com/ahaanwebsite/client/6.webp", alt: "NextDoor Urgent Care" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/client/6.webp", alt: "NextDoor Urgent Care" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/client/6.webp", alt: "NextDoor Urgent Care" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/client/6.webp", alt: "NextDoor Urgent Care" },
 ];
 
 const FirstSection = () => {
@@ -26,19 +29,21 @@ const FirstSection = () => {
       </p>
 
       {/* Grid Layout using Standard Bootstrap Row/Col classes */}
-      <div className="row mt-4 g-3">
-        {clients.map((client, index) => (
-          <div key={index} className="col-4 col-md-2 text-center">
-            <div className="first-client-col">
-              <img
-                src={client.src}
-                alt={client.alt}
-                className="img-fluid first-client-image"
-                loading="lazy"
-              />
+      <div className="clients-carousel mt-4">
+        <div className="clients-track">
+          {[...clients, ...clients].map((client, index) => (
+            <div key={index} className="client-item">
+              <div className="first-client-col">
+                <img
+                  src={client.src}
+                  alt={client.alt}
+                  className="img-fluid first-client-image"
+                  loading="lazy"
+                />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
