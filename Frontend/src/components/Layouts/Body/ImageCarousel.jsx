@@ -24,7 +24,12 @@ const middleRightImages = [
  
 const BusinessCard = () => {
   return (
-    <div className="container bussiness-testimonial-section mt-5">
+    <div style={{
+  background: "linear-gradient(180deg, #f1e7c6 0%, #E6E6E6 80%, #e6dbbb 100%) "
+}}
+className='pt-5'
+>
+    <div className="container bussiness-testimonial-section ">
       <div className=" layout-minimal-container">
  
         {/* --- Left Column (Images 1, 2) --- */}
@@ -92,7 +97,7 @@ const BusinessCard = () => {
         <p className="central-content-description">
           Learn why professionals trust our solutions to complete their customer journeys.
         </p>
-        <button className="central-content-cta-button "><span>Read Success Stories →</span></button>
+        
       </div>
       <div className=" layout-minimal-container">
        <div className="side-image-card third-column-mobile">
@@ -105,6 +110,7 @@ const BusinessCard = () => {
           <img src="https://ahaanmedia.com/asc/gallery/gallery1.jpg" alt="Single Image" />
         </div>
         </div>
+    </div>
     </div>
   );
 };

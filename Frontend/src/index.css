@@ -1,3 +1,7 @@
 body{
     font-family: outfit !important;
 }
+.leaflet-touch .leaflet-control-attribution, .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+    box-shadow: none;
+    display: none;
+}
