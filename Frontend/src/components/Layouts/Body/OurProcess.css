@@ -159,6 +159,8 @@
 .op-content {
   padding-top: 4px;
   flex: 1;
+  color: #6a5a38;
+  
 }
 
 .op-phase {
@@ -204,7 +206,7 @@
   color: #ffffff;
 }
 
-.op-desc {
+.op-desc .image-carousel-content {
   font-size: 11px;
   color: #6a5a38;
   line-height: 1.6;
