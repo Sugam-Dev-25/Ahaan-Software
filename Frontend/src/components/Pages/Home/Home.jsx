@@ -45,6 +45,9 @@ const Home = () => {
         <WhyChooseUs />
         <FirstSection />
         <ConnectSection />
+        <FirstSection />
+        <ConnectSection />
+        <OurProcess />
         <ImageCarousel />
         <OurProcess />
         <CaseStudyCarousel />
