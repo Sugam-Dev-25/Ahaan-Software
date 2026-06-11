@@ -9,9 +9,11 @@ const clients = [
   { src: "https://ahaanmedia.com/ahaanwebsite/client/4.webp", alt: "Helli" },
   { src: "https://ahaanmedia.com/ahaanwebsite/client/5.webp", alt: "Jazzyln Nolen" },
   { src: "https://ahaanmedia.com/ahaanwebsite/client/6.webp", alt: "NextDoor Urgent Care" },
-  { src: "https://ahaanmedia.com/ahaanwebsite/client/6.webp", alt: "NextDoor Urgent Care" },
-  { src: "https://ahaanmedia.com/ahaanwebsite/client/6.webp", alt: "NextDoor Urgent Care" },
-  { src: "https://ahaanmedia.com/ahaanwebsite/client/6.webp", alt: "NextDoor Urgent Care" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/client/7.webp", alt: "finanza_ally" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/client/8.webp", alt: "Johat enterprises" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/client/9.webp", alt: "johat trust" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/client/10.webp", alt: "psitpops" },
+
 ];
 
 const FirstSection = () => {
