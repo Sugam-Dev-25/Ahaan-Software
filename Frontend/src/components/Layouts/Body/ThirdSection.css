@@ -69,203 +69,61 @@
   }
 }
  
-p.text-muted.section1-content.section1-content-p-tab {
-  font-family: 'Outfit', sans-serif;
-  text-align: left !important;
-  /* ✅ Paragraph also left aligned */
+.technology-grid-wrapper {
+  margin-top: 40px;
+  margin-bottom: 40px ;
 }
- 
-.our-tab-tech-icons {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 20px;
-  justify-items: center;
-}
- 
-.tabs-col-tech {
+
+.technology-card {
+  background: #fff;
+  border: 1px solid #89c0ed;
+  border-radius: 12px;
+  min-height: 90px;
+
   display: flex;
-  flex-direction: column;
-}
- 
-.nav-item-tab {
-  background-color: #eeeeee;
-  margin-bottom: 20px;
- 
-  border-radius: 5px;
-  line-height: 50px;
-  letter-spacing: 2px;
-  z-index: 99;
- 
-}
- 
-.nav-link-tab {
-  color: #000 !important;
-  font-weight: 500 !important;
-  font-family: 'Outfit', sans-serif !important;
- 
-  display: flex !important;
-height: 70px;
-  align-items: center !important;
-  justify-content: start !important;
-}
- 
-.nav-pills .nav-link.active,
-.nav-pills .show>.nav-link {
-  color: #c7892b !important;
-  background-color: #000 !important;
-  height: 70px;
-  line-height: 50px;
-  letter-spacing: 2px;
-  width: 100%;
-}
- 
-.tech-tab-content {
-  flex: 1 !important;
-  padding: 0px !important;
-  min-height: 50px !important;
-  box-shadow: none;
-}
- 
-.tech-icon {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-}
- 
-.tech-name {
-  font-size: 14px;
-  margin-top: 10px;
-  margin-bottom: 0px;
-  font-weight: bold;
-  color: #333;
+  gap: 15px;
+
   transition: all 0.3s ease;
-}
- 
-.tech-name:hover {
-  text-decoration: underline;
-  color: #7e61bf !important;
   cursor: pointer;
 }
- 
-.nav-icon {
-  margin-right: 5px;
+
+.technology-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
- 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .our-tab-tech-icons {
-    gap: 10px;
-  }
- 
-  .tabs-col-tech {
-    height: 450px;
-  }
+
+.technology-card img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
 }
- 
+
+.technology-card span {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Swiper spacing */
+.technology-slider-wrapper .swiper {
+  padding: 10px 5px 20px;
+}
+
 @media (max-width: 768px) {
-  .our-tab-tech-icons {
-    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  .technology-card {
+    min-height: 75px;
     gap: 10px;
   }
- 
-  .nav-item-tab {
-    font-size: 12px;
- 
+
+  .technology-card img {
+    width: 30px;
+    height: 30px;
   }
- 
-  .tech-name {
-    font-size: 12px;
-  }
- 
-  .tech-icon svg {
-    width: 50px;
-    height: 50px;
+
+  .technology-card span {
+    font-size: 16px;
   }
 }
- 
-@media (max-width: 480px) {
-  .our-tab-tech-icons {
-    grid-template-columns: repeat(auto-fill, minmax(40px, 2fr));
-  }
- 
-  .tech-icon svg {
-    width: 40px;
-    height: 40px;
-  }
- 
-  .tech-name {
-    font-size: 10px;
-  }
- 
-  .section1-client-label {
-    font-size: 32px !important;
-  }
-}
- 
-/* Mobile view adjustments */
-@media (max-width: 575px) {
-  .tab-mobile-row {
-    flex-direction: row !important;
-  }
- 
-  .mobile-tab-nav {
-    width: 15%;
-    max-width: 15%;
-  }
- 
-  .nav-pills .nav-link.active,
-  .nav-pills .show>.nav-link {
-    height: 45px;
-  }
- 
-  .nav-item-tab {
- 
-    line-height: 30px !important;
-  }
- 
-  .tab-content-mobile {
-    width: 85%;
-    max-width: 85%;
-    padding-left: 0px;
-  }
- 
-  .nav-link-tab {
-    display: flex;
-    align-items: center;
-    padding: 5px 15px;
-    font-size: 14px;
-    height: 45px;
-  }
- 
-  .nav-icon {
-    font-size: 18px;
-    margin-right: 0px;
-  }
- 
-  .tech-tab-content {
-    font-size: 14px;
-  }
- 
-  .tabs-col-tech {
-    height: 300px;
-  }
-}
- 
-@media (max-width: 390px) {
-  .section-header-tech {
-    text-align: left !important;
-    /* ✅ Ensures heading, divider & paragraph are left aligned */
-  }
-}
- 
-@media (max-width: 768px) and (min-width: 576px) {
-  .nav-link-tab {
-    height: 50px;
-  }
-  .nav-pills .nav-link.active,
-  .nav-pills .show>.nav-link {
-    height: 50px;
-  }
-}
- 

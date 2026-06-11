@@ -6,10 +6,12 @@ import CounterSection from "./CounterSection";
 import AnimatedTabsSection from "./AnimatedTabsSection";
 import ImageCarousel from "../../Layouts/Body/ImageCarousel";
 import SecondBanner from "../../Layouts/Body/SecondBanner";
+import PortfolioSecondBannner from "./PortfolioSecondBannner";
 const Portfolios = () => {
   return (
     <>
-      <PortfolioBanner />
+      {/* <PortfolioBanner /> */}
+      <PortfolioSecondBannner/>
       <AnimatedTabsSection />
       <CounterSection />
       <ServicesSection />
