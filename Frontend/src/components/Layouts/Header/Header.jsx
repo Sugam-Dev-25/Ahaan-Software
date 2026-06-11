@@ -146,8 +146,13 @@ const Header = () => {
             </div>
 
             <div className="get-quote-container-2">
-              <a href="#" className="get-quote-btn" onClick={openCallWidget}>
-                Request A Call
+              <a
+                href="https://calendly.com/leads-ahaansoftware/free-consultation"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="get-quote-btn"
+              >
+                Free Consultation
               </a>
             </div>
           </div>
