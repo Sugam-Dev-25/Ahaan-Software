@@ -1,351 +1,326 @@
-.process-section-wrapper {
-    position: relative;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: contain;
-    font-family: outfit;
+/* ─── Root ─────────────────────────────────────── */
+.op-root {
+  background: #0a0800;
+  overflow: hidden;
+  padding:50px 0px;
+  
 }
+
+/* ─── Header ────────────────────────────────────── */
+.op-header {
+  padding: 10px 48px 28px 0px;
+  border-bottom: 0.5px solid #2a2200;
+  display:flex;
+}
+
+/* ─── Grid ──────────────────────────────────────── */
+.op-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 0.5px solid #1e1800;
+}
+
+/* ─── Cell ──────────────────────────────────────── */
+.op-cell {
+  position: relative;
+  overflow: hidden;
+  border-right: 0.5px solid #1e1800;
+  border-bottom: 0.5px solid #1e1800;
+  padding: 28px 28px 28px 0;
+  display: flex;
+  align-items: flex-start;
+  min-height: 130px;
+
+  /* enter animation */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.op-cell:nth-child(2n) {
+  border-right: none;
+}
+
+.op-cell.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Big Number ────────────────────────────────── */
+.op-bignum {
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+  width: 108px;
+  text-align: right;
+ /* font-family: Georgia, serif; */
+  position: relative;
+  user-select: none;
+}
+
+/* solid dark fill — always behind */
+.op-num-base {
+  display: block;
+  
+  transition: color 0.6s ease;
+}
+
+/* outlined stroke layer */
+.op-num-stroke {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 0.85;
+  color: transparent;
+  -webkit-text-stroke: 1px #2e2200;
+  letter-spacing: -0.02em;
+  font-family: Georgia, serif;
+  transition: -webkit-text-stroke-color 0.6s ease;
+}
+
+/* gold fill — clips up from bottom on enter, always full on done */
+.op-num-fill {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  font-size: 96px;
+  font-weight: 700;
+  line-height: 0.85;
+  color: #443a1d;
+  letter-spacing: -0.02em;
+  font-family: Georgia, serif;
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+.op-cell.visible .op-num-fill {
+  clip-path: inset(0% 0 0 0);
+}
+
+/* ── DONE state: previous digit goes bright gold outlined ── */
+.op-cell.done .op-num-base {
+  color:  #352906;
+}
+
+.op-cell.done .op-num-stroke {
+  -webkit-text-stroke-color: #d3d0ca;
+}
+.op-num-base {
+  color: #352906;
+}
+
+.op-num-stroke {
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  -webkit-text-stroke: 2px #beb9a5;
+}
+
+.op-cell.done .op-num-fill {
+  color: #d8c7a1;
+  clip-path: inset(0% 0 0 0);
+  transition: none;
+  
+}
+
+/* ─── Gold Bar ──────────────────────────────────── */
+.op-bar {
+  width: 3px;
+  background: #c8a030;
+  flex-shrink: 0;
+  align-self: stretch;
+  margin: 0 18px;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: opacity 0.5s ease 0.4s, transform 0.5s ease 0.4s;
+}
+
+.op-cell.visible .op-bar {
+  opacity: 0.9;
+  transform: scaleY(1);
+}
+
+.op-cell.done .op-bar {
+  background: #e8a820;
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+/* ─── Content ───────────────────────────────────── */
+.op-content {
+  padding-top: 4px;
+  flex: 1;
+}
+
+.op-phase {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: #c8a030;
+  text-transform: uppercase;
+
+  margin-bottom: 6px;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.5s ease 0.5s, transform 0.5s ease 0.5s;
+}
+
+.op-cell.visible .op-phase {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.op-cell.done .op-phase {
+  color: #c5a154;
+  
+}
+
+.op-step-title {
+  font-size: 15px;
+  color: #f5edd8;
+  font-weight: 400;
+  line-height: 1.35;
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.5s ease 0.6s, transform 0.5s ease 0.6s;
+}
+
+.op-cell.visible .op-step-title {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.op-cell.done .op-step-title {
+  color: #ffffff;
+}
+
+.op-desc {
+  font-size: 11px;
+  color: #6a5a38;
+  line-height: 1.6;
+  
+  opacity: 0;
+  transition: opacity 0.5s ease 0.75s;
+}
+
+.op-cell.visible .op-desc {
+  opacity: 1;
+}
+
+.op-cell.done .op-desc {
+  color: #9a8050;
+  opacity: 1;
+}
+
+/* ─── Done badge ────────────────────────────────── */
+.op-badge {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  color: #c8a030;
  
-.process-header-wrapper {
-    z-index: 500;
-    padding-top: 20px;
+  animation: fadeIn 0.4s ease forwards;
 }
- 
-.process-vertical-line {
-    height: 100%;
-    margin-top: 50px;
-    width: 1px;
-    margin: 0 auto;
-    position: absolute;
-    left: 0;
-    right: 0;
-    border: 1px dashed #b1b1b1;
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 0.65; }
 }
- 
-.process-step-section:nth-child(2) {
-    margin-top: 30px;
+
+/* ─── Scan line ─────────────────────────────────── */
+.op-scanline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c8a030, transparent);
+  opacity: 0;
+  transition: opacity 0.6s ease 0.8s;
 }
- 
-.process-step-section {
-    position: relative;
-    z-index: 1;
+
+.op-cell.visible .op-scanline {
+  opacity: 0.25;
 }
- 
-.process-step-row {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+
+.op-cell.done .op-scanline {
+  opacity: 0.5;
 }
- 
-.process-step-left {
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    -ms-flex-preferred-size: 50%;
-    flex-basis: 50%;
-    max-width: 50%;
-    -webkit-box-ordinal-group: 1;
-    -ms-flex-order: 0;
-}
- 
-.process-step-box {
-    border: 1px dashed red;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: white;
-    max-width: 400px;
-    margin-left: auto;
-    position: relative;
-}
- 
-.process-step-content {
-    background-color: white;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, .16);
-    border-radius: 10px;
-    padding: 20px;
-    position: relative;
-    z-index: 1;
-}
- 
-.process-step-content h3 {
-    font-weight: 600;
-    font-size: 25px;
-    color: #000;
-    font-family: outfit;
-}
- 
-.process-step-content p {
-    font-size: 12px;
-    color: #797979;
-    font-family: outfit;
-}
- 
-.process-step-box::after {
-    content: "";
-    height: 30px;
-    width: 30px;
-    position: absolute;
-    right: -10px;
-    top: 46%;
-    transform: rotate(45deg);
-    z-index: 0;
-}
- 
-.process-step-number-col {
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    -webkit-box-flex: 0;
-    -ms-flex-positive: 0;
-    flex-grow: 0;
-    -webkit-box-ordinal-group: 2;
-    -ms-flex-order: 1;
-    order: 1;
-}
- 
-.process-step-number {
-    height: 60px;
-    width: 60px;
-    background-color: #eae8fc;
-    border: 1px solid green;
-    font-weight: 500;
-    font-size: 40px;
-    color: red;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 30px;
-    margin-right: 30px;
-}
- 
-.process-step-right {
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    -ms-flex-preferred-size: 50%;
-    flex-basis: 50%;
-    max-width: 50%;
-    -webkit-box-ordinal-group: 3;
-    -ms-flex-order: 2;
-    order: 2;
-}
- 
-.process-step-right-aligned .process-step-box {
-    margin-left: 0;
-    margin-right: auto;
-}
- 
-.process-step-box {
-    border: 1px solid red;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: white;
-    max-width: 400px;
-    min-width: auto;
-    margin-left: auto;
-    position: relative;
-}
- 
-.process-step-right-aligned .process-step-box::before {
-    left: -1px;
-    border-radius: 10px 100px 100px 10px;
-}
- 
-.process-step-box::before {
-    content: "";
-    height: 101%;
-    width: 60%;
-    border-radius: 100px 10px 10px 100px;
-    right: -1px;
-    top: -1px;
-    position: absolute;
-    z-index: 1;
-}
- 
-.process-step-right-aligned .process-step-box::after {
-    left: -10px;
-}
- 
-/* 🔴 Step 1 */
-.process-step-1 .process-step-box {
-  border-color: #ff6b6b;
-}
-.process-step-1 .process-step-box::before {
-  background-color: #ff6b6b;
-}
-.process-step-1 .process-step-number {
-  border-color: #ff6b6b;
-  color: #ff6b6b;
-}
-.process-step-1 .process-step-box::after {
-  background-color: #ff6b6b;
-}
- 
-/* 🟠 Step 2 */
-.process-step-2 .process-step-box {
-  border-color: #ffa500;
-}
-.process-step-2 .process-step-box::before {
-  background-color: #ffa500;
-}
-.process-step-2 .process-step-number {
-  border-color: #ffa500;
-  color: #ffa500;
-}
-.process-step-2 .process-step-box::after {
-  background-color: #ffa500;
-}
- 
-/* 🟡 Step 3 */
-/* .process-step-3 .process-step-box {
-  border-color: #ffd700;
-}
-.process-step-3 .process-step-box::before {
-  background-color: #ffd700;
-}
-.process-step-3 .process-step-number {
-  border-color: #ffd700;
-  color: #ffd700;
-}
-.process-step-3 .process-step-box::after {
-  background-color: #ffd700;
-} */
- 
-/* 🟢 Step 4 */
-.process-step-4 .process-step-box {
-  border-color: #4caf50;
-}
-.process-step-4 .process-step-box::before {
-  background-color: #4caf50;
-}
-.process-step-4 .process-step-number {
-  border-color: #4caf50;
-  color: #4caf50;
-}
-.process-step-4 .process-step-box::after {
-  background-color: #4caf50;
-}
- 
-/* 🔵 Step 5 */
-.process-step-3 .process-step-box {
-  border-color: #00bfff;
-}
-.process-step-3 .process-step-box::before {
-  background-color: #00bfff;
-}
-.process-step-3 .process-step-number {
-  border-color: #00bfff;
-  color: #00bfff;
-}
-.process-step-3 .process-step-box::after {
-  background-color: #00bfff;
-}
- 
-/* 🟣 Step 6 */
-.process-step-6 .process-step-box {
-  border-color: #8a2be2;
-}
-.process-step-6 .process-step-box::before {
-  background-color: #8a2be2;
-}
-.process-step-6 .process-step-number {
-  border-color: #8a2be2;
-  color: #8a2be2;
-}
-.process-step-6 .process-step-box::after {
-  background-color: #8a2be2;
-}
- 
-/* 💗 Step 7 */
-.process-step-7 .process-step-box {
-  border-color: #ff1493;
-}
-.process-step-7 .process-step-box::before {
-  background-color: #ff1493;
-}
-.process-step-7 .process-step-number {
-  border-color: #ff1493;
-  color: #ff1493;
-}
-.process-step-7 .process-step-box::after {
-  background-color: #ff1493;
-}
-/* 📱 Responsive layout for 991px and below (until 768px) */
-@media (max-width: 767px) {
-  .process-steps-wrapper {
-    position: relative;
+
+/* ─── Responsive ────────────────────────────────── */
+@media (max-width: 640px) {
+  .op-grid {
+    grid-template-columns: 1fr;
   }
- 
-  .process-vertical-line {
-    left: 20px; /* keep the line fixed at 20px */
-    right: auto;
-    margin: 0;
+
+  .op-cell {
+    border-right: 0px solid #1e1800;
   }
- 
-  .process-step-row {
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    margin-bottom: 40px; /* vertical gap between steps */
+
+  .op-bignum {
+    font-size: 72px;
+    width: 82px;
   }
- 
-  .process-step-left,
-  .process-step-right {
-    flex-basis: 100%;
-    max-width: 100%;
+
+  .op-num-stroke,
+  .op-num-fill {
+    font-size: 72px;
   }
- 
-  .process-step-number-col {
-    position: absolute;
-    left: 0;  /* place number circle exactly on the vertical line */
-    top: 50%; /* vertically center relative to step row */
-    transform: translateY(-50%);
-    order: 0; /* keep order normal */
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0; /* remove bottom margin */
-    z-index: 10; /* above the vertical line */
+
+  .op-header {
+    padding: 32px 24px 20px;
   }
- 
-  .process-step-number {
-    margin: 0;
-    height: 45px;
-    width: 45px;
-    font-size: 25px;
-  }
- 
-  .process-step-box {
-    width: calc(100% - 80px);
-    margin-left: 70px; /* give enough left margin to clear the number */
-    margin-right: 0;
-   
-  }
- 
-  /* Right aligned steps */
-  .process-step-right-aligned .process-step-box {
-    margin-left: 70px;
-    margin-right: 0;
-  }
- 
-  /* Arrow adjustments for left side */
-  .process-step-box::after {
-    right: auto;
-    left: -10px;
-    transform: rotate(45deg);
-  }
- 
-  .process-step-box::before {
-    right: auto;
-    left: -1px;
-    border-radius: 10px 100px 100px 10px;
-  }
+}
+/* Cell */
+.op-cell {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Hover overlay */
+.op-cell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    90deg,
+    rgba(192, 192, 192, 0.08) 0%,
+    rgba(212, 175, 55, 0.14) 100%
+  );
+
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.op-cell:hover::before {
+  transform: scaleX(1);
+}
+.op-cell:hover .op-num-base {
+  color: #d8c7a1;
+  
+}
+
+.op-cell:hover .op-num-stroke {
+  -webkit-text-stroke-color: #f5e8c8;
+  
+}
+
+.op-cell:hover .op-num-fill {
+  color: #f0d38a;
 }
