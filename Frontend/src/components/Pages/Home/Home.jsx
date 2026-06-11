@@ -42,12 +42,8 @@ const Home = () => {
         <ThirdSection />
         <ConnectSection />
         <TotalProject />      
+         <FirstSection />
         <WhyChooseUs />
-        <FirstSection />
-        <ConnectSection />
-        <FirstSection />
-        <ConnectSection />
-        <OurProcess />
         <ImageCarousel />
         <OurProcess />
         <CaseStudyCarousel />
