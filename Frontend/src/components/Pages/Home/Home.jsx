@@ -34,12 +34,15 @@ const Home = () => {
         <ServicesSection />
         <ThirdSection />
         <TotalProject />
-        <FirstSection />
+        
         <WhyChooseUs />
-        <OurProcess />
+        
+        <FirstSection />
         <ConnectSection />
         <ImageCarousel />
+        <OurProcess />
         <CaseStudyCarousel />
+        
         <TestimonialCarousel />
         <SecondBanner />
       </Suspense>

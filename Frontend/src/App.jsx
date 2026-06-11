@@ -40,6 +40,10 @@ const AppContent = () => {
   const location = useLocation();
   const hideHeaderFooterRoutes = ["/web-design-development-company"];
 
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  }, [location])
+
   return (
     <>
 
