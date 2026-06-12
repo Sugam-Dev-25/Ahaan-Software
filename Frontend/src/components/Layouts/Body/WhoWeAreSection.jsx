@@ -12,7 +12,7 @@ const WhoWeAreSection = () => {
           {/* Left Image Section */}
           <div className="col-lg-6 col-md-12 text-center mb-4 mb-lg-0">
             <img
-              src="https://ahaanmedia.com/ahaanwebsite/All/Wo-We-Are-2.jpg"
+              src="https://ahaanmedia.com/ahaanwebsite/All/Who-We-Are-3.png"
               alt="Mobile and Web Development"
               className="img-fluid who-we-are-image"
             />
@@ -21,7 +21,7 @@ const WhoWeAreSection = () => {
           {/* Right Content Section */}
           <div className="col-lg-6 col-md-12">
             <div className="who-we-are-content">
-              <h6 className="subtitle">
+              <h6 className="technology-subtitle">
                 About Ahaan Software <span className="divider"></span>
               </h6>
               <h2 className="main-title">

@@ -99,10 +99,10 @@ const Testimonials = () => {
 
   return (
     <div className="container section-header-tech">
-      <h6 className="subtitle">
+      <h6 className="technology-subtitle">
         Testimonials <span className="divider"></span>
       </h6>
-      <h2 className="text-center mb-4 title">What Our Clients Say</h2>
+      <h2 className="technology-title">What Our Clients Say</h2>
       <p className="image-carousel-content"  >
         Driven to be future-ready, and push beyond the building blocks of
         technology, digital, and marketing, Ahaan Software Consulting proudly

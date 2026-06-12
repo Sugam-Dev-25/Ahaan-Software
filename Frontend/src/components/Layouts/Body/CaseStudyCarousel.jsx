@@ -30,12 +30,12 @@ const CaseStudyCarousel = () => {
           <div className="col">
 
             <div className="section-header-tech">
-              <p className="subtitle">
+              {/* <p className="technology-subtitle">
                 view our portfolio <span className="divider"></span>
-              </p>
+              </p> */}
             </div>
 
-            <p className="title" style={{ textAlign: "left", color: "#fff" }}>
+            <p className="technology-title" style={{ textAlign: "left", color: "#fff" }}>
               Case Study
             </p>
 

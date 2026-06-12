@@ -81,11 +81,11 @@ const TabBar = () => {
     <section className="technology-section">
       <div className="container">
         <div className="mt-5 section-header-tech">
-          <h6 className="subtitle">
+          <h6 className="technology-subtitle">
             Technology Use <span className="divider"></span>
           </h6>
 
-          <h2 className="title">Our Technology Use</h2>
+          <h2 className="technology-title">Our Technology Use</h2>
 
           <p className="image-carousel-content">
             The success of our services depends on a perfectly laid-out process
@@ -97,20 +97,20 @@ const TabBar = () => {
         </div>
 
         <div className="technology-grid-wrapper">
-          <div className="row g-4">
-            {technologies.map((item, index) => (
-              <div
-                key={index}
-                className="col-6 col-sm-4 col-md-3 col-lg-2"
-              >
-                <div className="technology-card">
-                  <img src={item.image} alt={item.name} />
-                  <span>{item.name}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+  <div className="row g-4">
+    {technologies.map((item, index) => (
+      <div
+        key={index}
+        className="col-6 col-sm-4 col-md-3 col-lg-2"
+      >
+        <div className="technology-card">
+          <img src={item.image} alt={item.name} />
+          <span>{item.name}</span>
         </div>
+      </div>
+    ))}
+  </div>
+</div>
       </div>
     </section>
   );
