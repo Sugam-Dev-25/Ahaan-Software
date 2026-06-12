@@ -5,7 +5,7 @@ const Showcase = () => {
   return (
     <div className="bodyWrapper">
       <h1 className="whychooseus-label show-case-label">
-        Deliverables for the SMM service
+        Innovative Solutions for Modern Businesses
       </h1>
 
       <div className="container diagram">
