@@ -108,7 +108,7 @@ const OurProcess = () => {
                 <div className="op-content">
                   <div className="op-phase">{step.phase}</div>
                   <div className="op-step-title">{step.title}</div>
-                  <div className="op-desc">{step.desc}</div>
+                  <div className="op-desc image-carousel-content">{step.desc}</div>
                 </div>
 
 

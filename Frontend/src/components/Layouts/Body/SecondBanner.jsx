@@ -30,7 +30,7 @@ const CallToAction = () => {
             Ready to Innovate Your Business?
           </h3>
           <div className="second-banner-phone-numbers">
-            <p>
+            <div>
               <div style={{ lineHeight: "1.2" }}>
                 <div
                   style={{
@@ -56,9 +56,9 @@ const CallToAction = () => {
                   +1-740-748-4441
                 </a>
               </div>
-            </p>
+            </div>
  
-            <p>
+            <div>
               <div style={{ lineHeight: "1.2" }}>
                 <div
                   style={{
@@ -80,7 +80,7 @@ const CallToAction = () => {
                   +91-983-037-1143
                 </div>
               </div>
-            </p>
+            </div>
             {/* <p onClick={() => window.open("https://wa.me/6590745876", "_blank")}>
               <div style={{ lineHeight: "1.2",  }}>
                 <div style={{ color: "#CD912A", cursor: "pointer", fontSize: isMobile ? "14px" : "20px", fontWeight: "bold", textTransform: "uppercase" }}>Singapore</div>
