@@ -10,7 +10,7 @@ import {
 import { SiAdobephotoshop, SiAdobeillustrator, SiWix } from "react-icons/si";
 import { FaReact, FaNodeJs, FaDatabase } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
-import { SiShopify } from "react-icons/si";  // Correct
+import { SiShopify } from "react-icons/si";  
 import { SiWordpress } from "react-icons/si";
 import { FaWebflow } from "react-icons/fa6";
 import { SiFramer } from "react-icons/si";
@@ -21,7 +21,6 @@ import { SiNextdotjs } from "react-icons/si";
 import { IoIosAppstore } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-// Map each service to its icons
 const techIconsMap = {
   "UI/UX Designing": [
     { Icon: FiFigma, label: "Figma" },
@@ -40,18 +39,12 @@ const techIconsMap = {
     { Icon: FaDatabase, label: "MongoDB" },
     { Icon: RiTailwindCssFill, label: "Tailwind" },
   ],
-"E-Com Development": [
-  { Icon: FaWebflow, label: "Webflow" },
-  { Icon: SiShopify, label: "Shopify" },
-  { Icon: SiWordpress, label: "WordPress" },   // ← NEW
-  { Icon: FaReact, label: "React" },
-  { Icon: FaNodeJs, label: "Node.js" },
-],
-  "Shopify Development": [
+  "E-Com Development": [
+    { Icon: FaWebflow, label: "Webflow" },
     { Icon: SiShopify, label: "Shopify" },
-    { Icon: FiCode, label: "Liquid" },
-    { Icon: FiLayout, label: "Themes" },
-    { Icon: FiSmartphone, label: "Mobile" },
+    { Icon: SiWordpress, label: "WordPress" },   
+    { Icon: FaReact, label: "React" },
+    { Icon: FaNodeJs, label: "Node.js" },
   ],
   "App Development": [
     { Icon: FaReact, label: "React Native" },
@@ -59,21 +52,13 @@ const techIconsMap = {
     { Icon: IoIosAppstore, label: "Android" },
     { Icon: FiGlobe, label: "Cross-Platform" },
   ],
-  "Digital Marketing": [
-    { Icon: FiGlobe, label: "SEO" },
-    { Icon: FiLayout, label: "Ads" },
-    { Icon: FiCode, label: "Analytics" },
-    { Icon: FiSmartphone, label: "Social" },
-  ],
 };
 
 const textPairs = [
   { title: "UI/UX Designing", subtitle: "Crafting intuitive and visually stunning user experiences." },
   { title: "Web Development", subtitle: "Building fast, responsive, and modern web solutions." },
   { title: "E-Com Development", subtitle: "Creating seamless eCommerce experiences that sell." },
-  // { title: "Shopify Development", subtitle: "Empowering online stores with performance and beauty." },
   { title: "App Development", subtitle: "Developing powerful mobile and desktop applications." },
-  // { title: "Digital Marketing", subtitle: "Driving growth through smart and creative campaigns." },
 ];
 
 const BannerContent = () => {
@@ -83,54 +68,47 @@ const BannerContent = () => {
   const [fadeSubtitle, setFadeSubtitle] = useState(false);
   const [showIcons, setShowIcons] = useState(false);
 
-useEffect(() => {
-  const currentText = textPairs[index].title;
-  
-  // 1. IMMEDIATE PAINT: On the very first render, show the subtitle immediately.
-  // This satisfies the LCP check without waiting 1.5s for the title to type.
-  if (index === 0 && !isDeleting) {
-    setFadeSubtitle(true);
-    // Optional: Show icons slightly faster too
-    if (!showIcons) setShowIcons(true);
-  }
-
-  const typingSpeed = isDeleting ? 40 : 80; // Slightly faster for better UX
-
-  const timer = setTimeout(() => {
-    if (!isDeleting && displayText.length < currentText.length) {
-      setDisplayText(currentText.substring(0, displayText.length + 1));
-      
-      // 2. GRADUAL REVEAL: For other slides, start fading in subtitle 
-      // when typing is halfway done, rather than at the very end.
-      if (displayText.length > currentText.length / 2) {
-        setFadeSubtitle(true);
-      }
-
-    } else if (isDeleting && displayText.length > 0) {
-      setDisplayText(currentText.substring(0, displayText.length - 1));
-    } else if (!isDeleting && displayText.length === currentText.length) {
-      // Stay on the completed text for a while
-      setShowIcons(true); 
-      setTimeout(() => setIsDeleting(true), 3000); 
-    } else if (isDeleting && displayText === "") {
-      // Reset for next slide
-      setFadeSubtitle(false);
-      setShowIcons(false);
-      setIsDeleting(false);
-      setIndex((prev) => (prev + 1) % textPairs.length);
+  useEffect(() => {
+    const currentText = textPairs[index].title;
+    
+    if (index === 0 && !isDeleting) {
+      setFadeSubtitle(true);
+      if (!showIcons) setShowIcons(true);
     }
-  }, typingSpeed);
 
-  return () => clearTimeout(timer);
-}, [displayText, isDeleting, index, showIcons]);
+    const typingSpeed = isDeleting ? 40 : 80;
+
+    const timer = setTimeout(() => {
+      if (!isDeleting && displayText.length < currentText.length) {
+        setDisplayText(currentText.substring(0, displayText.length + 1));
+        
+        if (displayText.length > currentText.length / 2) {
+          setFadeSubtitle(true);
+        }
+
+      } else if (isDeleting && displayText.length > 0) {
+        setDisplayText(currentText.substring(0, displayText.length - 1));
+      } else if (!isDeleting && displayText.length === currentText.length) {
+        setShowIcons(true); 
+        setTimeout(() => setIsDeleting(true), 3000); 
+      } else if (isDeleting && displayText === "") {
+        setFadeSubtitle(false);
+        setShowIcons(false);
+        setIsDeleting(false);
+        setIndex((prev) => (prev + 1) % textPairs.length);
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, index, showIcons]);
 
   const currentIcons = techIconsMap[textPairs[index].title] || [];
 
   return (
     <div className="content">
-      {/* Typing Heading */}
+      {/* Typing Heading with Stroke Styling split into CSS classes */}
       <h1 className="animated-heading">
-        <span className="typed-text">{displayText}</span>
+        <span className="typed-text dynamic-stroke">{displayText}</span>
         <span className="cursor"></span>
       </h1>
 

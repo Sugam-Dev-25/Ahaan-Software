@@ -15,28 +15,48 @@
 }
 
 /* ===========================
-   TYPING HEADING
+   TYPING HEADING & STROKE ANIMATE
    =========================== */
 .animated-heading {
   font-size: 4.8rem;
-  font-weight: 700;
-  font-family: "Outfit", sans-serif;
-  color: #ffffff;
+  font-weight: 800; /* Made slightly thicker so the stroke is highly readable */
+  font-family:Georgia, 'Times New Roman', Times, serif;
   margin-bottom: 25px;
   line-height: 1.1;
   pointer-events: none;
+  text-transform: uppercase;
 }
 
 .typed-text {
   color: #ffffff;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8),
-               0 0 20px rgba(120, 180, 255, 0.4);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4),
+               0 0 20px rgba(120, 180, 255, 0.2);
+}
+
+/* The dynamic stroke rules applied directly to typed text */
+.dynamic-stroke {
+  -webkit-text-stroke: 1.5px rgba(29, 70, 61, 0.85);
+  text-stroke: 1.5px rgba(209, 146, 29, 0.85);
+  color: transparent; /* Makes background transparent so inner stroke shows through beautifully */
+  background: linear-gradient(120deg, #c29b19, #9ecaff, #ffffff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shineStroke 4s linear infinite;
+}
+
+@keyframes shineStroke {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 
 .cursor {
   display: inline-block;
   margin-left: 5px;
-  color: #ffffff99;
+  width: 4px;
+  height: 4rem;
+  background-color: rgba(180, 149, 10, 0.8);
+  vertical-align: middle;
   animation: blink 1s infinite;
 }
 
@@ -45,15 +65,17 @@
   50% { opacity: 1; }
 }
 
+/* ===========================
+   SUBTITLE
+   =========================== */
 .animated-subtitle {
-  min-height: 3.5rem; /* Matches roughly 2 lines of text on mobile */
+  min-height: 3.5rem; 
   transition: opacity 0.4s ease;
   font-size: 1.4rem;
   color: #ffffffdd;
   margin-bottom: 40px;
   font-family: "Outfit", sans-serif;
   opacity: 0;
-  
 }
 
 .animated-subtitle.visible {
@@ -77,6 +99,7 @@
   margin-top: 10px;
   letter-spacing: 0.5px;
   text-decoration: none;
+  display: inline-block;
 }
 
 .banner-btn:hover {
@@ -116,8 +139,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 60px;
-  min-height: 60px;
+  width: 65px;
+  height: 65px;
+  box-sizing: border-box;
 }
 
 .banner-tech-icon:hover {
@@ -131,10 +155,12 @@
    RESPONSIVE STYLES
    =========================== */
 
-/* Large Tablets (max-width: 1024px) */
 @media (max-width: 1024px) {
   .animated-heading {
     font-size: 3.8rem;
+  }
+  .cursor {
+    height: 3.2rem;
   }
   .animated-subtitle {
     font-size: 1.2rem;
@@ -142,77 +168,39 @@
   }
   .banner-tech-icon {
     font-size: 1.8rem;
-    padding: 16px;
-    min-width: 55px;
-    min-height: 55px;
+    width: 58px;
+    height: 58px;
+    padding: 14px;
   }
 }
 
-/* Tablets (max-width: 768px) */
 @media (max-width: 768px) {
   .content {
     top: 52%;
     width: 95%;
   }
-
   .animated-heading {
     font-size: 2.8rem;
   }
-
+  .cursor {
+    height: 2.4rem;
+  }
   .animated-subtitle {
     font-size: 1.1rem;
     margin-bottom: 25px;
   }
-
   .banner-btn {
     font-size: 1rem;
     padding: 10px 24px;
   }
-
   .banner-tech-icons {
     gap: 15px;
   }
-
   .banner-tech-icon {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
     padding: 12px;
-    min-width: 50px;
-    min-height: 50px;
-    background: rgba(255, 255, 255, 0.1);
-  }
-}
-
-/* Specific adjustment for 481px to 768px range */
-@media (max-width: 768px) and (min-width: 481px) {
-  .content {
-    top: 50%;
-    width: 95%;
-  }
-
-  .animated-heading {
-    font-size: 2.4rem;
-  }
-
-  .animated-subtitle {
-    font-size: 1.05rem;
-    margin-bottom: 22px;
-  }
-
-  .banner-btn {
-    font-size: 0.95rem;
-    padding: 9px 22px;
-  }
-
-  .banner-tech-icons {
-    gap: 14px;
-    margin: 30px 0;
-  }
-
-  .banner-tech-icon {
-    font-size: 1.4rem;
-    padding: 11px;
-    min-width: 48px;
-    min-height: 48px;
   }
 }
 
@@ -220,34 +208,36 @@
   .content {
     top: 50%;
     width: 95%;
-    padding: 0 10px;
+    padding: 0 5px;
   }
-
   .animated-heading {
-    font-size: 2rem;
+    font-size: 2.1rem;
     line-height: 1.2;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.85); /* Slightly thinner stroke for small mobile screens */
+    text-stroke: 1px rgba(255, 255, 255, 0.85);
   }
-
+  .cursor {
+    height: 1.8rem;
+    width: 3px;
+  }
   .animated-subtitle {
     font-size: 0.95rem;
     margin-bottom: 20px;
+    min-height: 4rem;
   }
-
   .banner-btn {
     font-size: 0.9rem;
     padding: 8px 20px;
   }
-
   .banner-tech-icons {
-    gap: 12px;
-    
+    gap: 10px;
   }
-
+  /* Fixed sizing structure here prevents icon squishing on mobile views */
   .banner-tech-icon {
     backdrop-filter: none;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    width: 42px;
+    height: 42px;
     padding: 10px;
-    max-width: 45px;
-    max-height: 45px;
   }
 }
