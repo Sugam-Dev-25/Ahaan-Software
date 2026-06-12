@@ -14,9 +14,9 @@
   inset: 0;
 background: linear-gradient(
   to bottom,
-  rgba(0, 0, 0, 0.45) 0%,
-  rgba(0, 0, 0, 0.60) 50%,
-  rgba(0, 0, 0, 0.85) 100%
+  rgba(0, 0, 0, 0.55) 0%,
+  rgba(0, 0, 0, 0.65) 50%,
+  rgba(0, 0, 0, 0.90) 100%
 );
 
 backdrop-filter: blur(1px);
@@ -29,19 +29,18 @@ backdrop-filter: blur(1px);
   text-align: center;
   font-family: "Outfit", sans-serif;
   left: 50%;
-  top: 30%;
+  top: 26%;
   z-index: 2;
   margin: 0;
-  font-size: 80px;
+  font-size: 100px;
   font-weight: 800;
   white-space: nowrap;
   background: linear-gradient(
   to bottom,
-  #f7d089 0%,
-  #e5b95d 20%,
-  #c78a2b 45%,
-  rgba(199, 138, 43, 0.5) 75%,
-  rgba(199, 138, 43, 0) 100%
+  #f7e5c4 0%,
+  #fde2a6 20%,
+  #fcb543 50%,
+  #a87625 100%
 );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -52,16 +51,16 @@ backdrop-filter: blur(1px);
 }
 @media (max-width: 1023px) {
    .watermark-text {
-    font-size: clamp(20px, 5vw, 40px); 
-    top:clamp(36%, 30vw, 38%);
+    font-size: clamp(35px, 9vw, 72px); 
+    top:33%; 
   }
 }
 
 
 @media (min-width: 1024px) and (max-width:1279px) {
   .watermark-text {
-    font-size: 55px; 
-    top:36%;
+    font-size: 76px; 
+    top:30%;
   }
 }
 

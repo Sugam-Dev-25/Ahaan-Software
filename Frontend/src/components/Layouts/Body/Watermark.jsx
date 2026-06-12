@@ -6,7 +6,7 @@ const Watermark = () => {
       <div className="watermark-overlay"></div>
 
       <h1 className="watermark-text">
-        AHAAN SOFTWARE CONSULTING
+        AHAAN SOFTWARE
       </h1>
     </section>
   );

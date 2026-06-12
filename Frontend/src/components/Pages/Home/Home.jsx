@@ -18,7 +18,7 @@ const CaseStudyCarousel = lazy(
   () => import("../../Layouts/Body/CaseStudyCarousel"),
 );
 const TestimonialCarousel = lazy(
-  () => import("../../Layouts/Body/Testimonials"),
+  () => import("../../Layouts/Body/NewTestimonials"),
 );
 const SecondBanner = lazy(() => import("../../Layouts/Body/SecondBanner"));
 import "./Home.css";

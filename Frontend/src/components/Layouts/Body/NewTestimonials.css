@@ -1,0 +1,259 @@
+/* ===========================
+   SLIDER
+=========================== */
+
+.testimonial-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.testimonial-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+   padding: 70px 0;
+}
+
+.testimonial-track {
+  display: flex;
+  gap: 30px;
+  transition: transform 0.7s ease;
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.testimonial-card {
+  position: relative;
+  background: #f3f3f3;
+  border-radius: 24px;
+  padding: 90px 35px 35px;
+  min-height: auto;
+  overflow: visible;
+}
+
+/* ===========================
+   TOP QUOTE
+=========================== */
+
+.quote-top {
+  position: absolute;
+  top: -25px;
+  left: 25px;
+  font-size: 80px;
+  line-height: 1;
+  font-family: "Outfit", sans-serif;
+
+  z-index: 5;
+}
+
+/* ===========================
+   BOTTOM QUOTE
+=========================== */
+
+.quote-bottom {
+  position: absolute;
+  bottom: -50px;
+  right: 25px;
+
+  font-size: 80px;
+  line-height: 1;
+  font-family: "Outfit", sans-serif;
+
+  z-index: 5;
+}
+
+/* ===========================
+   CLIENT PILL
+=========================== */
+
+.client-pill {
+  position: absolute;
+  top: -28px;
+  right: 20px;
+  padding: 10px ;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 50px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  z-index: 10;
+}
+
+.client-image {
+  width: 46px;
+  height: 46px;
+
+  border-radius: 50%;
+  overflow: hidden;
+
+  background: #fff;
+
+  flex-shrink: 0;
+}
+
+.client-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.client-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.client-details h4 {
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.client-details span {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+}
+
+/* ===========================
+   WATERMARK
+=========================== */
+
+.quote-watermark {
+  position: absolute;
+  right: 30px;
+  bottom: 90px;
+
+  font-size: 220px;
+  line-height: 1;
+
+  color: rgba(0, 0, 0, 0.03);
+
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ===========================
+   CONTENT
+=========================== */
+
+.testimonial-content {
+  position: relative;
+  z-index: 2;
+}
+
+.testimonial-content p {
+  margin: 0;
+
+  color: #555;
+  font-size: 16px;
+  line-height: 1.8;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-line {
+  width: 120px;
+  height: 2px;
+
+  background: #d7d7d7;
+
+  margin: 28px 0;
+}
+
+.testimonial-stars {
+  display: flex;
+  gap: 6px;
+  font-size: 24px;
+}
+
+/* ===========================
+   ARROWS
+=========================== */
+
+.testimonial-arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 46px;
+  height: 46px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  z-index: 20;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+
+  transition: 0.3s;
+}
+
+.testimonial-arrow-btn:hover {
+  transform: translateY(-50%) scale(1.08);
+}
+
+.testimonial-arrow-btn.left {
+  left: -10px;
+}
+
+.testimonial-arrow-btn.right {
+  right: -10px;
+}
+
+/* ===========================
+   responsive
+=========================== */
+
+
+@media (max-width: 991px) {
+  
+.testimonial-card {
+  padding: 35px 35px;
+}
+ 
+  .client-pill {
+   padding:7px;
+  }
+
+  .client-image {
+  width: 36px;
+  height: 36px;
+  }
+
+  .client-details h4 {
+    font-size: 14px;
+  }
+
+  .quote-watermark {
+    font-size: 80px;
+  }
+
+  .testimonial-arrow-btn {
+    display: none;
+  }
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+@media (max-width: 767px) {
+  .testimonial-track {
+    gap: 0px;
+  }
+}
