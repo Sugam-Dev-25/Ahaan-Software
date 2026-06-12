@@ -3,28 +3,28 @@ import React from "react";
 import "./FirstSection.css";
 
 const clients = [
-  { src: "https://ahaanmedia.com/ahaanwebsite/client/1.webp", alt: "EKYAA" },
-  { src: "https://ahaanmedia.com/ahaanwebsite/client/2.webp", alt: "LOGIX" },
-  { src: "https://ahaanmedia.com/ahaanwebsite/client/3.webp", alt: "Fs" },
-  { src: "https://ahaanmedia.com/ahaanwebsite/client/4.webp", alt: "Helli" },
-  { src: "https://ahaanmedia.com/ahaanwebsite/client/5.webp", alt: "Jazzyln Nolen" },
-  { src: "https://ahaanmedia.com/ahaanwebsite/client/6.webp", alt: "NextDoor Urgent Care" },
-  { src: "https://ahaanmedia.com/ahaanwebsite/client/8.webp", alt: "finanza_ally" },
-  { src: "https://ahaanmedia.com/ahaanwebsite/client/7.webp", alt: "Johat enterprises" },
-  { src: "https://ahaanmedia.com/ahaanwebsite/client/10.webp", alt: "johat trust" },
-  { src: "https://ahaanmedia.com/ahaanwebsite/client/9.webp", alt: "psitpops" },
-  { src: "https://ahaanmedia.com/ahaanwebsite/client/12.webp", alt: "abc" },
-  { src: "https://ahaanmedia.com/ahaanwebsite/client/11.webp", alt: "def" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/clients/1.webp", alt: "EKYAA" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/clients/2.webp", alt: "LOGIX" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/clients/3.webp", alt: "Fs" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/clients/4.webp", alt: "Helli" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/clients/5.webp", alt: "Jazzyln Nolen" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/clients/6.webp", alt: "NextDoor Urgent Care" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/clients/8.webp", alt: "finanza_ally" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/clients/7.webp", alt: "Johat enterprises" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/clients/10.webp", alt: "johat trust" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/clients/9.webp", alt: "psitpops" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/clients/12.webp", alt: "abc" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/clients/11.webp", alt: "def" },
 
 ];
 
 const FirstSection = () => {
   return (
     <div className="container selected-clients section-header-tech">
-      <h6 className="subtitle">
+      <h6 className="technology-subtitle">
         Trusted Client <span className="divider"></span>
       </h6>
-      <label className="title">Our Clients</label>
+      <label className="technology-title">Our Clients</label>
       <p className="image-carousel-content">
         We understand, collaborate, and empower! From complex Software
         Development Service to Seamless Integration, experience how our next-gen

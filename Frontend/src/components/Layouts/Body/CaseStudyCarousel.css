@@ -16,6 +16,8 @@
   font-weight: 600;
   letter-spacing: 1px;
   color: #fff;
+  text-align: left;
+  
 }
 .subtitle .divider {
   display: inline-block;

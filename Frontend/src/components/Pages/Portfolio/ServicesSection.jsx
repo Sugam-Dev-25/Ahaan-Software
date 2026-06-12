@@ -36,11 +36,11 @@ const ServicesSection = () => {
     <section className="container portfolio-services-section">
       <div className="section-header">
         {/* 👇 Added subtitle with divider */}
-        <h6 className="subtitle">
+        <h6 className="technology-subtitle">
           What We Do <span className="divider"></span>
         </h6>
 
-        <h2 className="title">Our Core Services</h2>
+        <h2 className="technology-title">Our Core Services</h2>
         <p className="image-carousel-content">
           We are driven by a passion to deliver excellence through continuous
           innovation and cutting-edge technology — creating intelligent,
