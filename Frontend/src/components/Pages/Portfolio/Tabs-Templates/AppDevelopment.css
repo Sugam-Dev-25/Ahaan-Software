@@ -27,8 +27,9 @@
   flex-wrap: wrap;
 }
 
-/* ===== CARD ===== */
 .appdev-card {
+  position: relative;
+  overflow: hidden;
   background: #fff;
   border-radius: 20px;
   padding: 16px;
@@ -38,13 +39,11 @@
   cursor: pointer;
 }
 
-/* Hover effect */
 .appdev-card:hover {
   transform: translateY(-12px) scale(1.04);
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
 }
 
-/* Image */
 .appdev-card img {
   width: 100%;
   height: auto;
@@ -52,28 +51,56 @@
   display: block;
 }
 
+/* ===== SKELETON OVERLAY ===== */
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.appdev-skeleton-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 992px) {
-  .appdev-title {
-    font-size: 34px;
-  }
-
-  .appdev-card {
-    width: 200px;
-  }
+  .appdev-title { font-size: 34px; }
+  .appdev-card  { width: 200px; }
 }
 
 @media (max-width: 576px) {
-  .appdev-section {
-    padding: 60px 0;
-  }
+  .appdev-section { padding: 60px 0; }
+  .appdev-title   { font-size: 28px; }
+  .appdev-card    { width: 100%; max-width: 300px; }
+}
 
-  .appdev-title {
-    font-size: 28px;
-  }
+.appdev-card {
+  position: relative;
+  overflow: hidden;
+}
 
-  .appdev-card {
-    width: 100%;
-    max-width: 300px;
-  }
+/* Overlay sits on top of the <img> until it loads, then fades out */
+.appdev-skeleton-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Standalone skeleton fallback (used if needed) */
+.appdev-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s infinite;
+  min-height: 260px;
 }
