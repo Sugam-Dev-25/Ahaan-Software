@@ -109,7 +109,7 @@ const BannerContent = () => {
       {/* Typing Heading with Stroke Styling split into CSS classes */}
       <h1 className="animated-heading">
         <span className="typed-text dynamic-stroke">{displayText}</span>
-        <span className="cursor"></span>
+        
       </h1>
 
       {/* Subtitle */}

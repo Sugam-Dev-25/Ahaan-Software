@@ -50,15 +50,7 @@
   100% { background-position: 200% center; }
 }
 
-.cursor {
-  display: inline-block;
-  margin-left: 5px;
-  width: 4px;
-  height: 4rem;
-  background-color: rgba(180, 149, 10, 0.8);
-  vertical-align: middle;
-  animation: blink 1s infinite;
-}
+
 
 @keyframes blink {
   0%, 100% { opacity: 0; }
