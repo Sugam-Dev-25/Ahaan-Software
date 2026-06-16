@@ -1,49 +1,80 @@
+/* ============================================================
+   UiUxDesign.css — clean version with skeleton support
+   ============================================================ */
+
+/* ── Skeleton shimmer keyframe ── */
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── API-loading skeleton (6 placeholders while data fetches) ── */
+.uiux-skeleton {
+  width: 100%;
+  aspect-ratio: 4 / 3;        /* matches real image ratio */
+  border-radius: 10px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s infinite;
+}
+
+/* ── Per-image skeleton overlay (disappears on onLoad) ── */
+.uiux-card-skeleton {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ── Section wrapper ── */
 .uiux-design-gallery-container {
   padding-top: 60px;
   padding-bottom: 60px;
   background-color: #ffffff;
 }
 
-/* Image Wrapper */
+/* ── Image wrapper ── */
 .uiux-image-wrapper {
-  position: relative;
+  position: relative;        /* required for skeleton overlay positioning */
   overflow: hidden;
   border-radius: 10px;
-  background: #fff;
+  background: #f0f0f0;       /* placeholder colour while image loads */
 }
 
-/* Image (🔥 SAME BEHAVIOUR AS OLD STATIC VERSION) */
+/* ── Image ── */
 .uiux-image {
   width: 100%;
-  height: auto;              /* ✅ natural height */
-  object-fit: contain;       /* ✅ no crop, exact ratio */
+  height: auto;
+  object-fit: contain;
   border-radius: 10px;
   display: block;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* opacity is controlled inline by onLoad state */
 }
 
-/* Bottom Overlay */
+/* ── Hover overlay ── */
 .uiux-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 20%;
-  background: linear-gradient(
-    to top,
-    rgba(255, 255, 255, 0.6),
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(to top, rgba(255,255,255,0.6), rgba(255,255,255,0));
   display: flex;
   align-items: flex-end;
   justify-content: center;
   border-radius: 0 0 10px 10px;
   transition: all 0.4s ease;
   opacity: 0;
+  z-index: 3;                /* above skeleton overlay */
 }
 
-/* Title */
+/* ── Overlay title ── */
 .uiux-title {
   color: #000;
   font-weight: 600;
@@ -54,7 +85,7 @@
   transition: all 0.4s ease;
 }
 
-/* Hover */
+/* ── Hover states ── */
 .uiux-image-wrapper:hover .uiux-overlay {
   opacity: 0.9;
   height: 25%;
@@ -65,7 +96,7 @@
   transform: translateY(0);
 }
 
-/* View All */
+/* ── View All button ── */
 .uiux-viewall-btn {
   font-family: "Outfit", sans-serif;
   font-weight: 600;
@@ -84,15 +115,11 @@
   opacity: 0.7;
 }
 
-/* Responsive */
+/* ── Responsive ── */
 @media (max-width: 768px) {
-  .uiux-image {
-    height: auto;
-  }
+  .uiux-image { height: auto; }
 }
 
 @media (max-width: 576px) {
-  .uiux-image {
-    height: auto;
-  }
+  .uiux-image { height: auto; }
 }
