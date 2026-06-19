@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { NavLink } from "react-router-dom";
+// import { a } from "react-router-dom";
 import "./Header.css";
 import { FiPhoneCall, FiMessageSquare  } from "react-icons/fi"; // Phone icon add kora hoyeche
 import MobileSidebar from "./MobileSidebar";
@@ -70,35 +70,35 @@ const Header = () => {
         <div className="header-left-side d-flex align-items-center">
           <ul className="d-flex desktop-nav-menu">
             <li>
-              <NavLink exact="true" to="/" className="nav-link">
+              <a exact="true" href="/" className="nav-link">
                 Home
-              </NavLink>
+              </a>
             </li>
             <li>
-              <NavLink to="/about" className="nav-link">
+              <a href="/about" className="nav-link">
                 About
-              </NavLink>
+              </a>
             </li>
             <li>
-              <NavLink to="/portfolio" className="nav-link">
+              <a href="/portfolio" className="nav-link">
                 Portfolio
-              </NavLink>
+              </a>
             </li>
             <li>
-              <NavLink to="/service" className="nav-link">
+              <a href="/service" className="nav-link">
                 Services
-              </NavLink>
+              </a>
             </li>
-            {/* <li><NavLink to="/blog" className="nav-link">Blogs</NavLink></li> */}
+            {/* <li><a href="/blog" className="nav-link">Blogs</a></li> */}
             <li>
-              <NavLink to="/careers" className="nav-link">
+              <a href="/careers" className="nav-link">
                 Career
-              </NavLink>
+              </a>
             </li>
             <li>
-              <NavLink to="/contact" className="nav-link">
+              <a href="/contact" className="nav-link">
                 Contact
-              </NavLink>
+              </a>
             </li>
           </ul>
         </div>

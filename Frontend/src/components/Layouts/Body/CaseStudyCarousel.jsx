@@ -8,16 +8,16 @@ import "./CaseStudyCarousel.css";
 const CaseStudyCarousel = () => {
 
   const slides = [
-    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/1.webp", link: "#" },
-    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/2.webp", link: "#" },
-    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/3.webp", link: "#" },
-    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/4.webp", link: "#" },
-    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/5.webp", link: "#" },
-    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/6.webp", link: "#" },
-    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/7.webp", link: "#" },
-    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/8.webp", link: "#" },
-    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/9.webp", link: "#" },
-    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/10.webp", link: "#" },
+    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/1.webp", link: "/case-studies" },
+    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/2.webp", link: "/case-studies" },
+    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/3.webp", link: "/case-studies" },
+    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/4.webp", link: "/case-studies" },
+    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/5.webp", link: "/case-studies" },
+    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/6.webp", link: "/case-studies" },
+    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/7.webp", link: "/case-studies" },
+    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/8.webp", link: "/case-studies" },
+    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/9.webp", link: "/case-studies" },
+    { img: "https://ahaanmedia.com/ahaanwebsite/casestudy/10.webp", link: "/case-studies" },
  
   ];
 
@@ -30,9 +30,6 @@ const CaseStudyCarousel = () => {
           <div className="col">
 
             <div className="section-header-tech">
-              {/* <p className="technology-subtitle">
-                view our portfolio <span className="divider"></span>
-              </p> */}
             </div>
 
             <p className="technology-title" style={{ textAlign: "left", color: "#fff" }}>

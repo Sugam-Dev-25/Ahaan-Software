@@ -54,23 +54,23 @@ const technologies = [
     name: "Webflow",
     image: "https://ahaanmedia.com/ahaanwebsite/technology/Webflow.webp",
   },
-    {
+  {
     name: "PHP",
     image: "https://ahaanmedia.com/ahaanwebsite/technology/Php.webp",
   },
-    {
+  {
     name: "Odoo",
     image: "https://ahaanmedia.com/ahaanwebsite/technology/Odoo.webp",
   },
-    {
+  {
     name: "Tailwind",
     image: "https://ahaanmedia.com/ahaanwebsite/technology/Tailwind.webp",
   },
-    {
+  {
     name: "JavaScript",
     image: "https://ahaanmedia.com/ahaanwebsite/technology/JS.webp",
   },
-    {
+  {
     name: "TypeScript",
     image: "https://ahaanmedia.com/ahaanwebsite/technology/TS.webp",
   },
@@ -97,20 +97,17 @@ const TabBar = () => {
         </div>
 
         <div className="technology-grid-wrapper">
-  <div className="row g-4">
-    {technologies.map((item, index) => (
-      <div
-        key={index}
-        className="col-6 col-sm-4 col-md-3 col-lg-2"
-      >
-        <div className="technology-card">
-          <img src={item.image} alt={item.name} />
-          <span>{item.name}</span>
+          <div className="row g-4">
+            {technologies.map((item, index) => (
+              <div key={index} className="col-6 col-sm-4 col-md-3 col-lg-2">
+                <div className="technology-card">
+                  <img src={item.image} alt={item.name} />
+                  <span>{item.name}</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    ))}
-  </div>
-</div>
       </div>
     </section>
   );

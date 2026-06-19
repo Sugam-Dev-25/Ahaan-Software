@@ -42,14 +42,14 @@ const Home = () => {
         <ServicesSection />
         <ThirdSection />
         <ConnectSection />
-        <TotalProject />      
-         <FirstSection />
+        <TotalProject />
+        <FirstSection />
         <WhyChooseUs />
         <ImageCarousel />
         <OurProcess />
         <CaseStudyCarousel />
         <TestimonialCarousel />
-        <Watermark/>
+        <Watermark />
         <SecondBanner />
       </Suspense>
     </div>

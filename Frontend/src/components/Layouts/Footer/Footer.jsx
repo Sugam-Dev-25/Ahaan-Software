@@ -233,13 +233,13 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/service" className="text-decoration-none">
-                  <BsCheckLg className="quick-icon" /> Services
+                <a href="/solutions" className="text-decoration-none">
+                  <BsCheckLg className="quick-icon" /> Solutions
                 </a>
               </li>
               <li>
-                <a href="/solutions" className="text-decoration-none">
-                  <BsCheckLg className="quick-icon" /> Solutions
+                <a href="/case-studies" className="text-decoration-none">
+                  <BsCheckLg className="quick-icon" /> Case Study
                 </a>
               </li>
               <li>
@@ -248,13 +248,13 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/contact" className="text-decoration-none">
-                  <BsCheckLg className="quick-icon" /> Contact
+                <a href="/careers" className="text-decoration-none">
+                  <BsCheckLg className="quick-icon" /> Career
                 </a>
               </li>
               <li>
-                <a href="/careers" className="text-decoration-none">
-                  <BsCheckLg className="quick-icon" /> Career
+                <a href="/contact" className="text-decoration-none">
+                  <BsCheckLg className="quick-icon" /> Contact
                 </a>
               </li>
             </ul>
@@ -320,10 +320,6 @@ const Footer = () => {
                     >
                       +91-983-037-1143
                     </a>
-                    {/* <span>/</span>
-                    <a href="https://wa.me/6590745876" target="_blank" rel="noopener noreferrer" className="text-decoration-none ">
-                      +65-9074-5876
-                    </a> */}
                   </span>
                 </li>
                 <li className="d-flex align-items-center mb-2">
@@ -336,9 +332,8 @@ const Footer = () => {
                   </a>
                 </li>
               </ul>
-              <PayglocalButton/>
+              <PayglocalButton />
             </div>
-            
           </div>
 
           {/* Footer Bottom */}

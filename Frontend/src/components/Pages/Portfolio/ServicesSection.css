@@ -1,25 +1,24 @@
 /* ---------- Global Section ---------- */
 .portfolio-services-section {
   background: #fff;
- 
 }
- 
+
 .section-header {
   margin-bottom: 50px;
 }
- 
+
 .section-header h2 {
   font-size: 2.2rem;
   font-weight: 700;
   color: #222;
   margin-bottom: 10px;
 }
- 
+
 .section-header p {
   color: #000000;
   font-size: 18px;
 }
- 
+
 /* ---------- Responsive Grid ---------- */
 .services-grid {
   display: grid;
@@ -28,7 +27,7 @@
   gap: 20px;
   align-items: stretch;
 }
- 
+
 /* ---------- Card Core Styles ---------- */
 .portfolio-service-card {
   position: relative;
@@ -40,7 +39,7 @@
   overflow: visible;
   transition: transform 0.5s ease;
 }
- 
+
 .service-inner {
   flex: 1;
   position: relative;
@@ -56,13 +55,12 @@
   align-items: center;
   box-shadow: rgba(88, 66, 25, 0.2) 0px 5px 25px;
 }
- 
- 
+
 /* Hover lift */
 .portfolio-service-card:hover .service-inner {
   transform: translateY(-20px);
 }
- 
+
 /* ---------- Gradient Overlay ---------- */
 .service-inner::before {
   content: "";
@@ -74,37 +72,37 @@
   z-index: 1;
   transition: transform 0.5s ease-in-out;
 }
- 
+
 /* Gradients per card */
 .portfolio-service-card-1 .service-inner::before {
-  background: linear-gradient(135deg, #2f3f61, #3c5a39, #06a161,#690e80 );
+  background: linear-gradient(135deg, #0b3d2e, #14532d, #15803d, #22c55e);
 }
- 
+
 .portfolio-service-card-2 .service-inner::before {
-  background: linear-gradient(135deg, #6a82fb, #fc5c7d, #d4a5a5, #ffb8b8);
+  background: linear-gradient(135deg, #cc032b, #fc5c7d, #d4a5a5, #ffb8b8);
 }
- 
+
 .portfolio-service-card-3 .service-inner::before {
   background: linear-gradient(135deg, #00c6ff, #0072ff, #0057b8, #003366);
 }
- 
+
 .portfolio-service-card-4 .service-inner::before {
-  background: linear-gradient(135deg, #f39c12, #f1c40f, #e67e22, #d35400);
+  background: linear-gradient(135deg, #f1c40f, #f39c12, #e67e22, #d35400);
 }
- 
+
 /* Reveal gradient on hover */
 .portfolio-service-card:hover .service-inner::before {
   transform: scaleY(1);
 }
- 
+
 .portfolio-service-card::before {
   width: 88%;
 }
- 
+
 .portfolio-service-card::after {
   width: 78%;
 }
- 
+
 /* ---------- Stacked Layer Effect ---------- */
 .portfolio-service-card::before,
 .portfolio-service-card::after {
@@ -113,56 +111,56 @@
   left: 0;
   right: 0;
   margin: auto;
- 
+
   height: 90%;
   border-radius: 15px;
   transition: 0.5s cubic-bezier(0.34, 0.27, 0.34, 1.44);
 }
- 
+
 .portfolio-service-card::before {
   bottom: 0;
   z-index: 1;
   transform: translateY(-5px);
 }
- 
+
 .portfolio-service-card::after {
   bottom: 0;
   z-index: 0;
   transform: translateY();
 }
- 
+
 /* Hover depth effect */
 .portfolio-service-card:hover::before {
   transform: translateY();
   box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 25px;
 }
- 
+
 .portfolio-service-card:hover::after {
   transform: translateY(10px);
   box-shadow: rgba(0, 0, 0, 0.15) 0px 10px 30px;
 }
- 
+
 /* Gradient for background layers */
 .portfolio-service-card-1::before,
 .portfolio-service-card-1::after {
-  background: linear-gradient(135deg, #2f3f61, #3c5a39, #06a161,#690e80);
+  background: linear-gradient(135deg, #0b3d2e, #14532d, #15803d, #22c55e);
 }
- 
+
 .portfolio-service-card-2::before,
 .portfolio-service-card-2::after {
   background: linear-gradient(135deg, #6a82fb, #fc5c7d, #d4a5a5, #ffb8b8);
 }
- 
+
 .portfolio-service-card-3::before,
 .portfolio-service-card-3::after {
   background: linear-gradient(135deg, #00c6ff, #0072ff, #0057b8, #003366);
 }
- 
+
 .portfolio-service-card-4::before,
 .portfolio-service-card-4::after {
   background: linear-gradient(135deg, #f39c12, #f1c40f, #e67e22, #d35400);
 }
- 
+
 /* ---------- Icon + Text ---------- */
 .icon-container,
 .service-title,
@@ -170,7 +168,7 @@
   position: relative;
   z-index: 5;
 }
- 
+
 .portfolio-service-icon svg {
   font-size: 50px;
   color: #f0af23;
@@ -180,54 +178,51 @@
   background: #000000;
   border-radius: 50%;
 }
- 
+
 .portfolio-service-card:hover .portfolio-service-icon svg {
   color: white;
 }
- 
+
 .service-title {
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 10px;
   transition: color 0.3s;
 }
- 
+
 .service-desc {
   font-size: 0.95rem;
   color: #555;
   transition: color 0.3s;
   line-height: 1.5;
 }
- 
+
 .portfolio-service-card:hover .service-title,
 .portfolio-service-card:hover .service-desc {
   color: white;
 }
- 
- 
+
 @media (max-width: 1024px) {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px
+    gap: 30px;
   }
 }
- 
+
 @media (max-width: 768px) and (min-width: 576px) {
   .services-grid {
-   
-    column-gap: 10px
+    column-gap: 10px;
   }
 }
- 
+
 /* 1 per row for mobile */
 @media (max-width: 575px) {
   .services-grid {
     grid-template-columns: 1fr;
-    gap: 30px
+    gap: 30px;
   }
 }
- 
- 
+
 /* Subtitle divider animation */
 .section-header .subtitle {
   font-size: 20px;
@@ -235,9 +230,8 @@
   text-transform: capitalize;
   letter-spacing: 1px;
   margin-bottom: 10px;
- 
 }
- 
+
 .section-header .divider {
   display: inline-block;
   width: 0;
@@ -247,7 +241,7 @@
   vertical-align: middle;
   animation: expandLine 1.5s ease-in-out infinite alternate;
 }
- 
+
 @keyframes expandLine {
   0% {
     width: 0;
@@ -258,5 +252,3 @@
     opacity: 1;
   }
 }
- 
- 

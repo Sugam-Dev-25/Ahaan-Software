@@ -11,7 +11,7 @@ const clients = [
   { src: "https://ahaanmedia.com/ahaanwebsite/clients/6.webp", alt: "NextDoor Urgent Care" },
   { src: "https://ahaanmedia.com/ahaanwebsite/clients/8.webp", alt: "finanza_ally" },
   { src: "https://ahaanmedia.com/ahaanwebsite/clients/7.webp", alt: "Johat enterprises" },
-  { src: "https://ahaanmedia.com/ahaanwebsite/clients/10.webp", alt: "johat trust" },
+  { src: "https://ahaanmedia.com/ahaanwebsite/clients/10.jpg", alt: "johat trust" },
   { src: "https://ahaanmedia.com/ahaanwebsite/clients/9.webp", alt: "psitpops" },
   { src: "https://ahaanmedia.com/ahaanwebsite/clients/12.webp", alt: "abc" },
   { src: "https://ahaanmedia.com/ahaanwebsite/clients/11.webp", alt: "def" },
