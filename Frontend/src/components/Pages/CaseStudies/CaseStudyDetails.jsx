@@ -35,6 +35,7 @@ const CaseStudyDetails = () => {
         acf.technology_2_logo,
         acf.technology_3_logo,
         acf.technology_4_logo,
+        acf.technology_5_logo,
         acf.solution_1_image,
         acf.solution_2_image,
         acf.solution_3_image,
@@ -57,15 +58,16 @@ const CaseStudyDetails = () => {
         tech2: mediaResponses[3]?.source_url,
         tech3: mediaResponses[4]?.source_url,
         tech4: mediaResponses[5]?.source_url,
-        solution1: mediaResponses[6]?.source_url,
-        solution2: mediaResponses[7]?.source_url,
-        solution3: mediaResponses[8]?.source_url,
-        solution4: mediaResponses[9]?.source_url,
-        solution5: mediaResponses[10]?.source_url,
-        featureImage: mediaResponses[11]?.source_url,
-        businessImpact: mediaResponses[12]?.source_url,
-        designHighlights: mediaResponses[13]?.source_url,
-        projectDetails: mediaResponses[14]?.source_url,
+        tech5: mediaResponses[6]?.source_url,
+        solution1: mediaResponses[7]?.source_url,
+        solution2: mediaResponses[8]?.source_url,
+        solution3: mediaResponses[9]?.source_url,
+        solution4: mediaResponses[10]?.source_url,
+        solution5: mediaResponses[11]?.source_url,
+        featureImage: mediaResponses[12]?.source_url,
+        businessImpact: mediaResponses[13]?.source_url,
+        designHighlights: mediaResponses[14]?.source_url,
+        projectDetails: mediaResponses[15]?.source_url,
       });
     } catch (error) {
       console.error(error);
@@ -218,7 +220,7 @@ const CaseStudyDetails = () => {
 
       {/* TECHNOLOGIES */}
 
-      {images.tech1 && images.tech2 && images.tech3 && images.tech4 && (
+      {images.tech1 && images.tech2 && images.tech3 && images.tech4 && images.tech5 && (
         <section className="technologies-section">
           <div className="container">
             <h2>technologies & methodologies used</h2>
@@ -238,6 +240,10 @@ const CaseStudyDetails = () => {
 
               <div className="tech-item">
                 <img src={images.tech4} alt="" />
+              </div>
+
+              <div className="tech-item">
+                <img src={images.tech5} alt="" />
               </div>
             </div>
           </div>

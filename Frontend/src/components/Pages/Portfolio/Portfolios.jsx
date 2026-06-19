@@ -4,7 +4,7 @@ import ServicesSection from "./ServicesSection";
 import ThirdSection from "../../Layouts/Body/ThirdSection";
 import CounterSection from "./CounterSection";
 import AnimatedTabsSection from "./AnimatedTabsSection";
-import ImageCarousel from "../../Layouts/Body/ImageCarousel";
+// import ImageCarousel from "../../Layouts/Body/ImageCarousel";
 import Watermark from "../../Layouts/Body/Watermark";
 import SecondBanner from "../../Layouts/Body/SecondBanner";
 import PortfolioSecondBannner from "./PortfolioSecondBannner";
@@ -17,7 +17,7 @@ const Portfolios = () => {
       <CounterSection />
       <ServicesSection />
       <ThirdSection />
-      <ImageCarousel />
+      {/* <ImageCarousel /> */}
       <Watermark/>
       <SecondBanner />
     </>
