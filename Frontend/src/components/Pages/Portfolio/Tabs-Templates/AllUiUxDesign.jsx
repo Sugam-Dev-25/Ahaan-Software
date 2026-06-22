@@ -57,7 +57,7 @@ const AllUiUxDesign = () => {
         {/* Load More Button */}
         {visibleCount < designs.length && (
           <div className="text-center mt-4">
-            <a className="portfolio-view-all-btn" onClick={handleLoadMore}>
+            <a className="portfolio-load-more-btn" onClick={handleLoadMore}>
               Load More
             </a>
           </div>
