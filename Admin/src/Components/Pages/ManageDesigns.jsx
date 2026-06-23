@@ -3,7 +3,7 @@ import { getAllDesignsAPI, deleteDesignAPI } from "../Api/api";
 import { Link } from "react-router-dom";
 import { Table, Button, Modal } from "react-bootstrap";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
-import { SearchContext } from "../../searchContext"; 
+import { SearchContext } from "../../searchContext";
 import "./ManageDesigns.css";
 
 const ManageDesigns = () => {
@@ -22,10 +22,11 @@ const ManageDesigns = () => {
     loadData();
   }, []);
 
-  const filteredDesigns = designs.filter((item) =>
-    item.title.toLowerCase().includes(query.toLowerCase()) ||
-    item.link.toLowerCase().includes(query.toLowerCase()) ||
-    item.designer?.toLowerCase().includes(query.toLowerCase())
+  const filteredDesigns = designs.filter(
+    (item) =>
+      item.title.toLowerCase().includes(query.toLowerCase()) ||
+      item.link.toLowerCase().includes(query.toLowerCase()) ||
+      item.designer?.toLowerCase().includes(query.toLowerCase()),
   );
 
   const handleDeleteConfirm = (id) => {
@@ -42,14 +43,19 @@ const ManageDesigns = () => {
   return (
     <div className="container mt-1 mb-3">
       <div className="table-container">
-
-        <Table striped hover responsive className="table align-middle text-center">
+        <Table
+          striped
+          hover
+          responsive
+          className="table align-middle text-center"
+        >
           <thead>
             <tr>
               <th>#</th>
               <th>Image</th>
               <th>Title</th>
               <th>Link</th>
+              <th>Category</th>
               <th>Designer</th>
               <th>Actions</th>
             </tr>
@@ -64,11 +70,27 @@ const ManageDesigns = () => {
                   <img src={item.image} className="blog-thumb" alt="design" />
                 </td>
 
-                <td>{item.title}</td>
-                <td>{item.link}</td>
-                <td><span className="badge-author">{item.designer || "Unknown"}</span></td>
+                <td className="title-cell">{item.title}</td>
 
-                <td className="action-buttons d-flex gap-2 justify-content-center">
+                <td className="link-cell">
+                  <a href={item.link} target="_blank" rel="noreferrer">
+                    {item.link}
+                  </a>
+                </td>
+
+                <td>
+                  <span className="category-badge">
+                    {item.category || "N/A"}
+                  </span>
+                </td>
+
+                <td>
+                  <span className="badge-author">
+                    {item.designer || "Unknown"}
+                  </span>
+                </td>
+
+                <td className="action-buttons">
                   <Link to={`/edit-design/${item._id}`}>
                     <Button variant="success" className="icon-btn">
                       <FiEdit />

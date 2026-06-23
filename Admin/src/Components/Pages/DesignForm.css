@@ -74,3 +74,31 @@
 .submit-button:hover {
   background-color: #1b1b1b !important;
 }
+
+/* CATEGORY SELECT */
+select.styled-input {
+  height: 55px;
+  color: #000 !important;
+  background: none;
+  cursor: pointer;
+  padding: 0 20px;
+}
+
+/* Dropdown options */
+select.styled-input option {
+  color: #000 !important;
+  background: #fff !important;
+  padding: 10px;
+}
+
+/* Placeholder option */
+select.styled-input option[value=""] {
+  color: #777;
+}
+
+/* Remove Bootstrap weird styling */
+select.form-control {
+  appearance: auto;
+  -webkit-appearance: auto;
+  -moz-appearance: auto;
+}

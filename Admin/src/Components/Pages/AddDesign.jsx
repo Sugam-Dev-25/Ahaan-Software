@@ -7,6 +7,7 @@ const AddDesign = () => {
   const [link, setLink] = useState("");
   const [designer, setDesigner] = useState("");
   const [image, setImage] = useState(null);
+  const [category, setCategory] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,6 +17,7 @@ const AddDesign = () => {
     formData.append("link", link);
     formData.append("designer", designer);   // NEW FIELD
     formData.append("image", image);
+    formData.append("category", category);
 
     await addDesignAPI(formData);
     alert("Design added successfully!");
@@ -24,6 +26,7 @@ const AddDesign = () => {
     setLink("");
     setDesigner("");
     setImage(null);
+    setCategory("");
   };
 
   return (
@@ -35,6 +38,8 @@ const AddDesign = () => {
       setLink={setLink}
       designer={designer}
       setDesigner={setDesigner}
+      category={category}
+      setCategory={setCategory}
       image={image}
       setImage={setImage}
       onSubmit={handleSubmit}

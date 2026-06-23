@@ -3,9 +3,9 @@ const Design = require("../models/Design");
 // Create Design (Add)
 exports.createDesign = async (req, res) => {
   try {
-    const { title, link, designer } = req.body;
+    const { title, link, designer, category } = req.body;
 
-    if (!title || !link || !designer) {
+    if (!title || !link || !designer || !category) {
       return res.status(400).json({
         success: false,
         message: "Title, Link & Designer are required",
@@ -22,6 +22,7 @@ exports.createDesign = async (req, res) => {
       title,
       link,
       designer,   // NEW FIELD
+      category,
       image,
     });
 
@@ -39,12 +40,13 @@ exports.createDesign = async (req, res) => {
 exports.updateDesign = async (req, res) => {
   try {
     const designId = req.params.id;
-    const { title, link, designer } = req.body;
+    const { title, link, designer, category } = req.body;
 
     let updateData = {
       title,
       link,
       designer,   // NEW FIELD
+      category,
     };
 
     if (req.file) {
@@ -109,7 +111,16 @@ exports.getDesignById = async (req, res) => {
 // Get All Designs
 exports.getAllDesigns = async (req, res) => {
   try {
-    const designs = await Design.find().sort({ createdAt: -1 });
+
+    const { category } = req.query;
+
+    let query = {};
+
+    if (category && category !== "All works") {
+      query.category = category;
+    }
+
+    const designs = await Design.find(query).sort({ createdAt: -1 });
 
     res.json({
       success: true,

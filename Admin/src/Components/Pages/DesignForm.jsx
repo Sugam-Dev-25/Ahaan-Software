@@ -9,6 +9,8 @@ const DesignForm = ({
   setLink,
   designer,
   setDesigner,
+  category,
+  setCategory,
   image,
   setImage,
   onSubmit,
@@ -19,7 +21,6 @@ const DesignForm = ({
       <h2 className="form-title">{formTitle}</h2>
 
       <form onSubmit={onSubmit} className="design-form">
-        
         {/* TITLE */}
         <div className="form-group">
           <label className="form-label">Title</label>
@@ -54,6 +55,38 @@ const DesignForm = ({
             onChange={(e) => setDesigner(e.target.value)}
             required
           />
+        </div>
+
+        {/* CATEGORY */}
+        <div className="form-group">
+          <label className="form-label">Category</label>
+
+          <select
+            className="form-control styled-input"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            required
+          >
+            <option value="" disabled>Select Category</option>
+
+            <option value="Electronics">Electronics</option>
+            <option value="Education & Books">Education & Books</option>
+            <option value="Business & Services">Business & Services</option>
+            <option value="Cars & Motorcycles">Cars & Motorcycles</option>
+            <option value="Sports, Outdoors & Travel">
+              Sports, Outdoors & Travel
+            </option>
+            <option value="Fashion & Beauty">Fashion & Beauty</option>
+            <option value="Defense/Security">Defense/Security</option>
+            <option value="IT/Tech">IT/Tech</option>
+            <option value="Food & Restaurant">Food & Restaurant</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Travel">Travel</option>
+            <option value="Society & People">Society & People</option>
+            <option value="Medical (Healthcare)">Medical (Healthcare)</option>
+            <option value="Real Estate">Real Estate</option>
+            <option value="Others">Others</option>
+          </select>
         </div>
 
         {/* IMAGE UPLOAD */}
