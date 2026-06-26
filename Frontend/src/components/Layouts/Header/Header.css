@@ -183,6 +183,11 @@ hr {
 .mobile-sidebar.open {
   right: 0; /* Slide the sidebar in */
 }
+.get-quote-container-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* Media Query for Mobile */
 @media (max-width: 768px) {
@@ -202,14 +207,29 @@ hr {
   }
  
 }
-@media (max-width: 769px) {
+@media (max-width: 767px) {
   .desktop-nav-menu {
     gap: 1.2rem;
     font-size: 14px;
   }
-  .get-quote-container-1 {
-    display: block;
-  }
+  .header-left-part {
+  display: flex;
+  align-items: center;
+}
+
+.header-left-side {
+  display: flex;
+  align-items: center; /* already set, but make sure it's there */
+  gap: 5px;
+}
+
+.get-quote-container-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
   .get-quote-container-1 a {
     font-size: 12px;
     font-weight: 500;
