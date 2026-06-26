@@ -35,7 +35,7 @@ const MeetOurTeam = () => {
   return (
     <div className="container py-5 team-carousel-section section-header-tech">
       <h6 className="subtitle">
-        Teams <span className="divider"></span>
+        Teams
       </h6>
       <h2 className=" title">Meet Our Team</h2>
       <p className="image-carousel-content">

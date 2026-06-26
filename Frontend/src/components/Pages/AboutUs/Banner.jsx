@@ -42,7 +42,7 @@ const Banner = () => {
           <div className="col-md-6">
             <div className="section-header">
               <h6 className="subtitle">
-                Who We Are <span className="divider"></span>
+                Who We Are
               </h6>
               <h2 className="title">Who Are We?</h2>
             </div>
@@ -69,7 +69,7 @@ const Banner = () => {
 
           <div className="col-md-6 team-discus-mobile">
             <img
-              src="https://ahaanmedia.com/ahaanwebsite/All/group1.webp"
+              src="https://ahaanmedia.com/ahaanwebsite/All/ASC-Team.png"
               alt="Team Discussion"
               className="img-fluid rounded"
             />
@@ -81,7 +81,7 @@ const Banner = () => {
           <div className="col-md-6">
             <div className="section-header">
               <h6 className="subtitle">
-                Mission & Vision <span className="divider"></span>
+                Mission & Vision
               </h6>
               <h2 className="title">Our Mission & Vision</h2>
             </div>
