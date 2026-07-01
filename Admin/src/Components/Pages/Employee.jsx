@@ -39,7 +39,7 @@ const loadTeams = async () => {
         <h2>Employees</h2>
       </div>
 
-      <div className="table-responsive">
+      <div className="employee-table-responsive">
 
         <table className="team-table">
 
