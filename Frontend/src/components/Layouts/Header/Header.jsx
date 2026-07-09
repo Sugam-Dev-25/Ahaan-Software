@@ -116,14 +116,14 @@ const Header = () => {
             <div className="header-left-side">
               <div className="get-quote-container-1">
                 {isMobile ? (
-                  <a href="#" onClick={openCallWidget} style={{ padding: 0 }}>
+                  <a href="https://calendly.com/leads-ahaansoftware/free-consultation"  style={{ padding: 0 }}>
                     <FiMessageSquare size={32} className="phone-get-qt" />
                   </a>
                 ) : (
                   <a
-                    href="#"
+                    href="https://calendly.com/leads-ahaansoftware/free-consultation"
                     className="get-quote-btn"
-                    onClick={openCallWidget}
+                  
                   >
                     Request A Quote
                   </a>

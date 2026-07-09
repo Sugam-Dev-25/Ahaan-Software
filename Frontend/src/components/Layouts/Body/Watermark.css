@@ -51,8 +51,8 @@ backdrop-filter: blur(1px);
 }
 @media (max-width: 1023px) {
    .watermark-text {
-    font-size: clamp(35px, 9vw, 72px); 
-    top:33%; 
+    font-size: clamp(32px, 9vw, 72px); 
+    top:clamp(33.2%, 9vw, 30%);  
   }
 }
 

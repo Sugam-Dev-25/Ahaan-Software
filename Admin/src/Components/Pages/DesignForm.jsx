@@ -9,6 +9,8 @@ const DesignForm = ({
   setLink,
   designer,
   setDesigner,
+  category,
+  setCategory,
   image,
   setImage,
   onSubmit,
@@ -19,7 +21,6 @@ const DesignForm = ({
       <h2 className="form-title">{formTitle}</h2>
 
       <form onSubmit={onSubmit} className="design-form">
-        
         {/* TITLE */}
         <div className="form-group">
           <label className="form-label">Title</label>
@@ -54,6 +55,54 @@ const DesignForm = ({
             onChange={(e) => setDesigner(e.target.value)}
             required
           />
+        </div>
+
+        {/* CATEGORY */}
+        <div className="form-group">
+          <label className="form-label">Category</label>
+
+          <select
+            className="form-control styled-input"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            required
+          >
+            <option value="" disabled>
+              Select Category
+            </option>
+
+            <option value="electronics">Electronics</option>
+
+            <option value="education-books">Education & Books</option>
+
+            <option value="business-services">Business & Services</option>
+
+            <option value="cars-motorcycles">Cars & Motorcycles</option>
+
+            <option value="sports-outdoors-travel">
+              Sports, Outdoors & Travel
+            </option>
+
+            <option value="fashion-beauty">Fashion & Beauty</option>
+
+            <option value="defense-security">Defense & Security</option>
+
+            <option value="it-tech">IT & Tech</option>
+
+            <option value="food-restaurant">Food & Restaurant</option>
+
+            <option value="entertainment">Entertainment</option>
+
+            <option value="travel">Travel</option>
+
+            <option value="society-people">Society & People</option>
+
+            <option value="medical-healthcare">Medical & Healthcare</option>
+
+            <option value="real-estate">Real Estate</option>
+
+            <option value="others">Others</option>
+          </select>
         </div>
 
         {/* IMAGE UPLOAD */}

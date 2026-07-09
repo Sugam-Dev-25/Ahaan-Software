@@ -183,6 +183,11 @@ hr {
 .mobile-sidebar.open {
   right: 0; /* Slide the sidebar in */
 }
+.get-quote-container-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* Media Query for Mobile */
 @media (max-width: 768px) {
@@ -202,14 +207,29 @@ hr {
   }
  
 }
-@media (max-width: 769px) {
+@media (max-width: 767px) {
   .desktop-nav-menu {
     gap: 1.2rem;
     font-size: 14px;
   }
-  .get-quote-container-1 {
-    display: block;
-  }
+  .header-left-part {
+  display: flex;
+  align-items: center;
+}
+
+.header-left-side {
+  display: flex;
+  align-items: center; /* already set, but make sure it's there */
+  gap: 5px;
+}
+
+.get-quote-container-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
   .get-quote-container-1 a {
     font-size: 12px;
     font-weight: 500;
@@ -294,7 +314,7 @@ hr {
 }
 
 .phone-icon {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 /* Tablet and Mobile logic for Phone Number */
@@ -305,33 +325,55 @@ hr {
   
   .phone-link {
     background: rgba(199, 138, 43, 0.1);
-    padding: 10px;
+    padding: 7px;
     border-radius: 50%;
     border: 1px solid #c78a2b;
    
   }
     .phone-icon {
-    font-size: 24px;
+    font-size: 20px;
   }
   
 }
 
-@media (max-width: 769px) {
-  .header-left-part {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-    .phone-link {
-    background: rgba(199, 138, 43, 0.1);
-    padding: 5px;
-    border-radius: 50%;
-    border: 1px solid #c78a2b;
+@media (min-width: 768px) and (max-width: 991px) {
+
+  .asc-logo {
+    height: 38px;
   }
 
-  /* Mobile e icon size ektu choto kora */
+  .desktop-nav-menu {
+    display: flex !important;
+    gap: 0.8rem;
+    font-size: 13px;
+    padding: 0;
+  }
+
+  .desktop-nav-menu .nav-link {
+    font-size: 13px;
+    padding: 0;
+  }
+
+  .phone-text {
+    display: none;
+  }
+
+  .phone-link {
+    padding: 6px;
+  }
+
   .phone-icon {
-    font-size: 20px;
+    font-size: 18px;
+  }
+
+  .get-quote-btn {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .container.asc-tablet-container {
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 
@@ -342,7 +384,7 @@ hr {
   }
 }
 
-@media (min-width: 768px) and (max-width:991px){
+/* @media (min-width: 768px) and (max-width:991px){
   .asc-logo{
     height:40px;
   }
@@ -361,4 +403,4 @@ hr {
   .asc-tablet-container{
     padding: 10px 0px;
   }
-}
+} */

@@ -32,7 +32,7 @@ const ConnectSection = () => {
           {/* Left Side */}
           <div className="col-md-5 connect-left text-white mb-4 mb-md-0 section-header-tech">
             <h6 className="subtitle" style={{ color: "#ffffffff" }}>
-              Planning your next big project? <span className="divider"></span>
+              Planning your next big project?
             </h6>
             <h1 className="whychooseus-label text-start">
               Let’s Connect and Collaborate!

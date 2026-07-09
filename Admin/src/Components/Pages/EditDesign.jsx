@@ -10,6 +10,7 @@ const EditDesign = () => {
   const [designer, setDesigner] = useState("");
   const [image, setImage] = useState(null);
   const [previewImage, setPreviewImage] = useState("");
+  const [category, setCategory] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +19,8 @@ const EditDesign = () => {
 
       setTitle(data.title);
       setLink(data.link);
-      setDesigner(data.designer);     // 👈 NEW FIELD
+      setDesigner(data.designer); // 👈 NEW FIELD
+      setCategory(data.category || "");
       setPreviewImage(data.image);
     };
 
@@ -28,10 +30,18 @@ const EditDesign = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log({
+      title,
+      link,
+      designer,
+      category,
+    });
+
     const formData = new FormData();
     formData.append("title", title);
     formData.append("link", link);
     formData.append("designer", designer);
+    formData.append("category", category);
 
     if (image) {
       formData.append("image", image);
@@ -50,6 +60,8 @@ const EditDesign = () => {
       setLink={setLink}
       designer={designer}
       setDesigner={setDesigner}
+      category={category}
+      setCategory={setCategory}
       image={image}
       setImage={setImage}
       onSubmit={handleSubmit}

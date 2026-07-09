@@ -104,10 +104,10 @@ className='pt-5'
           <img src="https://ahaanmedia.com/asc/gallery/gallery1.jpg" alt="Single Image" />
         </div>
         <div className="side-image-card final-column-mobile">
-          <img src="https://ahaanmedia.com/asc/gallery/gallery1.jpg" alt="Single Image" />
+          <img src="https://ahaanmedia.com/asc/gallery/gallery2.jpg" alt="Single Image" />
         </div>
          <div className="side-image-card third-column-mobile">
-          <img src="https://ahaanmedia.com/asc/gallery/gallery1.jpg" alt="Single Image" />
+          <img src="https://ahaanmedia.com/asc/gallery/gallery3.jpg" alt="Single Image" />
         </div>
         </div>
     </div>

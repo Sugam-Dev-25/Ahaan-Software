@@ -8,7 +8,7 @@ const WhoWeAreSection = () => {
     <section className="who-we-are-section py-5">
       <div className="container">
         <div className="row align-items-center">
-          
+
           {/* Left Image Section */}
           <div className="col-lg-6 col-md-12 text-center mb-4 mb-lg-0">
             <img
@@ -39,14 +39,33 @@ const WhoWeAreSection = () => {
               </p>
 
               <div className="row feature-row mt-4">
-                <div className="col-sm-6 mb-3 mb-sm-0">
+
+                {/* Left Feature */}
+                <div className="col-sm-6 mb-4 mb-sm-0">
                   <div className="feature-box">
                     <div className="icon-circle">
                       <BsBarChartLine className="feature-icon" />
                     </div>
                     <h5>Cutting-Edge Tech Expertise</h5>
                   </div>
+
+                  <ul className="checklist mt-3 list-unstyled">
+                    <li>
+                      <IoMdCheckmarkCircleOutline className="check-icon me-2" />
+                      Web & mobile solutions
+                    </li>
+                    <li>
+                      <IoMdCheckmarkCircleOutline className="check-icon me-2" />
+                      Quality development
+                    </li>
+                    <li>
+                      <IoMdCheckmarkCircleOutline className="check-icon me-2" />
+                      Maintenance & support
+                    </li>
+                  </ul>
                 </div>
+
+                {/* Right Feature */}
                 <div className="col-sm-6">
                   <div className="feature-box">
                     <div className="icon-circle">
@@ -54,36 +73,24 @@ const WhoWeAreSection = () => {
                     </div>
                     <h5>Built to Perform</h5>
                   </div>
-                </div>
-              </div>
 
-              {/* Checklist with React Icons */}
-              <ul className="checklist mt-4 list-unstyled">
-                <li className="mb-2">
-                  <IoMdCheckmarkCircleOutline className="check-icon me-2" /> 
-                  Web & mobile solutions
-                </li>
-                <li className="mb-2">
-                  <IoMdCheckmarkCircleOutline className="check-icon me-2" /> 
-                  Quality development
-                </li>
-                <li className="mb-2">
-                  <IoMdCheckmarkCircleOutline className="check-icon me-2" /> 
-                  Maintenance & support
-                </li>
-                <li className="mb-2">
-                  <IoMdCheckmarkCircleOutline className="check-icon me-2" /> 
-                  Secure & scalable apps
-                </li>
-                <li className="mb-2">
-                  <IoMdCheckmarkCircleOutline className="check-icon me-2" /> 
-                  Custom solutions
-                </li>
-                <li className="mb-2">
-                  <IoMdCheckmarkCircleOutline className="check-icon me-2" /> 
-                  Innovative approach
-                </li>
-              </ul>
+                  <ul className="checklist mt-3 list-unstyled">
+                    <li>
+                      <IoMdCheckmarkCircleOutline className="check-icon me-2" />
+                      Secure & scalable apps
+                    </li>
+                    <li>
+                      <IoMdCheckmarkCircleOutline className="check-icon me-2" />
+                      Custom solutions
+                    </li>
+                    <li>
+                      <IoMdCheckmarkCircleOutline className="check-icon me-2" />
+                      Innovative approach
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
             </div>
           </div>
         </div>

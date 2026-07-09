@@ -24,7 +24,7 @@ const FirstSection = () => {
       <h6 className="technology-subtitle">
         Trusted Client <span className="divider"></span>
       </h6>
-      <label className="technology-title">Our Clients</label> 
+      <label className="technology-title">Our Clients</label>
       <p className="image-carousel-content">
         We understand, collaborate, and empower! From complex Software
         Development Service to Seamless Integration, experience how our next-gen
@@ -42,7 +42,8 @@ const FirstSection = () => {
                   src={client.src}
                   alt={client.alt}
                   className="img-fluid first-client-image"
-                  loading="lazy"
+                  loading="eager"
+                  decoding="async"
                 />
               </div>
             </div>

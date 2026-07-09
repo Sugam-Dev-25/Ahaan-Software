@@ -33,6 +33,7 @@
     width: 0;
     opacity: 0.5;
   }
+
   100% {
     width: 50px;
     opacity: 1;
@@ -63,9 +64,11 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -123,19 +126,16 @@
 /* Checklist */
 .checklist {
   list-style: none;
-  padding: 0;
+  padding-left: 0;
   margin: 0;
-  column-count: 2;
-  column-gap: 30px;
-  
 }
 
 .checklist li {
-  position: relative;
-  padding-left: 25px;
-  font-size: 0.95rem;
-  color: #666;
+  display: flex;
+  align-items: center;
   margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
   font-family: outfit;
 }
 
@@ -160,10 +160,11 @@
 }
 
 .check-icon {
-  color: #f8aa22; /* ✅ Your accent color */
+  color: #f8aa22;
   font-size: 20px;
-  margin-right: 10px;
+  flex-shrink: 0;
 }
+
 
 
 /* Responsive */
