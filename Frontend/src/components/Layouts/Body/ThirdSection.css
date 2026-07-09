@@ -49,8 +49,8 @@
   line-height: 1;
 }
 
-.technology-title{
-    font-size: 50px !important;
+.technology-title {
+  font-size: 50px !important;
   font-weight: 700;
   background: linear-gradient(40deg, #f9ae00, #3d2f0c, #d49500);
   background-size: 300%;
@@ -59,10 +59,10 @@
   animation: gradientFlow 4s ease-in-out infinite;
   font-family: "Outfit", sans-serif;
   line-height: 70px;
-  
+
 }
 
-.technology-subtitle{
+.technology-subtitle {
   font-size: 25px;
   font-weight: 600;
   color: #000;
@@ -70,7 +70,7 @@
   line-height: 40px;
 }
 
-.technology-subtitle .divider{
+.technology-subtitle .divider {
   background: linear-gradient(40deg, #f9ae00, #3d2f0c, #d49500);
   background-size: 300%;
   -webkit-background-clip: text;
@@ -79,6 +79,7 @@
   display: inline-block;
   margin: 0 5px;
 }
+
 /* Tablet */
 @media (max-width: 1199px) {
   .technology-card {
@@ -98,6 +99,11 @@
 
 /* Mobile */
 @media (max-width: 767px) {
+
+  .technology-title {
+    font-size: 32px !important;
+  }
+
   .technology-card {
     min-height: 70px;
     gap: 8px;
