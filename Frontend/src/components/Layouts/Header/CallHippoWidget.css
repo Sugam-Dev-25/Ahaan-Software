@@ -13,6 +13,11 @@
   z-index: 999999 !important;
 }
 
+.open-button{
+  width: 50px !important;
+  height: 50px !important;
+}
+
 /* ============================= */
 /* ALL GENERATED ELEMENTS */
 /* ============================= */

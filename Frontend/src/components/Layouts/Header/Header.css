@@ -294,6 +294,7 @@ hr {
 .header-right-actions {
   display: flex;
   align-items: center;
+ gap: 10px;
 }
 
 .phone-link {
@@ -367,7 +368,7 @@ hr {
   }
 
   .get-quote-btn {
-    padding: 10px 14px;
+    padding: 8px 14px;
     font-size: 13px;
   }
 
@@ -404,3 +405,13 @@ hr {
     padding: 10px 0px;
   }
 } */
+
+@media (min-width: 992px ) and (max-width:1200px){
+  .desktop-nav-menu{
+    gap: 1.2rem;
+  }
+  .get-quote-btn{
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+}

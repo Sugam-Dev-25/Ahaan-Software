@@ -184,7 +184,7 @@
   padding-top: 10px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center !important;
   flex-wrap: wrap;
 }
 
@@ -196,7 +196,8 @@
   font-family: outfit;
   color: #000;
   font-size: 16px;
-
+  
+  margin: 0;
   flex: 1;
 }
 
@@ -204,7 +205,7 @@
 .footer-social-icons {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 20px;
 }
 
 /* Base icon style */
@@ -287,6 +288,21 @@
 .footer-social-icons .icon.linkedin:hover,
 .footer-social-icons .icon.linkedin:hover .tooltip {
   background: linear-gradient(45deg, #0077b5, #00a0dc);
+}
+
+.footer-social-icons .icon.dribbble:hover,
+.footer-social-icons .icon.dribbble:hover .tooltip {
+  background: linear-gradient(45deg, #9f0175, #e992d2);
+}
+
+.footer-social-icons .icon.behance:hover,
+.footer-social-icons .icon.behance:hover .tooltip {
+  background: linear-gradient(45deg, #0124e8, #758aff);
+}
+
+.footer-social-icons .icon.github:hover,
+.footer-social-icons .icon.github:hover .tooltip {
+  background: linear-gradient(45deg, #333333, #666666);
 }
 
 /* Responsive Quick Links Container */
@@ -442,6 +458,11 @@ hr {
   .footer-logo-input {
     text-align: center;
   }
+
+  .footer-bottom {
+    text-align: center;
+  }
+
 }
 
 

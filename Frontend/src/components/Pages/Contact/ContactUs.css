@@ -182,6 +182,19 @@
   background: linear-gradient(135deg, #f58529, #dd2a7b);
 }
 
+.modern-social-icon.github::before {
+  background: linear-gradient(135deg, #333333, #666666);
+}
+
+.modern-social-icon.dribbble::before {
+  background: linear-gradient(135deg, #9f0175, #e992d2);
+}
+
+.modern-social-icon.behance::before {
+  background: linear-gradient(135deg, #0124e8, #758aff);
+}
+
+
 .modern-social-icon:hover::before {
   height: 100%;
 }

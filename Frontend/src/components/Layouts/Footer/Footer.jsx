@@ -12,7 +12,8 @@ import {
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
-import { FaFileAlt, FaTruck, FaGavel } from "react-icons/fa";
+import { FiDribbble } from "react-icons/fi";
+import { FaFileAlt, FaTruck, FaGavel, FaBehance, FaGithub } from "react-icons/fa";
 import "./Footer.css";
 import PayglocalButton from "../../PayGlocal/PayglocalButton";
 
@@ -304,12 +305,11 @@ const Footer = () => {
                   <FaPhoneAlt className="me-2 flex-shrink-0 footer-icon" />
                   <span className="d-flex flex-wrap gap-1 add">
                     <a
-                      href="tel:+1-740-748-4441"
-                      target="_blank"
+                      href="tel:+1-646-575-9575"
                       rel="noopener noreferrer"
                       className="text-decoration-none "
                     >
-                      +1-740-748-4441
+                      +1-646-575-9575
                     </a>
                     <span>/</span>
                     <a
@@ -339,7 +339,7 @@ const Footer = () => {
           {/* Footer Bottom */}
           <div className="footer-bottom mt-4 pt-3">
             <p
-              className="footer-bottom-text mb-2 text-left"
+              className="footer-bottom-text mb-2"
               style={{ color: "#a3a3a3ff" }}
             >
               {isMobile
@@ -347,7 +347,7 @@ const Footer = () => {
                 : "© 2026 Ahaan Software, All rights reserved."}
             </p>
 
-            <div className="footer-social-icons text-center">
+            <div className="footer-social-icons ">
               <a
                 href="https://www.facebook.com/ahaansoftwareconsulting"
                 target="_blank"
@@ -376,6 +376,33 @@ const Footer = () => {
               >
                 <span className="tooltip">LinkedIn</span>
                 <FaLinkedinIn />
+              </a>
+              <a
+                href="https://github.com/AhaanSoftwareConsulting"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="icon github"
+              >
+                <span className="tooltip">Github</span>
+                <FaGithub />
+              </a>
+               <a
+                href="https://dribbble.com/ahaan-software"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="icon dribbble"
+              >
+                <span className="tooltip">Dribbble</span>
+                <FiDribbble />
+              </a>
+               <a
+                href="https://www.behance.net/ahaansoftware01"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="icon behance"
+              >
+                <span className="tooltip">Behance</span>
+                <FaBehance />
               </a>
             </div>
           </div>

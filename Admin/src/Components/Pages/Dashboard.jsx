@@ -10,6 +10,9 @@ import {
 } from "react-icons/fa";
 import VisitorCounter from "../Visitor/VisitorCounter";
 import EventCalendar from "./EventCalendar";
+import Employee from "./Employee";
+import BirthdayReminder from "../reminder/BirthdayReminder";
+import AnniversaryReminder from "../reminder/AnniversaryReminder";
 
 const Dashboard = () => {
   const [connectCount, setConnectCount] = useState(0);
@@ -134,40 +137,13 @@ const Dashboard = () => {
       {/* MAIN CHARTS */}
       <div className="row g-4">
         <div className="col-md-8">
-          <div className="card shadow-sm p-4 rounded-4">
-            <h5 className="fw-bold" >Dashboard</h5>
-            <h5 className="fw-bold mt-4">82</h5>
-            <p>Current Month Sales</p>
-
-            <Chart
-              options={areaChart.options}
-              series={areaChart.series}
-              type="area"
-              height={300}
-            />
-          </div>
+          <Employee/>
         </div>
 
         <div className="col-md-4">
-          {/* <div className="card shadow-sm p-4 rounded-4">
-            <h5 className="fw-bold mb-3">Traffic</h5>
-
-            <Chart
-              options={donutChart.options}
-              series={donutChart.series}
-              type="donut"
-              height={300}
-            />
-
-            <h3
-              className="text-center fw-bold mt-3"
-              style={{ fontSize: "35px" }}
-            >
-              1.56k
-            </h3>
-            <p className="text-center text-muted">Total Visitors</p>
-          </div> */}
-          <EventCalendar/>
+          {/* <EventCalendar/> */}
+          <BirthdayReminder/>
+          <AnniversaryReminder/>
           
         </div>
         

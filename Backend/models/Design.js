@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const designSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
-    link: { type: String, required: true },
+    link: { type: String, },
     image: { type: String, required: true }, // Cloudinary URL
     designer: { type: String, required: true },
     category: {
@@ -24,6 +24,9 @@ const designSchema = new mongoose.Schema(
         "society-people",
         "medical-healthcare",
         "real-estate",
+        "web-banner",
+        "business-card",
+        "product-label",
         "others",
       ],
     },

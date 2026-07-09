@@ -22,7 +22,7 @@ import { IoIosAppstore } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 const techIconsMap = {
-  "UI/UX Designing": [
+  "UI/UX Design": [
     { Icon: FiFigma, label: "Figma" },
     { Icon: SiFramer, label: "Framer" },
     { Icon: SiWix, label: "Wix" },
@@ -128,7 +128,7 @@ const BannerContent = () => {
 
       {/* CTA Button */}
       <Link to="/contact" className="banner-btn">
-        Get Started →
+        Get a Custom Solution Proposal →
       </Link>
     </div>
   );

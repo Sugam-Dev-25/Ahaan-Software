@@ -5,7 +5,7 @@ exports.createDesign = async (req, res) => {
   try {
     const { title, link, designer, category } = req.body;
 
-    if (!title || !link || !designer || !category) {
+    if (!title || !designer || !category) {
       return res.status(400).json({
         success: false,
         message: "Title, Link & Designer are required",

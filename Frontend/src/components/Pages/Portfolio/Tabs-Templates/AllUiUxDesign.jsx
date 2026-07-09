@@ -21,6 +21,9 @@ import {
   FaUsers,
   FaFutbol,
   FaEllipsisH,
+  FaWindowMaximize,
+  FaIdCard,
+  FaTag,
 } from "react-icons/fa";
 
 const AllUiUxDesign = () => {
@@ -54,7 +57,7 @@ const AllUiUxDesign = () => {
       icon: <FaFilm />,
     },
     "food-restaurant": {
-      label: "Food Restaurant",
+      label: "Food/Restaurant",
       icon: <FaUtensils />,
     },
     "cars-motorcycles": {
@@ -62,7 +65,7 @@ const AllUiUxDesign = () => {
       icon: <FaCar />,
     },
     "fashion-beauty": {
-      label: "Fashion Beauty",
+      label: "Fashion/Beauty",
       icon: <FaTshirt />,
     },
     electronics: {
@@ -82,12 +85,25 @@ const AllUiUxDesign = () => {
       icon: <FaHome />,
     },
     "society-people": {
-      label: "Society People",
+      label: "Society/People",
       icon: <FaUsers />,
     },
     "sports-outdoors-travel": {
       label: "Sports",
       icon: <FaFutbol />,
+    },
+
+    "web-banner": {
+      label: "Web Banner",
+      icon: <FaWindowMaximize />,
+    },
+    "business-card": {
+      label: "Business Card",
+      icon: <FaIdCard />,
+    },
+    "product-label": {
+      label: "Product Label",
+      icon: <FaTag />,
     },
     others: {
       label: "Others",

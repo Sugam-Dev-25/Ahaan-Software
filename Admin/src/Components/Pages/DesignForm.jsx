@@ -41,7 +41,6 @@ const DesignForm = ({
             type="text"
             value={link}
             onChange={(e) => setLink(e.target.value)}
-            required
           />
         </div>
 
@@ -100,6 +99,12 @@ const DesignForm = ({
             <option value="medical-healthcare">Medical & Healthcare</option>
 
             <option value="real-estate">Real Estate</option>
+
+            <option value="web-banner">Web Banner</option>
+
+            <option value="business-card">Business Card</option>
+
+            <option value="product-label">Product Label</option>
 
             <option value="others">Others</option>
           </select>

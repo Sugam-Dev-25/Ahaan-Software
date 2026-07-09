@@ -1,6 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { FaFacebookF, FaInstagram, FaLinkedinIn,FaIndustry  } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaIndustry,
+} from "react-icons/fa";
 import { BsGithub } from "react-icons/bs";
 import { HiHome } from "react-icons/hi2";
 import { BiSolidMessageSquareEdit } from "react-icons/bi";
@@ -8,6 +13,7 @@ import { MdHomeRepairService } from "react-icons/md";
 import { RiFileList3Fill } from "react-icons/ri";
 import { FaBloggerB } from "react-icons/fa";
 import { BsFillSuitcaseLgFill } from "react-icons/bs";
+import { BsFillTelephoneFill } from "react-icons/bs";
 
 import "./MobileSidebar.css";
 
@@ -89,7 +95,7 @@ const MobileSidebar = ({ isOpen, setSidebarOpen, toggleButtonRef }) => {
             className={({ isActive }) => (isActive ? "active" : "")}
             onClick={() => setSidebarOpen(false)}
           >
-            <FaIndustry  style={{ marginRight: "8px", fontSize: "22px" }} />{" "}
+            <FaIndustry style={{ marginRight: "8px", fontSize: "22px" }} />{" "}
             Solutions
           </NavLink>
           <NavLink
@@ -104,7 +110,20 @@ const MobileSidebar = ({ isOpen, setSidebarOpen, toggleButtonRef }) => {
             className={({ isActive }) => (isActive ? "active" : "")}
             onClick={() => setSidebarOpen(false)}
           >
-            <BsFillSuitcaseLgFill style={{ marginRight: "8px", fontSize: "22px" }} /> Career
+            <BsFillSuitcaseLgFill
+              style={{ marginRight: "8px", fontSize: "22px" }}
+            />{" "}
+            Career
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) => (isActive ? "active" : "")}
+            onClick={() => setSidebarOpen(false)}
+          >
+            <BsFillTelephoneFill
+              style={{ marginRight: "8px", fontSize: "22px" }}
+            />{" "}
+            Contact us
           </NavLink>
         </div>
 

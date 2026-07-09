@@ -6,6 +6,8 @@ import {
   FaFacebookF,
   FaInstagram,
 } from "react-icons/fa";
+import { FiDribbble } from "react-icons/fi";
+import { FaBehance, FaGithub } from "react-icons/fa";
 import { FaPhoneVolume } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
@@ -72,11 +74,11 @@ const ContactUs = () => {
                 <strong>Phone</strong>
                 <p>
                   <a
-                    href="tel:+1-740-748-4441"
+                    href="tel:+1-646-575-9575"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    +1-740-748-4441
+                    +1-646-575-9575
                   </a>
                 </p>
                 <p>
@@ -137,6 +139,31 @@ const ContactUs = () => {
                 className="modern-social-icon instagram"
               >
                 <FaInstagram />
+              </a>
+
+              <a
+                href="https://github.com/AhaanSoftwareConsulting"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="modern-social-icon github"
+              >
+                <FaGithub />
+              </a>
+              <a
+                href="https://www.behance.net/ahaansoftware01"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="modern-social-icon behance"
+              >
+                <FaBehance />
+              </a>
+              <a
+                href="https://dribbble.com/ahaan-software"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="modern-social-icon dribbble"
+              >
+                <FiDribbble  />
               </a>
             </div>
           </div>
@@ -253,4 +280,3 @@ const ContactUs = () => {
 };
 
 export default ContactUs;
- 

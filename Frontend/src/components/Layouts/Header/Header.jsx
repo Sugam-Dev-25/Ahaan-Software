@@ -103,12 +103,12 @@ const Header = () => {
           </ul>
         </div>
 
-        <div className="header-right-actions d-flex align-items-center gap-3">
+        <div className="header-right-actions d-flex align-items-center">
           {/* Phone Number Section */}
           <div className="phone-contact-wrapper">
-            <a href="tel:+1-740-748-4441" className="phone-link">
+            <a href="tel:+1-646-575-9575" className="phone-link">
               <FiPhoneCall className="phone-icon" />
-              <span className="phone-text">+1-740-748-4441</span>
+              <span className="phone-text">+1-646-575-9575</span>
             </a>
           </div>
 
@@ -151,7 +151,7 @@ const Header = () => {
                 rel="noopener noreferrer"
                 className="get-quote-btn"
               >
-                Free Consultation
+                Book a Free Discovery Call
               </a>
             </div>
           </div>
