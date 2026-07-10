@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../../app/hook";
 import { loginUser } from "../userSlice";
 import { useNavigate, Link } from "react-router-dom";
 import "./LoginView.css";
+import { toast } from "react-toastify";
 
 const LoginView = () => {
   const dispatch = useAppDispatch();
@@ -20,26 +21,26 @@ const LoginView = () => {
 
   const onSubmit = async (data) => {
     const res = await dispatch(loginUser(data));
-    if (res?.meta?.requestStatus === "fulfilled") {
-      localStorage.setItem("user", JSON.stringify(res.payload));
+
+    if (res.meta.requestStatus === "fulfilled") {
+      toast.success(res.payload.message);
       navigate("/");
+    } else {
+      toast.error(res.payload);
     }
   };
 
   return (
     <div className="login-container">
       <div className="row g-0">
-
         {/* LEFT FORM SECTION */}
         <div className="col-lg-6 form-side d-flex align-items-center justify-content-center">
           <div className="form-box">
-
             <h2 className="text-white mb-4 register-form-heading">Login</h2>
 
             {error && <p className="error-text">{error}</p>}
 
             <form onSubmit={handleSubmit(onSubmit)}>
-              
               {/* EMAIL */}
               <input
                 type="email"
@@ -72,18 +73,17 @@ const LoginView = () => {
 
               <p className="text-center text-white mt-3">
                 Don't have an account?{" "}
-                <Link to="/register" className="login-link">Register</Link>
+                <Link to="/register" className="login-link">
+                  Register
+                </Link>
               </p>
-
             </form>
-
           </div>
         </div>
 
         {/* RIGHT IMAGE SECTION */}
         <div className="col-lg-6 image-side">
           <div className="image-overlay">
-
             {/* LOGO */}
             <img
               src="https://ahaanmedia.com/asc/layouts/asc.png"
@@ -94,13 +94,13 @@ const LoginView = () => {
             {/* TYPING ANIMATION */}
             <div className="typing-wrapper">
               <h2 className="typing-text">
-                Ahaan Software<br />Consulting
+                Ahaan Software
+                <br />
+                Consulting
               </h2>
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
   );

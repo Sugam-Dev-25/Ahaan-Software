@@ -202,13 +202,6 @@ export default function Topbar() {
     )} */}
         </div>
 
-        {/* NOTIFICATION */}
-        <div className="position-relative">
-          <FaBell size={22} />
-          <span className="badge bg-warning position-absolute top-0 start-100 translate-middle text-dark">
-            3
-          </span>
-        </div>
 
         {/* USER */}
         <div className="d-flex align-items-center">
@@ -228,7 +221,7 @@ export default function Topbar() {
             <span className="fw-bold">{user?.name || "Loading..."}</span>
             <br />
             <small className="text-success">
-              {user?.designation || "Designation"}
+              {user?.role || "Role"}
             </small>
           </div>
         </div>

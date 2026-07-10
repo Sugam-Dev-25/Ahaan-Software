@@ -11,7 +11,7 @@ export const loginUser = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err.response.data.message);
     }
-  }
+  },
 );
 
 // REGISTER
@@ -24,7 +24,7 @@ export const registerUser = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err.response.data.message);
     }
-  }
+  },
 );
 
 // GET PROFILE
@@ -37,7 +37,7 @@ export const getProfile = createAsyncThunk(
     } catch (err) {
       return rejectWithValue("Unauthorized");
     }
-  }
+  },
 );
 
 // LOGOUT
@@ -57,34 +57,57 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
 
-      // login
+      // ================= LOGIN =================
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
+
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload;
-        localStorage.setItem("user", JSON.stringify(action.payload));
+        state.error = null;
+
+        state.user = {
+          token: action.payload.token,
+          ...action.payload.user,
+        };
+
+        localStorage.setItem("user", JSON.stringify(state.user));
       })
+
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })
 
-      // register
-      .addCase(registerUser.fulfilled, (state, action) => {
-        state.user = action.payload;
-        localStorage.setItem("user", JSON.stringify(action.payload));
+      // ================= REGISTER =================
+      .addCase(registerUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
       })
 
-      // profile
+      .addCase(registerUser.fulfilled, (state) => {
+        state.loading = false;
+        state.error = null;
+
+        // ❌ Register এর পরে user login হবে না
+        // তাই localStorage বা state.user update করা হবে না
+      })
+
+      .addCase(registerUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+
+      // ================= PROFILE =================
       .addCase(getProfile.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = action.payload.user;
       })
 
-      // logout
+      // ================= LOGOUT =================
       .addCase(logoutUser.fulfilled, (state) => {
         state.user = null;
+        state.error = null;
         localStorage.removeItem("user");
       });
   },

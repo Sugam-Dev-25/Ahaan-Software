@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Editor } from "@tinymce/tinymce-react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./EditBlog.css";
 
 const EditBlog = () => {
@@ -36,11 +38,14 @@ const EditBlog = () => {
           setPreviewUrl(
             matched.image?.startsWith("http")
               ? matched.image
-              : `https://ahaansoftware.com/${matched.image}`
+              : `https://ahaansoftware.com/${matched.image}`,
           );
         } else {
-          alert("Blog not found");
-          navigate("/manage-blogs");
+          toast.error("Blog Not Found");
+
+          setTimeout(() => {
+            navigate("/manage-blogs");
+          }, 1000);
         }
       })
       .catch((err) => {
@@ -79,17 +84,21 @@ const EditBlog = () => {
     try {
       const res = await axios.post(
         "https://ahaansoftware.com/update-json.php",
-        formData
+        formData,
       );
       if (res.data.status === "success") {
-        alert("✅ Blog updated successfully!");
-        navigate("/manage-blogs");
+        toast.success(res.data.message || "Blog Updated Successfully");
+
+        setTimeout(() => {
+          navigate("/manage-blogs");
+        }, 1000);
       } else {
-        alert("❌ Failed: " + (res.data.message || "Unknown error"));
+        toast.error(res.data.message || "Failed To Update Blog");
       }
     } catch (err) {
       console.error("Update failed:", err);
-      alert("❌ Network/server error.");
+
+      toast.error(err.response?.data?.message || "Network / Server Error");
     } finally {
       setIsSubmitting(false);
     }

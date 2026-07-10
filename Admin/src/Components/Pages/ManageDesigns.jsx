@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Table, Button, Modal } from "react-bootstrap";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { SearchContext } from "../../searchContext";
+import { toast } from "react-toastify";
 import "./ManageDesigns.css";
 
 const ManageDesigns = () => {
@@ -35,9 +36,23 @@ const ManageDesigns = () => {
   };
 
   const confirmDelete = async () => {
-    await deleteDesignAPI(selectedId);
-    loadData();
+    try {
+    const res = await deleteDesignAPI(selectedId);
+
     setShowModal(false);
+
+    toast.success(
+      res.data.message || "Design deleted successfully!"
+    );
+
+    loadData();
+
+  } catch (error) {
+    toast.error(
+      error.response?.data?.message ||
+      "Failed to delete design!"
+    );
+  }
   };
 
   return (

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Table, Button, Modal } from "react-bootstrap";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { SearchContext } from "../../searchContext";
+import { toast } from "react-toastify";
 import "./ManageDesigns.css";
 
 const ManageDevelopments = () => {
@@ -37,9 +38,23 @@ const ManageDevelopments = () => {
   };
 
   const confirmDelete = async () => {
-    await deleteDevelopmentAPI(selectedId);
-    loadData();
+     try {
+    const res = await deleteDevelopmentAPI(selectedId);
+
     setShowModal(false);
+
+    toast.success(
+      res.data.message || "Development deleted successfully!"
+    );
+
+    loadData();
+
+  } catch (error) {
+    toast.error(
+      error.response?.data?.message ||
+      "Failed to delete development!"
+    );
+  }
   };
 
   return (

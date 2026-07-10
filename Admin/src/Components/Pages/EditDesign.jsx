@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getDesignByIdAPI, updateDesignAPI } from "../Api/api";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import DesignForm from "../Pages/DesignForm";
+import { toast } from "react-toastify";
 
 const EditDesign = () => {
   const { id } = useParams();
@@ -12,8 +13,12 @@ const EditDesign = () => {
   const [previewImage, setPreviewImage] = useState("");
   const [category, setCategory] = useState("");
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchData = async () => {
+
+      try {
       const res = await getDesignByIdAPI(id);
       const data = res.data.data;
 
@@ -22,6 +27,11 @@ const EditDesign = () => {
       setDesigner(data.designer); // 👈 NEW FIELD
       setCategory(data.category || "");
       setPreviewImage(data.image);
+    }catch (error) {
+        toast.error(
+          error.response?.data?.message || "Failed to load design!"
+        );
+      }
     };
 
     fetchData();
@@ -47,8 +57,22 @@ const EditDesign = () => {
       formData.append("image", image);
     }
 
-    await updateDesignAPI(id, formData);
-    alert("Design updated successfully!");
+     try {
+      const res = await updateDesignAPI(id, formData);
+
+      toast.success(
+        res.data.message || "Design updated successfully!"
+      );
+
+      setTimeout(() => {
+        navigate("/manage-design");
+      }, 1000);
+
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message || "Failed to update design!"
+      );
+    }
   };
 
   return (

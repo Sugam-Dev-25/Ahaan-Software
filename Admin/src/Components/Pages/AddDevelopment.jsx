@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import DevelopmentForm from "../Pages/DevelopmentForm";
 import { addDevelopmentAPI } from "../Api/api";
+import { useNavigate } from "react-router-dom";
+
+import { toast } from "react-toastify";
 
 const AddDevelopment = () => {
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
-  const [developer, setDeveloper] = useState("");   // NEW FIELD
+  const [developer, setDeveloper] = useState(""); // NEW FIELD
   const [image, setImage] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,21 +19,25 @@ const AddDevelopment = () => {
     const fd = new FormData();
     fd.append("title", title);
     fd.append("link", link);
-    fd.append("developer", developer);   // NEW FIELD
+    fd.append("developer", developer); // NEW FIELD
     fd.append("image", image);
 
     try {
-      await addDevelopmentAPI(fd);
+      const res = await addDevelopmentAPI(fd);
 
-      alert("Development Added Successfully! 🎉");
+      toast.success(res.data.message || "Development Added Successfully!");
 
       // RESET FIELDS
       setTitle("");
       setLink("");
       setDeveloper("");
       setImage(null);
+
+      navigate("/manage-development");
     } catch (error) {
-      alert("❌ Failed to add development!");
+      toast.error(
+        error.response?.data?.message || "Failed to add development!",
+      );
     }
   };
 
@@ -39,8 +48,8 @@ const AddDevelopment = () => {
       setTitle={setTitle}
       link={link}
       setLink={setLink}
-      developer={developer}          // SEND TO FORM
-      setDeveloper={setDeveloper}    // SEND TO FORM
+      developer={developer} // SEND TO FORM
+      setDeveloper={setDeveloper} // SEND TO FORM
       image={image}
       setImage={setImage}
       onSubmit={handleSubmit}

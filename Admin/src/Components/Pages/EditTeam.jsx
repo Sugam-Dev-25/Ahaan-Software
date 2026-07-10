@@ -2,13 +2,14 @@
 
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { getSingleTeam, updateTeam } from "../Api/api";
 import "./AddTeam.css"; // same design as AddTeam
 
 const EditTeam = () => {
   const { id } = useParams();
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -41,21 +42,35 @@ const EditTeam = () => {
       }
     } catch (err) {
       console.error("❌ Failed to load team:", err);
+
+      toast.error(err.response?.data?.message || "Failed To Load Team");
     }
   };
 
   // ==============================
   // Submit Updated Data
   // ==============================
-  const onSubmit = async (data) => {
-    try {
-      await updateTeam(id, data);
-      alert("Team Updated Successfully!");
-    } catch (err) {
-      console.error("❌ Update error:", err);
-      alert("Failed to update team");
-    }
-  };
+const onSubmit = async (data) => {
+  try {
+    const res = await updateTeam(id, data);
+
+    toast.success(
+      res.data.message || "Team Updated Successfully"
+    );
+
+    setTimeout(() => {
+      navigate("/view-team");
+    }, 1000);
+
+  } catch (err) {
+    console.error("❌ Update error:", err);
+
+    toast.error(
+      err.response?.data?.message ||
+      "Failed To Update Team"
+    );
+  }
+};
 
   useEffect(() => {
     loadTeam();

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getDevelopmentByIdAPI, updateDevelopmentAPI } from "../Api/api";
 import { useParams, useNavigate } from "react-router-dom";
 import DevelopmentForm from "../Pages/DevelopmentForm";
+import { toast } from "react-toastify";
 
 const EditDevelopment = () => {
   const { id } = useParams();
@@ -21,10 +22,13 @@ const EditDevelopment = () => {
 
         setTitle(data.title);
         setLink(data.link);
-        setDeveloper(data.developer);   // LOAD DEVELOPER NAME
+        setDeveloper(data.developer);
         setPreviewImage(data.image);
       } catch (error) {
-        alert("Error fetching development data!");
+        toast.error(
+          error.response?.data?.message ||
+            "Failed to load development!"
+        );
       }
     };
 
@@ -41,11 +45,21 @@ const EditDevelopment = () => {
     if (image) fd.append("image", image);
 
     try {
-      await updateDevelopmentAPI(id, fd);
-      alert("Development updated successfully!");
-      navigate("/manage-development");  // FIX NAVIGATION
+      const res = await updateDevelopmentAPI(id, fd);
+
+      toast.success(
+        res.data.message || "Development updated successfully!"
+      );
+
+      setTimeout(() => {
+        navigate("/manage-development");
+      }, 1000);
+
     } catch (error) {
-      alert("Failed to update development!");
+      toast.error(
+        error.response?.data?.message ||
+          "Failed to update development!"
+      );
     }
   };
 

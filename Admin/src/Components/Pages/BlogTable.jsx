@@ -3,7 +3,8 @@ import { Table, Button, Modal } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FiEdit, FiTrash2, FiEye } from "react-icons/fi";
-import { SearchContext } from "../../searchContext"; // 👉 Add this!
+import { SearchContext } from "../../searchContext";
+import { toast } from "react-toastify";
 import "./BlogTable.css";
 
 const BlogTable = () => {
@@ -25,6 +26,8 @@ const BlogTable = () => {
       setBlogs(Array.isArray(res.data) ? res.data : []);
     } catch (error) {
       console.error("Error fetching blogs:", error);
+
+      toast.error(error.response?.data?.message || "Failed To Load Blogs");
     }
   };
 
@@ -43,34 +46,43 @@ const BlogTable = () => {
 
       const res = await axios.post(
         "https://ahaansoftware.com/delete-blog.php",
-        formData
+        formData,
       );
 
       if (res.data.status === "success") {
         setBlogs((prev) => prev.filter((blog) => blog.id !== selectedBlogId));
-        alert("✅ Blog deleted successfully!");
+        toast.success(res.data.message || "Blog Deleted Successfully");
       } else {
-        alert("❌ Failed: " + res.data.message);
+        toast.error(res.data.message || "Failed To Delete Blog");
       }
 
       setShowModal(false);
+      setSelectedBlogId(null);
     } catch (err) {
       console.error("Delete failed:", err);
-      alert("❌ Server error.");
+
+      toast.error(err.response?.data?.message || "Server Error");
+
+      setShowModal(false);
     }
   };
 
   // 🔥 FILTER BLOGS BASED ON TOPBAR SEARCH (title, author)
-  const filtered = blogs.filter((blog) =>
-    blog.title.toLowerCase().includes(query.toLowerCase()) ||
-    blog.author?.toLowerCase().includes(query.toLowerCase())
+  const filtered = blogs.filter(
+    (blog) =>
+      blog.title.toLowerCase().includes(query.toLowerCase()) ||
+      blog.author?.toLowerCase().includes(query.toLowerCase()),
   );
 
   return (
     <div className="container mt-1 mb-1">
       <div className="table-container">
-
-        <Table striped hover responsive className="table align-middle text-center">
+        <Table
+          striped
+          hover
+          responsive
+          className="table align-middle text-center"
+        >
           <thead>
             <tr>
               <th>Id</th>
@@ -154,7 +166,7 @@ const BlogTable = () => {
         </Modal.Header>
         <Modal.Body>
           <p>
-            This will permanently remove the blog post.  
+            This will permanently remove the blog post.
             <strong>Once deleted, it cannot be recovered.</strong>
           </p>
           <p>Are you sure?</p>

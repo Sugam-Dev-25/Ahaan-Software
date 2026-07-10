@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Editor } from "@tinymce/tinymce-react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 import "./BlogForm.css";
 
 const BlogForm = () => {
@@ -11,6 +12,8 @@ const BlogForm = () => {
   const [content, setContent] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
@@ -28,15 +31,17 @@ const BlogForm = () => {
       });
       const result = await res.json();
       if (result.status === "success") {
-        toast.success("✅ Blog submitted successfully!");
+        toast.success(result.message || "Blog Submitted Successfully");
+
         reset();
         setContent("");
         setImagePreview(null);
+        navigate("/manage-blogs");
       } else {
-        toast.error("❌ Submission failed: " + result.message);
+        toast.error(result.message || "Failed To Submit Blog");
       }
-    } catch {
-      toast.error("❌ Network error");
+    } catch (error) {
+      toast.error(error?.message || "Network Error");
     } finally {
       setIsSubmitting(false);
     }
@@ -44,9 +49,8 @@ const BlogForm = () => {
 
   return (
     <div className="container mt-4">
-      <ToastContainer position="top-right" autoClose={3000} />
       <div className="blog-form-wrapper">
-        <h2 className="form-title">	Add Blog </h2>
+        <h2 className="form-title"> Add Blog </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="blog-form">
           <div className="form-group">
             <label className="form-label">Title</label>

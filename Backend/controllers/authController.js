@@ -7,10 +7,12 @@ User.prototype.generateJWT = function () {
   return jwt.sign(
     {
       id: this._id,
+      role: this.role,
       designation: this.designation,
+      
     },
     process.env.JWT_SECRET,
-    { expiresIn: "7d" }
+    { expiresIn: "7d" },
   );
 };
 
@@ -34,11 +36,8 @@ exports.registerUser = async (req, res) => {
       profilePicture,
     });
 
-    const token = user.generateJWT();
-
     res.status(201).json({
-      message: "User registered successfully",
-      token,
+      message: "Registration successful. Please wait for Super Admin approval.",
       user: {
         id: user._id,
         name: user.name,
@@ -66,6 +65,20 @@ exports.loginUser = async (req, res) => {
     if (!match)
       return res.status(400).json({ message: "Invalid email or password" });
 
+    if (user.status === "pending") {
+      return res.status(403).json({
+        success: false,
+        message: "Your account is waiting for Super Admin approval.",
+      });
+    }
+
+    if (user.status === "rejected") {
+      return res.status(403).json({
+        success: false,
+        message: "Your account has been rejected.",
+      });
+    }
+
     const token = user.generateJWT();
 
     res.status(200).json({
@@ -74,6 +87,7 @@ exports.loginUser = async (req, res) => {
       user: {
         id: user._id,
         name: user.name,
+        role: user.role,
         designation: user.designation,
         profilePicture: user.profilePicture, // FULL URL
       },
@@ -81,6 +95,94 @@ exports.loginUser = async (req, res) => {
   } catch (error) {
     console.error("Login Error:", error);
     res.status(500).json({ message: "Server Error" });
+  }
+};
+
+exports.approveUser = async (req, res) => {
+  try {
+
+    // Only Super Admin can approve users
+    if (req.user.role !== "super_admin") {
+      return res.status(403).json({
+        success: false,
+        message: "Only Super Admin can approve users."
+      });
+    }
+
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found"
+      });
+    }
+
+    if (user.status === "approved") {
+      return res.status(400).json({
+        success: false,
+        message: "User is already approved."
+      });
+    }
+
+    user.status = "approved";
+    await user.save();
+
+    res.status(200).json({
+      success: true,
+      message: "User approved successfully"
+    });
+
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message
+    });
+  }
+};
+
+
+exports.rejectUser = async (req, res) => {
+  try {
+    if (req.user.role !== "super_admin") {
+      return res.status(403).json({
+        success: false,
+        message: "Only Super Admin can reject users.",
+      });
+    }
+
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    if (user.status === "rejected") {
+    return res.status(400).json({
+        success:false,
+        message:"User already rejected."
+    });
+}
+
+    user.status = "rejected";
+
+    await user.save();
+
+    res.json({
+      success: true,
+      message: "User rejected successfully",
+    });
+
+
+
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message,
+    });
   }
 };
 
@@ -95,4 +197,55 @@ exports.getProfile = async (req, res) => {
 // LOGOUT
 exports.logoutUser = (req, res) => {
   res.status(200).json({ message: "Logged out successfully" });
+};
+
+exports.getAllUsers = async (req, res) => {
+  try {
+    if (req.user.role !== "super_admin") {
+      return res.status(403).json({
+        success: false,
+        message: "Only Super Admin can access."
+      });
+    }
+
+    const users = await User.find().select("-password");
+
+    res.status(200).json({
+      success: true,
+      users
+    });
+
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message
+    });
+  }
+};
+
+exports.getUsersByStatus = async (req, res) => {
+  try {
+
+    if (req.user.role !== "super_admin") {
+      return res.status(403).json({
+        success: false,
+        message: "Only Super Admin can access."
+      });
+    }
+
+    const users = await User.find({
+      status: req.params.status
+    }).select("-password");
+
+    res.status(200).json({
+      success: true,
+      users
+    });
+
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message
+    });
+  }
 };

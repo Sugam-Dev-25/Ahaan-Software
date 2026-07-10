@@ -2,8 +2,8 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "apexcharts/dist/apexcharts.css";
-import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Topbar from "./Components/Layouts/Topbar";
 import Sidebar from "./Components/Layouts/Sidebar";
 import Dashboard from "./Components/Pages/Dashboard";
@@ -29,6 +29,10 @@ import EditDesign from "./Components/Pages/EditDesign";
 import AddDevelopment from "./Components/Pages/AddDevelopment";
 import ManageDevelopments from "./Components/Pages/ManageDevelopments";
 import EditDevelopment from "./Components/Pages/EditDevelopment";
+import PendingUser from "./Components/Pages/PendingUser";
+import AcceptUser from "./Components/Pages/AcceptUser";
+import RejectUser from "./Components/Pages/RejectUser";
+import PageLoader from "./Components/Common/PageLoader";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -59,8 +63,29 @@ function App() {
   LayoutWrapper = Sidebar + Topbar + All protected pages
 */
 const LayoutWrapper = () => {
+
+   const location = useLocation();
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+
+    setLoading(true);
+
+    const timer = setTimeout(() => {
+
+      setLoading(false);
+
+    }, 500);
+
+    return () => clearTimeout(timer);
+
+  }, [location.pathname]);
   return (
-    <div className="d-flex">
+    <>
+    {loading && <PageLoader />}
+
+        <div className="d-flex">
       {/* Sidebar */}
       <Sidebar />
 
@@ -107,12 +132,21 @@ const LayoutWrapper = () => {
             <Route path="/manage-development" element={<ManageDevelopments />} />
             <Route path="/edit-development/:id" element={<EditDevelopment />} />
 
+            {/* USER */}
+            <Route path="/pending-users" element={<PendingUser/>} />
+            <Route path= "/approved-users" element={<AcceptUser/>} />
+            <Route path= "/rejected-users" element={<RejectUser/>}/>
+
+
             {/* 404 */}
             <Route path="*" element={<h2>404 - Page Not Found</h2>} />
           </Routes>
         </div>
       </div>
     </div>
+    
+    </>
+
   );
 };
 

@@ -1,9 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { createTeam } from "../Api/api";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import "./AddTeam.css";
 
 const AddTeam = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -13,12 +16,19 @@ const AddTeam = () => {
 
   const onSubmit = async (data) => {
     try {
-      await createTeam(data);
-      alert("Team member added!");
+      const res = await createTeam(data);
+
+      toast.success(res.data.message || "Team Member Added Successfully");
+
       reset();
+
+      setTimeout(() => {
+        navigate("/view-team");
+      }, 1000);
     } catch (err) {
       console.log(err);
-      alert("Error creating team");
+
+      toast.error(err.response?.data?.message || "Failed To Add Team Member");
     }
   };
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../app/hook";
+import { useAppDispatch, useAppSelector } from "../app/hook";
 import { logoutUser } from "../features/user/userSlice";   // <-- ADD THIS
 import { FaBars } from "react-icons/fa";
 import { RxDashboard } from "react-icons/rx";
@@ -14,10 +14,13 @@ import { TiUserAdd } from "react-icons/ti";
 import { FaUsers } from "react-icons/fa6";
 import { IoMdLogOut } from "react-icons/io";
 
+import { toast } from "react-toastify";
+
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { user } = useAppSelector((state) => state.user);
 
   // 🔥 LOGOUT FUNCTION
   const handleLogout = async () => {
@@ -25,7 +28,8 @@ const Sidebar = () => {
       const res = await dispatch(logoutUser());
 
       if (res?.meta?.requestStatus === "fulfilled") {
-        navigate("/login");        // redirect to login page
+        toast.success("Logged out successfully");
+        navigate("/login");
       }
     } catch (error) {
       console.error("Logout failed:", error);
@@ -70,6 +74,27 @@ const Sidebar = () => {
     { label: "Add Teams", icon: <TiUserAdd className="me-2" />, path: "/add-team" },
     { label: "View Teams", icon: <FaUsers className="me-2" />, path: "/view-team" },
   ];
+
+  if (user?.role === "super_admin") {
+  menuItems.push(
+    { section: "User Management" },
+    {
+      label: "Pending Users",
+      icon: <FaUsers className="me-2" />,
+      path: "/pending-users",
+    },
+    {
+      label: "Approved Users",
+      icon: <FaUsers className="me-2" />,
+      path: "/approved-users",
+    },
+    {
+      label: "Rejected Users",
+      icon: <FaUsers className="me-2" />,
+      path: "/rejected-users",
+    }
+  );
+}
 
   return (
     <>
