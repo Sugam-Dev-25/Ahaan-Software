@@ -12,6 +12,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { profileAPI } from "../Api/api";
 import { SearchContext } from "../../searchContext";
+import "./SidebarTopbar.css";
 
 export default function Topbar() {
   const [currentTime, setCurrentTime] = useState("");
@@ -210,6 +211,8 @@ export default function Topbar() {
           style={{ cursor: "pointer" }}
           onClick={() => navigate("/profile")}
         >
+
+          <div className="profile-avatar">
           <img
             src={
               user?.profilePicture
@@ -218,14 +221,16 @@ export default function Topbar() {
             }
             width="50"
             height="50"
-            className="rounded-circle me-2 shadow-lg"
+            className="profile-avatar-img"
             alt="user"
           />
+
+          </div>
 
           <div>
             <span className="fw-bold">{user?.name || "Loading..."}</span>
             <br />
-            <small className="text-success">{user?.role || "Role"}</small>
+            <small className="text-warning">{user?.role || "Role"}</small>
           </div>
         </div>
       </div>

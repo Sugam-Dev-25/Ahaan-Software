@@ -72,11 +72,12 @@ const Dashboard = () => {
         <div className="col-md-3">
           <div className="dash-card pink-card p-3 text-white rounded-4 position-relative">
             <FaChartArea
-              size={75}
+              size={30}
               className="position-absolute"
-              style={{ top: 20, right: 20, opacity: 0.25 }}
+              style={{ top: 20, right: 20, color: "#c7cef9" }}
             />
             <h4 className="dashboard-heading">Blogs</h4>
+            <p className="dashboard-subheading">Latest Articles & Updates</p>
             <h3 className="dashboard-count">{blogCount}</h3>
           </div>
         </div>
@@ -85,11 +86,12 @@ const Dashboard = () => {
         <div className="col-md-3">
           <div className="dash-card purple-card p-3 text-white rounded-4 position-relative">
             <FaChartPie
-              size={75}
+              size={30}
               className="position-absolute"
-              style={{ top: 20, right: 20, opacity: 0.25 }}
+              style={{ top: 20, right: 20, color: "#d4f9c7" }}
             />
             <h4 className="dashboard-heading">Connect</h4>
+            <p className="dashboard-subheading">Client Meeting Requests</p>
             <h3 className="dashboard-count">{connectCount}</h3>
           </div>
         </div>
@@ -98,46 +100,46 @@ const Dashboard = () => {
         <div className="col-md-3">
           <div className="dash-card blue-card p-3 text-white rounded-4 position-relative">
             <FaChartBar
-              size={75}
+              size={30}
               className="position-absolute"
-              style={{ top: 20, right: 20, opacity: 0.25 }}
+              style={{ top: 20, right: 20, color: "#f9c7c7" }}
             />
             <h4 className="dashboard-heading">Contact</h4>
+            <p className="dashboard-subheading">Customer Enquiries & Support</p>
 
             {/* 🔥 DYNAMIC CONTACT COUNT HERE */}
             <h3 className="dashboard-count">{contactCount}</h3>
           </div>
         </div>
 
-        {/* Projects */}
+        {/* Visitor */}
         <div className="col-md-3">
           <div className="dash-card orange-card p-3 text-white rounded-4 position-relative">
             <FaChartLine
-              size={75}
+              size={30}
               className="position-absolute"
-              style={{ top: 20, right: 20, opacity: 0.25 }}
+              style={{ top: 20, right: 20, color: "#f9ecc7" }}
             />
             <h4 className="dashboard-heading">Visitor</h4>
-            <h3 className="dashboard-count"><VisitorCounter/></h3>
+            <p className="dashboard-subheading">Website Traffic Overview</p>
+            <h3 className="dashboard-count">
+              <VisitorCounter />
+            </h3>
           </div>
         </div>
-        
       </div>
-      
 
       {/* MAIN CHARTS */}
       <div className="row g-4">
         <div className="col-md-8">
-          <Employee/>
+          <Employee />
         </div>
 
         <div className="col-md-4">
           {/* <EventCalendar/> */}
-          <BirthdayReminder/>
-          <AnniversaryReminder/>
-          
+          <BirthdayReminder />
+          <AnniversaryReminder />
         </div>
-        
       </div>
     </div>
   );

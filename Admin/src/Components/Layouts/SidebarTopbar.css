@@ -97,3 +97,131 @@
   position: relative;
   z-index: 2;
 }
+
+/* ==========================
+   SIDEBAR MENU
+========================== */
+
+.nav-item{
+  margin-bottom: 6px !important;
+}
+
+.nav-link{
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: .35s;
+}
+
+.nav-link::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-170%;
+  width:45%;
+  height:100%;
+  background:linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.35),
+      transparent
+  );
+  transform:skewX(-25deg);
+  opacity:0;
+}
+.nav-link:hover,
+.nav-link.active{
+    background:linear-gradient(90deg,#161616,#161616) !important;
+    color:#d0ad00 !important;
+    font-weight:700;
+    box-shadow:0 1px 35px rgba(180, 152, 16, 0.35);
+    animation:activePulse 2.2s ease infinite;
+    border-left: 2px solid #d0ad00 !important;
+}
+
+.nav-link.active::before{
+    opacity:1;
+    animation:menuShine 2.8s linear infinite;
+}
+
+@keyframes menuShine{
+
+    0%{
+        left:-170%;
+    }
+
+    100%{
+        left:180%;
+    }
+
+}
+
+
+
+.nav-item{
+    margin-bottom:2px !important;
+}
+
+.sidebar-transition hr{
+    margin:14px 0;
+    opacity:.15;
+}
+
+.sidebar-transition .text-uppercase{
+
+    margin-top:4px !important;
+    margin-bottom:6px;
+    font-size:13px;
+    letter-spacing:3px;
+
+}
+
+.profile-avatar {
+  width: 56px;
+  height: 56px;
+  padding: 2px;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.profile-avatar::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  background: conic-gradient(
+    #ffbe31,
+    #ff8a00,
+    #ffd54f,
+    #ffbe31
+  );
+  animation: rotateBorder 2.5s linear infinite;
+}
+
+.profile-avatar::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.profile-avatar-img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@keyframes rotateBorder {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

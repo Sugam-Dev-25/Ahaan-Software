@@ -15,6 +15,9 @@ import { FaUsers } from "react-icons/fa6";
 import { IoMdLogOut } from "react-icons/io";
 import "./SidebarTopbar.css";
 import { toast } from "react-toastify";
+import { MdPendingActions } from "react-icons/md";
+import { HiClipboardCheck } from "react-icons/hi";
+import { RiFileCloseFill } from "react-icons/ri";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
@@ -80,17 +83,17 @@ const Sidebar = () => {
     { section: "User Management" },
     {
       label: "Pending Users",
-      icon: <FaUsers className="me-2" />,
+      icon: <MdPendingActions className="me-2" />,
       path: "/pending-users",
     },
     {
       label: "Approved Users",
-      icon: <FaUsers className="me-2" />,
+      icon: <HiClipboardCheck className="me-2" />,
       path: "/approved-users",
     },
     {
       label: "Rejected Users",
-      icon: <FaUsers className="me-2" />,
+      icon: <RiFileCloseFill className="me-2" />,
       path: "/rejected-users",
     }
   );
@@ -155,9 +158,9 @@ const Sidebar = () => {
             {menuItems.map((item, i) =>
               item.section ? (
                 <React.Fragment key={i}>
-                  <hr className="bg-light" />
+                
                   <div
-                    className="text-uppercase small mt-2 px-2"
+                    className="text-uppercase font-size-12 mt-2 px-2"
                     style={{
                       color: "#ffbe31ff",
                       fontWeight: "700",
@@ -169,7 +172,7 @@ const Sidebar = () => {
                   </div>
                 </React.Fragment>
               ) : (
-                <li key={i} className="nav-item mb-1">
+                <li key={i} className="nav-item">
                   <NavLink
                     to={item.path}
                     className="nav-link"
@@ -177,6 +180,7 @@ const Sidebar = () => {
                       ...menuStyle,
                       ...(isActive ? gradient : {}),
                       color: isActive ? "#000" : "#fff",
+                      fontSize: "13px",
                     })}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.background = gradient.background;
