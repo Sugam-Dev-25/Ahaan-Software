@@ -92,7 +92,7 @@ const LayoutWrapper = () => {
 
       <div
         className="flex-grow-1"
-        style={{ minHeight: "100vh", background: "#f8f9fc" }}
+        style={{ minHeight: "100vh", background: "#f8f9fc" ,  minWidth: 0 ,  overflowX: "hidden", }}
       >
         {/* Topbar */}
         <Topbar />

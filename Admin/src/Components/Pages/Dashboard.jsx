@@ -65,11 +65,11 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="container-fluid p-4">
+    <div className="container-fluid px-3 py-4">
       {/* TOP CARDS */}
       <div className="row g-4 mb-4">
         {/* Blogs */}
-        <div className="col-md-3">
+        <div className="col-12 col-sm-6 col-lg-3">
           <div className="dash-card pink-card p-3 text-white rounded-4 position-relative">
             <FaChartArea
               size={30}
@@ -83,7 +83,7 @@ const Dashboard = () => {
         </div>
 
         {/* Connect */}
-        <div className="col-md-3">
+        <div className="col-12 col-sm-6 col-lg-3">
           <div className="dash-card purple-card p-3 text-white rounded-4 position-relative">
             <FaChartPie
               size={30}
@@ -97,7 +97,7 @@ const Dashboard = () => {
         </div>
 
         {/* Contact */}
-        <div className="col-md-3">
+        <div className="col-12 col-sm-6 col-lg-3">
           <div className="dash-card blue-card p-3 text-white rounded-4 position-relative">
             <FaChartBar
               size={30}
@@ -113,7 +113,7 @@ const Dashboard = () => {
         </div>
 
         {/* Visitor */}
-        <div className="col-md-3">
+        <div className="col-12 col-sm-6 col-lg-3">
           <div className="dash-card orange-card p-3 text-white rounded-4 position-relative">
             <FaChartLine
               size={30}

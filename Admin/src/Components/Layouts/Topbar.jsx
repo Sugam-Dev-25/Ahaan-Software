@@ -137,11 +137,11 @@ export default function Topbar() {
   }, []);
 
   return (
-    <div className="d-flex justify-content-between align-items-center px-4 py-3">
+   <div className="topbar-container d-flex flex-column flex-lg-row justify-content-between align-items-lg-center px-3 px-lg-4 py-3 gap-3">
       {/* LEFT SIDE */}
-      <div className="d-flex align-items-center gap-4">
+      <div className="d-flex  flex-row align-items-center gap-3">
         {weather && (
-          <div className="d-flex align-items-center gap-2">
+          <div className="d-flex align-items-center gap-2 weather-box">
             {getWeatherIcon()}
             <div>
               <span className="fw-bold">{weather.temp}°C</span>
@@ -151,7 +151,7 @@ export default function Topbar() {
           </div>
         )}
 
-        <div className="d-flex align-items-center gap-3 me-4">
+       <div className="d-flex align-items-center justify-content-sm-end justify-content-start gap-2 date-box">
           <FaRegCalendarAlt size={22} />
           <div>
             <span className="fw-bold">{currentDate}</span>
@@ -162,9 +162,9 @@ export default function Topbar() {
       </div>
 
       {/* RIGHT SIDE */}
-      <div className="d-flex align-items-center gap-4 flex-grow-1">
+      <div className="d-flex  flex-row align-items-stretch align-items-lg-center gap-3 flex-grow-1">
         {/* SEARCH → FULL WIDTH */}
-        <div className="position-relative flex-grow-1 w-80">
+        <div className="position-relative flex-grow-1 search-wrapper">
           <div className="d-flex align-items-center px-3 py-1 w-100 admin-search-box">
             <FaSearch className="me-2 text-muted" />
 
@@ -207,7 +207,7 @@ export default function Topbar() {
 
         {/* USER */}
         <div
-          className="d-flex align-items-center"
+  className="d-flex align-items-center justify-content-sm-end justify-content-start profile-box"
           style={{ cursor: "pointer" }}
           onClick={() => navigate("/profile")}
         >

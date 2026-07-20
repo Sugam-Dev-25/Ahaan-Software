@@ -225,3 +225,121 @@
     transform: rotate(360deg);
   }
 }
+
+/* ==========================
+TOPBAR
+========================== */
+
+.topbar-container{
+    width:100%;
+}
+
+.search-wrapper{
+    width:100%;
+}
+
+.admin-search-box{
+    min-height:48px;
+    border-radius:10px;
+    background:#fff;
+    border:1px solid #e5e5e5;
+}
+
+.profile-box{
+    gap:12px;
+    white-space:nowrap;
+}
+
+.weather-box,
+.date-box{
+    white-space:nowrap;
+}
+
+/* ==========================
+TABLET
+========================== */
+
+@media (max-width:991px){
+
+    .topbar-container{
+        gap:18px;
+    }
+
+    .search-wrapper{
+        width:100%;
+    }
+
+    .profile-box{
+        justify-content:flex-start;
+    }
+
+}
+
+/* ==========================
+MOBILE
+========================== */
+
+@media (max-width:768px){
+
+    .topbar-container{
+        padding:15px !important;
+    }
+
+    .weather-box{
+        width:100%;
+    }
+
+    .date-box{
+        width:100%;
+    }
+
+    .profile-box{
+        width:100%;
+    }
+
+    .profile-avatar{
+        width:48px;
+        height:48px;
+    }
+
+    .profile-avatar-img{
+        width:100%;
+        height:100%;
+    }
+
+    .admin-search-box{
+        width:100%;
+    }
+
+}
+
+/* ==========================
+SMALL MOBILE
+========================== */
+
+@media (max-width:576px){
+
+    .weather-box small,
+    .date-box small{
+        font-size:11px;
+    }
+
+    .weather-box span,
+    .date-box span{
+        font-size:14px;
+    }
+
+    .profile-box span{
+        font-size:14px;
+    }
+
+    .profile-box small{
+        font-size:12px;
+    }
+
+    .profile-avatar{
+        width:42px;
+        height:42px;
+    }
+
+}

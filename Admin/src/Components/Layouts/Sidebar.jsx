@@ -113,9 +113,20 @@ const Sidebar = () => {
           }
         `}
       </style>
+      {/* Overlay */}
+{open && (
+  <div
+    className="d-xl-none position-fixed top-0 start-0 w-100 h-100"
+    style={{
+      background: "rgba(0,0,0,0.4)",
+      zIndex: 999,
+    }}
+    onClick={() => setOpen(false)}
+  />
+)}
 
       {/* Mobile Toggle */}
-      <div className="d-md-none bg-dark text-white p-2">
+      <div className="d-xl-none bg-dark text-white p-2">
         <button className="btn btn-outline-light" onClick={() => setOpen(!open)}>
           <FaBars size={20} />
         </button>
@@ -125,10 +136,10 @@ const Sidebar = () => {
       <div
         className={`text-white d-flex flex-column sidebar-transition ${
           open ? "d-block" : "d-none"
-        } d-md-flex`}
+        } d-xl-flex`}
         style={{
           width: "100%",
-          maxWidth: "240px",
+          maxWidth: "200px",
           height: "100vh",
           position: "fixed",
           top: 0,
@@ -223,7 +234,7 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className="d-none d-md-block" style={{ width: "240px" }}></div>
+      <div className="d-none d-xl-block" style={{ width: "200px" }}></div>
     </>
   );
 };

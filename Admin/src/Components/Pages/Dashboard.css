@@ -11,7 +11,8 @@
 ========================== */
 
 .dash-card {
-  height: 125px;
+  min-height:125px;
+  height:auto;
   border-radius: 10px !important;
   padding: 18px 22px;
   position: relative;
@@ -227,11 +228,11 @@
   }
 
   .dashboard-heading {
-    font-size: 26px;
+    font-size: 20px;
   }
 
   .dashboard-count {
-    font-size: 40px;
+    font-size: 30px;
   }
 }
 
@@ -241,10 +242,10 @@
   }
 
   .dashboard-heading {
-    font-size: 22px;
+    font-size: 16px;
   }
 
   .dashboard-count {
-    font-size: 34px;
+    font-size: 24px;
   }
 }
