@@ -414,86 +414,99 @@ const BusinessCheckForm = () => {
                 </div>
             )}
 
-            {showSpin && (
-                <div className="abc-overlay" role="dialog" aria-modal="true">
-                    <div className="abc-modal abc-modal-spin">
-                        <h2>Spin the wheel 🎡</h2>
-                        <p>One spin per email address — good luck!</p>
+           {showSpin && (
+    <div className="abc-overlay" role="dialog" aria-modal="true">
+        <div className="abc-modal abc-modal-spin">
 
-                        <div className="abc-wheelBox">
-                            <div className="abc-pointer" />
+            {!prizeWon ? (
+                <>
+                    <h2>Spin the wheel 🎡</h2>
+                    <p>One spin per email address — good luck!</p>
 
+                    <div className="abc-wheelBox">
+                        <div className="abc-pointer" />
 
+                        <div
+                            className="abc-wheel"
+                            style={{
+                                transform: `rotate(${wheelRotation}deg)`,
+                                transition: spinning
+                                    ? "transform 4.2s cubic-bezier(0.17, 0.67, 0.12, 0.99)"
+                                    : "none",
+                            }}
+                        >
+                            {WHEEL_PRIZES.map((prize, index) => (
+                                <div
+                                    key={prize}
+                                    className={`abc-wheelLabel abc-wheelLabel-${index}`}
+                                >
+                                    {prize}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
 
-                            <div
-                                className="abc-wheel"
-                                style={{
-                                    transform: `rotate(${wheelRotation}deg)`,
-                                    transition: spinning
-                                        ? "transform 4.2s cubic-bezier(0.17, 0.67, 0.12, 0.99)"
-                                        : "none",
-                                }}
-                            >
-                                {WHEEL_PRIZES.map((prize, index) => (
-                                    <div
-                                        key={prize}
-                                        className={`abc-wheelLabel abc-wheelLabel-${index}`}
-                                    >
-                                        {prize}
-                                    </div>
-                                ))}
+                    {spinError && (
+                        <p className="abc-error">{spinError}</p>
+                    )}
+
+                    <button
+                        className="abc-btn abc-btn-primary"
+                        onClick={spinWheel}
+                        disabled={spinning || alreadySpun}
+                    >
+                        {spinning ? "Spinning…" : "Spin now"}
+                    </button>
+                </>
+            ) : (
+                <>
+                    <h2>Congratulations! 🎉</h2>
+                    <p>Your lucky prize is ready.</p>
+
+                    <div className="abc-prizeResult">
+                        <p className="abc-prizeLabel">🎉 You won:</p>
+
+                        <p className="abc-prizeName">
+                            {prizeWon.label}
+                        </p>
+
+                        <div className="abc-claimCard">
+                            <p className="abc-claimSuccess">
+                                Your prize has been saved successfully. 🎉
+                            </p>
+
+                            <p>
+                                📸 <strong>Take a screenshot of this screen.</strong>
+                            </p>
+
+                            <p>
+                                Show this screen to Vishal to claim your gift.
+                            </p>
+
+                            <div className="abc-companyDetails">
+                                <strong>Ahaan Software Consulting</strong>
+                                <span>📞 +91 98303 71143</span>
+                                <span>🌐 www.ahaansoftware.com</span>
                             </div>
 
+                            <p className="abc-thankYou">
+                                Thank you for being part of the Ahaan experience! ❤️
+                            </p>
                         </div>
 
-                        {spinError && <p className="abc-error">{spinError}</p>}
+                        <button
+                            className="abc-btn abc-btn-primary"
+                            onClick={resetAll}
+                        >
+                            Done
+                        </button>
+                    </div>
+                </>
+            )}
 
-                      {!prizeWon ? (
-    <button
-        className="abc-btn abc-btn-primary"
-        onClick={spinWheel}
-        disabled={spinning || alreadySpun}
-    >
-        {spinning ? "Spinning…" : "Spin now"}
-    </button>
-) : (
-    <div className="abc-prizeResult">
-        <p className="abc-prizeLabel">You won:</p>
-        <p className="abc-prizeName">{prizeWon.label} 🎁</p>
-
-        <div className="abc-claimCard">
-            <p className="abc-claimSuccess">
-                Your prize has been saved successfully. 🎉
-            </p>
-
-            <div className="abc-claimMessage">
-                <p>
-                    📸 <strong>Take a screenshot of this screen.</strong>
-                </p>
-
-                <p>Show this screen to Vishal to claim your gift.</p>
-
-                <div className="abc-companyDetails">
-                    <strong>Ahaan Software Consulting</strong>
-                    <span>📞 +91 98303 71143</span>
-                    <span>🌐 www.ahaansoftware.com</span>
-                </div>
-
-                <p className="abc-thankYou">
-                    Thank you for being part of the Ahaan experience! ❤️
-                </p>
-            </div>
         </div>
-
-        <button className="abc-btn abc-btn-primary" onClick={resetAll}>
-            Done
-        </button>
     </div>
 )}
-
-                    </div>
-                </div>
-            )}
         </section>
     );
 };
